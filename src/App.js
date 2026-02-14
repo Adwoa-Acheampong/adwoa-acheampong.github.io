@@ -1,4 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
+import ErrorBoundary from './components/ErrorBoundary';
+import NavBar from './components/NavBar';
+import ContactForm from './components/ContactForm';
+import MarketChart from './components/MarketChart';
 import { 
   AreaChart, Area, BarChart, Bar, LineChart, Line, 
   XAxis, YAxis, ResponsiveContainer, Tooltip, CartesianGrid 
@@ -280,14 +284,13 @@ const customStyles = `
     margin-top: 0.5rem;
   }
 
-  /* --- TIMELINE --- */
+  /* Timeline */
   .timeline-item {
     position: relative;
     padding-left: 4rem;
     padding-bottom: 3rem;
     border-left: 4px solid var(--tan-sand);
   }
-
   .timeline-marker {
     position: absolute;
     left: -14px;
@@ -392,8 +395,13 @@ const App = () => {
     { id: 'contact', label: 'Contact', icon: Mail }
   ];
 
+  // Set page title
+  useEffect(() => {
+    document.title = `${PERSONAL_INFO.name} - ${PERSONAL_INFO.role}`;
+  }, []);
+
   return (
-    <>
+    <ErrorBoundary>
       <style>{customStyles}</style>
       
       {/* Navigation */}
@@ -434,7 +442,7 @@ const App = () => {
 
       {/* Footer */}
       <Footer />
-    </>
+    </ErrorBoundary>
   );
 };
 
@@ -1067,7 +1075,7 @@ const Footer = () => (
       <p style={{ fontSize: '1rem', opacity: 0.8 }}>
         Systems Builder • Growth Strategist • Accra, Ghana
       </p>
-      <p style={{ fontSize: '0.9rem', marginTop: '2rem', opacity: 0.6' }}>
+      <p style={{ fontSize: '0.9rem', marginTop: '2rem', opacity: '0.6' }}>
         © 2025 • Built with cultural pride and technical excellence
       </p>
     </div>
