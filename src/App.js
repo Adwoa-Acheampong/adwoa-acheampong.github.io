@@ -13,7 +13,13 @@ import {
   Award, BookOpen, Code, Database, BarChart3, Users, FileText,
   Calendar, Briefcase, GraduationCap, Coffee, TrendingDown
 } from 'lucide-react';
-
+const PERSONAL_INFO = {
+  name: 'Adwoa B. Acheampong',
+  role: 'Systems Builder • Business Growth Strategist',
+  email: 'adwoaacheampong728@gmail.com',
+  phone: '(233) 276-291-485',
+  location: 'Accra, Ghana'
+};
 // --- ADINKRA SYMBOLS AS SVG COMPONENTS ---
 const GyeNyame = ({ size = 100, color = "#6F4E37" }) => (
   <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
