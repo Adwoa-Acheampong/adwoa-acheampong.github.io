@@ -1,10 +1,10 @@
 // Portfolio content constants
 export const PERSONAL_INFO = {
   name: "Adwoa B. Acheampong",
-  role: "Operations Director & Data Analyst",
-  tagline: "Turning Chaos into Operational Clarity.",
+  role: "Systems Builder & Growth Strategist",
+  tagline: "Drawing Operational Clarity out of...",
   bio: "Results-oriented professional bridging the gap between Statutory Operations and Advanced Data Analytics using SQL, Tableau, and AI.",
-  email: "adwoa@jonmonsacs.com",
+  email: "adwoaacheampong728@gmail.com",
   phone: "(233) 276-291-485",
   location: "Accra, Ghana",
   linkedIn: "https://linkedin.com/in/adwoa-acheampong",
