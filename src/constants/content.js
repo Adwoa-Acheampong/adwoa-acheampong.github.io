@@ -1,9 +1,11 @@
-// Portfolio content constants
+// src/constants/index.js   ← or wherever you keep your constants
+
+// ──────────────────────────────────────────────────────────────
+// PERSONAL INFO
+// ──────────────────────────────────────────────────────────────
 export const PERSONAL_INFO = {
-  name: "Adwoa B. Acheampong",
+  name: "Adwoa B. Acheampong (Miracle)",
   role: "Systems Builder & Growth Strategist",
-  tagline: "Drawing Operational Clarity out of...",
-  bio: "Results-oriented professional bridging the gap between Statutory Operations and Advanced Data Analytics using SQL, Tableau, and AI.",
   email: "adwoaacheampong728@gmail.com",
   phone: "(233) 276-291-485",
   location: "Accra, Ghana",
@@ -11,144 +13,135 @@ export const PERSONAL_INFO = {
   github: "https://github.com/adwoa-acheampong"
 };
 
+// ──────────────────────────────────────────────────────────────
+// EXPERIENCE (updated to match new ExperiencePage)
+// ──────────────────────────────────────────────────────────────
 export const EXPERIENCE = [
   {
-    id: 'exp-1',
     role: "Statutory Operations Director",
     company: "JonMon-Sacs Ghana Ltd",
     date: "Jul 2025 - Present",
-    description: "Superintending business licensing and regulatory compliance relative to the laws of Ghana. Leading a team of 5 officers.",
+    location: "Accra, Ghana",
     achievements: [
-      "Reduced compliance violations by 85%",
-      "Implemented digital documentation system",
-      "Led team of 5 officers"
+      "Superintending business licensing and regulatory compliance",
+      "Leading a team of 5 officers",
+      "Ensuring adherence to Ghanaian business laws"
     ]
   },
   {
-    id: 'exp-2',
     role: "Operations Manager",
     company: "Baa & Bean Café's",
     date: "Feb 2024 - Jul 2024",
-    description: "Drove daily revenue from GHS12k to GHS30k+ in 3 months via data-driven menu optimization and supply chain restructuring.",
+    location: "Accra, Ghana",
     achievements: [
-      "Increased revenue by 150% in 3 months",
-      "Optimized supply chain efficiency",
-      "Implemented data-driven menu pricing"
+      "Drove daily revenue from GHS 12k to GHS 30k+ (120% increase)",
+      "Implemented data-driven menu optimization",
+      "Restructured supply chain operations",
+      "Focused on sustainable growth vs. one-off wins"
     ]
   },
   {
-    id: 'exp-3',
+    role: "Operations Consultant",
+    company: "Automobiles Ghana Limited",
+    date: "2024 & 2026",
+    location: "Accra, Ghana",
+    achievements: [
+      "Amplified customer engagement by 83.3%",
+      "Accelerated daily sales from GHS 1,200 to GHS 2,700",
+      "Built repeat-customer models enabling 2-branch expansion",
+      "Re-engaged to replicate success in next growth phase"
+    ]
+  },
+  {
     role: "Administration Manager",
     company: "Zein Real Estate",
     date: "Mar 2023 - Jan 2024",
-    description: "Improved office productivity by 10% through automation (Appscript + ChatGPT) and digital filing systems.",
+    location: "Accra, Ghana",
     achievements: [
-      "Automated 10+ manual processes",
-      "Reduced document processing time by 40%",
-      "Implemented AI-powered workflows"
+      "Improved office productivity by 30%",
+      "Built automation with AppScript + AI",
+      "Created digital filing systems",
+      "Freed team to focus on client relationships"
+    ]
+  },
+  {
+    role: "Marketing Executive",
+    company: "Trident Real Estate Group",
+    date: "2022 - 2023",
+    location: "Accra, Ghana",
+    achievements: [
+      "Executed marketing campaigns for luxury projects",
+      "Monitored lead turnover rates",
+      "Utilized Meta Business Suite for remote sales",
+      "Managed social media assets"
     ]
   }
 ];
 
-export const SERVICES = [
-  {
-    id: 'service-1',
-    icon: 'Terminal',
-    color: 'gold',
-    title: "Business Operations",
-    description: "Designing Standard Operating Procedures (SOPs) and compliance frameworks that protect the business and streamline workflow.",
-    features: [
-      "SOP Development",
-      "Compliance Audits",
-      "Process Optimization"
-    ]
-  },
-  {
-    id: 'service-2',
-    icon: 'PieChart',
-    color: 'teal',
-    title: "Data Analytics",
-    description: "Translating raw SQL databases into interactive Tableau dashboards to uncover hidden revenue opportunities.",
-    features: [
-      "SQL Query Optimization",
-      "Tableau Dashboard Creation",
-      "Predictive Analytics"
-    ]
-  },
-  {
-    id: 'service-3',
-    icon: 'Zap',
-    color: 'magenta',
-    title: "Automation",
-    description: "Connecting Google Workspace with AI agents to automate administrative redundancy, saving 10+ hours weekly.",
-    features: [
-      "Workflow Automation",
-      "AI Integration",
-      "Custom Scripts"
-    ]
-  }
+// ──────────────────────────────────────────────────────────────
+// DASHBOARD DATA (moved from App.js)
+// ──────────────────────────────────────────────────────────────
+export const BAA_AND_BEAN_DATA = [
+  { month: 'Feb', revenue: 12000, target: 15000 },
+  { month: 'Mar', revenue: 18000, target: 18000 },
+  { month: 'Apr', revenue: 24000, target: 21000 },
+  { month: 'May', revenue: 28000, target: 24000 },
+  { month: 'Jun', revenue: 30000, target: 27000 },
+  { month: 'Jul', revenue: 31500, target: 30000 }
 ];
 
-export const BLOG_POSTS = [
-  {
-    id: 'blog-1',
-    title: "Optimizing Cafe Revenue with SQL",
-    category: "Data Analysis",
-    date: "Oct 12, 2024",
-    excerpt: "Learn how I used SQL queries to identify revenue patterns and optimize pricing strategies.",
-    readTime: "5 min read"
-  },
-  {
-    id: 'blog-2',
-    title: "Automating Office Workflows with AppScript",
-    category: "Automation",
-    date: "Sept 28, 2024",
-    excerpt: "A practical guide to automating repetitive tasks using Google AppScript and AI.",
-    readTime: "8 min read"
-  },
-  {
-    id: 'blog-3',
-    title: "Understanding Statutory Compliance in Ghana",
-    category: "Operations",
-    date: "Aug 15, 2024",
-    excerpt: "Key insights into navigating Ghana's business compliance landscape effectively.",
-    readTime: "10 min read"
-  }
+export const AUTOMOBILES_DATA = [
+  { week: 'Week 1', sales: 1200, engagement: 45 },
+  { week: 'Week 2', sales: 1350, engagement: 52 },
+  { week: 'Week 3', sales: 1580, engagement: 61 },
+  { week: 'Week 4', sales: 1820, engagement: 68 },
+  { week: 'Week 5', sales: 2100, engagement: 75 },
+  { week: 'Week 6', sales: 2350, engagement: 78 },
+  { week: 'Week 7', sales: 2550, engagement: 82 },
+  { week: 'Week 8', sales: 2700, engagement: 83.3 }
 ];
 
-export const PROCESS_STEPS = [
-  {
-    id: 'step-1',
-    number: "01",
-    title: "Audit & Discovery",
-    description: "I dive deep into your current operations, reviewing statutory compliance and data infrastructure to find bottlenecks."
-  },
-  {
-    id: 'step-2',
-    number: "02",
-    title: "Strategy & Code",
-    description: "I design a roadmap. This involves writing SQL queries, setting up Tableau dashboards, or drafting SOPs."
-  },
-  {
-    id: 'step-3',
-    number: "03",
-    title: "Automate & Scale",
-    description: "Implementation. I set up automated scripts to keep things running smoothly and train your team on the new systems."
-  }
-];
+// ──────────────────────────────────────────────────────────────
+// SKILLS (grouped for SkillsPage)
+// ──────────────────────────────────────────────────────────────
+export const SKILLS = {
+  dataAnalytics: [
+    'SQL', 'Tableau', 'Power BI', 'Google Sheets',
+    'AppScript', 'Data Visualization', 'Statistical Analysis', 'Excel Advanced'
+  ],
+  operations: [
+    'Process Optimization', 'SOP Development', 'Supply Chain',
+    'Team Leadership', 'Project Management', 'Compliance', 'Automation'
+  ],
+  technical: [
+    'Python', 'JavaScript', 'React', 'AI Integration',
+    'Google Workspace', 'Meta Business Suite', 'CRM Systems'
+  ],
+  certifications: [
+    'Data Analysis - ALX',
+    'Intermediate SQL - DataCamp',
+    'Data Analysis Essentials - Cisco',
+    'Business Management - Oxford Home Study Centre'
+  ]
+};
 
-export const TECH_STACK = [
-  { name: 'SQL', category: 'Database' },
-  { name: 'Tableau', category: 'Visualization' },
-  { name: 'Python', category: 'Programming' },
-  { name: 'Google AppScript', category: 'Automation' },
-  { name: 'React', category: 'Frontend' },
-  { name: 'Git', category: 'Version Control' }
-];
-
+// ──────────────────────────────────────────────────────────────
+// NAVIGATION (for future use)
+// ──────────────────────────────────────────────────────────────
 export const NAVIGATION_LINKS = [
-  { id: 'nav-about', label: 'About', href: '#about' },
-  { id: 'nav-services', label: 'Services', href: '#services' },
-  { id: 'nav-portfolio', label: 'Work', href: '#portfolio' },
-  { id: 'nav-insights', label: 'Insights', href: '#insights' }
+  { id: 'home', label: 'Home', icon: 'Coffee' },
+  { id: 'bio', label: 'My Story', icon: 'BookOpen' },
+  { id: 'projects', label: 'Projects', icon: 'BarChart3' },
+  { id: 'experience', label: 'Experience', icon: 'Briefcase' },
+  { id: 'skills', label: 'Skills', icon: 'Award' },
+  { id: 'contact', label: 'Contact', icon: 'Mail' }
 ];
+
+export default {
+  PERSONAL_INFO,
+  EXPERIENCE,
+  BAA_AND_BEAN_DATA,
+  AUTOMOBILES_DATA,
+  SKILLS,
+  NAVIGATION_LINKS
+};
