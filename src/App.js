@@ -1,290 +1,381 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  AreaChart, Area, XAxis, YAxis, ResponsiveContainer, Tooltip 
+  AreaChart, Area, BarChart, Bar, LineChart, Line, 
+  XAxis, YAxis, ResponsiveContainer, Tooltip, CartesianGrid 
 } from 'recharts';
 import { 
-  Activity, TrendingUp, Menu, X, Github, Linkedin, 
-  Database, Zap, Download, Mail, MapPin, 
-  Phone, Code, PieChart, Terminal, ChevronRight,
-  FileText, Send, Search, Cpu, ArrowRight
+  Menu, X, Github, Linkedin, Mail, MapPin, Phone, 
+  TrendingUp, Target, Zap, ArrowRight, Download, ChevronRight,
+  Award, BookOpen, Code, Database, BarChart3, Users, FileText,
+  Calendar, Briefcase, GraduationCap, Coffee, TrendingDown
 } from 'lucide-react';
 
-// --- CUSTOM CSS ---
+// --- ADINKRA SYMBOLS AS SVG COMPONENTS ---
+const GyeNyame = ({ size = 100, color = "#6F4E37" }) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
+    <circle cx="50" cy="50" r="45" stroke={color} strokeWidth="3"/>
+    <path d="M50 20 L50 80 M30 50 L70 50" stroke={color} strokeWidth="3"/>
+    <circle cx="50" cy="50" r="15" stroke={color} strokeWidth="3" fill="none"/>
+    <path d="M35 35 L65 65 M65 35 L35 65" stroke={color} strokeWidth="2"/>
+  </svg>
+);
+
+const Sankofa = ({ size = 100, color = "#C65D3B" }) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
+    <circle cx="50" cy="70" r="8" fill={color}/>
+    <path d="M50 62 Q50 40, 70 40 Q80 40, 80 50 Q80 60, 70 60 L50 60" 
+          stroke={color} strokeWidth="3" fill="none"/>
+    <path d="M50 60 L50 30" stroke={color} strokeWidth="3"/>
+    <circle cx="50" cy="25" r="5" fill={color}/>
+    <path d="M45 70 L35 85 L45 85 Z" fill={color}/>
+  </svg>
+);
+
+const DwennimmenAdinkra = ({ size = 100, color = "#8B6F47" }) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
+    <circle cx="50" cy="50" r="40" stroke={color} strokeWidth="2"/>
+    <circle cx="50" cy="50" r="30" stroke={color} strokeWidth="2"/>
+    <circle cx="50" cy="50" r="20" stroke={color} strokeWidth="2"/>
+    <circle cx="50" cy="50" r="10" stroke={color} strokeWidth="2"/>
+    {[0, 45, 90, 135, 180, 225, 270, 315].map(angle => (
+      <line 
+        key={angle}
+        x1="50" y1="50" 
+        x2={50 + 40 * Math.cos(angle * Math.PI / 180)} 
+        y2={50 + 40 * Math.sin(angle * Math.PI / 180)}
+        stroke={color} strokeWidth="2"
+      />
+    ))}
+  </svg>
+);
+
+// --- CUSTOM CSS WITH FULL AFRICAN AESTHETIC ---
 const customStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Crimson+Text:wght@400;600;700&display=swap');
 
   :root {
-    --bg-body: #f8f9fa;
-    --text-primary: #1a1a1a;
-    --text-secondary: #666;
-    
-    /* Afrocentric Modern Palette */
-    --color-gold: #D4AF37;
-    --color-teal: #008080;
-    --color-magenta: #8B008B;
-    --color-dark: #121212;
-    --color-light: #ffffff;
+    --coffee-dark: #6F4E37;
+    --coffee-medium: #8B6F47;
+    --tan-sand: #D2B48C;
+    --terracotta: #C65D3B;
+    --cream: #F5E6D3;
+    --clay: #A0826D;
+    --earth-deep: #3E2723;
+    --warm-white: #FFF8F0;
+    --kente-red: #8B1A1A;
+    --kente-gold: #D4AF37;
+    --kente-green: #2F5233;
   }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background-color: var(--bg-body);
-    color: var(--text-primary);
-    font-family: 'Outfit', sans-serif;
+    background-color: var(--warm-white);
+    color: var(--earth-deep);
+    font-family: 'Crimson Text', serif;
     overflow-x: hidden;
+    line-height: 1.7;
   }
 
-  h1, h2, h3, h4 {
-    font-weight: 800;
-    letter-spacing: -0.03em;
-  }
-
-  .font-mono { font-family: 'Space Mono', monospace; }
-
-  /* --- UI UTILITIES --- */
-  .text-gradient {
-    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-teal) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .text-gold { color: var(--color-gold); }
-  .text-teal { color: var(--color-teal); }
-  
-  .btn-custom {
-    padding: 14px 36px;
-    border-radius: 50px;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  /* --- KENTE PATTERN --- */
+  .pattern-kente-full {
+    background-image: 
+      repeating-linear-gradient(45deg, var(--kente-red) 0px, var(--kente-red) 10px, transparent 10px, transparent 20px),
+      repeating-linear-gradient(-45deg, var(--kente-gold) 0px, var(--kente-gold) 10px, transparent 10px, transparent 20px),
+      repeating-linear-gradient(90deg, var(--kente-green) 0px, var(--kente-green) 2px, transparent 2px, transparent 20px);
+    opacity: 0.12;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  .kente-border {
+    border: 6px solid;
+    border-image: repeating-linear-gradient(
+      90deg,
+      var(--kente-red) 0px, var(--kente-red) 20px,
+      var(--kente-gold) 20px, var(--kente-gold) 40px,
+      var(--kente-green) 40px, var(--kente-green) 60px
+    ) 1;
+  }
+
+  .kente-accent-bar {
+    height: 8px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--kente-red) 0px, var(--kente-red) 15px,
+      var(--kente-gold) 15px, var(--kente-gold) 30px,
+      var(--kente-green) 30px, var(--kente-green) 45px,
+      var(--terracotta) 45px, var(--terracotta) 60px
+    );
+    margin: 2rem 0;
+  }
+
+  /* --- NAVIGATION --- */
+  .navbar-custom {
+    background: linear-gradient(180deg, var(--warm-white) 0%, rgba(255, 248, 240, 0.98) 100%);
+    backdrop-filter: blur(20px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     transition: all 0.3s ease;
+    border-bottom: 3px solid var(--tan-sand);
+  }
+
+  .navbar-scrolled {
+    box-shadow: 0 8px 32px rgba(111, 78, 55, 0.15);
+    border-bottom-color: var(--terracotta);
+  }
+
+  .nav-tab {
+    color: var(--coffee-dark);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 1.1rem;
+    background: none;
+    border: none;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .nav-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    width: 0;
+    height: 4px;
+    background: var(--terracotta);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .nav-tab:hover, .nav-tab.active {
+    color: var(--terracotta);
+  }
+
+  .nav-tab.active::after {
+    width: 90%;
+  }
+
+  /* --- PAGE TRANSITIONS --- */
+  .page-content {
+    animation: fadeIn 0.5s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* --- HERO SECTION --- */
+  .hero-container {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 100%);
     position: relative;
     overflow: hidden;
-    z-index: 1;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    color: var(--coffee-dark);
+    line-height: 1.1;
+  }
+
+  .hero-tagline {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: var(--coffee-medium);
+    font-weight: 400;
+    margin: 1.5rem 0;
+    font-style: italic;
+  }
+
+  /* --- BUTTONS --- */
+  .btn-primary-custom {
+    background: var(--coffee-dark);
+    color: var(--cream);
+    padding: 1rem 2.5rem;
+    border: 3px solid var(--coffee-dark);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-  }
-  
-  .btn-primary-custom {
-    background: var(--color-dark);
-    color: white;
-    border: 2px solid var(--color-dark);
-  }
-  .btn-primary-custom:hover {
-    background: var(--color-teal);
-    border-color: var(--color-teal);
-    color: white;
-    transform: translateY(-2px);
+    gap: 0.75rem;
   }
 
-  .btn-outline-custom {
-    background: transparent;
-    color: var(--color-dark);
-    border: 2px solid var(--color-dark);
-  }
-  .btn-outline-custom:hover {
-    background: var(--color-dark);
-    color: white;
-  }
-
-  /* --- NAVBAR --- */
-  .navbar-glass {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    transition: all 0.3s;
-    padding: 15px 0;
-  }
-  .navbar-scrolled {
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-    padding: 10px 0;
-  }
-
-  /* --- HERO --- */
-  .hero-img-container {
-    position: relative;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 20px 20px 0px var(--color-gold);
-    transition: transform 0.3s;
-  }
-  .hero-img-container:hover {
-    transform: translate(-5px, -5px);
-    box-shadow: 25px 25px 0px var(--color-teal);
-  }
-
-  /* --- CARDS & SECTIONS --- */
-  .feature-card {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 20px;
-    border: 1px solid rgba(0,0,0,0.05);
-    transition: all 0.4s ease;
+  .btn-primary-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
     height: 100%;
+    background: var(--terracotta);
+    transition: left 0.4s ease;
+    z-index: -1;
   }
-  .feature-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    border-color: var(--color-gold);
-  }
-  
-  .icon-box {
-    width: 60px; height: 60px;
-    border-radius: 16px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-  }
-  .bg-gold-soft { background: rgba(212, 175, 55, 0.15); color: var(--color-gold); }
-  .bg-teal-soft { background: rgba(0, 128, 128, 0.15); color: var(--color-teal); }
-  .bg-magenta-soft { background: rgba(139, 0, 139, 0.15); color: var(--color-magenta); }
 
-  .process-step {
-    position: relative;
+  .btn-primary-custom:hover::before {
+    left: 0;
+  }
+
+  /* --- CARDS --- */
+  .project-card {
+    background: var(--warm-white);
+    border: 3px solid var(--tan-sand);
     padding: 2rem;
-    background: white;
-    border-radius: 16px;
-    border-left: 4px solid var(--color-teal);
-    transition: 0.3s;
-  }
-  .process-step:hover { transform: translateX(10px); border-color: var(--color-gold); }
-  .step-number {
-    position: absolute; top: -20px; right: 20px;
-    font-size: 4rem; font-weight: 900; color: rgba(0,0,0,0.03);
-    font-family: 'Space Mono', monospace;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
   }
 
-  /* --- DASHBOARD MOCKUP --- */
-  .dashboard-frame {
-    background: #1e1e24;
-    border-radius: 20px;
-    border: 1px solid #333;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-    overflow: hidden;
+  .project-card:hover {
+    border-color: var(--terracotta);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(111, 78, 55, 0.2);
   }
-  .window-header {
-    background: #2b2b36;
-    padding: 12px 20px;
-    display: flex;
-    gap: 8px;
-    border-bottom: 1px solid #333;
+
+  .stat-box {
+    background: var(--coffee-dark);
+    color: var(--cream);
+    padding: 2rem;
+    text-align: center;
+    border: 3px solid var(--terracotta);
+    position: relative;
   }
-  .dot { width: 10px; height: 10px; border-radius: 50%; }
-  .dot-red { background: #ff5f56; }
-  .dot-yellow { background: #ffbd2e; }
-  .dot-green { background: #27c93f; }
+
+  .stat-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--terracotta);
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .stat-label {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.5rem;
+  }
 
   /* --- TIMELINE --- */
   .timeline-item {
     position: relative;
-    padding-left: 3rem;
+    padding-left: 4rem;
     padding-bottom: 3rem;
-    border-left: 2px solid #e0e0e0;
+    border-left: 4px solid var(--tan-sand);
   }
-  .timeline-item:last-child { border-left: 2px solid transparent; }
+
   .timeline-marker {
     position: absolute;
-    left: -9px;
+    left: -14px;
     top: 0;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: white;
-    border: 4px solid var(--color-teal);
-    transition: all 0.3s;
-  }
-  .timeline-item:hover .timeline-marker {
-    background: var(--color-gold);
-    border-color: var(--color-gold);
-    transform: scale(1.3);
+    width: 24px;
+    height: 24px;
+    background: var(--terracotta);
+    border: 4px solid var(--coffee-dark);
+    transition: all 0.3s ease;
   }
 
-  /* Animations */
-  @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+  .timeline-item:hover .timeline-marker {
+    background: var(--coffee-dark);
+    transform: scale(1.4);
   }
-  .animate-float { animation: float 4s ease-in-out infinite; }
-  
-  /* Recharts Override */
-  .recharts-wrapper { margin: 0 auto; }
+
+  /* --- DASHBOARD STYLES --- */
+  .dashboard-container {
+    background: var(--earth-deep);
+    border: 3px solid var(--coffee-dark);
+    padding: 2rem;
+    color: var(--cream);
+  }
+
+  .dashboard-header {
+    background: var(--coffee-medium);
+    padding: 1rem 1.5rem;
+    margin: -2rem -2rem 2rem -2rem;
+    border-bottom: 3px solid var(--terracotta);
+  }
+
+  /* --- SKILL BADGES --- */
+  .skill-badge {
+    background: var(--coffee-dark);
+    color: var(--cream);
+    padding: 0.5rem 1.25rem;
+    border: 2px solid var(--terracotta);
+    font-weight: 600;
+    display: inline-block;
+    margin: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .skill-badge:hover {
+    background: var(--terracotta);
+    border-color: var(--coffee-dark);
+    transform: translateY(-3px);
+  }
+
+  /* --- ADINKRA DECORATIONS --- */
+  .adinkra-corner {
+    position: absolute;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem; }
+    .nav-tab { font-size: 0.95rem; padding: 0.5rem 1rem; }
+  }
 `;
 
-const content = {
-  name: "Adwoa B. Acheampong",
-  role: "Operations Director & Data Analyst",
-  tagline: "Turning Chaos into Operational Clarity.",
-  bio: "Results-oriented professional bridging the gap between Statutory Operations and Advanced Data Analytics using SQL, Tableau, and AI.",
-  email: "adwoa@jonmonsacs.com",
-  phone: "(233) 276-291-485",
-  location: "Accra, Ghana"
-};
+// --- DATA FOR DASHBOARDS ---
+const baaAndBeanData = [
+  { month: 'Feb', revenue: 12000, target: 15000 },
+  { month: 'Mar', revenue: 18000, target: 18000 },
+  { month: 'Apr', revenue: 24000, target: 21000 },
+  { month: 'May', revenue: 28000, target: 24000 },
+  { month: 'Jun', revenue: 30000, target: 27000 },
+  { month: 'Jul', revenue: 31500, target: 30000 }
+];
 
-// --- SUB-COMPONENTS ---
+const automobilesData = [
+  { week: 'Week 1', sales: 1200, engagement: 45 },
+  { week: 'Week 2', sales: 1350, engagement: 52 },
+  { week: 'Week 3', sales: 1580, engagement: 61 },
+  { week: 'Week 4', sales: 1820, engagement: 68 },
+  { week: 'Week 5', sales: 2100, engagement: 75 },
+  { week: 'Week 6', sales: 2350, engagement: 78 },
+  { week: 'Week 7', sales: 2550, engagement: 82 },
+  { week: 'Week 8', sales: 2700, engagement: 83.3 }
+];
 
-const MarketChart = () => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    const initialData = Array.from({ length: 15 }, (_, i) => ({
-      time: i, value: 4000 + Math.random() * 1000
-    }));
-    setData(initialData);
-    const interval = setInterval(() => {
-      setData(prev => {
-        const lastVal = prev[prev.length - 1].value;
-        const newVal = lastVal + (Math.random() - 0.5) * 500;
-        return [...prev.slice(1), { time: prev.length, value: newVal }];
-      });
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="h-100 p-4">
-      <div className="d-flex justify-content-between align-items-end mb-4">
-        <div>
-          <p className="text-secondary font-mono mb-1 text-uppercase small">Revenue Trend</p>
-          <h2 className="m-0 fw-bold text-white">GHS 42,500</h2>
-        </div>
-        <span className="badge bg-success bg-opacity-25 text-success px-3 py-2 rounded-pill">
-          +12.5% <TrendingUp size={14} className="ms-1" />
-        </span>
-      </div>
-      <div style={{ height: 200, width: '100%' }}>
-        <ResponsiveContainer>
-          <AreaChart data={data}>
-            <defs>
-              <linearGradient id="colorVal" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#D4AF37" stopOpacity={0.3}/>
-                <stop offset="95%" stopColor="#D4AF37" stopOpacity={0}/>
-              </linearGradient>
-            </defs>
-            <Tooltip 
-              contentStyle={{ backgroundColor: '#2b2b36', borderColor: '#444', color: '#fff' }}
-              itemStyle={{ color: '#fff' }}
-              labelStyle={{ display: 'none' }}
-            />
-            <Area type="monotone" dataKey="value" stroke="#D4AF37" strokeWidth={3} fillOpacity={1} fill="url(#colorVal)" />
-          </AreaChart>
-        </ResponsiveContainer>
-      </div>
-    </div>
-  );
-};
-
-const TechBadge = ({ icon: Icon, label }) => (
-  <div className="d-flex align-items-center gap-2 px-3 py-2 border rounded-pill bg-white shadow-sm">
-    <Icon size={16} className="text-gold" />
-    <span className="small fw-bold">{label}</span>
-  </div>
-);
-
-// --- SECTIONS ---
-
-const NavBar = () => {
+// --- MAIN APP COMPONENT ---
+const App = () => {
+  const [currentPage, setCurrentPage] = useState('home');
   const [scrolled, setScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); // Added state for menu
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -292,440 +383,695 @@ const NavBar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return (
-    <nav className={`navbar navbar-expand-lg fixed-top navbar-glass ${scrolled ? 'navbar-scrolled' : ''}`}>
-      <div className="container">
-        <a className="navbar-brand d-flex align-items-center gap-2" href="#">
-          <div className="bg-dark text-white rounded px-2 py-1 font-mono fw-bold">A.</div>
-          <span className="fw-bold tracking-tight text-dark">ACHEAMPONG</span>
-        </a>
-        {/* Modified Button with React onClick handler */}
-        <button 
-          className="navbar-toggler border-0" 
-          type="button" 
-          onClick={() => setIsOpen(!isOpen)}
-          aria-expanded={isOpen}
-          aria-label="Toggle navigation"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-        {/* Added conditional class logic for visibility */}
-        <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="nav">
-          <ul className="navbar-nav ms-auto align-items-center gap-lg-4 pt-3 pt-lg-0">
-            <li className="nav-item"><a className="nav-link text-dark fw-medium" href="#about" onClick={() => setIsOpen(false)}>About</a></li>
-            <li className="nav-item"><a className="nav-link text-dark fw-medium" href="#services" onClick={() => setIsOpen(false)}>Services</a></li>
-            <li className="nav-item"><a className="nav-link text-dark fw-medium" href="#portfolio" onClick={() => setIsOpen(false)}>Work</a></li>
-            <li className="nav-item"><a className="nav-link text-dark fw-medium" href="#insights" onClick={() => setIsOpen(false)}>Insights</a></li>
-            <li className="nav-item mt-3 mt-lg-0">
-              <a href="#contact" className="btn btn-dark rounded-pill px-4 btn-sm text-white" onClick={() => setIsOpen(false)}>Let's Talk</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  );
-};
-
-const Hero = () => (
-  <section className="min-vh-100 d-flex align-items-center pt-5 bg-light position-relative overflow-hidden">
-    <div className="position-absolute top-0 end-0 opacity-10" style={{ right: '-10%', top: '-10%' }}>
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="600" height="600">
-        <path fill="#008080" d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-5.3C93.5,8.6,82.2,21.5,70.6,32.2C59,42.9,47.1,51.4,34.9,59.3C22.7,67.2,10.2,74.5,-1.1,76.4C-12.4,78.3,-23.7,74.8,-34.4,68.6C-45.1,62.4,-55.2,53.5,-64.1,42.9C-73,32.3,-80.7,20,-82.7,6.8C-84.7,-6.4,-81,-20.5,-73.3,-31.9C-65.6,-43.3,-53.9,-52,-41.5,-59.9C-29.1,-67.8,-16,-74.9,-0.7,-73.7L0,0Z" transform="translate(100 100)" />
-      </svg>
-    </div>
-
-    <div className="container position-relative z-1 pt-5 mt-4">
-      <div className="row align-items-center">
-        <div className="col-lg-6 order-2 order-lg-1">
-          <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white border mb-4 shadow-sm">
-            <div className="spinner-grow spinner-grow-sm text-success" role="status" />
-            <span className="small fw-bold text-secondary">Available for Projects</span>
-          </div>
-          <h1 className="display-3 fw-black mb-4 lh-1 text-dark">
-            Data Driven. <br />
-            <span className="text-gradient">Operationally Focused.</span>
-          </h1>
-          <p className="lead text-secondary mb-5 w-75">
-            {content.bio}
-          </p>
-          
-          {/* Buttons removed from here as requested */}
-          <div className="d-flex flex-column flex-md-row gap-3 mb-5">
-            <div className="d-flex align-items-center gap-3 text-secondary">
-              <div className="bg-white p-2 rounded-circle border"><MapPin size={20} /></div>
-              <span>Based in {content.location}</span>
-            </div>
-            <div className="d-flex align-items-center gap-3 text-secondary">
-               <div className="bg-white p-2 rounded-circle border"><Mail size={20} /></div>
-               <span>{content.email}</span>
-            </div>
-          </div>
-
-        </div>
-
-        <div className="col-lg-5 offset-lg-1 order-1 order-lg-2 mb-5 mb-lg-0">
-          <div className="hero-img-container animate-float">
-            <img 
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-              alt="Adwoa Profile" 
-              className="img-fluid w-100"
-              style={{ objectFit: 'cover', height: '550px' }}
-            />
-          </div>
-          <h2 className="display-1 fw-black text-uppercase mt-4 text-center text-lg-end opacity-25" style={{letterSpacing: '-0.05em'}}>
-            Analyst.
-          </h2>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-const About = () => (
-  <section id="about" className="py-5 bg-white">
-    <div className="container py-5">
-      <div className="row align-items-center">
-        <div className="col-lg-5 mb-5 mb-lg-0">
-          <div className="p-4 bg-light rounded-4 border position-relative">
-            <span className="position-absolute top-0 start-0 translate-middle bg-dark text-white px-3 py-1 rounded font-mono small">Philosophy</span>
-            <p className="fst-italic fs-5 text-secondary mt-2">
-              "Operational efficiency isn't just about cutting costs—it's about using data to empower decision-making. I believe every data point tells a story about business health."
-            </p>
-            <h6 className="fw-bold text-end mt-3">- Adwoa A.</h6>
-          </div>
-        </div>
-        <div className="col-lg-6 offset-lg-1">
-          <h2 className="display-5 fw-bold mb-4">More Than Just Numbers</h2>
-          <p className="text-secondary mb-4">
-            I combine a strong background in <strong>Statutory Compliance</strong> with modern <strong>Data Science</strong> techniques. While my competitors focus on one or the other, I offer the unique ability to understand the *legal* constraints of a business while optimizing its *performance* algorithms.
-          </p>
-          <div className="row g-4 mt-2">
-            <div className="col-6">
-              <h3 className="fw-bold text-teal display-4">3+</h3>
-              <p className="text-secondary small text-uppercase fw-bold">Years Experience</p>
-            </div>
-            <div className="col-6">
-              <h3 className="fw-bold text-gold display-4">150%</h3>
-              <p className="text-secondary small text-uppercase fw-bold">Rev. Growth Delivered</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-const Services = () => (
-  <section id="services" className="py-5 bg-light">
-    <div className="container py-5">
-      <div className="row mb-5 text-center">
-        <div className="col-lg-8 mx-auto">
-          <span className="text-gold text-uppercase fw-bold small ls-2">Expertise</span>
-          <h2 className="display-5 fw-bold text-dark">How I Add Value</h2>
-        </div>
-      </div>
-      
-      <div className="row g-4">
-        {[
-          {
-            icon: Terminal, color: 'bg-gold-soft', 
-            title: "Business Operations", 
-            desc: "Designing Standard Operating Procedures (SOPs) and compliance frameworks that protect the business and streamline workflow."
-          },
-          {
-            icon: PieChart, color: 'bg-teal-soft', 
-            title: "Data Analytics", 
-            desc: "Translating raw SQL databases into interactive Tableau dashboards to uncover hidden revenue opportunities."
-          },
-          {
-            icon: Zap, color: 'bg-magenta-soft', 
-            title: "Automation", 
-            desc: "Connecting Google Workspace with AI agents to automate administrative redundancy, saving 10+ hours weekly."
-          }
-        ].map((s, i) => (
-          <div key={i} className="col-md-4">
-            <div className="feature-card">
-              <div className={`icon-box ${s.color}`}>
-                <s.icon size={28} />
-              </div>
-              <h4 className="fw-bold mb-3 text-dark">{s.title}</h4>
-              <p className="text-secondary">{s.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-const Process = () => (
-  <section className="py-5 bg-white">
-    <div className="container py-5">
-      <div className="row mb-5">
-        <div className="col-lg-6">
-          <h2 className="fw-bold display-6">My Workflow</h2>
-          <p className="text-secondary">A systematic approach to solving operational chaos.</p>
-        </div>
-      </div>
-      <div className="row g-4">
-        <div className="col-md-4">
-          <div className="process-step">
-            <span className="step-number">01</span>
-            <h4 className="fw-bold mb-3">Audit & Discovery</h4>
-            <p className="text-secondary">I dive deep into your current operations, reviewing statutory compliance and data infrastructure to find bottlenecks.</p>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="process-step">
-            <span className="step-number">02</span>
-            <h4 className="fw-bold mb-3">Strategy & Code</h4>
-            <p className="text-secondary">I design a roadmap. This involves writing SQL queries, setting up Tableau dashboards, or drafting SOPs.</p>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="process-step">
-            <span className="step-number">03</span>
-            <h4 className="fw-bold mb-3">Automate & Scale</h4>
-            <p className="text-secondary">Implementation. I set up automated scripts to keep things running smoothly and train your team on the new systems.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-const DashboardShowcase = () => (
-  <section id="portfolio" className="py-5 bg-dark text-white position-relative overflow-hidden">
-    <div className="container py-5 position-relative z-1">
-      <div className="row align-items-center mb-5">
-        <div className="col-lg-5 mb-4 mb-lg-0">
-          <span className="text-gold font-mono text-uppercase small ls-1">Live Portfolio</span>
-          <h2 className="display-5 fw-bold mt-2">Interactive Analytics</h2>
-          <p className="text-white-50 mb-4">
-            I don't just report data; I build tools that monitor it in real-time. 
-            This component is a functional React widget demonstrating my frontend capabilities alongside backend logic.
-          </p>
-          <ul className="list-unstyled text-white-50 mb-4">
-            <li className="mb-2 d-flex align-items-center gap-2"><Activity size={16} className="text-success"/> Real-time Data Rendering</li>
-            <li className="mb-2 d-flex align-items-center gap-2"><Database size={16} className="text-info"/> Complex State Management</li>
-            <li className="d-flex align-items-center gap-2"><Zap size={16} className="text-warning"/> Responsive Design</li>
-          </ul>
-        </div>
-        <div className="col-lg-7">
-          <div className="dashboard-frame">
-            <div className="window-header">
-              <div className="dot dot-red"></div>
-              <div className="dot dot-yellow"></div>
-              <div className="dot dot-green"></div>
-              <span className="ms-3 text-secondary font-mono small">admin@dashboard:~/analytics</span>
-            </div>
-            <div className="row g-0">
-              <div className="col-md-8 border-end border-secondary border-opacity-25">
-                <MarketChart />
-              </div>
-              <div className="col-md-4 bg-white bg-opacity-5 p-4">
-                <h6 className="text-uppercase font-mono text-white-50 mb-3 small">Live Transactions</h6>
-                {[
-                  { name: "Cafe Rev", val: "+850", color: "text-success" },
-                  { name: "Consulting", val: "+1,200", color: "text-success" },
-                  { name: "Server Cost", val: "-120", color: "text-danger" },
-                  { name: "License Fee", val: "-500", color: "text-danger" },
-                ].map((t, i) => (
-                  <div key={i} className="d-flex justify-content-between mb-3 border-bottom border-secondary border-opacity-25 pb-2">
-                    <span className="small text-white-50">{t.name}</span>
-                    <span className={`small fw-bold font-mono ${t.color}`}>{t.val}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-const Experience = () => (
-  <section id="experience" className="py-5 bg-white">
-    <div className="container py-5">
-      <div className="row justify-content-center">
-        <div className="col-lg-8">
-          <h2 className="fw-bold mb-5 text-center text-dark">Professional Journey</h2>
-          <div className="ps-4">
-            {[
-              {
-                role: "Statutory Operations Director",
-                company: "JonMon-Sacs Ghana Ltd",
-                date: "Jul 2025 - Present",
-                desc: "Superintending business licensing and regulatory compliance relative to the laws of Ghana. Leading a team of 5 officers."
-              },
-              {
-                role: "Operations Manager",
-                company: "Baa & Bean Café's",
-                date: "Feb 2024 - Jul 2024",
-                desc: "Drove daily revenue from GHS12k to GHS30k+ in 3 months via data-driven menu optimization and supply chain restructuring."
-              },
-              {
-                role: "Administration Manager",
-                company: "Zein Real Estate",
-                date: "Mar 2023 - Jan 2024",
-                desc: "Improved office productivity by 10% through automation (Appscript + ChatGPT) and digital filing systems."
-              }
-            ].map((job, i) => (
-              <div key={i} className="timeline-item">
-                <div className="timeline-marker"></div>
-                <span className="badge bg-secondary bg-opacity-10 text-dark mb-2">{job.date}</span>
-                <h4 className="fw-bold mb-1 text-dark">{job.role}</h4>
-                <h6 className="text-teal mb-3 fw-bold text-uppercase small" style={{color: 'var(--color-teal)'}}>{job.company}</h6>
-                <p className="text-secondary mb-0">{job.desc}</p>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-const Blog = () => (
-  <section id="insights" className="py-5 bg-light">
-    <div className="container py-5">
-      <h2 className="fw-bold display-6 mb-5">Latest Insights</h2>
-      <div className="row g-4">
-        {[
-          { title: "Optimizing Cafe Revenue with SQL", cat: "Data Analysis", date: "Oct 12, 2024" },
-          { title: "Automating Office Workflows with AppScript", cat: "Automation", date: "Sept 28, 2024" },
-          { title: "Understanding Statutory Compliance in Ghana", cat: "Operations", date: "Aug 15, 2024" }
-        ].map((post, i) => (
-          <div key={i} className="col-md-4">
-            <div className="bg-white p-4 rounded-4 border h-100 d-flex flex-column">
-              <div className="mb-auto">
-                <span className="badge bg-light text-dark border mb-3">{post.cat}</span>
-                <h4 className="fw-bold mb-2 h5">{post.title}</h4>
-              </div>
-              <div className="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
-                <small className="text-muted">{post.date}</small>
-                <a href="#" className="text-dark fw-bold small text-decoration-none">Read <ArrowRight size={14} /></a>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-const ContactForm = () => (
-  <section id="contact" className="py-5">
-    <div className="container py-5">
-      <div className="row justify-content-center">
-        <div className="col-lg-8 text-center mb-5">
-           <h2 className="fw-bold display-6">Get In Touch</h2>
-           <p className="text-secondary">Have a project in mind? Let's discuss how data can solve your problems.</p>
-        </div>
-      </div>
-      <div className="row justify-content-center">
-        <div className="col-lg-6">
-          <div className="bg-white p-4 p-lg-5 rounded-4 shadow-sm border">
-            <div className="mb-3">
-              <label className="form-label small fw-bold text-secondary">Name</label>
-              <input type="text" className="form-control bg-light border-0 p-3" placeholder="Your Name" />
-            </div>
-            <div className="mb-3">
-              <label className="form-label small fw-bold text-secondary">Email</label>
-              <input type="email" className="form-control bg-light border-0 p-3" placeholder="name@company.com" />
-            </div>
-            <div className="mb-4">
-              <label className="form-label small fw-bold text-secondary">Message</label>
-              <textarea className="form-control bg-light border-0 p-3" rows="4" placeholder="Tell me about your operational challenges..."></textarea>
-            </div>
-            <button className="btn btn-dark w-100 py-3 rounded-pill fw-bold">Send Message</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-const BottomCTA = () => (
-  <section className="py-5 bg-dark text-white text-center">
-    <div className="container py-4">
-      <div className="row justify-content-center">
-        <div className="col-lg-8">
-          <h2 className="fw-bold display-5 mb-4">Ready to Optimize Your Business?</h2>
-          <p className="text-white-50 mb-5 fs-5">
-            Download my resume to see my full qualifications, or browse my portfolio to see my code in action.
-          </p>
-          <div className="d-flex flex-column flex-md-row gap-3 justify-content-center">
-            <a href="#portfolio" className="btn btn-custom btn-primary-custom border-light text-white">
-              View Portfolio <Search size={18} />
-            </a>
-            <a href="#" className="btn btn-custom btn-outline-custom border-light text-white hover-light">
-              Download Resume <Download size={18} />
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-const Footer = () => (
-  <footer className="bg-light pt-5 border-top">
-    <div className="container py-5">
-      <div className="row">
-        <div className="col-lg-6 mb-4">
-          <h3 className="fw-bold mb-4 text-dark">Adwoa B. Acheampong</h3>
-          <div className="d-flex flex-column gap-3">
-            <div className="d-flex align-items-center gap-3">
-              <Mail size={18} className="text-secondary" />
-              <span className="text-secondary">{content.email}</span>
-            </div>
-            <div className="d-flex align-items-center gap-3">
-              <MapPin size={18} className="text-secondary" />
-              <span className="text-secondary">{content.location}</span>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-6 text-lg-end">
-          <div className="d-flex gap-3 justify-content-lg-end mb-4">
-            <a href="#" className="btn btn-outline-dark rounded-circle p-3"><Linkedin size={20} /></a>
-            <a href="#" className="btn btn-outline-dark rounded-circle p-3"><Github size={20} /></a>
-          </div>
-          <p className="text-secondary small">&copy; 2025 Adwoa B. Acheampong. Built with React.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-);
-
-const App = () => {
-  // Dynamic Bootstrap Import
-  useEffect(() => {
-    const link = document.createElement('link');
-    link.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css';
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
-    return () => document.head.removeChild(link);
-  }, []);
+  const pages = [
+    { id: 'home', label: 'Home', icon: Coffee },
+    { id: 'bio', label: 'My Story', icon: BookOpen },
+    { id: 'projects', label: 'Projects', icon: BarChart3 },
+    { id: 'experience', label: 'Experience', icon: Briefcase },
+    { id: 'skills', label: 'Skills', icon: Award },
+    { id: 'contact', label: 'Contact', icon: Mail }
+  ];
 
   return (
     <>
       <style>{customStyles}</style>
-      <NavBar />
-      <Hero />
-      <About />
-      <Services />
-      <Process />
-      <DashboardShowcase />
-      <Experience />
-      <Blog />
-      <ContactForm />
-      <BottomCTA />
+      
+      {/* Navigation */}
+      <nav className={`navbar-custom ${scrolled ? 'navbar-scrolled' : ''}`}>
+        <div style={{ maxWidth: '1600px', margin: '0 auto', padding: '1.25rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap' }}>
+          <div style={{ fontSize: '2rem', fontWeight: '700', color: 'var(--coffee-dark)', fontFamily: "'Cormorant Garamond', serif" }}>
+            Adwoa
+          </div>
+          
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
+            {pages.map(page => {
+              const Icon = page.icon;
+              return (
+                <button
+                  key={page.id}
+                  onClick={() => setCurrentPage(page.id)}
+                  className={`nav-tab ${currentPage === page.id ? 'active' : ''}`}
+                >
+                  <Icon size={18} style={{ marginRight: '0.5rem', display: 'inline' }} />
+                  {page.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+        <div className="kente-accent-bar" style={{ height: '4px', margin: 0 }}></div>
+      </nav>
+
+      {/* Page Content */}
+      <div className="page-content">
+        {currentPage === 'home' && <HomePage setPage={setCurrentPage} />}
+        {currentPage === 'bio' && <BioPage />}
+        {currentPage === 'projects' && <ProjectsPage />}
+        {currentPage === 'experience' && <ExperiencePage />}
+        {currentPage === 'skills' && <SkillsPage />}
+        {currentPage === 'contact' && <ContactPage />}
+      </div>
+
+      {/* Footer */}
       <Footer />
     </>
   );
 };
+
+// --- HOME PAGE ---
+const HomePage = ({ setPage }) => (
+  <div className="hero-container">
+    <div className="pattern-kente-full"></div>
+    <div className="adinkra-corner" style={{ top: '5%', right: '5%' }}>
+      <GyeNyame size={150} color="var(--coffee-medium)" />
+    </div>
+    <div className="adinkra-corner" style={{ bottom: '10%', left: '5%' }}>
+      <Sankofa size={120} color="var(--terracotta)" />
+    </div>
+    
+    <div style={{ maxWidth: '1600px', margin: '0 auto', padding: '4rem 2rem', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '900px' }}>
+        <div className="kente-accent-bar" style={{ width: '150px' }}></div>
+        
+        <h1 className="hero-title">
+          Adwoa B. Acheampong
+          <span style={{ display: 'block', fontSize: '0.4em', color: 'var(--terracotta)', fontStyle: 'italic', marginTop: '1rem' }}>
+            (Miracle)
+          </span>
+        </h1>
+        
+        <p className="hero-tagline">Systems Builder & Growth Strategist</p>
+        
+        <p style={{ fontSize: '1.4rem', color: 'var(--earth-deep)', marginBottom: '2rem', lineHeight: '1.9' }}>
+          I scale businesses and startups by building systems that focus on long-term growth, not just profits.
+        </p>
+
+        <div style={{ background: 'var(--cream)', border: '3px solid var(--coffee-dark)', padding: '2rem', marginBottom: '3rem', maxWidth: '700px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem' }}>
+            <div className="stat-box" style={{ border: 'none' }}>
+              <div className="stat-number">120%</div>
+              <div className="stat-label">Revenue Growth</div>
+            </div>
+            <div className="stat-box" style={{ border: 'none' }}>
+              <div className="stat-number">83.3%</div>
+              <div className="stat-label">Engagement</div>
+            </div>
+          </div>
+        </div>
+        
+        <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+          <button onClick={() => setPage('bio')} className="btn-primary-custom">
+            Read My Story <ChevronRight size={20} />
+          </button>
+          <button onClick={() => setPage('projects')} className="btn-primary-custom" style={{ background: 'transparent', color: 'var(--coffee-dark)' }}>
+            View Projects <BarChart3 size={20} />
+          </button>
+        </div>
+
+        <div style={{ display: 'flex', gap: '2rem', marginTop: '3rem', alignItems: 'center', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--coffee-medium)', fontSize: '1.1rem' }}>
+            <MapPin size={20} />
+            <span>Accra, Ghana</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--coffee-medium)', fontSize: '1.1rem' }}>
+            <Mail size={20} />
+            <span>adwoa@jonmonsacs.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// --- BIO PAGE ---
+const BioPage = () => (
+  <div style={{ background: 'var(--warm-white)', minHeight: '80vh', padding: '4rem 2rem' }}>
+    <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <h2 style={{ fontSize: '4rem', color: 'var(--coffee-dark)', marginBottom: '1rem' }}>My Story</h2>
+        <div className="kente-accent-bar" style={{ width: '200px', margin: '0 auto' }}></div>
+        
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', marginTop: '3rem' }}>
+          <div style={{ textAlign: 'center' }}>
+            <Sankofa size={80} color="var(--terracotta)" />
+            <p style={{ marginTop: '1rem', fontSize: '0.9rem', color: 'var(--coffee-medium)', fontStyle: 'italic' }}>
+              "Go back and fetch it"<br/>- Learning from the past
+            </p>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <GyeNyame size={80} color="var(--coffee-dark)" />
+            <p style={{ marginTop: '1rem', fontSize: '0.9rem', color: 'var(--coffee-medium)', fontStyle: 'italic' }}>
+              "Except God"<br/>- Supremacy of a higher power
+            </p>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <DwennimmenAdinkra size={80} color="var(--clay)" />
+            <p style={{ marginTop: '1rem', fontSize: '0.9rem', color: 'var(--coffee-medium)', fontStyle: 'italic' }}>
+              "Ram's horns"<br/>- Strength and humility
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ background: 'var(--cream)', border: '3px solid var(--tan-sand)', padding: '3rem', marginBottom: '3rem' }}>
+        <h3 style={{ fontSize: '2rem', color: 'var(--coffee-dark)', marginBottom: '2rem' }}>The Journey</h3>
+        
+        <div style={{ fontSize: '1.2rem', lineHeight: '2', color: 'var(--earth-deep)', marginBottom: '2rem' }}>
+          <p style={{ marginBottom: '1.5rem' }}>
+            I'm Adwoa B. Acheampong, known as <strong>Miracle</strong> to those who know me best. I'm a Ghanaian 
+            operations professional who turns data into sustainable growth strategies.
+          </p>
+          
+          <p style={{ marginBottom: '1.5rem' }}>
+            Financial constraints stopped me from completing my Bachelor of Science in Computer Engineering. 
+            But I refused to let that define me. While working multiple contract roles—often surviving on fewer 
+            than four hours of sleep—I taught myself everything I needed to know about data analysis, business 
+            operations, and systems thinking.
+          </p>
+          
+          <p style={{ marginBottom: '1.5rem' }}>
+            I earned certifications in <strong>Data Analysis (ALX)</strong>, <strong>Intermediate SQL (DataCamp)</strong>, 
+            <strong>Data Analysis Essentials (Cisco)</strong>, and <strong>Business Management (Oxford Home Study Centre)</strong>. 
+            But more importantly, I proved these skills in the real world.
+          </p>
+          
+          <p style={{ marginBottom: '1.5rem' }}>
+            From ages 11 to 17, I served in the cadets and rose to the rank of <strong>RSM (Regimental Sergeant Major)</strong>. 
+            That experience taught me discipline, organization, and mental resilience—qualities that define how I work today.
+          </p>
+        </div>
+      </div>
+
+      <div style={{ background: 'var(--coffee-dark)', color: 'var(--cream)', border: '3px solid var(--terracotta)', padding: '3rem' }}>
+        <h3 style={{ fontSize: '2rem', marginBottom: '2rem', color: 'var(--tan-sand)' }}>What Makes Me Different</h3>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+          <div>
+            <h4 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--terracotta)' }}>
+              <Target size={24} style={{ display: 'inline', marginRight: '0.5rem' }} />
+              Strategic Thinking
+            </h4>
+            <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+              I don't chase one-off sales. I build models focused on <strong>repeat business</strong>—the foundation 
+              of scalable growth. Only experienced professionals understand this distinction.
+            </p>
+          </div>
+          
+          <div>
+            <h4 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--terracotta)' }}>
+              <Users size={24} style={{ display: 'inline', marginRight: '0.5rem' }} />
+              Psychometric Profile
+            </h4>
+            <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+              My assessment identifies me as an <strong>"Innovative Networker"</strong> with strengths in 
+              Analysing, Exploring, and Results-Driven Execution. I'm systematic, methodical, and reliable.
+            </p>
+          </div>
+          
+          <div>
+            <h4 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--terracotta)' }}>
+              <Zap size={24} style={{ display: 'inline', marginRight: '0.5rem' }} />
+              Proven Results
+            </h4>
+            <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+              I've doubled sales, enabled branch expansions, and built automated systems that companies 
+              bring me back to replicate. My work speaks for itself.
+            </p>
+          </div>
+        </div>
+
+        <div style={{ marginTop: '3rem', textAlign: 'center' }}>
+          <a href="/mnt/user-data/uploads/Adwoa-Acheampong-1730042535173-Psychometric.pdf" download className="btn-primary-custom" style={{ background: 'var(--terracotta)', borderColor: 'var(--terracotta)' }}>
+            Download Psychometric Assessment <Download size={20} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// --- PROJECTS PAGE WITH DASHBOARDS ---
+const ProjectsPage = () => {
+  const [selectedProject, setSelectedProject] = useState('automobiles');
+
+  return (
+    <div style={{ background: 'var(--cream)', minHeight: '80vh', padding: '4rem 2rem' }}>
+      <div style={{ maxWidth: '1600px', margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <h2 style={{ fontSize: '4rem', color: 'var(--coffee-dark)', marginBottom: '1rem' }}>Live Projects</h2>
+          <div className="kente-accent-bar" style={{ width: '200px', margin: '0 auto 2rem' }}></div>
+          <p style={{ fontSize: '1.3rem', color: 'var(--coffee-medium)' }}>
+            Interactive dashboards showing real business impact
+          </p>
+        </div>
+
+        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginBottom: '3rem', flexWrap: 'wrap' }}>
+          <button
+            onClick={() => setSelectedProject('automobiles')}
+            className="btn-primary-custom"
+            style={{
+              background: selectedProject === 'automobiles' ? 'var(--coffee-dark)' : 'transparent',
+              color: selectedProject === 'automobiles' ? 'var(--cream)' : 'var(--coffee-dark)'
+            }}
+          >
+            Automobiles Ghana
+          </button>
+          <button
+            onClick={() => setSelectedProject('baabean')}
+            className="btn-primary-custom"
+            style={{
+              background: selectedProject === 'baabean' ? 'var(--coffee-dark)' : 'transparent',
+              color: selectedProject === 'baabean' ? 'var(--cream)' : 'var(--coffee-dark)'
+            }}
+          >
+            Baa & Bean Café
+          </button>
+        </div>
+
+        {selectedProject === 'automobiles' && (
+          <div className="dashboard-container">
+            <div className="dashboard-header">
+              <h3 style={{ fontSize: '2rem', margin: 0 }}>Automobiles Ghana Limited - 2024 Campaign</h3>
+              <p style={{ margin: '0.5rem 0 0 0', opacity: 0.9 }}>
+                Precision-targeted campaigns driving sustainable growth
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
+              <div style={{ textAlign: 'center', background: 'var(--coffee-medium)', padding: '2rem', border: '2px solid var(--terracotta)' }}>
+                <div style={{ fontSize: '3rem', fontWeight: '700', color: 'var(--terracotta)' }}>83.3%</div>
+                <div style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>Engagement Increase</div>
+              </div>
+              <div style={{ textAlign: 'center', background: 'var(--coffee-medium)', padding: '2rem', border: '2px solid var(--terracotta)' }}>
+                <div style={{ fontSize: '3rem', fontWeight: '700', color: 'var(--terracotta)' }}>125%</div>
+                <div style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>Sales Growth</div>
+              </div>
+              <div style={{ textAlign: 'center', background: 'var(--coffee-medium)', padding: '2rem', border: '2px solid var(--terracotta)' }}>
+                <div style={{ fontSize: '3rem', fontWeight: '700', color: 'var(--terracotta)' }}>2</div>
+                <div style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>New Branches</div>
+              </div>
+            </div>
+
+            <div style={{ background: 'white', padding: '2rem', marginBottom: '2rem' }}>
+              <h4 style={{ color: 'var(--coffee-dark)', marginBottom: '1.5rem', fontSize: '1.5rem' }}>
+                Daily Sales & Engagement Growth (8-Week Campaign)
+              </h4>
+              <ResponsiveContainer width="100%" height={400}>
+                <AreaChart data={automobilesData}>
+                  <defs>
+                    <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#C65D3B" stopOpacity={0.8}/>
+                      <stop offset="95%" stopColor="#C65D3B" stopOpacity={0}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#E0E0E0" />
+                  <XAxis dataKey="week" stroke="#6F4E37" />
+                  <YAxis yAxisId="left" stroke="#6F4E37" label={{ value: 'Sales (GHS)', angle: -90, position: 'insideLeft' }} />
+                  <YAxis yAxisId="right" orientation="right" stroke="#8B6F47" label={{ value: 'Engagement (%)', angle: 90, position: 'insideRight' }} />
+                  <Tooltip contentStyle={{ background: '#F5E6D3', border: '2px solid #6F4E37' }} />
+                  <Area yAxisId="left" type="monotone" dataKey="sales" stroke="#C65D3B" strokeWidth={3} fillOpacity={1} fill="url(#colorSales)" />
+                  <Line yAxisId="right" type="monotone" dataKey="engagement" stroke="#8B6F47" strokeWidth={3} dot={{ fill: '#8B6F47', r: 5 }} />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+
+            <div style={{ background: 'var(--coffee-medium)', padding: '2rem', border: '3px solid var(--terracotta)' }}>
+              <h4 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--tan-sand)' }}>Key Strategy</h4>
+              <p style={{ fontSize: '1.2rem', lineHeight: '1.8' }}>
+                Instead of chasing one-off transactions, I built models focused on <strong>repeat business</strong>. 
+                This approach drove sustainable growth that enabled expansion to two new branches by March 2026. 
+                The company brought me back to replicate this success in their next growth phase.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {selectedProject === 'baabean' && (
+          <div className="dashboard-container">
+            <div className="dashboard-header">
+              <h3 style={{ fontSize: '2rem', margin: 0 }}>Baa & Bean Café - Revenue Transformation</h3>
+              <p style={{ margin: '0.5rem 0 0 0', opacity: 0.9 }}>
+                Data-driven optimization driving 120% revenue growth
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
+              <div style={{ textAlign: 'center', background: 'var(--coffee-medium)', padding: '2rem', border: '2px solid var(--terracotta)' }}>
+                <div style={{ fontSize: '3rem', fontWeight: '700', color: 'var(--terracotta)' }}>GHS 30k</div>
+                <div style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>Final Daily Revenue</div>
+              </div>
+              <div style={{ textAlign: 'center', background: 'var(--coffee-medium)', padding: '2rem', border: '2px solid var(--terracotta)' }}>
+                <div style={{ fontSize: '3rem', fontWeight: '700', color: 'var(--terracotta)' }}>120%</div>
+                <div style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>Growth Rate</div>
+              </div>
+              <div style={{ textAlign: 'center', background: 'var(--coffee-medium)', padding: '2rem', border: '2px solid var(--terracotta)' }}>
+                <div style={{ fontSize: '3rem', fontWeight: '700', color: 'var(--terracotta)' }}>3 Mo</div>
+                <div style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>Time to Target</div>
+              </div>
+            </div>
+
+            <div style={{ background: 'white', padding: '2rem', marginBottom: '2rem' }}>
+              <h4 style={{ color: 'var(--coffee-dark)', marginBottom: '1.5rem', fontSize: '1.5rem' }}>
+                Monthly Revenue Growth vs. Target
+              </h4>
+              <ResponsiveContainer width="100%" height={400}>
+                <BarChart data={baaAndBeanData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#E0E0E0" />
+                  <XAxis dataKey="month" stroke="#6F4E37" />
+                  <YAxis stroke="#6F4E37" label={{ value: 'Revenue (GHS)', angle: -90, position: 'insideLeft' }} />
+                  <Tooltip contentStyle={{ background: '#F5E6D3', border: '2px solid #6F4E37' }} />
+                  <Bar dataKey="revenue" fill="#C65D3B" />
+                  <Bar dataKey="target" fill="#D2B48C" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+
+            <div style={{ background: 'var(--coffee-medium)', padding: '2rem', border: '3px solid var(--terracotta)' }}>
+              <h4 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--tan-sand)' }}>Implementation</h4>
+              <ul style={{ fontSize: '1.2rem', lineHeight: '2', paddingLeft: '1.5rem' }}>
+                <li>Analyzed customer service data to identify peak hours and preferences</li>
+                <li>Refined SOPs for kitchen efficiency and waste reduction</li>
+                <li>Updated sales strategies based on menu performance analytics</li>
+                <li>Restructured supply chain to optimize costs while maintaining quality</li>
+              </ul>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// --- EXPERIENCE PAGE ---
+const ExperiencePage = () => (
+  <div style={{ background: 'var(--warm-white)', minHeight: '80vh', padding: '4rem 2rem' }}>
+    <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <h2 style={{ fontSize: '4rem', color: 'var(--coffee-dark)', marginBottom: '1rem' }}>Experience</h2>
+        <div className="kente-accent-bar" style={{ width: '200px', margin: '0 auto' }}></div>
+      </div>
+
+      <div style={{ position: 'relative' }}>
+        {[
+          {
+            role: "Statutory Operations Director",
+            company: "JonMon-Sacs Ghana Ltd",
+            date: "Jul 2025 - Present",
+            location: "Accra, Ghana",
+            achievements: [
+              "Superintending business licensing and regulatory compliance",
+              "Leading a team of 5 officers",
+              "Ensuring adherence to Ghanaian business laws"
+            ]
+          },
+          {
+            role: "Operations Manager",
+            company: "Baa & Bean Café's",
+            date: "Feb 2024 - Jul 2024",
+            location: "Accra, Ghana",
+            achievements: [
+              "Drove daily revenue from GHS 12k to GHS 30k+ (120% increase)",
+              "Implemented data-driven menu optimization",
+              "Restructured supply chain operations",
+              "Focused on sustainable growth vs. one-off wins"
+            ]
+          },
+          {
+            role: "Operations Consultant",
+            company: "Automobiles Ghana Limited",
+            date: "2024 & 2026",
+            location: "Accra, Ghana",
+            achievements: [
+              "Amplified customer engagement by 83.3%",
+              "Accelerated daily sales from GHS 1,200 to GHS 2,700",
+              "Built repeat-customer models enabling 2-branch expansion",
+              "Re-engaged to replicate success in next growth phase"
+            ]
+          },
+          {
+            role: "Administration Manager",
+            company: "Zein Real Estate",
+            date: "Mar 2023 - Jan 2024",
+            location: "Accra, Ghana",
+            achievements: [
+              "Improved office productivity by 30%",
+              "Built automation with AppScript + AI",
+              "Created digital filing systems",
+              "Freed team to focus on client relationships"
+            ]
+          },
+          {
+            role: "Marketing Executive",
+            company: "Trident Real Estate Group",
+            date: "2022 - 2023",
+            location: "Accra, Ghana",
+            achievements: [
+              "Executed marketing campaigns for luxury projects",
+              "Monitored lead turnover rates",
+              "Utilized Meta Business Suite for remote sales",
+              "Managed social media assets"
+            ]
+          }
+        ].map((job, i) => (
+          <div key={i} className="timeline-item">
+            <div className="timeline-marker"></div>
+            <div style={{ marginBottom: '0.5rem', color: 'var(--clay)', fontStyle: 'italic' }}>
+              {job.date} • {job.location}
+            </div>
+            <h3 style={{ fontSize: '2rem', color: 'var(--coffee-dark)', marginBottom: '0.5rem', fontWeight: '700' }}>
+              {job.role}
+            </h3>
+            <div style={{ fontSize: '1.3rem', color: 'var(--terracotta)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem' }}>
+              {job.company}
+            </div>
+            <ul style={{ fontSize: '1.15rem', lineHeight: '1.9', color: 'var(--earth-deep)', paddingLeft: '1.5rem' }}>
+              {job.achievements.map((achievement, j) => (
+                <li key={j} style={{ marginBottom: '0.5rem' }}>{achievement}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+// --- SKILLS PAGE ---
+const SkillsPage = () => (
+  <div style={{ background: 'var(--cream)', minHeight: '80vh', padding: '4rem 2rem' }}>
+    <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+      <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <h2 style={{ fontSize: '4rem', color: 'var(--coffee-dark)', marginBottom: '1rem' }}>Skills & Certifications</h2>
+        <div className="kente-accent-bar" style={{ width: '200px', margin: '0 auto' }}></div>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '3rem' }}>
+        <div className="kente-border" style={{ background: 'var(--warm-white)', padding: '3rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+            <Database size={40} style={{ color: 'var(--terracotta)' }} />
+            <h3 style={{ fontSize: '2rem', color: 'var(--coffee-dark)' }}>Data & Analytics</h3>
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            {['SQL', 'Tableau', 'Power BI', 'Google Sheets', 'AppScript', 'Data Visualization', 'Statistical Analysis', 'Excel Advanced'].map(skill => (
+              <span key={skill} className="skill-badge">{skill}</span>
+            ))}
+          </div>
+        </div>
+
+        <div className="kente-border" style={{ background: 'var(--warm-white)', padding: '3rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+            <Briefcase size={40} style={{ color: 'var(--terracotta)' }} />
+            <h3 style={{ fontSize: '2rem', color: 'var(--coffee-dark)' }}>Operations</h3>
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            {['Process Optimization', 'SOP Development', 'Supply Chain', 'Team Leadership', 'Project Management', 'Compliance', 'Automation'].map(skill => (
+              <span key={skill} className="skill-badge">{skill}</span>
+            ))}
+          </div>
+        </div>
+
+        <div className="kente-border" style={{ background: 'var(--warm-white)', padding: '3rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+            <Code size={40} style={{ color: 'var(--terracotta)' }} />
+            <h3 style={{ fontSize: '2rem', color: 'var(--coffee-dark)' }}>Technical</h3>
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            {['Python', 'JavaScript', 'React', 'AI Integration', 'Google Workspace', 'Meta Business Suite', 'CRM Systems'].map(skill => (
+              <span key={skill} className="skill-badge">{skill}</span>
+            ))}
+          </div>
+        </div>
+
+        <div className="kente-border" style={{ background: 'var(--warm-white)', padding: '3rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+            <Award size={40} style={{ color: 'var(--terracotta)' }} />
+            <h3 style={{ fontSize: '2rem', color: 'var(--coffee-dark)' }}>Certifications</h3>
+          </div>
+          <ul style={{ fontSize: '1.15rem', lineHeight: '2', color: 'var(--earth-deep)', paddingLeft: '1.5rem' }}>
+            <li><strong>Data Analysis</strong> - ALX</li>
+            <li><strong>Intermediate SQL</strong> - DataCamp</li>
+            <li><strong>Data Analysis Essentials</strong> - Cisco</li>
+            <li><strong>Business Management</strong> - Oxford Home Study Centre</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style={{ marginTop: '4rem', textAlign: 'center', background: 'var(--coffee-dark)', color: 'var(--cream)', padding: '3rem', border: '4px solid var(--terracotta)' }}>
+        <h3 style={{ fontSize: '2rem', marginBottom: '2rem', color: 'var(--tan-sand)' }}>
+          Psychometric Assessment Results
+        </h3>
+        <p style={{ fontSize: '1.3rem', lineHeight: '1.9', marginBottom: '2rem' }}>
+          Assessed as an <strong>"Innovative Networker"</strong> with primary strengths in:
+        </p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', marginBottom: '2rem' }}>
+          <div>
+            <div style={{ fontSize: '1.8rem', fontWeight: '700', color: 'var(--terracotta)', marginBottom: '0.5rem' }}>Analysing</div>
+            <p>Comfortable with numerical data and evidence-based thinking</p>
+          </div>
+          <div>
+            <div style={{ fontSize: '1.8rem', fontWeight: '700', color: 'var(--terracotta)', marginBottom: '0.5rem' }}>Exploring</div>
+            <p>Curious, thinks out of the box, thrives on novelty</p>
+          </div>
+          <div>
+            <div style={{ fontSize: '1.8rem', fontWeight: '700', color: 'var(--terracotta)', marginBottom: '0.5rem' }}>Results-Driven</div>
+            <p>Systematic, methodical, delivers within deadlines</p>
+          </div>
+        </div>
+        <a href="/mnt/user-data/uploads/Adwoa-Acheampong-1730042535173-Psychometric.pdf" download className="btn-primary-custom" style={{ background: 'var(--terracotta)', borderColor: 'var(--terracotta)' }}>
+          Download Full Assessment <Download size={20} />
+        </a>
+      </div>
+    </div>
+  </div>
+);
+
+// --- CONTACT PAGE ---
+const ContactPage = () => (
+  <div style={{ background: 'var(--warm-white)', minHeight: '80vh', padding: '4rem 2rem', position: 'relative' }}>
+    <div className="adinkra-corner" style={{ top: '10%', right: '5%', opacity: 0.05 }}>
+      <GyeNyame size={200} />
+    </div>
+    
+    <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <h2 style={{ fontSize: '4rem', color: 'var(--coffee-dark)', marginBottom: '1rem' }}>Let's Build Together</h2>
+        <div className="kente-accent-bar" style={{ width: '200px', margin: '0 auto 2rem' }}></div>
+        <p style={{ fontSize: '1.3rem', color: 'var(--coffee-medium)' }}>
+          Ready to scale your business with systems that focus on long-term growth?
+        </p>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '3rem' }}>
+        <div className="kente-border" style={{ background: 'var(--cream)', padding: '3rem' }}>
+          <h3 style={{ fontSize: '2rem', color: 'var(--coffee-dark)', marginBottom: '2rem' }}>Contact Information</h3>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+              <div style={{ width: '60px', height: '60px', background: 'var(--terracotta)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '3px solid var(--coffee-dark)' }}>
+                <Mail size={28} style={{ color: 'var(--cream)' }} />
+              </div>
+              <div>
+                <div style={{ fontSize: '0.9rem', color: 'var(--coffee-medium)', marginBottom: '0.25rem' }}>Email</div>
+                <a href="mailto:adwoa@jonmonsacs.com" style={{ fontSize: '1.2rem', color: 'var(--coffee-dark)', textDecoration: 'none', fontWeight: '600' }}>
+                  adwoa@jonmonsacs.com
+                </a>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+              <div style={{ width: '60px', height: '60px', background: 'var(--terracotta)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '3px solid var(--coffee-dark)' }}>
+                <Phone size={28} style={{ color: 'var(--cream)' }} />
+              </div>
+              <div>
+                <div style={{ fontSize: '0.9rem', color: 'var(--coffee-medium)', marginBottom: '0.25rem' }}>Phone</div>
+                <div style={{ fontSize: '1.2rem', color: 'var(--coffee-dark)', fontWeight: '600' }}>
+                  (233) 276-291-485
+                </div>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+              <div style={{ width: '60px', height: '60px', background: 'var(--terracotta)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '3px solid var(--coffee-dark)' }}>
+                <MapPin size={28} style={{ color: 'var(--cream)' }} />
+              </div>
+              <div>
+                <div style={{ fontSize: '0.9rem', color: 'var(--coffee-medium)', marginBottom: '0.25rem' }}>Location</div>
+                <div style={{ fontSize: '1.2rem', color: 'var(--coffee-dark)', fontWeight: '600' }}>
+                  Accra, Ghana
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="kente-accent-bar" style={{ margin: '2rem 0' }}></div>
+
+          <div style={{ display: 'flex', gap: '1rem' }}>
+            <a href="#" style={{ flex: 1, height: '60px', border: '3px solid var(--coffee-dark)', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', color: 'var(--coffee-dark)', transition: 'all 0.3s' }} className="social-link">
+              <Linkedin size={28} />
+            </a>
+            <a href="#" style={{ flex: 1, height: '60px', border: '3px solid var(--coffee-dark)', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', color: 'var(--coffee-dark)', transition: 'all 0.3s' }} className="social-link">
+              <Github size={28} />
+            </a>
+          </div>
+        </div>
+
+        <div className="kente-border" style={{ background: 'var(--coffee-dark)', color: 'var(--cream)', padding: '3rem' }}>
+          <h3 style={{ fontSize: '2rem', marginBottom: '2rem', color: 'var(--tan-sand)' }}>Download Resources</h3>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <a href="#" className="btn-primary-custom" style={{ width: '100%', justifyContent: 'center', background: 'var(--terracotta)', borderColor: 'var(--terracotta)' }}>
+              <FileText size={20} />
+              Download Resume
+            </a>
+
+            <a href="/mnt/user-data/uploads/Adwoa-Acheampong-1730042535173-Psychometric.pdf" download className="btn-primary-custom" style={{ width: '100%', justifyContent: 'center', background: 'var(--terracotta)', borderColor: 'var(--terracotta)' }}>
+              <Award size={20} />
+              Psychometric Assessment
+            </a>
+
+            <a href="#" className="btn-primary-custom" style={{ width: '100%', justifyContent: 'center', background: 'var(--terracotta)', borderColor: 'var(--terracotta)' }}>
+              <BarChart3 size={20} />
+              Portfolio Case Studies
+            </a>
+          </div>
+
+          <div style={{ marginTop: '3rem', padding: '2rem', background: 'var(--coffee-medium)', border: '2px solid var(--terracotta)' }}>
+            <h4 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--tan-sand)' }}>Why Hire Me?</h4>
+            <ul style={{ fontSize: '1.1rem', lineHeight: '2', paddingLeft: '1.5rem' }}>
+              <li>Proven track record: 120% revenue growth, 83.3% engagement increase</li>
+              <li>Strategic thinker: Build systems for sustainable growth, not quick wins</li>
+              <li>Data-driven: Turn analysis into actionable business improvements</li>
+              <li>Resilient: Self-taught while working multiple roles</li>
+              <li>Results-oriented: Companies bring me back to replicate success</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// --- FOOTER ---
+const Footer = () => (
+  <footer style={{ background: 'var(--coffee-dark)', color: 'var(--cream)', padding: '3rem 2rem' }}>
+    <div className="kente-accent-bar"></div>
+    <div style={{ maxWidth: '1600px', margin: '2rem auto 0', textAlign: 'center' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
+        <Sankofa size={60} color="var(--tan-sand)" />
+        <GyeNyame size={60} color="var(--terracotta)" />
+        <DwennimmenAdinkra size={60} color="var(--clay)" />
+      </div>
+      <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontWeight: '600' }}>
+        Adwoa B. Acheampong (Miracle)
+      </p>
+      <p style={{ fontSize: '1rem', opacity: 0.8 }}>
+        Systems Builder • Growth Strategist • Accra, Ghana
+      </p>
+      <p style={{ fontSize: '0.9rem', marginTop: '2rem', opacity: 0.6' }}>
+        © 2025 • Built with cultural pride and technical excellence
+      </p>
+    </div>
+  </footer>
+);
 
 export default App;
