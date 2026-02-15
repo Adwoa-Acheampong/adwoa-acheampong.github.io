@@ -533,7 +533,7 @@ function Projects() {
           </div>
           <div style={{ padding: '1.8rem' }}>
             <ResponsiveContainer width="100%" height={300}>
-              <CompoosedChart data={automobilesData}>
+              <ComposedChart data={automobilesData}>
                 <defs>
                   <linearGradient id="salesColor" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="var(--terracotta)" stopOpacity={0.8}/>
