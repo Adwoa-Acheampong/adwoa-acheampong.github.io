@@ -477,7 +477,7 @@ function Bio() {
           I’m Adwoa B. Acheampong — known as Miracle to those closest to me — a Ghanaian operations professional who turns data and discipline into sustainable business growth.
         </p>
         <p style={{ marginBottom: '1.8rem' }}>
-          Financial barriers stopped me from finishing my Computer Engineering degree, but they didn’t stop me. While working multiple contract roles (often on {<4} hours sleep), I self-taught data analysis, SQL, automation, process design, and systems thinking.
+          Financial barriers stopped me from finishing my Computer Engineering degree, but they didn’t stop me. While working multiple contract roles (often on less than 4 hours sleep), I self-taught data analysis, SQL, automation, process design, and systems thinking.
         </p>
         <p style={{ marginBottom: '1.8rem' }}>
           Certifications (ALX Data Analysis, DataCamp SQL, Cisco Data Essentials, Oxford Business Management) gave structure — but real results came from applying them: 120% revenue lifts, 83% engagement jumps, automated workflows that freed teams, and repeat-customer models that companies asked me to rebuild.
