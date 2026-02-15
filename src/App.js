@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  AreaChart, Area, BarChart, Bar, 
+  AreaChart, Area, BarChart, Bar, Linechart, Line, ComposedChart,
   XAxis, YAxis, ResponsiveContainer, Tooltip, CartesianGrid 
 } from 'recharts';
 import { 
@@ -547,7 +547,7 @@ function Projects() {
                 <Tooltip />
                 <Area yAxisId="left" dataKey="sales" stroke="var(--terracotta)" fill="url(#salesColor)" name="Sales" />
                 <Line yAxisId="right" type="monotone" dataKey="engagement" stroke="var(--coffee-medium)" strokeWidth={2} name="Engagement" dot={{ r: 4 }} />
-              </AreaChart>
+              </ComposedChart>
             </ResponsiveContainer>
             <ul style={{ marginTop: '1.5rem', paddingLeft: '1.4rem', lineHeight: 1.8 }}>
               <li>Built repeat-customer acquisition model</li>
