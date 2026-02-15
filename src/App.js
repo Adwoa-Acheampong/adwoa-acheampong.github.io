@@ -707,7 +707,7 @@ const HomePage = () => (
             <p style={{ marginTop: '0.75rem', fontSize: '0.9rem', color: 'var(--coffee-medium)' }}>Sankofa</p>
           </div>
           <div style={{ textAlign: 'center' }}>
-            <Akoma size={70} color="var(--kente-red)" />
+            <DwennimmenAdinkra size={70} color="var(--kente-red)" />
             <p style={{ marginTop: '0.75rem', fontSize: '0.9rem', color: 'var(--coffee-medium)' }}>Akoma</p>
           </div>
         </div>
