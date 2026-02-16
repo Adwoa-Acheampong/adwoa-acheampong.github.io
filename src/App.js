@@ -10,91 +10,18 @@ import {
   Calendar, Briefcase, GraduationCap, Coffee, TrendingDown, Heart
 } from 'lucide-react';
 
-// --- ENHANCED ADINKRA SYMBOLS AS SVG COMPONENTS ---
-// Gye Nyame - God is Great (Symbol of God's omnipotence)
-const GyeNyame = ({ size = 100, color = "#6F4E37" }) => (
-  <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
-    <circle cx="50" cy="50" r="45" stroke={color} strokeWidth="3"/>
-    <circle cx="50" cy="50" r="35" stroke={color} strokeWidth="2" opacity="0.6"/>
-    <path d="M50 20 L50 80 M30 50 L70 50" stroke={color} strokeWidth="3"/>
-    <circle cx="50" cy="50" r="15" stroke={color} strokeWidth="3" fill="none"/>
-    <circle cx="50" cy="50" r="8" fill={color} opacity="0.8"/>
-    <path d="M35 35 L65 65 M65 35 L35 65" stroke={color} strokeWidth="2.5" opacity="0.7"/>
-  </svg>
-);
-
-// Sankofa - Return & Get It (Going back for what was left behind)
-const Sankofa = ({ size = 100, color = "#C65D3B" }) => (
-  <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
-    {/* Heart body */}
-    <ellipse cx="50" cy="55" rx="18" ry="20" fill={color} opacity="0.3" stroke={color} strokeWidth="2"/>
-    {/* Curved neck */}
-    <path d="M50 35 Q60 30, 68 35 Q75 40, 75 50" 
-          stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-    {/* Head */}
-    <circle cx="78" cy="50" r="8" fill={color}/>
-    {/* Beak */}
-    <path d="M86 48 L95 46 L86 52 Z" fill={color}/>
-    {/* Feet */}
-    <path d="M48 75 L45 85 L50 80 M50 75 L50 85" stroke={color} strokeWidth="2" strokeLinecap="round"/>
-    {/* Wing detail */}
-    <path d="M45 50 Q40 55, 42 65" stroke={color} strokeWidth="2" fill="none" opacity="0.6"/>
-  </svg>
-);
-
-// Dwennimmen - Ram's Horns (Strength and humility)
-const DwennimmenAdinkra = ({ size = 100, color = "#8B6F47" }) => (
-  <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
-    {/* Concentric circles */}
-    <circle cx="50" cy="50" r="42" stroke={color} strokeWidth="2"/>
-    <circle cx="50" cy="50" r="32" stroke={color} strokeWidth="2"/>
-    <circle cx="50" cy="50" r="22" stroke={color} strokeWidth="2"/>
-    <circle cx="50" cy="50" r="12" stroke={color} strokeWidth="2.5" fill="none"/>
-    <circle cx="50" cy="50" r="6" fill={color}/>
-    {/* Radiating lines for horns */}
-    {[0, 45, 90, 135, 180, 225, 270, 315].map(angle => (
-      <line 
-        key={angle}
-        x1="50" y1="50" 
-        x2={50 + 42 * Math.cos(angle * Math.PI / 180)} 
-        y2={50 + 42 * Math.sin(angle * Math.PI / 180)}
-        stroke={color} strokeWidth="2.5" strokeLinecap="round"
-      />
-    ))}
-  </svg>
-);
-
-// Akoma Ntoaso - Linked Hearts (Unity and harmony)
-const AkomaNtoaso = ({ size = 100, color = "#8B1A1A" }) => (
-  <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
-    {/* Left heart */}
-    <path d="M40 45 C35 40, 30 40, 28 45 C26 50, 35 60, 40 65 L40 50 Z" 
-          fill={color} opacity="0.8" stroke={color} strokeWidth="2"/>
-    {/* Right heart */}
-    <path d="M60 45 C65 40, 70 40, 72 45 C74 50, 65 60, 60 65 L60 50 Z" 
-          fill={color} opacity="0.8" stroke={color} strokeWidth="2"/>
-    {/* Connecting link */}
-    <circle cx="40" cy="50" r="3" fill={color}/>
-    <circle cx="60" cy="50" r="3" fill={color}/>
-    <line x1="43" y1="50" x2="57" y2="50" stroke={color} strokeWidth="2"/>
-  </svg>
-);
-
-// Adinkrahene - Chief of Adinkra (Leadership and greatness)
-const Adinkrahene = ({ size = 100, color = "#D4AF37" }) => (
-  <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
-    {/* Outer square */}
-    <rect x="20" y="20" width="60" height="60" stroke={color} strokeWidth="2.5"/>
-    {/* Inner squares */}
-    <rect x="28" y="28" width="44" height="44" stroke={color} strokeWidth="2"/>
-    <rect x="36" y="36" width="28" height="28" stroke={color} strokeWidth="1.5"/>
-    {/* Center diamond */}
-    <path d="M50 42 L58 50 L50 58 L42 50 Z" fill={color} opacity="0.6"/>
-    {/* Corner accents */}
-    {[20, 80].map((x, i) => [20, 80].map((y, j) => (
-      <circle key={`${i}-${j}`} cx={x} cy={y} r="2.5" fill={color}/>
-    )))}
-  </svg>
+// --- ADINKRA SYMBOL IMAGE PLACEHOLDERS ---
+const AdinkraSymbol = ({ name, size = 70 }) => (
+  <div style={{ textAlign: 'center' }}>
+    <img 
+      src={`https://via.placeholder.com/${size}/${size}?text=${name}`}
+      alt={name}
+      style={{ width: `${size}px`, height: `${size}px`, borderRadius: '4px' }}
+    />
+    <p style={{ marginTop: '0.75rem', fontSize: '0.9rem', color: 'var(--coffee-medium)' }}>
+      {name}
+    </p>
+  </div>
 );
 
 // --- CUSTOM CSS WITH MODERN AFRICAN AESTHETIC ---
@@ -174,7 +101,7 @@ const customStyles = `
   }
 
   .navbar-logo {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--coffee-dark);
     text-decoration: none;
@@ -261,7 +188,7 @@ const customStyles = `
   }
 
   .hero-title {
-    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    font-size: clamp(1.8rem, 6vw, 3.5rem);
     font-weight: 700;
     color: var(--coffee-dark);
     line-height: 1.2;
@@ -269,7 +196,7 @@ const customStyles = `
   }
 
   .hero-subtitle {
-    font-size: clamp(1rem, 3vw, 1.6rem);
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
     color: var(--coffee-medium);
     font-weight: 500;
     margin: 1.5rem 0;
@@ -386,7 +313,7 @@ const customStyles = `
   }
 
   .card-title {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     color: var(--coffee-dark);
     margin-bottom: 1rem;
   }
@@ -416,7 +343,7 @@ const customStyles = `
   }
 
   .stat-number {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
     font-weight: 700;
     color: var(--kente-gold);
     font-family: 'Cormorant Garamond', serif;
@@ -491,7 +418,7 @@ const customStyles = `
   }
 
   .section-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     color: var(--coffee-dark);
     margin-bottom: 1.5rem;
   }
@@ -558,19 +485,19 @@ const customStyles = `
     }
 
     .hero-title {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
 
     .hero-subtitle {
-      font-size: 1rem;
+      font-size: 0.85rem;
     }
 
     .section-title {
-      font-size: 2rem;
+      font-size: 1.3rem;
     }
 
     .stat-number {
-      font-size: 2.2rem;
+      font-size: 1.8rem;
     }
 
     .project-card {
@@ -701,14 +628,27 @@ const HomePage = () => (
           <div style={{ textAlign: 'center' }}>
             <GyeNyame size={70} color="var(--coffee-dark)" />
             <p style={{ marginTop: '0.75rem', fontSize: '0.9rem', color: 'var(--coffee-medium)' }}>Gye Nyame</p>
+            <p style={{ marginTop: '0.25rem', fontSize: '0.8rem', color: 'var(--tan-sand)', fontStyle: 'italic' }}>God is Great</p>
           </div>
           <div style={{ textAlign: 'center' }}>
             <Sankofa size={70} color="var(--terracotta)" />
             <p style={{ marginTop: '0.75rem', fontSize: '0.9rem', color: 'var(--coffee-medium)' }}>Sankofa</p>
+            <p style={{ marginTop: '0.25rem', fontSize: '0.8rem', color: 'var(--tan-sand)', fontStyle: 'italic' }}>Return & Get It</p>
           </div>
           <div style={{ textAlign: 'center' }}>
-            <Akoma size={70} color="var(--kente-red)" />
-            <p style={{ marginTop: '0.75rem', fontSize: '0.9rem', color: 'var(--coffee-medium)' }}>Akoma</p>
+            <DwennimmenAdinkra size={70} color="var(--clay)" />
+            <p style={{ marginTop: '0.75rem', fontSize: '0.9rem', color: 'var(--coffee-medium)' }}>Dwennimmen</p>
+            <p style={{ marginTop: '0.25rem', fontSize: '0.8rem', color: 'var(--tan-sand)', fontStyle: 'italic' }}>Strength & Humility</p>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <AkomaNtoaso size={70} color="var(--kente-red)" />
+            <p style={{ marginTop: '0.75rem', fontSize: '0.9rem', color: 'var(--coffee-medium)' }}>Akoma Ntoaso</p>
+            <p style={{ marginTop: '0.25rem', fontSize: '0.8rem', color: 'var(--tan-sand)', fontStyle: 'italic' }}>Unity & Harmony</p>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <Adinkrahene size={70} color="var(--kente-gold)" />
+            <p style={{ marginTop: '0.75rem', fontSize: '0.9rem', color: 'var(--coffee-medium)' }}>Adinkrahene</p>
+            <p style={{ marginTop: '0.25rem', fontSize: '0.8rem', color: 'var(--tan-sand)', fontStyle: 'italic' }}>Leadership & Excellence</p>
           </div>
         </div>
       </div>
@@ -819,7 +759,7 @@ const ProjectsPage = () => (
             </ResponsiveContainer>
           </div>
           <p style={{ fontSize: '0.95rem', color: 'var(--earth-deep)' }}>
-            <strong>Result:</strong> Scaled revenue from 1.1 USDK to 31.5K in 6 months through strategic business development and operational optimization.
+            <strong>Result:</strong> Scaled revenue from GHS 12K to 31.5K in 6 months through strategic business development and operational optimization.
           </p>
         </div>
 
@@ -1067,10 +1007,10 @@ const Footer = () => (
         <GyeNyame size={60} color="var(--terracotta)" />
         <Adinkrahene size={60} color="var(--kente-gold)" />
       </div>
-      <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontWeight: 600 }}>
+      <p style={{ fontSize: '1.1rem', marginBottom: '0.5rem', fontWeight: 600 }}>
         Adwoa B. Acheampong
       </p>
-      <p style={{ fontSize: '1rem', opacity: 0.8 }}>
+      <p style={{ fontSize: '0.95rem', opacity: 0.8 }}>
         Systems Builder • Growth Strategist • Accra, Ghana
       </p>
       <div className="kente-stripe"></div>
