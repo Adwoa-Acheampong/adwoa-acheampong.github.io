@@ -686,7 +686,7 @@ const HomePage = () => (
         <p className="hero-subtitle">Systems Builder • Business Growth Strategist</p>
         <p className="hero-description">
           Transforming businesses with strategic systems and data-driven insights. 
-          I help companies scale sustainably, turning vision into measurable growth.
+          I help companies scale sustainably, turning vision into actionable growth structures.
         </p>
         <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
           <button className="btn-primary">
@@ -770,7 +770,7 @@ const BioPage = () => (
           <Target size={40} style={{ color: 'var(--terracotta)', marginBottom: '1rem' }} />
           <h3 className="card-title">The Foundation</h3>
           <p style={{ lineHeight: 1.8, color: 'var(--earth-deep)' }}>
-            Starting as a self-taught data analyst, I discovered a passion for connecting dots between data and business outcomes. My journey began with curiosity and determination to understand the systems that drive growth.
+            Starting as a self-taught business administrator, I discovered a passion for connecting dots between data and business outcomes. My journey began with curiosity and determination to understand the systems that drive growth.
           </p>
         </div>
 
@@ -778,7 +778,7 @@ const BioPage = () => (
           <TrendingUp size={40} style={{ color: 'var(--terracotta)', marginBottom: '1rem' }} />
           <h3 className="card-title">The Growth</h3>
           <p style={{ lineHeight: 1.8, color: 'var(--earth-deep)' }}>
-            Through multiple roles in fast-paced environments, I learned to build systems that scale. I've worked across business development, operations, and strategy—each role deepening my understanding of sustainable growth.
+            Through multiple roles in varied industries from retail to hospitaity, I learned to build systems that scale. I've worked across business development, operations, and strategy. Each role deepening my understanding of sustainable growth.
           </p>
         </div>
 
@@ -906,24 +906,24 @@ const ExperiencePage = () => (
 
       <div style={{ marginTop: '3rem' }}>
         {[
-          {
-            role: 'Senior Growth Strategist',
-            company: 'Independent Consultant',
-            period: '2024 - Present',
-            description: 'Building custom growth systems for startups and established businesses'
-          },
-          {
-            role: 'Business Development Manager',
-            company: 'Multiple Organizations',
-            period: '2021 - 2024',
-            description: 'Led revenue growth initiatives, market expansion, and partnership development'
-          },
-          {
-            role: 'Data Analyst',
-            company: 'ALX & Corporate Roles',
-            period: '2020 - 2021',
-            description: 'Analyzed complex datasets, created dashboards, and drove data-informed decisions'
-          }
+         {
+    role: 'Business Development Manager',
+    company: 'Automobiles Ghana Ltd / Stoic Team Ghana',
+    period: '2024 - Present',
+    description: 'Directing operational refinement and AI tool implementation in partnership with Stoic Team Ghana. Hiring and training remote sales staff and executing targeted marketing campaigns. Increased daily sales from GHS 1,200 to GHS 2,700 and improved customer engagement by 83.3%.'
+  },
+  {
+    role: 'Operations Manager',
+    company: "Baa & Bean Café's / JonMon-Sacs Ghana Ltd",
+    period: '2024 - 2026',
+    description: 'Updated sales strategies and SOPs resulting in a 120% revenue increase (GHS 12,000 to GHS 30,000+ daily) within three months. Negotiated high-profile contracts with 60% profit shares and managed statutory regulatory compliance for international project off-takers.'
+  },
+  {
+    role: 'Administration Manager & Executive Assistant',
+    company: 'Zein Real Estate / Trident Real Estate Group',
+    period: '2023 - 2025',
+    description: 'Increased office productivity by 30% through automations by refining Apps Script for Google Workspace. Managed multi-channel marketing campaigns via Meta Business Suite and prepared comprehensive data reports on sales, lead turnover, and client engagement.'
+  }
         ].map((item, idx) => (
           <div key={idx} className="timeline-item active">
             <div className="timeline-marker"></div>
@@ -961,7 +961,7 @@ const SkillsPage = () => (
         {[
           { 
             title: 'Business Strategy', 
-            skills: ['Revenue Optimization (120%+)', 'Go-to-Market Strategy', 'Scalable Growth Systems', 'Stakeholder Management'] 
+            skills: ['Revenue Optimization', 'Go-to-Market Strategy', 'Scalable Growth Systems', 'Stakeholder Management', 'KANBAN'] 
           },
           { 
             title: 'Data & Analytics', 
@@ -969,11 +969,11 @@ const SkillsPage = () => (
           },
           { 
             title: 'Operations & AI', 
-            skills: ['Process Optimization', 'AI Tool Implementation', 'Systems Design', 'Cross-functional Leadership'] 
+            skills: ['Process Optimization', 'AI Tool Implementation', 'Systems Design', 'Cross-functional Leadership',] 
           },
           { 
             title: 'Tools & Tech', 
-            skills: ['Google Apps Script','Power BI', 'Meta Business Suite', 'Google Workspace', 'Enterprise Software'] 
+            skills: ['Google Apps Script','Microsoft Power BI', 'Meta Business Suite', 'Google Workspace', 'Enterprise Software', 'Zoho', 'Quickbooks' ] 
           }
         ].map((category, idx) => (
           <div key={idx} style={{ background: 'white', padding: '2rem', border: '2px solid var(--tan-sand)', borderRadius: '0' }}>
