@@ -10,23 +10,97 @@ import {
   Calendar, Briefcase, GraduationCap, Coffee, TrendingDown, Heart
 } from 'lucide-react';
 
-// --- ADINKRA SYMBOL IMAGE PLACEHOLDERS ---
-const AdinkraSymbol = ({ name, size = 70 }) => (
-  <div style={{ textAlign: 'center' }}>
-    <img 
-      src={`https://via.placeholder.com/${size}/${size}?text=${name}`}
-      alt={name}
-      style={{ width: `${size}px`, height: `${size}px`, borderRadius: '4px' }}
-    />
-    <p style={{ marginTop: '0.75rem', fontSize: '0.9rem', color: 'var(--coffee-medium)' }}>
-      {name}
-    </p>
-  </div>
+// --- ENHANCED ADINKRA SYMBOLS AS SVG COMPONENTS ---
+// Gye Nyame - God is Great (Symbol of God's omnipotence)
+const GyeNyame = ({ size = 100, color = "#6F4E37" }) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
+    <circle cx="50" cy="50" r="45" stroke={color} strokeWidth="3"/>
+    <circle cx="50" cy="50" r="35" stroke={color} strokeWidth="2" opacity="0.6"/>
+    <path d="M50 20 L50 80 M30 50 L70 50" stroke={color} strokeWidth="3"/>
+    <circle cx="50" cy="50" r="15" stroke={color} strokeWidth="3" fill="none"/>
+    <circle cx="50" cy="50" r="8" fill={color} opacity="0.8"/>
+    <path d="M35 35 L65 65 M65 35 L35 65" stroke={color} strokeWidth="2.5" opacity="0.7"/>
+  </svg>
 );
+
+// Sankofa - Return & Get It (Going back for what was left behind)
+const Sankofa = ({ size = 100, color = "#C65D3B" }) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
+    {/* Heart body */}
+    <ellipse cx="50" cy="55" rx="18" ry="20" fill={color} opacity="0.3" stroke={color} strokeWidth="2"/>
+    {/* Curved neck */}
+    <path d="M50 35 Q60 30, 68 35 Q75 40, 75 50" 
+          stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+    {/* Head */}
+    <circle cx="78" cy="50" r="8" fill={color}/>
+    {/* Beak */}
+    <path d="M86 48 L95 46 L86 52 Z" fill={color}/>
+    {/* Feet */}
+    <path d="M48 75 L45 85 L50 80 M50 75 L50 85" stroke={color} strokeWidth="2" strokeLinecap="round"/>
+    {/* Wing detail */}
+    <path d="M45 50 Q40 55, 42 65" stroke={color} strokeWidth="2" fill="none" opacity="0.6"/>
+  </svg>
+);
+
+// Dwennimmen - Ram's Horns (Strength and humility)
+const DwennimmenAdinkra = ({ size = 100, color = "#8B6F47" }) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
+    {/* Concentric circles */}
+    <circle cx="50" cy="50" r="42" stroke={color} strokeWidth="2"/>
+    <circle cx="50" cy="50" r="32" stroke={color} strokeWidth="2"/>
+    <circle cx="50" cy="50" r="22" stroke={color} strokeWidth="2"/>
+    <circle cx="50" cy="50" r="12" stroke={color} strokeWidth="2.5" fill="none"/>
+    <circle cx="50" cy="50" r="6" fill={color}/>
+    {/* Radiating lines for horns */}
+    {[0, 45, 90, 135, 180, 225, 270, 315].map(angle => (
+      <line 
+        key={angle}
+        x1="50" y1="50" 
+        x2={50 + 42 * Math.cos(angle * Math.PI / 180)} 
+        y2={50 + 42 * Math.sin(angle * Math.PI / 180)}
+        stroke={color} strokeWidth="2.5" strokeLinecap="round"
+      />
+    ))}
+  </svg>
+);
+
+// Akoma Ntoaso - Linked Hearts (Unity and harmony)
+const AkomaNtoaso = ({ size = 100, color = "#8B1A1A" }) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
+    {/* Left heart */}
+    <path d="M40 45 C35 40, 30 40, 28 45 C26 50, 35 60, 40 65 L40 50 Z" 
+          fill={color} opacity="0.8" stroke={color} strokeWidth="2"/>
+    {/* Right heart */}
+    <path d="M60 45 C65 40, 70 40, 72 45 C74 50, 65 60, 60 65 L60 50 Z" 
+          fill={color} opacity="0.8" stroke={color} strokeWidth="2"/>
+    {/* Connecting link */}
+    <circle cx="40" cy="50" r="3" fill={color}/>
+    <circle cx="60" cy="50" r="3" fill={color}/>
+    <line x1="43" y1="50" x2="57" y2="50" stroke={color} strokeWidth="2"/>
+  </svg>
+);
+
+// Adinkrahene - Chief of Adinkra (Leadership and greatness)
+const Adinkrahene = ({ size = 100, color = "#D4AF37" }) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
+    {/* Outer square */}
+    <rect x="20" y="20" width="60" height="60" stroke={color} strokeWidth="2.5"/>
+    {/* Inner squares */}
+    <rect x="28" y="28" width="44" height="44" stroke={color} strokeWidth="2"/>
+    <rect x="36" y="36" width="28" height="28" stroke={color} strokeWidth="1.5"/>
+    {/* Center diamond */}
+    <path d="M50 42 L58 50 L50 58 L42 50 Z" fill={color} opacity="0.6"/>
+    {/* Corner accents */}
+    {[20, 80].map((x, i) => [20, 80].map((y, j) => (
+      <circle key={`${i}-${j}`} cx={x} cy={y} r="2.5" fill={color}/>
+    )))}
+  </svg>
+);
+
 
 // --- CUSTOM CSS WITH MODERN AFRICAN AESTHETIC ---
 const customStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@200;300;500;600&family=Crimson+Text:wght@300;500&family=Inter:wght@300;400;500;600&display=swap');
 
   :root {
     --coffee-dark: #6F4E37;
@@ -57,7 +131,7 @@ const customStyles = `
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: -0.01em;
   }
 
@@ -883,20 +957,40 @@ const SkillsPage = () => (
         <p className="section-subtitle">Technical expertise meets strategic thinking</p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
+     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
         {[
-          { title: 'Business Strategy', skills: ['Growth Systems', 'Market Analysis', 'Business Planning', 'Revenue Optimization'] },
-          { title: 'Data & Analytics', skills: ['SQL', 'Data Analysis', 'Dashboard Design', 'Business Intelligence'] },
-          { title: 'Operations', skills: ['Process Optimization', 'Systems Design', 'Project Management', 'Team Leadership'] },
-          { title: 'Tools & Tech', skills: ['Excel', 'Python', 'Tableau', 'Google Analytics', 'Spreadsheet Modeling'] }
+          { 
+            title: 'Business Strategy', 
+            skills: ['Revenue Optimization (120%+)', 'Go-to-Market Strategy', 'Scalable Growth Systems', 'Stakeholder Management'] 
+          },
+          { 
+            title: 'Data & Analytics', 
+            skills: ['Power BI Reporting', 'SQL (Intermediate)', 'Dashboard Automation', 'Data Trend Trackers','OSEMN','Spreadsheet Modeling'] 
+          },
+          { 
+            title: 'Operations & AI', 
+            skills: ['Process Optimization', 'AI Tool Implementation', 'Systems Design', 'Cross-functional Leadership'] 
+          },
+          { 
+            title: 'Tools & Tech', 
+            skills: ['Google Apps Script','Power BI', 'Meta Business Suite', 'Google Workspace', 'Enterprise Software'] 
+          }
         ].map((category, idx) => (
           <div key={idx} style={{ background: 'white', padding: '2rem', border: '2px solid var(--tan-sand)', borderRadius: '0' }}>
-            <h3 style={{ fontSize: '1.3rem', color: 'var(--coffee-dark)', marginBottom: '1.5rem' }}>
+            <h3 style={{ fontSize: '1.3rem', color: 'var(--coffee-dark)', marginBottom: '1.5rem', fontWeight: 'bold' }}>
               {category.title}
             </h3>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
               {category.skills.map(skill => (
-                <span key={skill} className="skill-badge">{skill}</span>
+                <span key={skill} className="skill-badge" style={{ 
+                  background: 'var(--tan-sand)', 
+                  padding: '0.4rem 0.8rem', 
+                  fontSize: '0.85rem',
+                  color: 'var(--coffee-dark)',
+                  border: '1px solid rgba(0,0,0,0.1)' 
+                }}>
+                  {skill}
+                </span>
               ))}
             </div>
           </div>
@@ -943,7 +1037,7 @@ const ContactPage = () => (
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem', marginTop: '3rem' }}>
         {[
-          { icon: Mail, label: 'Email', value: 'adwoa@example.com', action: 'mailto:adwoa@example.com' },
+          { icon: Mail, label: 'Email', value: 'adwoaacheampong728@.com', action: 'mailto:adwoaacheampong728@gmail.com' },
           { icon: Phone, label: 'Phone', value: '(233) 276-291-485', action: 'tel:+233276291485' },
           { icon: MapPin, label: 'Location', value: 'Accra, Ghana', action: '#' }
         ].map((contact, idx) => {
@@ -1011,11 +1105,11 @@ const Footer = () => (
         Adwoa B. Acheampong
       </p>
       <p style={{ fontSize: '0.95rem', opacity: 0.8 }}>
-        Systems Builder • Growth Strategist • Accra, Ghana
+        Operations • Systems Builder • Growth Strategist • Accra, Ghana
       </p>
       <div className="kente-stripe"></div>
       <p style={{ fontSize: '0.9rem', marginTop: '2rem', opacity: 0.6 }}>
-        © 2025 • Built with cultural pride and technical excellence
+        © 2025 • Built with native pride and technical excellence
       </p>
     </div>
   </footer>
