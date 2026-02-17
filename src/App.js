@@ -700,10 +700,6 @@ const HomePage = () => (
             Project Portfolio <Mail size={20} style={{ marginLeft: '8px' }} />
           </button>
         </div>
-      </div>
-    </div>
-  </div>
-);
         
         {/* Adinkra symbols showcase */}
         <div className="adinkra-inline" style={{ marginTop: '4rem' }}>
@@ -915,24 +911,24 @@ const ExperiencePage = () => (
 
       <div style={{ marginTop: '3rem' }}>
         {[
-    {
-    role: 'Business Systems Analyst (Consultant)',
-    company: 'Automobiles Ghana Ltd / Stoic Team Ghana',
-    period: '2024 - Present',
-    description: 'Translating business needs into technical requirements for AI implementation. Designing remote sales frameworks and digital workflows that increased daily sales from GHS 1,200 to GHS 2,700 by aligning technology with market demand.'
-  },
-  {
-    role: 'Business Operations Manager',
-    company: "Baa & Bean Café's",
-    period: '2024 - 2026',
-    description: 'Performed gap analysis on existing sales strategies and redesigned SOPs to capture a 120% revenue increase. Negotiated complex contracts and managed international stakeholder compliance to ensure sustainable project scaling.'
-  },
-  {
-    role: 'Administration Manager & Executive Assistant',
-    company: 'Zein Real Estate / Trident Group',
-    period: '2023 - 2025',
-    description: 'Analyzed internal administrative bottlenecks and implemented automated solutions via Apps Script, resulting in a 30% gain in office efficiency. Managed cross-functional marketing efforts and translated lead data into executive-level strategy reports.'
-  }
+          {
+            role: 'Business Systems Analyst (Consultant)',
+            company: 'Automobiles Ghana Ltd / Stoic Team Ghana',
+            period: '2024 - Present',
+            description: 'Translating business needs into technical requirements for AI implementation. Designing remote sales frameworks and digital workflows that increased daily sales from GHS 1,200 to GHS 2,700 by aligning technology with market demand.'
+          },
+          {
+            role: 'Business Operations Manager',
+            company: "Baa & Bean Café's",
+            period: '2024 - 2026',
+            description: 'Performed gap analysis on existing sales strategies and redesigned SOPs to capture a 120% revenue increase. Negotiated complex contracts and managed international stakeholder compliance to ensure sustainable project scaling.'
+          },
+          {
+            role: 'Administration Manager & Executive Assistant',
+            company: 'Zein Real Estate / Trident Group',
+            period: '2023 - 2025',
+            description: 'Analyzed internal administrative bottlenecks and implemented automated solutions via Apps Script, resulting in a 30% gain in office efficiency. Managed cross-functional marketing efforts and translated lead data into executive-level strategy reports.'
+          }
         ].map((item, idx) => (
           <div key={idx} className="timeline-item active">
             <div className="timeline-marker"></div>
@@ -966,7 +962,7 @@ const SkillsPage = () => (
         <p className="section-subtitle">Bridging technical requirements with operational excellence.</p>
       </div>
 
-     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
         {[
           { 
             title: 'Business Analysis', 
@@ -1006,9 +1002,6 @@ const SkillsPage = () => (
           </div>
         ))}
       </div>
-    </div>
-  </div>
-);
 
       <div className="kente-stripe"></div>
 
@@ -1050,7 +1043,7 @@ const ContactPage = () => (
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem', marginTop: '3rem' }}>
         {[
-          { icon: Mail, label: 'Email', value: 'adwoaacheampong728@.com', action: 'mailto:adwoaacheampong728@gmail.com' },
+          { icon: Mail, label: 'Email', value: 'adwoaacheampong728@gmail.com', action: 'mailto:adwoaacheampong728@gmail.com' },
           { icon: Phone, label: 'Phone', value: '(233) 276-291-485', action: 'tel:+233276291485' },
           { icon: MapPin, label: 'Location', value: 'Accra, Ghana', action: '#' }
         ].map((contact, idx) => {
