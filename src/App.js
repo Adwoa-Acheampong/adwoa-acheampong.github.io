@@ -653,7 +653,7 @@ const NavBar = ({ currentPage, setCurrentPage, pages, isOpen, setIsOpen }) => {
     <nav className="navbar-custom">
       <div className="navbar-container">
         <a href="#" className="navbar-logo" onClick={() => setCurrentPage('home')}>
-          ✨ Adwoa
+          ✝️ Miracle Worker
         </a>
         <button className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -683,19 +683,27 @@ const HomePage = () => (
     <div className="hero-container">
       <div className="hero-content">
         <h1 className="hero-title">Adwoa B. Acheampong</h1>
-        <p className="hero-subtitle">Systems Builder • Business Growth Strategist</p>
+        {/* Positioning: Business Analyst & Systems Architect */}
+        <p className="hero-subtitle">Business Systems Analyst • Operations Architect</p>
+        
         <p className="hero-description">
-          Transforming businesses with strategic systems and data-driven insights. 
-          I help companies scale sustainably, turning vision into actionable growth structures.
+          Bridging the gap between operational challenges and scalable technical solutions. 
+          I specialize in analyzing business requirements, re-engineering workflows, and 
+          implementing AI-driven systems that turn complex data into actionable growth strategies.
         </p>
+
         <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
           <button className="btn-primary">
-            Explore My Work <ArrowRight size={20} />
+            View Business Solutions <ArrowRight size={20} style={{ marginLeft: '8px' }} />
           </button>
           <button className="btn-secondary">
-            Get in Touch <Mail size={20} />
+            Project Portfolio <Mail size={20} style={{ marginLeft: '8px' }} />
           </button>
         </div>
+      </div>
+    </div>
+  </div>
+);
         
         {/* Adinkra symbols showcase */}
         <div className="adinkra-inline" style={{ marginTop: '4rem' }}>
@@ -760,7 +768,7 @@ const BioPage = () => (
     <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
       <div className="section-header">
         <h2 className="section-title">My Story</h2>
-        <p className="section-subtitle">From self-taught analyst to strategic growth partner</p>
+        <p className="section-subtitle">From entrepreneur, to analyst to strategic growth partner</p>
       </div>
 
       <div className="kente-stripe"></div>
@@ -770,7 +778,7 @@ const BioPage = () => (
           <Target size={40} style={{ color: 'var(--terracotta)', marginBottom: '1rem' }} />
           <h3 className="card-title">The Foundation</h3>
           <p style={{ lineHeight: 1.8, color: 'var(--earth-deep)' }}>
-            Starting as a self-taught business administrator, I discovered a passion for connecting dots between data and business outcomes. My journey began with curiosity and determination to understand the systems that drive growth.
+            Starting as an entrepreneur and administrator, I developed a focus on the frameworks that scale businesses. My transition into systems analysis was driven by a commitment to transforming raw operational data into structured, high-growth outcomes. 
           </p>
         </div>
 
@@ -786,7 +794,7 @@ const BioPage = () => (
           <Zap size={40} style={{ color: 'var(--terracotta)', marginBottom: '1rem' }} />
           <h3 className="card-title">The Expertise</h3>
           <p style={{ lineHeight: 1.8, color: 'var(--earth-deep)' }}>
-            Now I partner with companies to architect growth systems that deliver long-term value. I believe in building foundations, not quick fixes.
+            Now I partner with companies to architect growth systems that deliver long-term value. I specialize in identifying the 'line of best fit' between technical capabilities and business requirements. I believe in building solid foundations, not quick fixes.
           </p>
         </div>
       </div>
@@ -801,19 +809,20 @@ const ProjectsPage = () => (
   <div style={{ background: 'var(--warm-white)', padding: '4rem 2rem' }}>
     <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
       <div className="section-header">
-        <h2 className="section-title">Featured Projects</h2>
-        <p className="section-subtitle">Building systems. Delivering results. Creating impact.</p>
+        <h2 className="section-title">Case Studies & Systems</h2>
+        <p className="section-subtitle">Translating complex business requirements into high-performance systems.</p>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
-        {/* BAA & Bean Project */}
+        
+        {/* BAA & Bean - Focus: Process Re-engineering */}
         <div className="project-card">
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
             <BarChart3 size={32} style={{ color: 'var(--terracotta)' }} />
-            <h3 className="card-title" style={{ margin: 0 }}>Baã & Bean</h3>
+            <h3 className="card-title" style={{ margin: 0 }}>Business Model Optimization</h3>
           </div>
           <p style={{ color: 'var(--coffee-medium)', marginBottom: '2rem', fontSize: '0.95rem' }}>
-            Specialty coffee enterprise scaling operations
+            Baa & Bean Café | Operations Re-engineering
           </p>
           <div style={{ background: 'var(--warm-white)', padding: '1.5rem', borderRadius: '2px', marginBottom: '1.5rem' }}>
             <ResponsiveContainer width="100%" height={250}>
@@ -833,18 +842,18 @@ const ProjectsPage = () => (
             </ResponsiveContainer>
           </div>
           <p style={{ fontSize: '0.95rem', color: 'var(--earth-deep)' }}>
-            <strong>Result:</strong> Scaled revenue from GHS 12K to 31.5K in 6 months through strategic business development and operational optimization.
+            <strong>The Solution:</strong> Identified revenue leakage in existing SOPs. Redesigned sales and inventory workflows, resulting in a 120% revenue increase (from GHS 12K to 31.5K) within six months.
           </p>
         </div>
 
-        {/* Automobiles Project */}
+        {/* Automobiles - Focus: AI Implementation & Requirements */}
         <div className="project-card">
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
             <Users size={32} style={{ color: 'var(--terracotta)' }} />
-            <h3 className="card-title" style={{ margin: 0 }}>Automobiles</h3>
+            <h3 className="card-title" style={{ margin: 0 }}>Digital Transformation</h3>
           </div>
           <p style={{ color: 'var(--coffee-medium)', marginBottom: '2rem', fontSize: '0.95rem' }}>
-            Automotive marketplace engagement strategy
+            Automobiles Ghana Ltd | AI Systems Integration
           </p>
           <div style={{ background: 'var(--warm-white)', padding: '1.5rem', borderRadius: '2px', marginBottom: '1.5rem' }}>
             <ResponsiveContainer width="100%" height={250}>
@@ -860,18 +869,18 @@ const ProjectsPage = () => (
             </ResponsiveContainer>
           </div>
           <p style={{ fontSize: '0.95rem', color: 'var(--earth-deep)' }}>
-            <strong>Result:</strong> Increased engagement by 83.3% and sustained sales growth through data-driven marketplace optimization.
+            <strong>The Solution:</strong> In league with Stoic Team Ghana, analyzed marketplace friction to implement AI-driven lead management. Achieved an 83.3% boost in engagement and doubled daily sales revenue.
           </p>
         </div>
 
-        {/* Strategy & Systems */}
+        {/* Strategy & Systems - Focus: Systems Architecture */}
         <div className="project-card">
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
             <Code size={32} style={{ color: 'var(--terracotta)' }} />
-            <h3 className="card-title" style={{ margin: 0 }}>Strategy & Systems</h3>
+            <h3 className="card-title" style={{ margin: 0 }}>Operational Frameworks</h3>
           </div>
           <p style={{ color: 'var(--coffee-medium)', marginBottom: '2rem', fontSize: '0.95rem' }}>
-            Custom growth system architecture
+            Scalable Enterprise Architecture
           </p>
           <div style={{ 
             background: 'linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-medium) 100%)',
@@ -881,11 +890,11 @@ const ProjectsPage = () => (
             marginBottom: '1.5rem',
             textAlign: 'center'
           }}>
-            <p style={{ fontSize: '2.2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Custom</p>
-            <p>Tailored systems for your unique challenges</p>
+            <p style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '0.5rem' }}>Process Architect</p>
+            <p style={{ fontSize: '0.9rem' }}>Mapping technical logic to business objectives.</p>
           </div>
           <p style={{ fontSize: '0.95rem', color: 'var(--earth-deep)' }}>
-            <strong>Expertise:</strong> Business strategy, operational systems, data architecture, and growth frameworks tailored to your business model.
+            <strong>Core Competency:</strong> Requirements gathering, gap analysis, and the development of custom automation tools (Google Apps Script) to eliminate administrative bottlenecks.
           </p>
         </div>
       </div>
@@ -906,23 +915,23 @@ const ExperiencePage = () => (
 
       <div style={{ marginTop: '3rem' }}>
         {[
-         {
-    role: 'Business Development Manager',
+    {
+    role: 'Business Systems Analyst (Consultant)',
     company: 'Automobiles Ghana Ltd / Stoic Team Ghana',
     period: '2024 - Present',
-    description: 'Directing operational refinement and AI tool implementation in partnership with Stoic Team Ghana. Hiring and training remote sales staff and executing targeted marketing campaigns. Increased daily sales from GHS 1,200 to GHS 2,700 and improved customer engagement by 83.3%.'
+    description: 'Translating business needs into technical requirements for AI implementation. Designing remote sales frameworks and digital workflows that increased daily sales from GHS 1,200 to GHS 2,700 by aligning technology with market demand.'
   },
   {
-    role: 'Operations Manager',
-    company: "Baa & Bean Café's / JonMon-Sacs Ghana Ltd",
+    role: 'Business Operations Manager',
+    company: "Baa & Bean Café's",
     period: '2024 - 2026',
-    description: 'Updated sales strategies and SOPs resulting in a 120% revenue increase (GHS 12,000 to GHS 30,000+ daily) within three months. Negotiated high-profile contracts with 60% profit shares and managed statutory regulatory compliance for international project off-takers.'
+    description: 'Performed gap analysis on existing sales strategies and redesigned SOPs to capture a 120% revenue increase. Negotiated complex contracts and managed international stakeholder compliance to ensure sustainable project scaling.'
   },
   {
     role: 'Administration Manager & Executive Assistant',
-    company: 'Zein Real Estate / Trident Real Estate Group',
+    company: 'Zein Real Estate / Trident Group',
     period: '2023 - 2025',
-    description: 'Increased office productivity by 30% through automations by refining Apps Script for Google Workspace. Managed multi-channel marketing campaigns via Meta Business Suite and prepared comprehensive data reports on sales, lead turnover, and client engagement.'
+    description: 'Analyzed internal administrative bottlenecks and implemented automated solutions via Apps Script, resulting in a 30% gain in office efficiency. Managed cross-functional marketing efforts and translated lead data into executive-level strategy reports.'
   }
         ].map((item, idx) => (
           <div key={idx} className="timeline-item active">
@@ -953,31 +962,31 @@ const SkillsPage = () => (
   <div style={{ background: 'var(--warm-white)', padding: '4rem 2rem' }}>
     <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
       <div className="section-header">
-        <h2 className="section-title">Skills & Tools</h2>
-        <p className="section-subtitle">Technical expertise meets strategic thinking</p>
+        <h2 className="section-title">Skills & Expertise</h2>
+        <p className="section-subtitle">Bridging technical requirements with operational excellence.</p>
       </div>
 
      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
         {[
           { 
-            title: 'Business Strategy', 
-            skills: ['Revenue Optimization', 'Go-to-Market Strategy', 'Scalable Growth Systems', 'Stakeholder Management', 'KANBAN'] 
+            title: 'Business Analysis', 
+            skills: ['Requirements Gathering', 'Process Modeling (BPMN)', 'Gap Analysis', 'Revenue Optimization', 'KANBAN Architecture'] 
           },
           { 
-            title: 'Data & Analytics', 
-            skills: ['Power BI Reporting', 'SQL (Intermediate)', 'Dashboard Automation', 'Data Trend Trackers','OSEMN','Spreadsheet Modeling'] 
+            title: 'Business Intelligence', 
+            skills: ['Power BI Reporting', 'SQL (Intermediate)', 'Predictive Trend Tracking', 'OSEMN Framework', 'Spreadsheet Modeling'] 
           },
           { 
-            title: 'Operations & AI', 
-            skills: ['Process Optimization', 'AI Tool Implementation', 'Systems Design', 'Cross-functional Leadership',] 
+            title: 'Systems & AI Strategy', 
+            skills: ['SOP Design', 'AI Workflow Automation', 'Change Management', 'Cross-functional Leadership', 'Systems Thinking'] 
           },
           { 
-            title: 'Tools & Tech', 
-            skills: ['Google Apps Script','Microsoft Power BI', 'Meta Business Suite', 'Google Workspace', 'Enterprise Software', 'Zoho', 'Quickbooks' ] 
+            title: 'Technical Stack', 
+            skills: ['Google Apps Script', 'Microsoft Power BI', 'Meta Business Suite', 'Google Workspace', 'Quickbooks Online', 'ERP Systems'] 
           }
         ].map((category, idx) => (
           <div key={idx} style={{ background: 'white', padding: '2rem', border: '2px solid var(--tan-sand)', borderRadius: '0' }}>
-            <h3 style={{ fontSize: '1.3rem', color: 'var(--coffee-dark)', marginBottom: '1.5rem', fontWeight: 'bold' }}>
+            <h3 style={{ fontSize: '1.2rem', color: 'var(--coffee-dark)', marginBottom: '1.5rem', fontWeight: 'bold', letterSpacing: '0.05rem', textTransform: 'uppercase' }}>
               {category.title}
             </h3>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
@@ -987,7 +996,8 @@ const SkillsPage = () => (
                   padding: '0.4rem 0.8rem', 
                   fontSize: '0.85rem',
                   color: 'var(--coffee-dark)',
-                  border: '1px solid rgba(0,0,0,0.1)' 
+                  border: '1px solid rgba(0,0,0,0.1)',
+                  fontWeight: '500'
                 }}>
                   {skill}
                 </span>
@@ -996,6 +1006,9 @@ const SkillsPage = () => (
           </div>
         ))}
       </div>
+    </div>
+  </div>
+);
 
       <div className="kente-stripe"></div>
 
