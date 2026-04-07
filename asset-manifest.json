@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/static/css/main.33343911.css",
-    "main.js": "/static/js/main.be8504ae.js",
+    "main.js": "/static/js/main.2ce6fb8b.js",
     "static/js/453.1c8b7a04.chunk.js": "/static/js/453.1c8b7a04.chunk.js",
     "static/media/kente-pattern-2.jpg": "/static/media/kente-pattern-2.a7ce67131c4b69851a5a.jpg",
     "static/media/kente-pattern-3.jpg": "/static/media/kente-pattern-3.bba68416898b35cc2939.jpg",
     "static/media/kente-pattern-1.jpg": "/static/media/kente-pattern-1.f862de060b4d6e5b05de.jpg",
     "static/media/adinkra-symbols.jpg": "/static/media/adinkra-symbols.c4aa3cb5f63bd4f91f8e.jpg",
-    "static/media/adwoa-portrait.jpg": "/static/media/adwoa-portrait.de744d767cccd8852162.jpg",
+    "static/media/adwoa-potrait.jpeg": "/static/media/adwoa-potrait.60cd24dbf17b2136f395.jpeg",
     "static/media/dwenimen.jpg": "/static/media/dwenimen.c2eebc8d2e85a41fae13.jpg",
     "index.html": "/index.html",
     "main.33343911.css.map": "/static/css/main.33343911.css.map",
-    "main.be8504ae.js.map": "/static/js/main.be8504ae.js.map",
+    "main.2ce6fb8b.js.map": "/static/js/main.2ce6fb8b.js.map",
     "453.1c8b7a04.chunk.js.map": "/static/js/453.1c8b7a04.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.33343911.css",
-    "static/js/main.be8504ae.js"
+    "static/js/main.2ce6fb8b.js"
   ]
 }
