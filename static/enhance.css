@@ -98,7 +98,7 @@ body #root > div:not(:has(.hero-container)) .site-footer { margin-top: auto; }
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.55rem;
+    gap: 0.3rem;
   }
   body #root > div:has(.hero-container) > .site-footer .footer-socials { margin: 0; }
   body #root > div:has(.hero-container) > .site-footer .footer-socials a {
@@ -110,16 +110,14 @@ body #root > div:not(:has(.hero-container)) .site-footer { margin-top: auto; }
     color: rgba(245, 240, 232, 0.78) !important;          /* ivory over dark cloth */
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   }
-  body #root > div:has(.hero-container) > .site-footer .footer-fineprint-link {
-    margin: 0;
-    color: var(--gold-satin, #ecc85f) !important;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-  }
+  /* FINE PRINT removed from the home hero (per request) — frees the bottom
+     space so the socials + copyright drop closer to the kente strip */
+  body #root > div:has(.hero-container) > .site-footer .footer-fineprint-link { display: none; }
 
   /* STORY → reduced-size button, lifted onto the hero bottom-left */
   body #root > div:has(.hero-container) > .next-page-cta {
     position: absolute;
-    left: 2.5rem; bottom: 34px; right: auto;
+    left: 2.5rem; bottom: 30px; right: auto;
     width: auto; margin: 0; padding: 0;
     background: none; border: none;
     z-index: 6;
@@ -140,14 +138,12 @@ body #root > div:not(:has(.hero-container)) .site-footer { margin-top: auto; }
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
   }
 
-  /* OHEMAA → drop the launcher down (home/hero page only) to align with the
-     footer band, sitting just above the kente strip. Move its satellites
-     (tooltip / greeting / panel) down by the same amount so the widget stays
-     internally consistent — the speech bubble keeps pointing at the launcher. */
-  body:has(.hero-container) .ohemaa-launcher { bottom: 34px; }
-  body:has(.hero-container) .ohemaa-tooltip  { bottom: 106px; }
-  body:has(.hero-container) .ohemaa-greet    { bottom: 108px; }
-  body:has(.hero-container) .ohemaa-panel    { bottom: 106px; }
+  /* OHEMAA → on the home/hero page lift the launcher up out of the bottom
+     corner so it reads as a clear floating assistant — slightly larger, with
+     edge breathing room. Its tooltip/greeting/panel keep their default offsets,
+     which sit just above this raised launcher. */
+  body:has(.hero-container) .ohemaa-launcher { bottom: 72px; right: 30px; width: 74px; height: 74px; }
+  body:has(.hero-container) .ohemaa-launcher .ohemaa-ava { width: 74px; height: 74px; }
 }
 
 /* ---- ACCESSIBILITY · reduced-motion guard (the live site has none) ------- */
