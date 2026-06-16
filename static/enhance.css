@@ -56,31 +56,98 @@
   body .hero-container { padding-top: 1.1rem; padding-bottom: 1.1rem; }
 }
 
-/* ---- PAGE BOTTOM · one-screen home, tight kente strips, no scroll -------- */
+/* ---- PAGE BOTTOM · full-bleed hero, footer lives INSIDE it ---------------- */
 /* the app is a full-viewport flex column */
 body #root > div { display: flex; flex-direction: column; min-height: 100vh; }
 
-/* HOME (has the hero): lock the page to exactly one screen. Every direct child
-   keeps its natural height except the hero, which absorbs all the slack — so its
-   kente strip sits just above a compact CTA + footer with no scroll and no gap. */
-body #root > div:has(.hero-container) { height: 100vh; }
+/* HOME (has the hero): lock to one screen and make it a positioning context, so
+   the Story button, social/footer info and Ohemaa can be lifted onto the hero
+   itself. With the CTA + footer taken out of flow, the hero grows full-bleed to
+   the bottom edge and its own animated kente strip becomes the single border
+   that sits underneath everything. */
+body #root > div:has(.hero-container) { height: 100vh; position: relative; overflow: hidden; }
 body #root > div:has(.hero-container) > * { flex: 0 0 auto; }
 body #root > div:has(.hero-container) > .hero-container { flex: 1 1 auto; min-height: 0; overflow: hidden; }
+
+/* DELETE the second kente strip (the one rendered inside the footer) */
+body .site-footer .kente-border { display: none; }
 
 /* inner pages (no hero): keep normal flow, anchor footer when content is short */
 body #root > div:not(:has(.hero-container)) .site-footer { margin-top: auto; }
 
 @media (min-width: 769px) {
-  /* compact "next page" band — the two kente strips sit close, Story isn't marooned */
-  body .next-page-cta { padding-top: 0.8rem; padding-bottom: 0.8rem; }
-  body .next-page-cta::before { display: none; }   /* remove the dangling gold thread */
-  body .next-page-inner { gap: 0.45rem; }
-  body .next-page-title { font-size: 1.3rem; }
-  body .next-page-btn { padding: 0.8rem 2rem; }
-  /* compact footer */
-  body .site-footer { padding-top: 0.85rem; padding-bottom: 0.85rem; }
-  body .footer-socials { margin-bottom: 0.6rem; }
-  body .footer-fineprint-link { margin-top: 0.6rem; }
+  /* soft dark scrim rising off the kente strip so the lifted footer / Story /
+     Ohemaa read cleanly over the cloth — above the hero art, below the strip */
+  body #root > div:has(.hero-container) .hero-kente::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 100%;
+    height: 215px;
+    background: linear-gradient(180deg, transparent, rgba(17, 17, 17, 0.55) 55%, rgba(17, 17, 17, 0.84));
+    pointer-events: none;
+  }
+
+  /* FOOTER → lifted onto the hero, centred just above the kente strip */
+  body #root > div:has(.hero-container) > .site-footer {
+    position: absolute;
+    left: 0; right: 0; bottom: 30px;
+    z-index: 6;
+    margin: 0;
+    padding: 0 2rem;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  body #root > div:has(.hero-container) > .site-footer .footer-socials { margin: 0; }
+  body #root > div:has(.hero-container) > .site-footer .footer-socials a {
+    color: var(--gold, #e5b947);
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.55));
+  }
+  body #root > div:has(.hero-container) > .site-footer p {
+    margin: 0;
+    color: rgba(245, 240, 232, 0.78) !important;          /* ivory over dark cloth */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  }
+  body #root > div:has(.hero-container) > .site-footer .footer-fineprint-link {
+    margin: 0;
+    color: var(--gold-satin, #ecc85f) !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  }
+
+  /* STORY → reduced-size button, lifted onto the hero bottom-left */
+  body #root > div:has(.hero-container) > .next-page-cta {
+    position: absolute;
+    left: 2.5rem; bottom: 34px; right: auto;
+    width: auto; margin: 0; padding: 0;
+    background: none; border: none;
+    z-index: 6;
+    text-align: left;
+  }
+  body #root > div:has(.hero-container) > .next-page-cta::before { display: none; }
+  body #root > div:has(.hero-container) > .next-page-cta .next-page-inner {
+    margin: 0; max-width: none; gap: 0;
+  }
+  body #root > div:has(.hero-container) > .next-page-cta .next-page-btn {
+    padding: 0.45rem 1.4rem;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    background: rgba(17, 17, 17, 0.4);
+    border-color: var(--gold, #e5b947);
+    color: var(--gold-light, #f0d478);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  }
+
+  /* OHEMAA → drop the launcher down (home/hero page only) to align with the
+     footer band, sitting just above the kente strip. Move its satellites
+     (tooltip / greeting / panel) down by the same amount so the widget stays
+     internally consistent — the speech bubble keeps pointing at the launcher. */
+  body:has(.hero-container) .ohemaa-launcher { bottom: 34px; }
+  body:has(.hero-container) .ohemaa-tooltip  { bottom: 106px; }
+  body:has(.hero-container) .ohemaa-greet    { bottom: 108px; }
+  body:has(.hero-container) .ohemaa-panel    { bottom: 106px; }
 }
 
 /* ---- ACCESSIBILITY · reduced-motion guard (the live site has none) ------- */
