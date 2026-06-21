@@ -17,32 +17,60 @@
   --ease-snap: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-drift: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-::selection { background: var(--gold, #e5b947); color: var(--royal-black, #111); }
+::selection { background: var(--gold, #ffb700); color: var(--royal-black, #111); }
 
 /* ---- HERO · fit the entire hero on one desktop screen, less zoomed ------- */
 @media (min-width: 769px) {
   /* slim the sticky navbar slightly so the hero has room */
-  body .navbar-custom { padding-top: 0.7rem; padding-bottom: 0.7rem; }
+  body .navbar-custom { padding-top: 0.01rem; padding-bottom: 0.01rem; }
 
   /* size the hero to the area under the navbar instead of a full 100vh,
      so navbar + hero together fit within the viewport (no clipped bottom) */
   body .hero-container {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
   body .hero-content { gap: 2.5rem; }
 
   /* portrait frame was a fixed 340×500 — shrink it, keep its aspect ratio
      (the frame's own borderGlow / fadeSlideUp animations stay intact) */
   body .hero-portrait-frame {
-    height: 420px;
-    max-height: calc(100vh - 250px);
+    /* slimmer, taller, and shifted up-left slightly */
+    height: 520px;
+    width: 260px;
+    max-height: calc(100vh - 160px);
+    margin-top: 1.1rem;
+    margin-left: auto;
+    margin-right: 1.5rem;
+    transform: translate(-200px, -35px) !important;
+    animation: borderGlow 5s ease-in-out infinite !important;
+    flex-shrink: 0;
+  }
+
+  /* ensure the image fills the taller, slimmer frame appropriately */
+  body .hero-portrait {
+    object-fit: cover;
+    object-position: 50% 10%;
   }
 
   /* pull the type back from the zoomed clamps */
-  body .hero-title { font-size: clamp(1.7rem, 2.6vw, 2.5rem); line-height: 1.12; margin-bottom: 0.5rem; }
-  body .hero-subtitle { font-size: clamp(0.82rem, 1.3vw, 0.95rem); margin: 0.55rem 0; }
-  body .hero-description { font-size: 0.82rem; line-height: 1.7; margin: 1rem 0 1.5rem; max-width: 520px; }
+  body .hero-title { font-size: clamp(1.9rem, 3vw, 2.8rem); line-height: 1.12; margin-bottom: 0.5rem; }
+  body .hero-subtitle { font-size: clamp(0.9rem, 1.6vw, 1.05rem); margin: 0.55rem 0; }
+  body .hero-description { font-size: 0.9rem; line-height: 1.75; margin: 1rem 0 1.5rem; max-width: 580px; }
+
+  /* shift the hero text block toward the right and slightly upward */
+  body .hero-content > div:first-child {
+    margin-left: 2rem;
+    margin-top: -1.4rem;
+    max-width: 620px;
+  }
+
+  /* reduce hero button sizes */
+  body .hero-content .btn-primary,
+  body .hero-content .btn-secondary {
+    padding: 0.2rem 1rem;
+    font-size: 0.3rem;
+  }
 
   body .miracle-worker { top: 1.25rem; left: 1.5rem; }
 }
@@ -50,7 +78,7 @@
 /* shorter desktop screens (laptops): tighten a little more so it still fits */
 @media (min-width: 769px) and (max-height: 760px) {
   body .hero-portrait-frame { height: 340px; }
-  body .hero-title { font-size: clamp(1.5rem, 2.2vw, 2.1rem); }
+  body .hero-title { font-size: clamp(1.0rem, 2.0vw, 2.0rem); }
   body .hero-subtitle { margin: 0.4rem 0; }
   body .hero-description { margin: 0.7rem 0 1.1rem; }
   body .hero-container { padding-top: 1.1rem; padding-bottom: 1.1rem; }
@@ -82,7 +110,7 @@ body #root > div:not(:has(.hero-container)) .site-footer { margin-top: auto; }
     content: "";
     position: absolute;
     left: 0; right: 0; bottom: 100%;
-    height: 215px;
+    height: 20px;
     background: linear-gradient(180deg, transparent, rgba(17, 17, 17, 0.55) 55%, rgba(17, 17, 17, 0.84));
     pointer-events: none;
   }
@@ -100,14 +128,23 @@ body #root > div:not(:has(.hero-container)) .site-footer { margin-top: auto; }
     align-items: center;
     gap: 0.3rem;
   }
-  body #root > div:has(.hero-container) > .site-footer .footer-socials { margin: 0; }
+  body #root > div:has(.hero-container) > .site-footer .footer-socials {
+    margin: 0;
+    gap: 0.45rem;
+  }
   body #root > div:has(.hero-container) > .site-footer .footer-socials a {
     color: var(--gold, #e5b947);
     filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.55));
   }
+  body #root > div:has(.hero-container) > .site-footer .footer-socials a svg {
+    width: 18px;
+    height: 18px;
+  }
   body #root > div:has(.hero-container) > .site-footer p {
     margin: 0;
-    color: rgba(245, 240, 232, 0.78) !important;          /* ivory over dark cloth */
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: rgba(245, 240, 232, 0.78) !important;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   }
   /* FINE PRINT removed from the home hero (per request) — frees the bottom
@@ -128,21 +165,27 @@ body #root > div:not(:has(.hero-container)) .site-footer { margin-top: auto; }
     margin: 0; max-width: none; gap: 0;
   }
   body #root > div:has(.hero-container) > .next-page-cta .next-page-btn {
-    padding: 0.45rem 1.4rem;
-    gap: 0.6rem;
-    font-size: 0.95rem;
+    padding: 0.05rem 0.4rem;
+    gap: 0.45rem;
+    font-size: 0.75rem;
+    line-height: 1.1;
     background: rgba(17, 17, 17, 0.4);
     border-color: var(--gold, #e5b947);
     color: var(--gold-light, #f0d478);
     backdrop-filter: blur(2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
   }
+  body #root > div:has(.hero-container) > .next-page-cta .next-page-btn .next-page-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
 
   /* OHEMAA → on the home/hero page lift the launcher up out of the bottom
      corner so it reads as a clear floating assistant — slightly larger, with
      edge breathing room. Its tooltip/greeting/panel keep their default offsets,
      which sit just above this raised launcher. */
-  body:has(.hero-container) .ohemaa-launcher { bottom: 72px; right: 30px; width: 74px; height: 74px; }
+  body:has(.hero-container) .ohemaa-launcher { bottom: 45px; right: 45px; width: 74px; height: 74px; }
   body:has(.hero-container) .ohemaa-launcher .ohemaa-ava { width: 74px; height: 74px; }
 }
 
@@ -159,3 +202,138 @@ body #root > div:not(:has(.hero-container)) .site-footer { margin-top: auto; }
     scroll-behavior: auto !important;
   }
 }
+
+/* ---- LAYER 2 · light-theme overrides for dark sections ------------------ */
+@media (min-width: 769px) {
+  /* Make the Projects/Skills sections use the light parchment background */
+  body .kente-dark-bg, body .kente-dark-bg .section-header, body .kente-dark-bg .section-subtitle {
+    background: linear-gradient(180deg,#f5f0e8,#f0ebe0) !important;
+    color: var(--text-dark) !important;
+  }
+
+  body .kente-dark-bg .project-card,
+  body .kente-dark-bg .experience-card,
+  body .kente-dark-bg .skill-card,
+  body .kente-dark-bg .project-showcase,
+  body .kente-dark-bg .project-showcase-desc {
+    background: #fff9 !important;
+    color: var(--text-dark) !important;
+    border-color: rgba(201,168,76,0.16) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04) !important;
+  }
+
+  /* Also neutralise kente-section-bg variants to the lighter cloth */
+  body .kente-section-bg { background: linear-gradient(180deg,#f5f0e8,#f0ebe0) !important; color: var(--text-dark) !important; }
+  body .kente-section-bg .project-showcase-title, body .kente-section-bg .section-title { color: var(--royal-black) !important; }
+
+  /* Reduce prominence of dark-pattern overlays */
+  body .kente-dark-bg .kente-weave-layer, body .kente-section-bg .kente-weave-layer { opacity: 0.08 !important; }
+}
+
+/* ---- COLLAPSIBLES · simple, accessible collapse styling ---------------- */
+.enhance-collapsible-header { display:flex; justify-content:space-between; align-items:center; padding:0.6rem 0.6rem; border-bottom:1px dashed rgba(0,0,0,0.06); background: transparent; }
+.enhance-collapsible-toggle { background: none; border: none; font: inherit; display:flex; gap:0.5rem; align-items:center; width:100%; text-align:left; padding:0.2rem; cursor:pointer; }
+.enhance-collapsible-label { font-weight:600; color:var(--royal-black); }
+.enhance-collapsible-icon { margin-left:auto; color:var(--text-dark-secondary); }
+.enhance-collapsible-body { transition: max-height 0.36s var(--ease-drift, cubic-bezier(.25,.46,.45,.94)), opacity 0.28s; max-height: 2000px; overflow: hidden; opacity: 1; }
+.enhance-collapsed .enhance-collapsible-body { max-height: 0 !important; opacity: 0; }
+
+/* Visual nav arrows (floating) */
+.enhance-nav-arrows { position: fixed; right: 18px; bottom: 110px; z-index: 1000; display:flex; flex-direction:column; gap:8px; }
+.enhance-nav-arrows button { width:40px; height:40px; border-radius:6px; border:1px solid rgba(0,0,0,0.06); background: rgba(245,240,232,0.95); box-shadow:0 6px 18px rgba(0,0,0,0.08); cursor:pointer; font-size:16px; }
+
+/* Footer/social shrink */
+.site-footer .footer-socials a svg { width: 14px !important; height: 14px !important; }
+.site-footer p { font-size: 0.72rem !important; }
+
+/* Next-page button compact */
+.next-page-btn { padding: 0.6rem 1rem !important; font-size: 0.82rem !important; }
+
+/* Make collapsible headers stand out on small screens */
+@media (max-width: 768px) {
+  .enhance-collapsible-label { font-size: 0.95rem; }
+}
+
+/* ============================================================================
+   LAYER 3 · THEME — make the dark Projects/Skills bands light on EVERY screen
+   ----------------------------------------------------------------------------
+   LAYER 2 above is gated to min-width:769px, so on phones the .kente-dark-bg
+   sections (Skills, Projects) stayed dark — the "skills page is dark" issue.
+   These rules are un-gated (apply at all widths) and use !important so they
+   also beat the inline dark backgrounds set in the JSX skill cards.
+   ============================================================================ */
+body .kente-dark-bg,
+body .kente-dark-bg .section-header,
+body .kente-dark-bg .section-subtitle {
+  background: linear-gradient(180deg, #f5f0e8, #f0ebe0) !important;
+  color: var(--text-dark) !important;
+}
+
+/* the section title carries a gold→ivory shimmer (built for dark bg); the ivory
+   stops vanish on the light band — pin it to a readable gold instead */
+body .kente-dark-bg .section-title {
+  background: none !important;
+  -webkit-text-fill-color: currentColor !important;
+  color: var(--gold-dark, #b8963d) !important;
+}
+
+body .kente-dark-bg .skill-card,
+body .kente-dark-bg .project-card,
+body .kente-dark-bg .experience-card,
+body .kente-dark-bg .project-showcase {
+  background: rgba(255, 255, 255, 0.62) !important;
+  color: var(--text-dark) !important;
+  border-color: rgba(201, 168, 76, 0.18) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* skill-card text was tuned for a dark card — darken it for the light card */
+body .kente-dark-bg .skill-card h3,
+body .kente-dark-bg .skill-card h4,
+body .kente-dark-bg .skill-bar-head { color: var(--gold-dark, #b8963d) !important; }
+body .kente-dark-bg .skill-card p,
+body .kente-dark-bg .skill-card > div { color: var(--text-dark-secondary, rgba(17,17,17,0.65)) !important; }
+
+/* keep the woven kente texture subtle on the lightened bands */
+body .kente-dark-bg .kente-weave-layer { opacity: 0.08 !important; }
+
+/* ============================================================================
+   LAYER 4 · COLLAPSIBLE DECKS (mobile) — wired by decks.js
+   ----------------------------------------------------------------------------
+   Non-destructive: decks.js only ADDS classes + a delegated click handler (it
+   never reparents React's DOM). On phones, long cards collapse to their header
+   to cut scrolling; tap the header to expand. Desktop is left untouched.
+   ============================================================================ */
+@media (max-width: 768px) {
+  .enh-head {
+    position: relative;
+    cursor: pointer;
+    padding-right: 1.7rem !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .enh-head::after {
+    content: '\2304'; /* ⌄ */
+    position: absolute;
+    right: 0.35rem;
+    top: 0.05rem;
+    font-size: 1.15rem;
+    line-height: 1;
+    color: var(--gold, #e5b947);
+    transition: transform 0.3s var(--ease-drift, ease);
+  }
+  .enh-deck:not(.enh-collapsed) > .enh-head::after,
+  .enh-deck:not(.enh-collapsed) .enh-head::after { transform: rotate(180deg); }
+
+  /* group/skill + story: keep the header, fold the rest away */
+  .enh-deck.enh-collapsed.skill-card > *:not(.enh-head),
+  .enh-deck.enh-collapsed.story-chapter > *:not(.enh-head) { display: none !important; }
+
+  /* experience: keep period/role/company, fold the detail away */
+  .enh-deck.enh-collapsed.experience-card-v2 .experience-summary,
+  .enh-deck.enh-collapsed.experience-card-v2 .experience-metrics,
+  .enh-deck.enh-collapsed.experience-card-v2 .experience-highlights { display: none !important; }
+
+  /* a touch more tap room on deck headers */
+  .enh-deck .enh-head { padding-top: 0.15rem; padding-bottom: 0.15rem; }
+}
+
