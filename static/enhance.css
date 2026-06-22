@@ -42,7 +42,14 @@ body {
     var(--royal-black) !important;
   color: var(--ivory) !important;
 }
-body #root > div { min-height: 100svh; display: flex; flex-direction: column; }
+body #root > div {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(rgba(2, 7, 5, 0.91), rgba(5, 19, 13, 0.91)),
+    url('/images/blkk-diamond-pattern.webp') center top / 620px auto repeat;
+}
 body h1, body h2, body h3, body h4, body h5, body h6 { color: var(--ivory); }
 body p, body li { color: var(--ivory-muted); }
 a { color: inherit; }
@@ -222,6 +229,8 @@ body .kente-border {
   border: 0 !important;
 }
 body .hero-kente > *, body .kente-border > * { display: none !important; }
+/* Keep the hero strip as the single kente accent; never repeat it in footers. */
+body .site-footer .kente-border { display: none !important; }
 
 /* --------------------------------------------------------------------------
    PAGE SURFACES + TYPOGRAPHY
@@ -232,7 +241,7 @@ body .kente-section-bg,
 body .adinkra-texture-bg {
   position: relative;
   background:
-    linear-gradient(180deg, rgba(2, 7, 5, 0.96), rgba(5, 19, 13, 0.95)),
+    linear-gradient(180deg, rgba(2, 7, 5, 0.9), rgba(5, 19, 13, 0.9)),
     url('/images/blkk-diamond-pattern.webp') center top / 620px auto repeat !important;
   color: var(--ivory) !important;
 }
@@ -386,7 +395,9 @@ body .site-footer {
 }
 body .site-footer p { color: var(--ivory-faint) !important; font-size: 0.72rem !important; }
 body .site-footer .footer-socials a { color: var(--emerald-bright) !important; }
-body .footer-fineprint-link { color: var(--heritage-gold) !important; }
+body .site-footer .footer-socials a svg { width: 14px !important; height: 14px !important; }
+body .footer-fineprint-link { display: none !important; }
+body .next-page-btn { padding: 0.6rem 1rem !important; font-size: 0.82rem !important; }
 
 /* --------------------------------------------------------------------------
    COLLAPSIBLE DECKS — wired by decks.js
@@ -394,29 +405,24 @@ body .footer-fineprint-link { color: var(--heritage-gold) !important; }
 .enh-head {
   position: relative;
   cursor: pointer;
-  padding-right: 2.35rem !important;
+  padding-right: 1.7rem !important;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
   -webkit-tap-highlight-color: transparent;
 }
 .enh-head::after {
-  content: '+';
+  content: '\2304';
   position: absolute;
-  top: 50%;
-  right: 0.55rem;
-  display: grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
-  border: 1px solid var(--line-strong);
-  border-radius: 50%;
+  right: 0.35rem;
+  top: 0.05rem;
   color: var(--emerald-bright);
-  font: 400 1.15rem/1 sans-serif;
-  transform: translateY(-50%);
-  transition: transform 0.28s var(--ease-drift), background 0.28s var(--ease-silk);
+  font-size: 1.15rem;
+  line-height: 1;
+  transition: transform 0.3s var(--ease-drift);
 }
 .enh-deck:not(.enh-collapsed) > .enh-head::after,
 .enh-deck:not(.enh-collapsed) .enh-head::after {
-  content: '−';
-  background: rgba(24, 201, 139, 0.1);
+  transform: rotate(180deg);
 }
 .enh-deck.enh-collapsed.skill-card > *:not(.enh-head),
 .enh-deck.enh-collapsed.story-chapter > *:not(.enh-head),
@@ -437,6 +443,16 @@ body .ohemaa-panel { border-color: rgba(55, 230, 168, 0.38) !important; backgrou
   body .hero-content { grid-template-columns: minmax(0, 1fr) minmax(250px, 0.72fr); gap: 2.5rem !important; }
   body .hero-title { font-size: clamp(3rem, 7vw, 4.7rem) !important; }
   body .hero-portrait-frame { width: min(34vw, 320px) !important; min-height: 430px; }
+}
+
+@media (min-width: 769px) {
+  /* Preserve the compact desktop hero controls from the earlier refinement. */
+  body .hero-content .btn-primary,
+  body .hero-content .btn-secondary {
+    min-height: 32px;
+    padding: 0.2rem 1rem !important;
+    font-size: 0.6rem !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -501,7 +517,7 @@ body .ohemaa-panel { border-color: rgba(55, 230, 168, 0.38) !important; backgrou
   body .kente-section-bg,
   body .adinkra-texture-bg {
     background:
-      linear-gradient(180deg, rgba(2, 7, 5, 0.965), rgba(5, 19, 13, 0.96)),
+      linear-gradient(180deg, rgba(2, 7, 5, 0.91), rgba(5, 19, 13, 0.91)),
       url('/images/blkk-diamond-pattern.webp') center top / 440px auto repeat !important;
   }
   body .section-title { font-size: clamp(2.7rem, 13vw, 4rem) !important; }
