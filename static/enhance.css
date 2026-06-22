@@ -93,9 +93,13 @@ body #root > div { display: flex; flex-direction: column; min-height: 100vh; }
    itself. With the CTA + footer taken out of flow, the hero grows full-bleed to
    the bottom edge and its own animated kente strip becomes the single border
    that sits underneath everything. */
-body #root > div:has(.hero-container) { height: 100vh; position: relative; overflow: hidden; }
-body #root > div:has(.hero-container) > * { flex: 0 0 auto; }
-body #root > div:has(.hero-container) > .hero-container { flex: 1 1 auto; min-height: 0; overflow: hidden; }
+/* Desktop only: lock the hero to one screen so the footer/Story/Ohemaa can be
+   lifted onto it. On mobile this clipped the hero — let it flow & scroll. */
+@media (min-width: 769px) {
+  body #root > div:has(.hero-container) { height: 100vh; position: relative; overflow: hidden; }
+  body #root > div:has(.hero-container) > * { flex: 0 0 auto; }
+  body #root > div:has(.hero-container) > .hero-container { flex: 1 1 auto; min-height: 0; overflow: hidden; }
+}
 
 /* DELETE the second kente strip (the one rendered inside the footer) */
 body .site-footer .kente-border { display: none; }
@@ -326,9 +330,10 @@ body .kente-dark-bg .kente-weave-layer { opacity: 0.08 !important; }
 .enh-deck:not(.enh-collapsed) > .enh-head::after,
 .enh-deck:not(.enh-collapsed) .enh-head::after { transform: rotate(180deg); }
 
-/* group/skill + story: keep the header, fold the rest away */
+/* group/skill + story + projects: keep the header, fold the rest away */
 .enh-deck.enh-collapsed.skill-card > *:not(.enh-head),
-.enh-deck.enh-collapsed.story-chapter > *:not(.enh-head) { display: none !important; }
+.enh-deck.enh-collapsed.story-chapter > *:not(.enh-head),
+.enh-deck.enh-collapsed.case-study > *:not(.enh-head) { display: none !important; }
 
 /* experience: keep period/role/company, fold the detail away */
 .enh-deck.enh-collapsed.experience-card-v2 .experience-summary,
@@ -405,16 +410,30 @@ html[data-theme="dark"] body .nav-tab.active,
 html[data-theme="dark"] body .menu-toggle { color: var(--text-dark) !important; }
 html[data-theme="dark"] body .nav-menu { background: rgba(18, 16, 14, 0.98) !important; }
 
-/* page bands → dark (beats the LAYER 2-3 light overrides) */
-html[data-theme="dark"] body .kente-dark-bg,
-html[data-theme="dark"] body .kente-dark-bg .section-header,
-html[data-theme="dark"] body .kente-dark-bg .section-subtitle,
-html[data-theme="dark"] body .kente-section-bg,
-html[data-theme="dark"] body .adinkra-texture-bg {
-  background: linear-gradient(180deg, #161310, #1b1714) !important;
+/* page bands → dark, but KEEP the woven kente / adinkra artwork (a dark wash
+   over the real texture — not a flat black blanket). Beats the LAYER 2-3 light
+   overrides via specificity. Image URLs are the deployed (hashed) assets. */
+html[data-theme="dark"] body .kente-dark-bg {
+  background:
+    linear-gradient(180deg, rgba(17, 17, 17, 0.92) 0%, rgba(26, 26, 26, 0.88) 100%),
+    url(/static/media/kente-pattern-3.bba68416898b35cc2939.jpg) center/cover no-repeat !important;
   color: var(--text-dark) !important;
 }
-html[data-theme="dark"] body .kente-weave-layer { opacity: 0.12 !important; }
+html[data-theme="dark"] body .kente-section-bg {
+  background:
+    linear-gradient(180deg, rgba(17, 17, 17, 0.9) 0%, rgba(26, 26, 26, 0.88) 100%),
+    url(/static/media/kente-pattern-2.a7ce67131c4b69851a5a.jpg) center/cover no-repeat !important;
+  color: var(--text-dark) !important;
+}
+html[data-theme="dark"] body .adinkra-texture-bg {
+  background:
+    linear-gradient(180deg, rgba(18, 16, 14, 0.93) 0%, rgba(20, 18, 16, 0.92) 100%),
+    url(/static/media/adinkra-symbols.c4aa3cb5f63bd4f91f8e.jpg) center/400px repeat !important;
+  color: var(--text-dark) !important;
+}
+html[data-theme="dark"] body .kente-dark-bg .section-header,
+html[data-theme="dark"] body .kente-dark-bg .section-subtitle { background: transparent !important; color: var(--text-dark) !important; }
+html[data-theme="dark"] body .kente-weave-layer { opacity: 0.2 !important; }
 
 /* glass cards → dark glass (beats light !important) */
 html[data-theme="dark"] body .skill-card,

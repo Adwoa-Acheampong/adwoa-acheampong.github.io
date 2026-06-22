@@ -37,6 +37,7 @@
     },
     { card: '.experience-card-v2', head: function (c) { return c.querySelector('.experience-role'); } },
     { card: '.story-chapter', head: function (c) { return c.querySelector('.story-chapter-header'); } },
+    { card: '.case-study', head: function (c) { return c.querySelector('.case-study-header'); } },
   ];
 
   function apply() {
