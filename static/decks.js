@@ -40,7 +40,9 @@
   ];
 
   function apply() {
-    if (!isMobile()) return;
+    // Decks work on every viewport. Folded by default on phones (where scroll
+    // hurts most); expanded-but-collapsible on desktop.
+    var collapseByDefault = isMobile();
     CONFIG.forEach(function (cfg) {
       var cards = document.querySelectorAll(cfg.card);
       [].forEach.call(cards, function (card) {
@@ -48,7 +50,8 @@
         var head = cfg.head(card);
         if (!head) return;
         card.setAttribute('data-enh', '1');
-        card.classList.add('enh-deck', 'enh-collapsed');
+        card.classList.add('enh-deck');
+        if (collapseByDefault) card.classList.add('enh-collapsed');
         head.classList.add('enh-head');
       });
     });

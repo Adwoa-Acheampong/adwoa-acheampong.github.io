@@ -298,42 +298,172 @@ body .kente-dark-bg .skill-card > div { color: var(--text-dark-secondary, rgba(1
 body .kente-dark-bg .kente-weave-layer { opacity: 0.08 !important; }
 
 /* ============================================================================
-   LAYER 4 · COLLAPSIBLE DECKS (mobile) — wired by decks.js
+   LAYER 4 · COLLAPSIBLE DECKS — wired by decks.js
    ----------------------------------------------------------------------------
    Non-destructive: decks.js only ADDS classes + a delegated click handler (it
-   never reparents React's DOM). On phones, long cards collapse to their header
-   to cut scrolling; tap the header to expand. Desktop is left untouched.
+   never reparents React's DOM). Works on ALL viewports — folded by default on
+   phones (to cut scrolling), expanded-but-collapsible on desktop. Click/tap a
+   card header to toggle; the chevron shows the state.
    ============================================================================ */
-@media (max-width: 768px) {
-  .enh-head {
-    position: relative;
-    cursor: pointer;
-    padding-right: 1.7rem !important;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .enh-head::after {
-    content: '\2304'; /* ⌄ */
-    position: absolute;
-    right: 0.35rem;
-    top: 0.05rem;
-    font-size: 1.15rem;
-    line-height: 1;
-    color: var(--gold, #e5b947);
-    transition: transform 0.3s var(--ease-drift, ease);
-  }
-  .enh-deck:not(.enh-collapsed) > .enh-head::after,
-  .enh-deck:not(.enh-collapsed) .enh-head::after { transform: rotate(180deg); }
-
-  /* group/skill + story: keep the header, fold the rest away */
-  .enh-deck.enh-collapsed.skill-card > *:not(.enh-head),
-  .enh-deck.enh-collapsed.story-chapter > *:not(.enh-head) { display: none !important; }
-
-  /* experience: keep period/role/company, fold the detail away */
-  .enh-deck.enh-collapsed.experience-card-v2 .experience-summary,
-  .enh-deck.enh-collapsed.experience-card-v2 .experience-metrics,
-  .enh-deck.enh-collapsed.experience-card-v2 .experience-highlights { display: none !important; }
-
-  /* a touch more tap room on deck headers */
-  .enh-deck .enh-head { padding-top: 0.15rem; padding-bottom: 0.15rem; }
+.enh-head {
+  position: relative;
+  cursor: pointer;
+  padding-right: 1.7rem !important;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+  -webkit-tap-highlight-color: transparent;
 }
+.enh-head::after {
+  content: '\2304'; /* ⌄ */
+  position: absolute;
+  right: 0.35rem;
+  top: 0.05rem;
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--gold, #e5b947);
+  transition: transform 0.3s var(--ease-drift, ease);
+}
+.enh-deck:not(.enh-collapsed) > .enh-head::after,
+.enh-deck:not(.enh-collapsed) .enh-head::after { transform: rotate(180deg); }
+
+/* group/skill + story: keep the header, fold the rest away */
+.enh-deck.enh-collapsed.skill-card > *:not(.enh-head),
+.enh-deck.enh-collapsed.story-chapter > *:not(.enh-head) { display: none !important; }
+
+/* experience: keep period/role/company, fold the detail away */
+.enh-deck.enh-collapsed.experience-card-v2 .experience-summary,
+.enh-deck.enh-collapsed.experience-card-v2 .experience-metrics,
+.enh-deck.enh-collapsed.experience-card-v2 .experience-highlights { display: none !important; }
+
+/* ============================================================================
+   LAYER 5 · DARK / LIGHT TOGGLE
+   ----------------------------------------------------------------------------
+   A floating switch (.theme-fab, built by theme.js) flips <html data-theme>.
+   Default is light (the designed look) — set pre-paint by an inline script in
+   index.html so there's no flash. Dark rules below are scoped to
+   html[data-theme="dark"] and use higher specificity + !important so they beat
+   the light overrides in LAYERS 2-3 (the two are mutually exclusive by attr).
+   ============================================================================ */
+
+/* ---- the floating toggle button ---------------------------------------- */
+.theme-fab {
+  position: fixed;
+  left: 16px;
+  bottom: 24px;
+  z-index: 99998;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  border: 1px solid rgba(201, 168, 76, 0.5);
+  background: rgba(245, 240, 232, 0.92);
+  color: var(--royal-black, #111);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s var(--ease-snap, cubic-bezier(0.34, 1.56, 0.64, 1)),
+    background 0.3s, box-shadow 0.3s, color 0.3s;
+  -webkit-tap-highlight-color: transparent;
+}
+.theme-fab:hover { transform: translateY(-2px) rotate(-12deg); box-shadow: 0 10px 28px rgba(201, 168, 76, 0.32); }
+.theme-fab:active { transform: translateY(0) scale(0.95); }
+.theme-fab svg { width: 20px; height: 20px; display: block; }
+html[data-theme="dark"] .theme-fab { background: rgba(28, 26, 23, 0.92); color: var(--gold, #e5b947); border-color: rgba(201, 168, 76, 0.55); }
+/* on the home hero, lift it above the lifted Story button (bottom ~30px) */
+body:has(.hero-container) .theme-fab { bottom: 96px; }
+@media (max-width: 768px) {
+  .theme-fab { left: 14px; bottom: 20px; width: 40px; height: 40px; }
+  body:has(.hero-container) .theme-fab { bottom: 92px; }
+}
+@media (prefers-reduced-motion: reduce) { .theme-fab { transition: background 0.2s, color 0.2s; } .theme-fab:hover { transform: none; } }
+
+/* ---- DARK THEME --------------------------------------------------------- */
+html[data-theme="dark"] {
+  --text-dark: #f4efe6;
+  --text-dark-secondary: rgba(244, 239, 230, 0.72);
+  --text-muted: rgba(244, 239, 230, 0.45);
+  --bone: #15120e;
+  --parchment: #2a2724;
+}
+html[data-theme="dark"] body { background-color: #141210 !important; color: var(--text-dark); }
+html[data-theme="dark"] body h1,
+html[data-theme="dark"] body h2,
+html[data-theme="dark"] body h3,
+html[data-theme="dark"] body h4,
+html[data-theme="dark"] body h5,
+html[data-theme="dark"] body h6 { color: var(--text-dark); }
+
+/* navbar */
+html[data-theme="dark"] body .navbar-custom { background: rgba(18, 16, 14, 0.9) !important; border-bottom-color: rgba(201, 168, 76, 0.18) !important; }
+html[data-theme="dark"] body .navbar-logo,
+html[data-theme="dark"] body .nav-tab,
+html[data-theme="dark"] body .nav-tab.active,
+html[data-theme="dark"] body .menu-toggle { color: var(--text-dark) !important; }
+html[data-theme="dark"] body .nav-menu { background: rgba(18, 16, 14, 0.98) !important; }
+
+/* page bands → dark (beats the LAYER 2-3 light overrides) */
+html[data-theme="dark"] body .kente-dark-bg,
+html[data-theme="dark"] body .kente-dark-bg .section-header,
+html[data-theme="dark"] body .kente-dark-bg .section-subtitle,
+html[data-theme="dark"] body .kente-section-bg,
+html[data-theme="dark"] body .adinkra-texture-bg {
+  background: linear-gradient(180deg, #161310, #1b1714) !important;
+  color: var(--text-dark) !important;
+}
+html[data-theme="dark"] body .kente-weave-layer { opacity: 0.12 !important; }
+
+/* glass cards → dark glass (beats light !important) */
+html[data-theme="dark"] body .skill-card,
+html[data-theme="dark"] body .kente-dark-bg .skill-card,
+html[data-theme="dark"] body .project-card,
+html[data-theme="dark"] body .kente-dark-bg .project-card,
+html[data-theme="dark"] body .project-showcase,
+html[data-theme="dark"] body .kente-dark-bg .project-showcase,
+html[data-theme="dark"] body .experience-card-v2,
+html[data-theme="dark"] body .pipeline-card,
+html[data-theme="dark"] body .impact-chart-card,
+html[data-theme="dark"] body .testimonial-card-v2,
+html[data-theme="dark"] body .contact-card,
+html[data-theme="dark"] body .fineprint-card {
+  background: rgba(28, 26, 23, 0.82) !important;
+  color: var(--text-dark) !important;
+  border-color: rgba(201, 168, 76, 0.22) !important;
+}
+
+/* dark-section accents: keep gold titles, lift body copy */
+html[data-theme="dark"] body .kente-dark-bg .section-title { background: none !important; -webkit-text-fill-color: currentColor !important; color: var(--gold, #e5b947) !important; }
+html[data-theme="dark"] body .kente-dark-bg .skill-card h3,
+html[data-theme="dark"] body .kente-dark-bg .skill-card h4 { color: var(--gold, #e5b947) !important; }
+html[data-theme="dark"] body .kente-dark-bg .skill-bar-head { color: var(--gold-satin, #ecc85f) !important; }
+html[data-theme="dark"] body .kente-dark-bg .skill-card > div,
+html[data-theme="dark"] body .kente-dark-bg .skill-card p { color: rgba(245, 240, 232, 0.7) !important; }
+
+/* headings/labels that used near-black → light */
+html[data-theme="dark"] body .project-showcase-title,
+html[data-theme="dark"] body .pipeline-project-title,
+html[data-theme="dark"] body .offering-title,
+html[data-theme="dark"] body .pipeline-proof h5,
+html[data-theme="dark"] body .experience-role,
+html[data-theme="dark"] body .pipeline-proof p,
+html[data-theme="dark"] body .roadmap-step p { color: var(--text-dark) !important; }
+
+/* inner light fills → dark */
+html[data-theme="dark"] body .pipeline-offering,
+html[data-theme="dark"] body .community-pillar,
+html[data-theme="dark"] body .pipeline-target,
+html[data-theme="dark"] body .pipeline-proof,
+html[data-theme="dark"] body .fineprint-pillar,
+html[data-theme="dark"] body .story-pullquote { background: rgba(255, 255, 255, 0.04) !important; }
+html[data-theme="dark"] body .community-model-card,
+html[data-theme="dark"] body .pipeline-roadmap,
+html[data-theme="dark"] body .fineprint-content { background: linear-gradient(135deg, rgba(201, 168, 76, 0.08), rgba(255, 255, 255, 0.02)) !important; }
+html[data-theme="dark"] body .fineprint-toggle:hover { background: rgba(201, 168, 76, 0.1) !important; }
+
+/* next-page CTA + footer */
+html[data-theme="dark"] body .next-page-cta { background: linear-gradient(180deg, #14110d, #1b1814) !important; }
+html[data-theme="dark"] body .site-footer { background: #100e0c !important; }
 
