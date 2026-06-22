@@ -41,16 +41,15 @@
       'Full-stack building — React, JavaScript, Node'
     ],
     projects: [
-      { name: 'AGL Ops — Enterprise Operations Platform',
-        brief: 'A real-time Command Center dashboard plus a mobile-first Staff Hub PWA for Automobiles Ghana — 14+ dashboards, 30+ automated tests, 125% revenue impact.' },
-      { name: 'Avenue Lincoln — Luxury Booking Platform',
-        brief: 'Full-stack villa-booking platform for Adebi Villa in Ridge, Accra — end-to-end booking flow with an admin dashboard, built on Node & Express.' },
+      { name: 'AGL ERP Systems',
+        brief: 'The live operations platform at agl.software — Kanban command boards, secure QR-code staff login, role-aware ERP dashboards, a Staff Hub PWA, and 30+ automated tests for Automobiles Ghana Limited.' },
       { name: 'Restaurant Sales Insights — Data Analysis',
         brief: 'Full-year 2023 sales analysis in Python/Pandas — 365 data points, moving-average trends, and executive-ready visualisations.' }
     ],
     pipeline: [
-      'The Merchant Hub — a founder ecosystem and Susu-based community commerce model for African SMEs (in development)',
-      'Real Estate Management Hub — full-service property hosting, staff training and hospitality (concept)'
+      'Blkk Legacy — the Ghana-based Pan-African holding system connecting training, production, commerce, and community distribution through a stage-gated 18–24 month validation plan.',
+      'Blkk Star Hub — the digital commerce spine, beginning with Merchant Hub to prove merchant adoption, customer demand, repeat purchase, unit economics, and working-capital discipline.',
+      'Blkk Label — the brand house and manufacturing arm, turning trained capability into culturally authored apparel, fragrance, body care, wellness, and jewellery products with disciplined quality control.'
     ],
     experience: [
       'Statutory Operations Director — JonMon-Sacs Ghana Ltd (Jul 2025 – Present)',
@@ -217,7 +216,7 @@
   var sendBtn = el('button', 'ohemaa-send', '↑'); sendBtn.title = 'Send';
   inputRow.appendChild(input); inputRow.appendChild(sendBtn);
 
-  var foot = el('div', 'ohemaa-foot', 'Powered by Adinkra Intelligence ✦');
+  var foot = el('div', 'ohemaa-foot', 'Powered by Adinkra Intelligence Systems');
 
   panel.appendChild(header); panel.appendChild(body); panel.appendChild(inputRow); panel.appendChild(foot);
 
@@ -340,7 +339,7 @@
       return 'psychometric';
     }
     if (has('pipeline', 'merchant hub', 'upcoming', 'building next', 'roadmap')) return 'pipeline';
-    if (has('project', 'case stud', 'working on', 'portfolio', 'agl', 'avenue lincoln', 'built')) return 'projects';
+    if (has('project', 'case stud', 'working on', 'portfolio', 'agl', 'agl erp', 'built')) return 'projects';
     if (has('experience', 'background', 'career', 'work history', 'where has', 'roles', 'jobs')) return 'experience';
     if (has('skill', 'expert', 'stack', 'tools', 'certif', 'tech')) return 'skills';
     if (has('contact', 'reach', 'connect', 'hire', 'email', 'work together', 'collaborat', 'get in touch', 'book ', 'call')) return 'contact';

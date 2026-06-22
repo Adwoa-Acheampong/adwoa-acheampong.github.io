@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AGL screenshot redaction</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; overflow: hidden; background: #07110d; }
+    #canvas { position: relative; overflow: hidden; }
+    #canvas > img { display: block; width: 100%; height: 100%; object-fit: fill; }
+    .redaction {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(42, 225, 157, .65);
+      border-radius: 5px;
+      background: #06140f;
+      color: #7be8bc;
+      font: 700 10px/1.1 Arial, sans-serif;
+      letter-spacing: .09em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <main id="canvas"><img id="source" alt=""></main>
+  <script>
+    const root = "file:///C:/Users/lenovo/AppData/Local/Temp/";
+    const screens = {
+      login: {
+        file: "codex-clipboard-cbc1356b-ab82-48cc-86b5-66810e442e53.png",
+        width: 1919, height: 995, boxes: []
+      },
+      qr: {
+        file: "codex-clipboard-dbef6575-bbf6-45e8-9df6-7fa16093a5cc.png",
+        width: 1921, height: 998,
+        boxes: [[568, 20, 190, 62, "Staff identity protected"]]
+      },
+      quickActions: {
+        file: "codex-clipboard-2bf06a25-367b-4cd1-99d5-105a7e7af9c2.png",
+        width: 1921, height: 995, boxes: []
+      },
+      dashboard: {
+        file: "codex-clipboard-2a4e0eb5-206e-4002-ac2b-35fc2790eeb4.png",
+        width: 1920, height: 994, boxes: []
+      },
+      workshop: {
+        file: "codex-clipboard-69650439-d902-4e3e-a724-d02aefa6c776.png",
+        width: 1910, height: 988,
+        boxes: [
+          [444, 185, 1230, 82, "Staff and customer filters protected"],
+          [727, 352, 270, 105, "Job details protected"],
+          [727, 537, 270, 108, "Job details protected"],
+          [727, 723, 270, 108, "Job details protected"],
+          [727, 910, 270, 77, "Job details protected"],
+          [1372, 351, 272, 114, "Job details protected"],
+          [1372, 551, 272, 108, "Job details protected"],
+          [1372, 738, 272, 114, "Job details protected"],
+          [1372, 928, 272, 59, "Job details protected"]
+        ]
+      },
+      finance: {
+        file: "codex-clipboard-ea846f89-5458-461c-8511-d2e32cc5927b.png",
+        width: 1924, height: 991,
+        boxes: [
+          [590, 190, 878, 45, "Internal financial metrics protected"],
+          [596, 285, 872, 38, "Protected"],
+          [596, 403, 872, 38, "Protected"],
+          [884, 528, 126, 142, "Values protected"],
+          [889, 762, 121, 110, "Values protected"]
+        ]
+      },
+      reports: {
+        file: "codex-clipboard-8346c9fb-19f0-466e-8d7d-7f7dc9b88d98.png",
+        width: 1918, height: 995,
+        boxes: [
+          [584, 654, 876, 96, "Operational and payroll metrics protected"],
+          [896, 827, 565, 168, "Report values protected"]
+        ]
+      },
+      printPdf: {
+        file: "codex-clipboard-03d065b5-f3a1-4f99-a47e-f7ac3cc46fcd.png",
+        width: 1919, height: 995,
+        boxes: [[480, 67, 548, 790, "Report contents protected"]]
+      },
+      hr: {
+        file: "codex-clipboard-ba1db6f1-846c-4ab3-a9e9-51d4bc4653f5.png",
+        width: 1920, height: 996,
+        boxes: [
+          [397, 313, 1264, 52, "Performance metrics protected"],
+          [398, 421, 166, 142, "Staff identities protected"],
+          [1365, 421, 285, 142, "Values protected"],
+          [398, 638, 166, 112, "Staff identities protected"],
+          [1260, 638, 390, 112, "Values protected"]
+        ]
+      }
+    };
+
+    const id = new URLSearchParams(location.search).get("id");
+    const screen = screens[id];
+    if (!screen) throw new Error(`Unknown screen: ${id}`);
+
+    const canvas = document.querySelector("#canvas");
+    const source = document.querySelector("#source");
+    canvas.style.width = `${screen.width}px`;
+    canvas.style.height = `${screen.height}px`;
+    source.src = root + screen.file;
+
+    for (const [left, top, width, height, label] of screen.boxes) {
+      const box = document.createElement("div");
+      box.className = "redaction";
+      box.textContent = label || "Protected";
+      Object.assign(box.style, {
+        left: `${left}px`, top: `${top}px`, width: `${width}px`, height: `${height}px`
+      });
+      canvas.appendChild(box);
+    }
+  </script>
+</body>
+</html>
