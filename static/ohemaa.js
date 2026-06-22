@@ -68,7 +68,7 @@
       workStyle: 'Deep-work focused and outcome-driven; she thrives in high-complexity rooms.'
     },
     contact: {
-      email: 'adwoaacheampong728@gmail.com',
+      email: 'cc@aacheampong.com',
       phone: '(233) 276-291-485',
       location: 'Accra, Ghana',
       linkedin: 'https://linkedin.com/in/adwoa-acheampong',

@@ -192,14 +192,15 @@
       ];
 
       grid.innerHTML = projects.map(function (item, index) {
+        var collapsed = index > 0 || (window.matchMedia && window.matchMedia('(max-width: 680px)').matches);
         var bullets = item.bullets.map(function (bullet) { return '<li>' + bullet + '</li>'; }).join('');
-        return '<article class="pipeline-card blkk-pipeline-card blkk-' + item.slug + '-card' + (index ? ' blkk-collapsed' : '') + '">' +
+        return '<article class="pipeline-card blkk-pipeline-card blkk-' + item.slug + '-card' + (collapsed ? ' blkk-collapsed' : '') + '">' +
           '<div class="blkk-pipeline-media"><img src="' + item.image + '" alt="' + item.imageAlt + '" loading="lazy"></div>' +
           '<div class="blkk-pipeline-shell"><div class="blkk-pipeline-head"><div>' +
             '<span class="pipeline-status">' + item.status + '</span>' +
             '<h3 class="pipeline-project-title">' + item.title + '</h3>' +
             '<p class="pipeline-tagline">' + item.tagline + '</p>' +
-          '</div><button class="blkk-pipeline-toggle" type="button" aria-expanded="' + (index ? 'false' : 'true') + '" aria-label="Toggle ' + item.title + ' details"><span aria-hidden="true"></span></button></div>' +
+          '</div><button class="blkk-pipeline-toggle" type="button" aria-expanded="' + (collapsed ? 'false' : 'true') + '" aria-label="Toggle ' + item.title + ' details"><span aria-hidden="true"></span></button></div>' +
           '<div class="blkk-pipeline-body"><p class="pipeline-vision">' + item.vision + '</p><ul class="blkk-pipeline-points">' + bullets + '</ul></div></div></article>';
       }).join('');
     }
@@ -240,6 +241,15 @@
     });
   }
 
+  function updateContact() {
+    Array.prototype.forEach.call(document.querySelectorAll('a[href^="mailto:"]'), function (link) {
+      link.href = 'mailto:cc@aacheampong.com';
+      var value = link.querySelector('.contact-card p:last-child');
+      if (value) text(value, 'cc@aacheampong.com');
+      else if (/adwoaacheampong728@gmail\.com/i.test(link.textContent)) text(link, 'cc@aacheampong.com');
+    });
+  }
+
   var timer;
   var observer = new MutationObserver(function () {
     clearTimeout(timer);
@@ -256,6 +266,7 @@
     updateAglProject();
     updatePipeline();
     updateBrandCredit();
+    updateContact();
     observe();
   }
 
