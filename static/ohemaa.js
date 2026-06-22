@@ -518,6 +518,8 @@
     setTimeout(hide, 9000);
   }
   function maybeGreet() {
+    /* Keep the first mobile view unobstructed; the launcher remains available. */
+    if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) return;
     var seen = false;
     try { seen = !!localStorage.getItem(SEEN_KEY); } catch (e) {}
     if (!seen) setTimeout(showGreeting, 2800);
