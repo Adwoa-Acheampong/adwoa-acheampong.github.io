@@ -141,6 +141,45 @@
     if (charts[1]) text(charts[1].querySelector('h4'), 'AGL ERP Systems');
   }
 
+  function updateExperience() {
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.experience-card-v2'));
+    var card = cards.filter(function (item) {
+      var content = item.textContent || '';
+      return /The Merchant Hub|Founder & Operations Architect|AGL Command Center|Staff Hub PWA|Playwright test suite/i.test(content);
+    })[0];
+    if (!card) return;
+
+    text(card.querySelector('.experience-period'), '2026 - Present');
+    text(card.querySelector('.experience-role'), 'Co-founder & Strategist');
+    text(card.querySelector('.experience-company'), 'Blkk Legacy');
+
+    var summary = card.querySelector('.experience-summary');
+    if (summary) {
+      text(summary, 'Co-building the strategy, structure, and validation path for Blkk Legacy: a Ghana-based Pan-African venture system connecting skills training, production, commerce, and culturally grounded brand development.');
+    }
+
+    var metrics = [
+      ['18-24', 'Month validation plan'],
+      ['3', 'Core venture engines'],
+      ['Phase 1', 'Pre-capital pilot']
+    ];
+    Array.prototype.forEach.call(card.querySelectorAll('.experience-metric'), function (metric, i) {
+      if (!metrics[i]) return;
+      text(metric.querySelector('.metric-value'), metrics[i][0]);
+      text(metric.querySelector('.metric-label'), metrics[i][1]);
+    });
+
+    var highlights = [
+      'Defined the operating thesis for Blkk Legacy as a staged venture system, not a single storefront or campaign.',
+      'Mapped the first validation loop across Blkk Legacy, Blkk Star Hub, and Blkk Label so each arm proves demand, controls, and unit economics before expansion.',
+      'Translated the business brief into investor-ready strategy, pipeline structure, and public-facing language that separates concept work from live AGL ERP delivery.'
+    ];
+    var list = card.querySelector('.experience-highlights');
+    if (list) {
+      list.innerHTML = highlights.map(function (item) { return '<li>' + item + '</li>'; }).join('');
+    }
+  }
+
   function updatePipeline() {
     var page = document.querySelector('.adinkra-texture-bg');
     var grid = page && page.querySelector('.pipeline-grid');
@@ -170,9 +209,9 @@
           tagline: 'The digital commerce and platform spine.',
           image: '/images/blkk-pipeline/blkk-star-hub-commerce.png',
           imageAlt: 'Luxury marketplace concept representing commerce inside Blkk Star Hub',
-          vision: 'Blkk Star Hub begins with Merchant Hub: the shortest path to revenue and operating evidence. It gives buyers and merchants one trusted commerce identity, captures demand, and returns customer data to production, pricing, inventory, and training.',
+          vision: 'Blkk Star Hub is the digital commerce spine for the Blkk Legacy system. It gives buyers, makers, and merchants one trusted route to market, captures demand, and returns customer data to production, pricing, inventory, and training.',
           bullets: [
-            'Merchant Hub: curated marketplace, merchant onboarding, checkout, fulfilment, and customer feedback.',
+            'Phase 1: curated marketplace, merchant onboarding, checkout, fulfilment, and customer feedback.',
             'Farmers Hub, AutoHub, and Estate Hub follow only after the common verification and commerce rails are proven.',
             'Phase 1 validates merchant adoption, GMV, repeat purchase, unit economics, and working-capital discipline.'
           ]
@@ -209,7 +248,7 @@
     if (roadmap) {
       text(roadmap.querySelector('.roadmap-title'), 'Validation Roadmap');
       var roadmapCopy = [
-        ['Now', 'Build the Phase 1 loop: Institute capability, Merchant Hub demand, and Blkk Label product samples on rented infrastructure.'],
+        ['Now', 'Build the Phase 1 loop: Blkk Legacy strategy, Blkk Star Hub demand, and Blkk Label product samples on rented infrastructure.'],
         ['Validate', 'Prove customer demand, merchant adoption, production economics, training outcomes, regulatory pathways, and working-capital controls.'],
         ['Scale', 'Expand distribution and infrastructure only after the first operating loop produces repeatable evidence and reinvestable surplus.']
       ];
@@ -264,6 +303,7 @@
   function apply() {
     observer.disconnect();
     updateAglProject();
+    updateExperience();
     updatePipeline();
     updateBrandCredit();
     updateContact();

@@ -48,7 +48,7 @@
     ],
     pipeline: [
       'Blkk Legacy — the Ghana-based Pan-African holding system connecting training, production, commerce, and community distribution through a stage-gated 18–24 month validation plan.',
-      'Blkk Star Hub — the digital commerce spine, beginning with Merchant Hub to prove merchant adoption, customer demand, repeat purchase, unit economics, and working-capital discipline.',
+      'Blkk Star Hub — the digital commerce spine for Blkk Legacy, built to prove merchant adoption, customer demand, repeat purchase, unit economics, and working-capital discipline.',
       'Blkk Label — the brand house and manufacturing arm, turning trained capability into culturally authored apparel, fragrance, body care, wellness, and jewellery products with disciplined quality control.'
     ],
     experience: [
