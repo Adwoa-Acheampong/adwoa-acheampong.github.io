@@ -292,11 +292,17 @@ body .portfolio-contact-layout {
   align-items: stretch !important;
 }
 
-body .portfolio-contact-layout > .scroll-reveal {
-  grid-column: 1;
+body .portfolio-contact-direct {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
 
-body .portfolio-contact-layout > .scroll-reveal .contact-card {
+body .portfolio-contact-direct > .scroll-reveal {
+  min-width: 0;
+}
+
+body .portfolio-contact-direct .contact-card {
   min-height: 100%;
   display: grid !important;
   align-content: center;
@@ -306,19 +312,17 @@ body .portfolio-contact-layout > .scroll-reveal .contact-card {
   text-align: left !important;
 }
 
-body .portfolio-contact-layout > .scroll-reveal .contact-card svg {
+body .portfolio-contact-direct .contact-card svg {
   width: 20px;
   height: 20px;
   margin-bottom: .2rem;
 }
 
-body .portfolio-contact-layout > .scroll-reveal .contact-card p {
+body .portfolio-contact-direct .contact-card p {
   margin: 0 !important;
 }
 
 body .portfolio-contact-qr {
-  grid-column: 2;
-  grid-row: 1 / span 3;
   position: relative;
   min-height: 100%;
   padding: clamp(1.3rem, 3vw, 2rem) !important;
@@ -873,11 +877,6 @@ body .ohemaa-panel { border-color: rgba(55, 230, 168, 0.38) !important; backgrou
     width: min(100%, 640px);
     grid-template-columns: 1fr !important;
     gap: .85rem !important;
-  }
-  body .portfolio-contact-layout > .scroll-reveal,
-  body .portfolio-contact-qr {
-    grid-column: 1;
-    grid-row: auto;
   }
   body .portfolio-contact-qr {
     grid-template-columns: 1fr;

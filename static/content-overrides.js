@@ -340,7 +340,16 @@
       gridCandidates.sort(function (a, b) { return (a.textContent || '').length - (b.textContent || '').length; })[0] ||
       contactSection.querySelector('.container') ||
       contactSection;
-    target.classList.add('portfolio-contact-layout');
+
+    var layout = document.createElement('div');
+    layout.className = 'portfolio-contact-layout';
+
+    var direct = document.createElement('div');
+    direct.className = 'portfolio-contact-direct';
+
+    Array.prototype.slice.call(target.children).forEach(function (child) {
+      if (!child.classList || !child.classList.contains('portfolio-contact-qr')) direct.appendChild(child);
+    });
 
     var card = document.createElement('article');
     card.className = 'contact-card portfolio-contact-qr';
@@ -357,7 +366,10 @@
         '<a href="https://www.linkedin.com/in/adwoa-acheampong" target="_blank" rel="noopener noreferrer">LinkedIn</a>' +
         '<a href="/images/contact/adwoa-digital-business-card.png" download>Download card</a>' +
       '</div>';
-    target.appendChild(card);
+
+    layout.appendChild(direct);
+    layout.appendChild(card);
+    target.appendChild(layout);
   }
 
   function routeContactLinks() {
