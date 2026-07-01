@@ -13,8 +13,8 @@
 
   /* Adwoa's portrait (the live asset). Graceful monogram fallback if absent. */
   var PORTRAIT = 'https://adwoa-acheampong.github.io/static/media/adwoa-potrait.a57ec23d8b550e556a34.png';
-  var RESUME_URL = 'https://adwoa-acheampong.github.io/Adwoa%20B.%20Acheampong%20-%20Business%20Operations%20%26%20EA%20(Resume).pdf';
-  var PSYCHO_URL = 'https://adwoa-acheampong.github.io/Adwoa-Acheampong-1730042535173-Psychometric.pdf';
+  var RESUME_URL = 'https://adwoa-acheampong.github.io/resume.html';
+  var PSYCHO_URL = 'https://adwoa-acheampong.github.io/psychometric.html';
 
   /* ---------------------------------------------------------------- KNOWLEDGE */
   var KB = {

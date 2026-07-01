@@ -221,7 +221,7 @@
           tagline: 'The brand house and manufacturing ecosystem.',
           image: '/images/blkk-pipeline/blkk-label-apparel.png',
           imageAlt: 'Black tailored jacket concept for the Blkk Label luxury brand',
-          vision: 'Blkk Label turns training and production into market-ready goods with clear standards, packaging, quality control, and cultural authorship. Its product families build demand for Merchant Hub while proving the economics of African luxury made at source.',
+          vision: 'Blkk Label turns training and production into market-ready goods with clear standards, packaging, quality control, and cultural authorship. Its product families build demand for Blkk Star Hub while proving the economics of African luxury made at source.',
           bullets: [
             'Crushed Diamonds, Havilah, and Nubia operate as distinct identities on one shared production platform.',
             'Initial lawful product lines can include tailored apparel, fragrance, body care, wellness, and jewellery finishing.',
@@ -289,6 +289,34 @@
     });
   }
 
+  function updateDocumentLinks() {
+    Array.prototype.forEach.call(document.querySelectorAll('a[href], button'), function (item) {
+      var href = item.getAttribute && item.getAttribute('href');
+      var label = (item.textContent || '').trim();
+      var resumeHit = /resume/i.test(label) || /Adwoa.*Resume|Resume\.pdf/i.test(href || '');
+      var psychoHit = /psychometric|psychometric profile|assessment profile/i.test(label) || /Psychometric/i.test(href || '');
+
+      if (resumeHit && href !== null) {
+        item.setAttribute('href', '/resume.html');
+        item.removeAttribute('download');
+        item.setAttribute('target', '_self');
+      }
+
+      if (psychoHit && href !== null) {
+        item.setAttribute('href', '/psychometric.html');
+        item.removeAttribute('download');
+        item.setAttribute('target', '_self');
+      }
+
+      if ((resumeHit || psychoHit) && item.tagName === 'BUTTON' && !item.dataset.documentRouted) {
+        item.dataset.documentRouted = 'true';
+        item.addEventListener('click', function () {
+          window.location.href = resumeHit ? '/resume.html' : '/psychometric.html';
+        });
+      }
+    });
+  }
+
   var timer;
   var observer = new MutationObserver(function () {
     clearTimeout(timer);
@@ -307,6 +335,7 @@
     updatePipeline();
     updateBrandCredit();
     updateContact();
+    updateDocumentLinks();
     observe();
   }
 
