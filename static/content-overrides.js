@@ -322,8 +322,10 @@
     var containers = Array.prototype.slice.call(document.querySelectorAll('section, main, div'));
     var contactSection = containers.filter(function (section) {
       var text = section.textContent || '';
-      return /Let's Collaborate|Get In Touch|Build something extraordinary|cc@aacheampong\.com|adwoaacheampong728@gmail\.com/i.test(text) &&
-        /Email|Phone|Location|LinkedIn|Contact/i.test(text);
+      return /Let's Collaborate|Get In Touch|Build something extraordinary/i.test(text) &&
+        /Email/i.test(text) &&
+        /Phone/i.test(text) &&
+        /Location/i.test(text);
     }).sort(function (a, b) {
       return (a.textContent || '').length - (b.textContent || '').length;
     })[0];
@@ -334,6 +336,8 @@
       var style = window.getComputedStyle ? window.getComputedStyle(node) : null;
       return /Email/i.test(text) && /Phone/i.test(text) && /Location/i.test(text) &&
         (!style || style.display === 'grid' || /grid-template-columns/i.test(node.getAttribute('style') || ''));
+    }).filter(function (node) {
+      return node.querySelectorAll('.contact-card').length >= 3;
     });
     var target = contactSection.querySelector('.contact-grid') ||
       contactSection.querySelector('.contact-cards') ||
@@ -341,15 +345,7 @@
       contactSection.querySelector('.container') ||
       contactSection;
 
-    var layout = document.createElement('div');
-    layout.className = 'portfolio-contact-layout';
-
-    var direct = document.createElement('div');
-    direct.className = 'portfolio-contact-direct';
-
-    Array.prototype.slice.call(target.children).forEach(function (child) {
-      if (!child.classList || !child.classList.contains('portfolio-contact-qr')) direct.appendChild(child);
-    });
+    target.classList.add('portfolio-contact-direct');
 
     var card = document.createElement('article');
     card.className = 'contact-card portfolio-contact-qr';
@@ -367,9 +363,8 @@
         '<a href="/images/contact/adwoa-digital-business-card.png" download>Download card</a>' +
       '</div>';
 
-    layout.appendChild(direct);
-    layout.appendChild(card);
-    target.appendChild(layout);
+    if (target.parentNode) target.parentNode.insertBefore(card, target.nextSibling);
+    else target.appendChild(card);
   }
 
   function routeContactLinks() {
