@@ -340,16 +340,22 @@
       gridCandidates.sort(function (a, b) { return (a.textContent || '').length - (b.textContent || '').length; })[0] ||
       contactSection.querySelector('.container') ||
       contactSection;
+    target.classList.add('portfolio-contact-layout');
 
     var card = document.createElement('article');
     card.className = 'contact-card portfolio-contact-qr';
     card.innerHTML =
+      '<div class="portfolio-contact-qr-copy">' +
+        '<span class="portfolio-contact-kicker">Contact hub</span>' +
+        '<h3>Scan to connect</h3>' +
+        '<p>Save my contact, open LinkedIn, visit the website, or download the digital business card for later sharing.</p>' +
+      '</div>' +
       '<div class="portfolio-contact-qr-media"><img src="/images/contact/adwoa-connect-qr.png" alt="QR code for Adwoa B. Acheampong contact hub"></div>' +
-      '<h3>Scan to connect</h3>' +
-      '<p>Save Adwoa as a phone contact, open LinkedIn, or download the digital business card.</p>' +
-      '<div class="portfolio-contact-qr-actions">' +
-        '<a href="/connect.html">Open contact hub</a>' +
-        '<a href="/images/contact/adwoa-digital-business-card.png" download>Download card PNG</a>' +
+      '<div class="portfolio-contact-qr-actions" aria-label="Contact hub actions">' +
+        '<a href="/connect.html">Open hub</a>' +
+        '<a href="/contact/adwoa-b-acheampong.vcf" download>Save contact</a>' +
+        '<a href="https://www.linkedin.com/in/adwoa-acheampong" target="_blank" rel="noopener noreferrer">LinkedIn</a>' +
+        '<a href="/images/contact/adwoa-digital-business-card.png" download>Download card</a>' +
       '</div>';
     target.appendChild(card);
   }
