@@ -12,9 +12,9 @@
   window.__ohemaaLoaded = true;
 
   /* Adwoa's portrait (the live asset). Graceful monogram fallback if absent. */
-  var PORTRAIT = 'https://adwoa-acheampong.github.io/static/media/adwoa-potrait.a57ec23d8b550e556a34.png';
-  var RESUME_URL = 'https://adwoa-acheampong.github.io/resume.html';
-  var PSYCHO_URL = 'https://adwoa-acheampong.github.io/psychometric.html';
+  var PORTRAIT = 'https://aacheampong.com/static/media/adwoa-potrait.a57ec23d8b550e556a34.png';
+  var RESUME_URL = 'https://aacheampong.com/resume.html';
+  var PSYCHO_URL = 'https://aacheampong.com/psychometric.html';
 
   /* ---------------------------------------------------------------- KNOWLEDGE */
   var KB = {

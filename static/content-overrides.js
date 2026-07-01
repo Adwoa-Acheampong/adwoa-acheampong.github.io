@@ -317,6 +317,32 @@
     });
   }
 
+  function updateContactHub() {
+    if (document.querySelector('.portfolio-contact-qr')) return;
+    var sections = Array.prototype.slice.call(document.querySelectorAll('section'));
+    var contactSection = sections.filter(function (section) {
+      return /Get In Touch|Contact|cc@aacheampong\.com|adwoaacheampong728@gmail\.com/i.test(section.textContent || '');
+    })[0];
+    if (!contactSection) return;
+
+    var target = contactSection.querySelector('.contact-grid') ||
+      contactSection.querySelector('.contact-cards') ||
+      contactSection.querySelector('.container') ||
+      contactSection;
+
+    var card = document.createElement('article');
+    card.className = 'contact-card portfolio-contact-qr';
+    card.innerHTML =
+      '<div class="portfolio-contact-qr-media"><img src="/images/contact/adwoa-connect-qr.png" alt="QR code for Adwoa B. Acheampong contact hub"></div>' +
+      '<h3>Scan to connect</h3>' +
+      '<p>Save Adwoa as a phone contact, open LinkedIn, or download the digital business card.</p>' +
+      '<div class="portfolio-contact-qr-actions">' +
+        '<a href="/connect.html">Open contact hub</a>' +
+        '<a href="/images/contact/adwoa-digital-business-card.png" download>Download card PNG</a>' +
+      '</div>';
+    target.appendChild(card);
+  }
+
   var timer;
   var observer = new MutationObserver(function () {
     clearTimeout(timer);
@@ -336,6 +362,7 @@
     updateBrandCredit();
     updateContact();
     updateDocumentLinks();
+    updateContactHub();
     observe();
   }
 
