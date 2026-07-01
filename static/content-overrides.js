@@ -319,14 +319,25 @@
 
   function updateContactHub() {
     if (document.querySelector('.portfolio-contact-qr')) return;
-    var sections = Array.prototype.slice.call(document.querySelectorAll('section'));
-    var contactSection = sections.filter(function (section) {
-      return /Get In Touch|Contact|cc@aacheampong\.com|adwoaacheampong728@gmail\.com/i.test(section.textContent || '');
+    var containers = Array.prototype.slice.call(document.querySelectorAll('section, main, div'));
+    var contactSection = containers.filter(function (section) {
+      var text = section.textContent || '';
+      return /Let's Collaborate|Get In Touch|Build something extraordinary|cc@aacheampong\.com|adwoaacheampong728@gmail\.com/i.test(text) &&
+        /Email|Phone|Location|LinkedIn|Contact/i.test(text);
+    }).sort(function (a, b) {
+      return (a.textContent || '').length - (b.textContent || '').length;
     })[0];
     if (!contactSection) return;
 
+    var gridCandidates = Array.prototype.slice.call(contactSection.querySelectorAll('div')).filter(function (node) {
+      var text = node.textContent || '';
+      var style = window.getComputedStyle ? window.getComputedStyle(node) : null;
+      return /Email/i.test(text) && /Phone/i.test(text) && /Location/i.test(text) &&
+        (!style || style.display === 'grid' || /grid-template-columns/i.test(node.getAttribute('style') || ''));
+    });
     var target = contactSection.querySelector('.contact-grid') ||
       contactSection.querySelector('.contact-cards') ||
+      gridCandidates.sort(function (a, b) { return (a.textContent || '').length - (b.textContent || '').length; })[0] ||
       contactSection.querySelector('.container') ||
       contactSection;
 
@@ -341,6 +352,30 @@
         '<a href="/images/contact/adwoa-digital-business-card.png" download>Download card PNG</a>' +
       '</div>';
     target.appendChild(card);
+  }
+
+  function routeContactLinks() {
+    Array.prototype.forEach.call(document.querySelectorAll('a[href="#contact"]'), function (link) {
+      if (link.dataset.contactRouted) return;
+      link.dataset.contactRouted = 'true';
+      link.addEventListener('click', function (event) {
+        var button = Array.prototype.slice.call(document.querySelectorAll('button')).filter(function (item) {
+          return /^\s*Contact\s*$/i.test(item.textContent || '');
+        })[0];
+        if (!button) return;
+        event.preventDefault();
+        button.click();
+        window.history.replaceState(null, '', '#contact');
+        setTimeout(updateContactHub, 120);
+      });
+    });
+
+    if (window.location.hash === '#contact') {
+      var activeContact = Array.prototype.slice.call(document.querySelectorAll('button')).filter(function (item) {
+        return /^\s*Contact\s*$/i.test(item.textContent || '');
+      })[0];
+      if (activeContact && !/active/i.test(activeContact.className || '')) activeContact.click();
+    }
   }
 
   var timer;
@@ -362,6 +397,7 @@
     updateBrandCredit();
     updateContact();
     updateDocumentLinks();
+    routeContactLinks();
     updateContactHub();
     observe();
   }
