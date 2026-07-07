@@ -28,6 +28,17 @@
     if (wrap) wrap.classList.add('content-removed');
   }
 
+  function updateHero() {
+    text(document.querySelector('.hero-subtitle'), 'Business Operations & AI Consultant');
+    text(document.querySelector('.hero-description'), 'Engineering Global Operations Systems that scale locally');
+    /* Story-page byline under the "— Adwoa" signature. */
+    Array.prototype.forEach.call(document.querySelectorAll('p'), function (p) {
+      if (/^Business Operations Architect\s*·\s*Accra, Ghana$/.test((p.textContent || '').trim())) {
+        text(p, 'Business Operations & AI Consultant · Accra, Ghana');
+      }
+    });
+  }
+
   function updateAglProject() {
     var projectsPage = document.querySelector('.kente-dark-bg');
     if (projectsPage) {
@@ -378,7 +389,6 @@
         if (!button) return;
         event.preventDefault();
         button.click();
-        window.history.replaceState(null, '', '#contact');
         setTimeout(updateContactHub, 120);
       });
     });
@@ -404,6 +414,7 @@
 
   function apply() {
     observer.disconnect();
+    updateHero();
     updateAglProject();
     updateExperience();
     updatePipeline();

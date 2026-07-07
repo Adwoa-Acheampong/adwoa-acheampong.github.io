@@ -942,3 +942,20 @@ body .ohemaa-panel { border-color: rgba(55, 230, 168, 0.38) !important; backgrou
   outline: 3px solid var(--emerald-bright) !important;
   outline-offset: 3px !important;
 }
+
+/* ============================================================================
+   HERO TAGLINE ✦ one-line motto styled like the subtitle
+   "Engineering Global Operational Systems that scale locally" reads as a
+   companion line to "Business Operations & AI Consultant": same Cormorant
+   Garamond italic, satin gold, single line.
+   ============================================================================ */
+body .hero-description {
+  font-family: "Cormorant Garamond", serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: clamp(0.85rem, 1.8vw, 1rem) !important;
+  letter-spacing: 0.05em !important;
+  color: var(--gold-satin, #ecc85f) !important;
+  max-width: none !important;
+  line-height: 1.6 !important;
+}
