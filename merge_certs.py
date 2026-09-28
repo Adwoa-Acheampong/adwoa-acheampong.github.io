@@ -11,6 +11,7 @@ files = [
     "Data-analytics-certificate-Adwoa-Acheampong.png",
     "DataCamp_SQL_Certificate_Adwoa_Acheampong.pdf",
     "cisco-data-analytics.pdf",
+    "ibm-business-analyst-coursera.jpg",
     "ibm-business-analysis.png",
     "Business Management OHSC.pdf",
     "Travel_Manager_Certificate_Adwoa_Acheampon.png"
