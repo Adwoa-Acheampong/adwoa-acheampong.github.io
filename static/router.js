@@ -21,7 +21,7 @@
   window.__tabRouter = true;
 
   var TABS = {
-    home:       { label: 'Home',       path: '/',            title: 'Miss A Acheampong | Business Operations & AI Consultant' },
+    home:       { label: 'Home',       path: '/',            title: 'Miss A Acheampong | Business/Data Analyst & Executive Support | In Training: ML Engineering' },
     story:      { label: 'Story',      path: '/story/',      title: 'Story | Miss A Acheampong' },
     projects:   { label: 'Projects',   path: '/projects/',   title: 'Projects | Miss A Acheampong' },
     experience: { label: 'Experience', path: '/experience/', title: 'Experience | Miss A Acheampong' },

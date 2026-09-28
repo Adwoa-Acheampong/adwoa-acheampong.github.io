@@ -21,7 +21,7 @@
     identity: {
       name: 'Miss A Acheampong',
       alias: 'Miracle',
-      title: 'Business Operations & AI Consultant',
+      title: 'Business/Data Analyst & Executive Support | In Training: ML Engineering',
       tagline: 'Engineering global operations systems that scale locally.',
       philosophy: 'Guided by Adinkra wisdom and unyielding grit.',
       superpower: 'Builds scalable systems that turn visions into high-performing businesses.'
@@ -356,7 +356,7 @@
         botSay("Akwaaba — welcome. ✦ I am Ohemaa, Adwoa’s assistant. How may I serve you today?", { chips: DEFAULT_CHIPS });
         break;
       case 'bio':
-        botSay("Miss A Acheampong — “Miracle” — is a Business Operations & AI Consultant in Accra, engineering global operations systems that scale locally. She blends Ghanaian system insight with global, data-driven strategy, guided by Adinkra wisdom and unyielding grit. The proof is in her track record: 120% revenue growth at Baa & Bean Café, an 83.3% engagement lift at Automobiles Ghana, and 30% productivity gains through automation.",
+        botSay("Miss A Acheampong — “Miracle” — is a Business/Data Analyst & Executive Support | In Training: ML Engineering in Accra, engineering global operations systems that scale locally. She blends Ghanaian system insight with global, data-driven strategy, guided by Adinkra wisdom and unyielding grit. The proof is in her track record: 120% revenue growth at Baa & Bean Café, an 83.3% engagement lift at Automobiles Ghana, and 30% productivity gains through automation.",
           { chips: [{ label: 'Her Projects', intent: 'projects' }, { label: 'Her Experience', intent: 'experience' }, { label: 'Psychometric Profile', intent: 'psychometric' }] });
         break;
       case 'experience':

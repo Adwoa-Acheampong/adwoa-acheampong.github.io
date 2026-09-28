@@ -29,12 +29,13 @@
   }
 
   function updateHero() {
-    text(document.querySelector('.hero-subtitle'), 'Business Operations & AI Consultant');
+    var heroSub = document.querySelector('.hero-subtitle');
+    if(heroSub) { heroSub.innerHTML = 'Business/Data Analyst & Executive Support<br><span style="font-size: 0.85em; opacity: 0.9; color: var(--gold-satin); display: inline-block; margin-top: 0.5rem;">In Training: ML Engineering</span>'; }
     text(document.querySelector('.hero-description'), 'Engineering Global Operations Systems that scale locally');
     /* Story-page byline under the "— Adwoa" signature. */
     Array.prototype.forEach.call(document.querySelectorAll('p'), function (p) {
       if (/^Business Operations Architect\s*·\s*Accra, Ghana$/.test((p.textContent || '').trim())) {
-        text(p, 'Business Operations & AI Consultant · Accra, Ghana');
+        text(p, 'Business/Data Analyst & Executive Support | In Training: ML Engineering · Accra, Ghana');
       }
     });
   }
