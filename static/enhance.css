@@ -529,6 +529,145 @@ body .impact-chart-card .recharts-tooltip-wrapper > div {
 .content-removed { display: none !important; }
 body .agl-title-link { color: var(--ivory) !important; text-decoration: none; }
 body .agl-title-link:hover { color: var(--emerald-bright) !important; }
+body .diplomats-title-link { color: var(--ivory) !important; text-decoration: none; }
+body .diplomats-title-link:hover { color: var(--emerald-bright) !important; }
+body .nav-doc-link {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  text-decoration: none;
+}
+body .live-projects-section {
+  margin: clamp(2.5rem, 5vw, 4rem) 0;
+  padding-top: clamp(1.5rem, 3vw, 2.4rem);
+  border-top: 1px solid var(--line);
+}
+body .live-projects-intro {
+  max-width: 720px;
+  margin-bottom: 1.2rem;
+}
+body .live-projects-intro span {
+  color: var(--emerald-bright);
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+body .live-projects-intro h3 {
+  margin: .25rem 0 .45rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1;
+}
+body .live-projects-intro p {
+  margin: 0;
+  font-size: .9rem;
+  line-height: 1.7;
+}
+body .live-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+body .live-project-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: linear-gradient(145deg, rgba(12, 31, 23, 0.94), rgba(4, 14, 10, 0.96));
+  box-shadow: 0 18px 48px rgba(0, 0, 0, .26);
+}
+body .live-project-media {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: #020705;
+}
+body .live-project-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+body .live-project-copy {
+  display: grid;
+  gap: .55rem;
+  padding: 1rem;
+}
+body .live-project-copy span {
+  color: var(--emerald-bright);
+  font-size: .57rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+body .live-project-copy h4 {
+  margin: 0;
+  color: var(--ivory);
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.05;
+}
+body .live-project-copy p {
+  margin: 0;
+  color: var(--ivory-muted);
+  font-size: .78rem;
+  line-height: 1.55;
+}
+body .live-project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin-top: .15rem;
+}
+body .live-project-stack span {
+  display: inline-flex;
+  width: auto;
+  padding: .25rem .45rem;
+  border: 1px solid rgba(55, 230, 168, .22);
+  border-radius: 999px;
+  background: rgba(24, 201, 139, .07);
+  color: #a8f5d9;
+  font-size: .56rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  line-height: 1.2;
+}
+body .live-project-copy ul {
+  display: grid;
+  gap: .42rem;
+  margin: .2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+body .live-project-copy li {
+  position: relative;
+  padding-left: .85rem;
+  color: var(--ivory-muted);
+  font-size: .72rem;
+  line-height: 1.45;
+}
+body .live-project-copy li::before {
+  content: "";
+  position: absolute;
+  top: .55em;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--emerald-bright);
+}
+body .live-project-copy a,
+body .diplomats-live-link {
+  color: var(--emerald-bright) !important;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
 body .agl-system-card .case-status-badge {
   margin-right: 3.2rem;
   background: var(--emerald) !important;
@@ -596,6 +735,9 @@ body .blkk-pipeline-card {
   padding: 0 !important;
   overflow: hidden;
 }
+body .blkk-pipeline-card.blkk-no-media {
+  grid-template-rows: auto;
+}
 body .blkk-pipeline-media {
   min-height: 0;
   overflow: hidden;
@@ -612,7 +754,36 @@ body .blkk-pipeline-media img {
   transition: transform .35s ease;
 }
 body .blkk-pipeline-card:hover .blkk-pipeline-media img { transform: scale(1.025); }
-body .blkk-label-card .blkk-pipeline-media img { object-position: center 35%; }
+body .blkk-agl-card .blkk-pipeline-media img { object-position: center top; }
+body .blkk-pipeline-placeholder {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: .65rem;
+  min-height: 220px;
+  padding: 1.4rem;
+  text-align: center;
+  background:
+    linear-gradient(135deg, rgba(24, 201, 139, .12), rgba(214, 175, 85, .08)),
+    url('/images/blkk-diamond-pattern.webp') center / 420px auto repeat,
+    #020705;
+}
+body .blkk-pipeline-placeholder span {
+  color: var(--ivory);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  line-height: .92;
+}
+body .blkk-pipeline-placeholder small {
+  color: var(--emerald-bright);
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+body .blkk-agl-ar-card .blkk-pipeline-shell {
+  background: linear-gradient(135deg, rgba(24, 201, 139, .1), rgba(214, 175, 85, .06)), #020705;
+}
 body .blkk-pipeline-shell { padding: 1.1rem; }
 body .blkk-pipeline-head {
   display: grid;
@@ -688,14 +859,21 @@ body .blkk-pipeline-points li::before {
   border-radius: 50%;
   background: var(--emerald-bright);
 }
+body .blkk-project-action {
+  margin-top: 1.05rem !important;
+  color: var(--emerald-bright) !important;
+}
 
 @media (max-width: 980px) {
+  body .live-projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   body .pipeline-grid:has(.blkk-pipeline-card) { grid-template-columns: 1fr !important; }
   body .blkk-pipeline-card { grid-template-columns: minmax(220px, .8fr) 1.2fr; grid-template-rows: auto; }
+  body .blkk-pipeline-card.blkk-no-media { grid-template-columns: 1fr; }
   body .blkk-pipeline-media { min-height: 270px; border-right: 1px solid var(--line); border-bottom: 0; }
 }
 
 @media (max-width: 680px) {
+  body .live-projects-grid { grid-template-columns: 1fr; }
   body .agl-proof-grid { grid-template-columns: 1fr; }
   body .blkk-pipeline-card { display: grid; grid-template-columns: 1fr; grid-template-rows: 190px auto; }
   body .blkk-pipeline-media { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
