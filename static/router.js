@@ -21,13 +21,13 @@
   window.__tabRouter = true;
 
   var TABS = {
-    home:       { label: 'Home',       path: '/',            title: 'Adwoa B. Acheampong | Business Operations & AI Consultant' },
-    story:      { label: 'Story',      path: '/story/',      title: 'Story | Adwoa B. Acheampong' },
-    projects:   { label: 'Projects',   path: '/projects/',   title: 'Projects | Adwoa B. Acheampong' },
-    experience: { label: 'Experience', path: '/experience/', title: 'Experience | Adwoa B. Acheampong' },
-    skills:     { label: 'Skills',     path: '/skills/',     title: 'Skills | Adwoa B. Acheampong' },
-    pipeline:   { label: 'Pipeline',   path: '/pipeline/',   title: 'Pipeline | Adwoa B. Acheampong' },
-    contact:    { label: 'Contact',    path: '/contact/',    title: 'Contact | Adwoa B. Acheampong' }
+    home:       { label: 'Home',       path: '/',            title: 'Miss A Acheampong | Business Operations & AI Consultant' },
+    story:      { label: 'Story',      path: '/story/',      title: 'Story | Miss A Acheampong' },
+    projects:   { label: 'Projects',   path: '/projects/',   title: 'Projects | Miss A Acheampong' },
+    experience: { label: 'Experience', path: '/experience/', title: 'Experience | Miss A Acheampong' },
+    skills:     { label: 'Skills',     path: '/skills/',     title: 'Skills | Miss A Acheampong' },
+    pipeline:   { label: 'Pipeline',   path: '/pipeline/',   title: 'Pipeline | Miss A Acheampong' },
+    contact:    { label: 'Contact',    path: '/contact/',    title: 'Contact | Miss A Acheampong' }
   };
 
   /* '/story', '/story/', '/story/index.html' all normalize to '/story' */

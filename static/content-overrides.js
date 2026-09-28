@@ -455,7 +455,7 @@ if (!window.__blkkPipelineToggle) {
   function updateBrandCredit() {
     Array.prototype.forEach.call(document.querySelectorAll('.site-footer p'), function (item) {
       if (/Powered by/i.test(item.textContent)) {
-        text(item, '© 2026 Adwoa B. Acheampong — Powered by Adinkra Intelligence Systems');
+        text(item, '© 2026 Miss A Acheampong — Powered by Adinkra Intelligence Systems');
       }
     });
   }
@@ -487,7 +487,7 @@ if (!window.__blkkPipelineToggle) {
     if (document.querySelector('.certifications-container')) return;
     
     var certsHTML = '<div class="certifications-container" style="grid-column: 1 / -1; margin-top: 2rem;">' +
-      '<div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;"><h3 class="section-subtitle" style="text-align: left; margin: 0; color: var(--color-brand-primary);">Education & Certifications</h3><a href="/docs/Adwoa_Acheampong_Certifications.pdf" download class="document-button primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Download All (PDF)</a></div>' +
+      '<div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;"><h3 class="section-subtitle" style="text-align: left; margin: 0; color: var(--color-brand-primary);">Education & Certifications</h3><a href="/docs/Miss_A_Acheampong_Certifications.pdf" download class="document-button primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Download All (PDF)</a></div>' +
       '<p style="margin: 0 0 1rem; color: #aaa;">View the visual certificate gallery at <a href="/certifications.html" style="color:#e5b947; font-weight:700;">Certifications</a>.</p>' +
       '<ul style="list-style: none; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">' +
       '<li style="background: rgba(17,17,17,.5); padding: 1rem; border-radius: 8px; border: 1px solid rgba(229,185,71,.2);"><a href="/docs/certifications/Data-analytics-certificate-Adwoa-Acheampong.png" target="_blank" style="color: #e5b947; text-decoration: none; font-weight: bold;">ALX Data Analyst</a><br><span style="font-size: 0.85em; color: #aaa;">Professional Development Skills (2025)</span></li>' +
@@ -588,11 +588,11 @@ if (!window.__blkkPipelineToggle) {
         '<h3>Scan to connect</h3>' +
         '<p>Save my contact, open LinkedIn, visit the website, or download the digital business card for later sharing.</p>' +
       '</div>' +
-      '<div class="portfolio-contact-qr-media"><img src="/images/contact/adwoa-connect-qr.png" alt="QR code for Adwoa B. Acheampong contact hub"></div>' +
+      '<div class="portfolio-contact-qr-media"><img src="/images/contact/adwoa-connect-qr.png" alt="QR code for Miss A Acheampong contact hub"></div>' +
       '<div class="portfolio-contact-qr-actions" aria-label="Contact hub actions">' +
         '<a href="/connect.html">Open hub</a>' +
         '<a href="/contact/adwoa-b-acheampong.vcf" download>Save contact</a>' +
-        '<a href="https://www.linkedin.com/in/adwoa-acheampong" target="_blank" rel="noopener noreferrer">LinkedIn</a>' +
+        '<a href="https://www.linkedin.com/in/miss-acheampong" target="_blank" rel="noopener noreferrer">LinkedIn</a>' +
         '<a href="/images/contact/adwoa-digital-business-card.png" download>Download card</a>' +
       '</div>';
 

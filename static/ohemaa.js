@@ -1,5 +1,5 @@
 /* ============================================================================
-   OHEMAA ✦ Adwoa B. Acheampong's real-time AI executive assistant
+   OHEMAA ✦ Miss A Acheampong's real-time AI executive assistant
    Self-contained vanilla JS widget. No dependencies. Injects its own CSS.
    Deploy: <script src="/static/ohemaa.js" defer></script> before </body>.
    Persona: regal, warm, sharp. Speaks of the portfolio as "we", Adwoa 3rd person.
@@ -19,7 +19,7 @@
   /* ---------------------------------------------------------------- KNOWLEDGE */
   var KB = {
     identity: {
-      name: 'Adwoa B. Acheampong',
+      name: 'Miss A Acheampong',
       alias: 'Miracle',
       title: 'Business Operations & AI Consultant',
       tagline: 'Engineering global operations systems that scale locally.',
@@ -71,7 +71,7 @@
       email: 'cc@aacheampong.com',
       phone: '(233) 276-291-485',
       location: 'Accra, Ghana',
-      linkedin: 'https://linkedin.com/in/adwoa-acheampong',
+      linkedin: 'https://linkedin.com/in/miss-acheampong',
       github: 'https://github.com/adwoa-acheampong'
     }
   };
@@ -174,7 +174,7 @@
   function avatar(size) {
     var a = el('span', 'ohemaa-ava');
     a.setAttribute('role', 'img');
-    a.setAttribute('aria-label', 'Adwoa B. Acheampong');
+    a.setAttribute('aria-label', 'Miss A Acheampong');
     if (size) { a.style.width = a.style.height = size + 'px'; }
     var probe = new Image();
     probe.referrerPolicy = 'no-referrer';
@@ -356,7 +356,7 @@
         botSay("Akwaaba — welcome. ✦ I am Ohemaa, Adwoa’s assistant. How may I serve you today?", { chips: DEFAULT_CHIPS });
         break;
       case 'bio':
-        botSay("Adwoa B. Acheampong — “Miracle” — is a Business Operations & AI Consultant in Accra, engineering global operations systems that scale locally. She blends Ghanaian system insight with global, data-driven strategy, guided by Adinkra wisdom and unyielding grit. The proof is in her track record: 120% revenue growth at Baa & Bean Café, an 83.3% engagement lift at Automobiles Ghana, and 30% productivity gains through automation.",
+        botSay("Miss A Acheampong — “Miracle” — is a Business Operations & AI Consultant in Accra, engineering global operations systems that scale locally. She blends Ghanaian system insight with global, data-driven strategy, guided by Adinkra wisdom and unyielding grit. The proof is in her track record: 120% revenue growth at Baa & Bean Café, an 83.3% engagement lift at Automobiles Ghana, and 30% productivity gains through automation.",
           { chips: [{ label: 'Her Projects', intent: 'projects' }, { label: 'Her Experience', intent: 'experience' }, { label: 'Psychometric Profile', intent: 'psychometric' }] });
         break;
       case 'experience':
@@ -382,11 +382,11 @@
         break;
       case 'resume':
         botSay("Here is Adwoa’s résumé — straight from her desk. Medaase for your interest.",
-          { doc: { title: 'Résumé', file: 'Adwoa B. Acheampong — Resume.pdf', url: RESUME_URL }, chips: [{ label: 'Psychometric Report', intent: 'psychodoc' }, { label: 'Quick Interview', intent: 'interview' }] });
+          { doc: { title: 'Résumé', file: 'Miss A Acheampong — Resume.pdf', url: RESUME_URL }, chips: [{ label: 'Psychometric Report', intent: 'psychodoc' }, { label: 'Quick Interview', intent: 'interview' }] });
         break;
       case 'psychodoc':
         botSay("Her psychometric report — a clear window into how she thinks and leads.",
-          { doc: { title: 'Psychometric Report', file: 'Adwoa Acheampong — Psychometric.pdf', url: PSYCHO_URL }, chips: [{ label: 'About Adwoa', intent: 'bio' }] });
+          { doc: { title: 'Psychometric Report', file: 'Miss A Acheampong — Psychometric.pdf', url: PSYCHO_URL }, chips: [{ label: 'About Adwoa', intent: 'bio' }] });
         break;
       case 'contact':
         botSay("Let’s get you to Adwoa directly. ✦ Here are her details — or I can open her contact page for you.",
