@@ -10,19 +10,25 @@
   h3 { font-size: 13pt; color: #2b6cb0; margin-top: 20px; margin-bottom: 10px; }
   .header-meta { font-size: 9pt; text-transform: uppercase; letter-spacing: 1px; color: #718096; text-align: right; margin-bottom: -15px; }
   .intro { font-size: 12pt; color: #4a5568; margin-bottom: 20px; }
-  .profile-box { background: #f7fafc; border: 1px solid #e2e8f0; padding: 15px; display: flex; justify-content: space-between; margin-bottom: 30px; }
+  .profile-box { background: #f7fafc; border: 1px solid #e2e8f0; padding: 12px 15px; display: flex; justify-content: space-between; margin-bottom: 18px; }
   .profile-box div { flex: 1; }
   .profile-title { font-size: 9pt; text-transform: uppercase; color: #3182ce; font-weight: bold; margin-bottom: 4px; }
   table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 10pt; }
   th, td { border: 1px solid #cbd5e0; padding: 10px; text-align: left; }
   th { background: #1a365d; color: white; font-weight: normal; }
+  .summary-table { font-size: 7.4pt; line-height: 1.08; margin-bottom: 8px; }
+  .summary-table th, .summary-table td { padding: 3px 5px; }
   .status-badge { background: #38a169; color: white; padding: 3px 8px; font-size: 8pt; font-weight: bold; }
   .status-badge.concept { background: #dd6b20; }
   .status-badge.active { background: #3182ce; }
+  .status-badge.learning { background: #2b6cb0; }
+  .status-badge.course { background: #805ad5; }
   ul { margin: 5px 0 15px 0; padding-left: 20px; }
   li { margin-bottom: 6px; }
   .project-header { display: flex; align-items: center; background: #f7fafc; padding: 10px; border-left: 4px solid #38a169; margin-bottom: 15px; }
   .project-header.active { border-left-color: #3182ce; }
+  .project-header.learning { border-left-color: #2b6cb0; }
+  .project-header.course { border-left-color: #805ad5; }
   .project-header.concept { border-left-color: #dd6b20; }
   .project-header.mvp { border-left-color: #d69e2e; }
   .p-role { margin-left: 20px; font-size: 10pt; color: #4a5568; }
@@ -30,8 +36,10 @@
   a { color: #3182ce; text-decoration: none; }
   .page-break { page-break-before: always; }
   .access-note { background: #f7fafc; border-left: 4px solid #d69e2e; padding: 10px 12px; margin: 12px 0 14px; font-size: 10pt; color: #4a5568; }
+  .portfolio-disclaimer { background: #f5f3ff; border: 1px solid #d6bcfa; border-left: 4px solid #805ad5; padding: 7px 9px; margin: 7px 0 8px; font-size: 8.5pt; line-height: 1.25; color: #44337a; }
   .screenshot-block { margin: 14px 0 18px; page-break-inside: avoid; }
   .screenshot-block img { display: block; width: 100%; max-height: 330px; object-fit: cover; object-position: top center; border: 1px solid #cbd5e0; }
+  .screenshot-block.metric-crop img { object-position: center 39%; }
   .screenshot-block figcaption { padding: 7px 9px; background: #edf2f7; color: #4a5568; font-size: 9pt; border: 1px solid #cbd5e0; border-top: 0; }
 </style>
 </head>
@@ -48,22 +56,182 @@
 </div>
 
 <h2>Portfolio at a glance</h2>
-<table>
+<table class="summary-table">
   <tr><th>Project</th><th>Status</th><th>Primary domain</th><th>Public link</th></tr>
+  <tr><td>Olist Marketing Funnel &amp; Regional Fulfillment Analysis</td><td>IN PROGRESS</td><td>Python analytics / data validation</td><td><a href="https://github.com/Adwoa-Acheampong/olist-marketing-funnel-analysis">GitHub repository</a></td></tr>
+  <tr><td>Retail Promotion Response &amp; Substitution Signals</td><td>IN PROGRESS</td><td>Retail analytics / promotion response</td><td>Repository and dashboard in progress</td></tr>
+  <tr><td>Multi-Specialty Hospital Operational Efficiency Capstone</td><td>COMPLETED CASE STUDY</td><td>Business analysis / operations / healthcare</td><td>Full deck and evidence available on request</td></tr>
+  <tr><td>CRM System Upgrade BRD &amp; Change Plan</td><td>COMPLETED CASE STUDY</td><td>Requirements / solution planning</td><td>Full BRD available on request</td></tr>
+  <tr><td>Process Modelling &amp; Secure Workflow Design</td><td>COMPLETED LAB PROJECT</td><td>BPMN / Mermaid / workflow analysis</td><td>Source models available on request</td></tr>
+  <tr><td>Strategic Investment Cost-Benefit Briefing</td><td>COMPLETED CASE STUDY</td><td>Business case / financial analysis</td><td>Full briefing available on request</td></tr>
+  <tr><td>Automotive Sales Analytics: Excel &amp; IBM Cognos</td><td>COMPLETED LAB PROJECT</td><td>Pivot tables / dashboards / BI</td><td>Workbooks and exports available on request</td></tr>
+  <tr><td>Municipal Fleet Equipment Inventory Analysis</td><td>COMPLETED LAB PROJECT</td><td>Excel analysis / pivot tables</td><td>Workbook available on request</td></tr>
   <tr><td>AGL OPS Command Center</td><td>LIVE</td><td>ERP / operational analytics</td><td><a href="https://agl.software">https://agl.software</a></td></tr>
   <tr><td>Adinkra Intelligence Systems</td><td>ACTIVE / PROTOTYPE</td><td>Analytics / AI interface</td><td><a href="https://blkkstarhub.com/adinkra-front">https://blkkstarhub.com/adinkra-front</a></td></tr>
   <tr><td>BLKK Autos</td><td>MVP / VALIDATION</td><td>Cross-platform commerce</td><td><a href="https://blkkstarhub.com/autos-app">https://blkkstarhub.com/autos-app</a></td></tr>
   <tr><td>Blkk Star Hub</td><td>PLATFORM BUILD</td><td>Digital trade / multi-tenant OS</td><td><a href="https://blkkstarhub.com">https://blkkstarhub.com</a></td></tr>
   <tr><td>MIRACLE</td><td>LIVE</td><td>Gamified life operating system</td><td><a href="https://miracleapp.site">https://miracleapp.site</a></td></tr>
   <tr><td>Unified Family Educational ERP</td><td>ACTIVE DEVELOPMENT</td><td>AI learning / multi-tenant ERP</td><td><a href="https://github.com/Adwoa-Acheampong/Family-Edu-System">github.com/Adwoa-Acheampong/Family-Edu-System</a></td></tr>
-  <tr><td>Building AGL</td><td>CONCEPT</td><td>AR diagnostics</td><td>Concept / no public demo</td></tr>
+  <tr><td>Building AGL</td><td>CONCEPT</td><td>Smart safety glasses / AI diagnostics</td><td>Concept / no public demo</td></tr>
   <tr><td>Portfolio Website</td><td>LIVE</td><td>Personal portfolio / web</td><td><a href="https://aacheampong.com">https://aacheampong.com</a></td></tr>
 </table>
+<div class="portfolio-disclaimer"><strong>Portfolio disclosure:</strong> This document contains concise, non-confidential summaries rather than every working paper. Full information&mdash;including source workbooks, pivot-table models, BRDs, requirements and traceability material, presentation decks, exported dashboards and supporting evidence&mdash;can be made available upon request where sharing rights and confidentiality permit.</div>
 <p style="font-size: 9pt; color: #718096;"><strong>Status discipline:</strong> Implemented technologies are stated as implemented. Where the wider Blkk architecture is still planned or being built, the stack is explicitly labelled designed/planned rather than presented as production-deployed.</p>
 
 <div class="page-break"></div>
 <div class="header-meta">ADWOA B. ACHEAMPONG | TECHNICAL PROJECTS</div>
-<h2>1. AGL OPS Command Center</h2>
+<h2>1. Olist Marketing Funnel &amp; Regional Fulfillment Analysis</h2>
+<div class="project-header learning"><span class="status-badge learning">IN PROGRESS</span> <span class="p-role"><strong>Role:</strong> Independent Data Analyst</span> <span class="p-link"><strong>Repository:</strong> <a href="https://github.com/Adwoa-Acheampong/olist-marketing-funnel-analysis">GitHub</a></span></div>
+<div class="access-note"><strong>Learning context:</strong> An independent, self-directed project inspired by MIT OpenCourseWare analytics and data-mining materials. It is not MIT enrollment, an MIT course submission or institutional endorsement.</div>
+<h3>Project brief</h3>
+<p>A Python case study joining Olist's marketing funnel with Brazilian e-commerce activity to study lead-to-deal conversion, commerce-linked sellers and delivery performance across seller-to-customer state corridors. The project is designed around a core analytical control: preserve the correct business grain before calculating KPIs or building a dashboard.</p>
+<figure class="screenshot-block metric-crop">
+  <img src="images/projects/olist-verified-checkpoint.png" alt="Verified Olist analysis checkpoint showing leads, deals, conversion rate and state corridors">
+  <figcaption><strong>Verified checkpoint:</strong> the public notebook contains the completed Python analysis and validation. The interactive Looker Studio report and final operations brief remain in progress.</figcaption>
+</figure>
+<h3>Verified work completed</h3>
+<ul>
+  <li>Loaded and profiled 11 source CSV files in a browser-based GitHub Codespaces / Jupyter environment.</li>
+  <li>Diagnosed a join-grain error in which a direct item-level join expanded 8,000 marketing-qualified leads to 12,664 rows; corrected it by aggregating commerce activity to seller level before joining through <code>seller_id</code>.</li>
+  <li>Preserved one row per <code>mql_id</code> and passed the documented join, reconciliation and chart-quality checks.</li>
+  <li>Published the validated notebook and an evidence-led README in a public GitHub repository.</li>
+</ul>
+<h3>Verified results to date</h3>
+<table>
+  <tr><td><strong>Marketing funnel</strong></td><td>8,000 marketing-qualified leads; 842 closed deals; 10.53% lead-to-deal conversion</td></tr>
+  <tr><td><strong>Commerce linkage</strong></td><td>380 commerce-linked deals; 45.13% commerce-link rate</td></tr>
+  <tr><td><strong>Delivery analysis base</strong></td><td>97,811 eligible seller-order records across 412 seller-to-customer state corridors</td></tr>
+  <tr><td><strong>Tools</strong></td><td>Python, pandas, Matplotlib, Jupyter, GitHub Codespaces, Git / GitHub; Looker Studio planned for the interactive report</td></tr>
+</table>
+<h3>Current boundary and next milestone</h3>
+<p>The Python analysis, data-grain controls and validation are complete. Dashboard-ready exports, the four-view Looker Studio report, denominator notes and the one-page operations brief are the next milestones. Findings remain descriptive and are not presented as causal savings or client work.</p>
+
+<div class="page-break"></div>
+<div class="header-meta">ADWOA B. ACHEAMPONG | TECHNICAL PROJECTS</div>
+<h2>2. Retail Promotion Response &amp; Substitution Signals</h2>
+<div class="project-header learning"><span class="status-badge learning">IN PROGRESS</span> <span class="p-role"><strong>Role:</strong> Independent Data Analyst</span> <span class="p-link"><strong>Link:</strong> Repository and dashboard in progress</span></div>
+<div class="access-note"><strong>Learning context:</strong> An independent, self-directed retail-analytics project inspired by MIT OpenCourseWare materials. It is not MIT enrollment, an MIT assignment submission or institutional credit.</div>
+<h3>Project brief</h3>
+<p>A retail analytics case study using the 84.51&deg; Complete Journey 2.0 dataset to examine store-week sales patterns, promotional discounts, category revenue and private-label versus national-brand mix. Because the source does not provide complete promotional-exposure evidence, the work is framed as descriptive association and substitution signals rather than causal marketing lift.</p>
+<h3>Verified work completed</h3>
+<ul>
+  <li>Verified the source package and established the project repository structure, data dictionary and analytical guardrails.</li>
+  <li>Profiled 1,469,307 transaction receipt-line rows and 92,331 product rows while preserving identifier fields and receipt-line grain.</li>
+  <li>Confirmed demographic coverage for 801 households within the broader 2,469-household dataset.</li>
+  <li>Defined the many-to-one product-join reconciliation and store-week analytical grain required for the next phase.</li>
+</ul>
+<h3>Current boundary and next milestone</h3>
+<p>Category selection, store-week aggregation, high-versus-low discount comparisons, within-store trend checks and sensitivity analysis remain in progress. The final deliverables will be a dashboard, a one-page category-manager brief and a reproducible public repository after independent rerun validation.</p>
+<table>
+  <tr><td><strong>Tools</strong></td><td>Python, pandas, SQL using DuckDB or SQLite, Git; Looker Studio or Power BI planned for presentation</td></tr>
+  <tr><td><strong>Methods</strong></td><td>Data-quality profiling, receipt-line grain validation, many-to-one join reconciliation, store-week aggregation and sensitivity checks</td></tr>
+</table>
+
+<div class="page-break"></div>
+<div class="header-meta">ADWOA B. ACHEAMPONG | BUSINESS ANALYSIS PROGRAM WORK</div>
+<h2>3. Multi-Specialty Hospital Operational Efficiency Capstone</h2>
+<div class="project-header course"><span class="status-badge course">COMPLETED CASE STUDY</span> <span class="p-role"><strong>Role:</strong> Business Analyst</span> <span class="p-link"><strong>Deliverable:</strong> 39-slide PowerPoint and PDF</span></div>
+<div class="access-note"><strong>Project context:</strong> Simulated IBM Business Analyst Professional Certificate capstone. The case study demonstrates analysis methods and recommendations; it is not presented as a live hospital engagement.</div>
+<h3>Project brief</h3>
+<p>Analyzed appointment flow, resource availability, patient feedback and stakeholder evidence for a multi-specialty hospital. The final presentation connects business objectives to requirements, a BRD and provisional RTM, stakeholder engagement, scope controls, current/future process maps, department-level analysis, risk governance and measurable recommendations.</p>
+<h3>Evidence base and quality controls</h3>
+<table>
+  <tr><td><strong>Source records</strong></td><td>216 appointment rows, 217 feedback rows and 213 resource rows supplied for the case study</td></tr>
+  <tr><td><strong>Validated analytical base</strong></td><td>206 appointment records with known department and status; 210 complete wait-time records; 211 valid feedback scores</td></tr>
+  <tr><td><strong>Requirements work</strong></td><td>Problem statement, functional requirements, constraints, acceptance criteria and provisional requirement traceability matrix</td></tr>
+  <tr><td><strong>Process and governance work</strong></td><td>Current/future workflows, BPMN-style appointment flow, stakeholder responsibility view, WBS, scope-change process, risk register and mitigation plan</td></tr>
+  <tr><td><strong>Tools</strong></td><td>Microsoft Excel / CSV analysis, Microsoft PowerPoint, BPMN-style process mapping, presentation charts and structured business-analysis templates</td></tr>
+</table>
+<h3>Selected findings</h3>
+<ul>
+  <li>27.7% appointment completion rate and 25.2% no-show rate across the validated appointment base.</li>
+  <li>41.4-minute average patient wait; General Medicine recorded the longest departmental average at 43.9 minutes.</li>
+  <li>6.32/10 average feedback score, with 84 of 211 scored responses classified as needing attention.</li>
+  <li>44.9% recorded resource availability, supporting recommendations for integrated scheduling, capacity visibility, notifications and data ownership.</li>
+</ul>
+
+<div class="page-break"></div>
+<div class="header-meta">ADWOA B. ACHEAMPONG | BUSINESS ANALYSIS PROGRAM WORK</div>
+<h2>4. CRM System Upgrade BRD &amp; Change Plan</h2>
+<div class="project-header course"><span class="status-badge course">COMPLETED CASE STUDY</span> <span class="p-role"><strong>Role:</strong> Business Analyst</span> <span class="p-link"><strong>Deliverable:</strong> 10-page BRD / Gamma briefing</span></div>
+<div class="access-note"><strong>Project context:</strong> Simulated technology-company CRM upgrade. Figures are scenario inputs used to demonstrate requirements definition, solution planning and measurable acceptance criteria.</div>
+<h3>Project brief</h3>
+<p>Produced a versioned Business Requirements Document for replacing a seven-year-old CRM that had grown from 40 users to more than 180 sales, marketing and customer-success users. The work translates fragmented data, manual effort, weak reporting and limited mobile access into a phased cloud-CRM specification.</p>
+<table>
+  <tr><td><strong>Functional scope</strong></td><td>Eight uniquely identified requirements covering unified customer data, pipeline management, analytics, marketing integration, mobile access, workflow automation and system integration</td></tr>
+  <tr><td><strong>Non-functional scope</strong></td><td>Performance, security, availability, scalability, browser compatibility and audit requirements, including support for at least 300 concurrent users</td></tr>
+  <tr><td><strong>Migration scale</strong></td><td>Scenario plan for 380,000 customer records, 1.2 million activity records and 85,000 opportunity records with a 95% pre-go-live data-quality target</td></tr>
+  <tr><td><strong>Delivery plan</strong></td><td>12-month phased implementation, role-based training, pilot support, adoption monitoring and change governance</td></tr>
+  <tr><td><strong>Success measures</strong></td><td>90% user adoption, 18% sales-cycle reduction, 98% data accuracy and a 12-point customer-satisfaction improvement</td></tr>
+  <tr><td><strong>Tools</strong></td><td>Business requirements framework, MoSCoW prioritization, Microsoft document workflow and Gamma presentation design</td></tr>
+</table>
+
+<div class="page-break"></div>
+<div class="header-meta">ADWOA B. ACHEAMPONG | BUSINESS ANALYSIS PROGRAM WORK</div>
+<h2>5. Process Modelling &amp; Secure Workflow Design</h2>
+<div class="project-header course"><span class="status-badge course">COMPLETED LAB PROJECT</span> <span class="p-role"><strong>Role:</strong> Business Analyst / Process Modeller</span> <span class="p-link"><strong>Deliverables:</strong> Mermaid source and BPMN 2.0 XML model</span></div>
+<div class="access-note"><strong>Project context:</strong> Business-analysis program exercises demonstrating secure-system workflow decomposition and cross-functional customer-onboarding process modelling. Full editable source models are available on request.</div>
+<h3>Secure authentication workflow</h3>
+<p>Designed a detailed authentication and security flow that traces login, rate limiting, account lookup and status checks, password validation, lockout controls, multifactor-authentication enrollment and challenge, session creation and rotation, risk checks, authorisation, password reset and audit logging.</p>
+<h3>Technology-services customer onboarding model</h3>
+<p>Modelled an end-to-end onboarding process across Customer, Sales and Operations swimlanes. The process uses start and end events, user and service tasks, exclusive gateways and acceptance, rejection, follow-up and information-request branches from initial service enquiry through account setup, training, go-live support and satisfaction review.</p>
+<table>
+  <tr><td><strong>Notation</strong></td><td>Mermaid flowchart syntax and BPMN 2.0 process modelling</td></tr>
+  <tr><td><strong>Tools</strong></td><td>Mermaid and bpmn-js BPMN Modeler</td></tr>
+  <tr><td><strong>Business-analysis methods</strong></td><td>Swimlane mapping, decision-gateway modelling, exception-path analysis, control-point definition, role handoffs and end-to-end process validation</td></tr>
+  <tr><td><strong>Source evidence</strong></td><td>Task3_Mermaid_Diagram.txt and Task4_BPMN_Model.txt; the BPMN file identifies bpmn-js as its exporter</td></tr>
+</table>
+
+<div class="page-break"></div>
+<div class="header-meta">ADWOA B. ACHEAMPONG | BUSINESS ANALYSIS PROGRAM WORK</div>
+<h2>6. Strategic Investment Cost-Benefit Briefing</h2>
+<div class="project-header course"><span class="status-badge course">COMPLETED CASE STUDY</span> <span class="p-role"><strong>Role:</strong> Business Analyst</span> <span class="p-link"><strong>Deliverable:</strong> 5-page Gamma decision briefing</span></div>
+<div class="access-note"><strong>Project context:</strong> Simulated investment-committee case study. Financial values are the exercise assumptions, not audited client results.</div>
+<h3>Project brief</h3>
+<p>Converted a cost-and-benefit scenario into an executive decision narrative, combining investment composition, benefit drivers, payback timing, risk framing and governance checkpoints. The presentation was structured for an investment committee rather than as a generic classroom report.</p>
+<table>
+  <tr><td><strong>Year-one investment</strong></td><td>$345,000: $245,000 implementation, $65,000 annual maintenance and $35,000 training</td></tr>
+  <tr><td><strong>Annual benefit case</strong></td><td>$540,000 across productivity gains ($180,000), customer retention ($210,000) and new sales revenue ($150,000)</td></tr>
+  <tr><td><strong>Decision metrics</strong></td><td>18-month payback, $195,000 Year-one net benefit and $1.2 million projected three-year net benefit</td></tr>
+  <tr><td><strong>Visual analysis</strong></td><td>Cost-composition view, benefit-driver comparison and three-year cost/benefit/net-value roadmap</td></tr>
+  <tr><td><strong>Recommendation</strong></td><td>Proceed subject to 6-, 12- and 18-month governance and benefit-realization reviews</td></tr>
+</table>
+
+<div class="page-break"></div>
+<div class="header-meta">ADWOA B. ACHEAMPONG | BUSINESS ANALYSIS PROGRAM WORK</div>
+<h2>7. Automotive Sales Analytics: Excel &amp; IBM Cognos</h2>
+<div class="project-header course"><span class="status-badge course">COMPLETED LAB PROJECT</span> <span class="p-role"><strong>Role:</strong> Data / Business Analyst</span> <span class="p-link"><strong>Deliverables:</strong> Excel workbooks and Cognos dashboard exports</span></div>
+<h3>Excel dealer-performance workbook</h3>
+<p>Built a dashboard-ready Excel model from 1,200 dealer/model/month records covering 2018&ndash;2019. The completed workbook contains four pivot tables and a four-chart dashboard for dealer volume, monthly model profitability, annual dealer profit and model/dealer contribution.</p>
+<table>
+  <tr><td><strong>Data scope</strong></td><td>1,200 records; 5 vehicle models; 10 dealer IDs; 21,597 units sold; $29.97 million aggregate profit</td></tr>
+  <tr><td><strong>Excel methods</strong></td><td>Structured tables, four pivot tables, sorting/filtering, monthly and annual aggregation, dealer/model comparisons and dashboard composition</td></tr>
+  <tr><td><strong>Additional vehicle lab</strong></td><td>155 vehicle records across 30 manufacturers and 154 models, with retention formulas, conditional classifications, a manufacturer pivot table and bar, column, pie and sunburst visuals</td></tr>
+</table>
+<h3>IBM Cognos sales-and-service dashboard</h3>
+<p>Created and exported an interactive-style business-intelligence report combining sales and service views. The sales view reports $78.25 million in profit, 58,118 units sold and an average quantity of 19.37, while the service view compares recalls by model and affected system and segments customer sentiment as positive, neutral or negative.</p>
+<table>
+  <tr><td><strong>Visuals</strong></td><td>Model-volume chart, dealer-profit comparison, monthly quantity/profit trend, recall analysis and sentiment filters</td></tr>
+  <tr><td><strong>Tools</strong></td><td>Microsoft Excel, PivotTables, PivotCharts, formulas, dashboard layout and IBM Cognos Analytics</td></tr>
+</table>
+
+<div class="page-break"></div>
+<div class="header-meta">ADWOA B. ACHEAMPONG | BUSINESS ANALYSIS PROGRAM WORK</div>
+<h2>8. Municipal Fleet Equipment Inventory Analysis</h2>
+<div class="project-header course"><span class="status-badge course">COMPLETED LAB PROJECT</span> <span class="p-role"><strong>Role:</strong> Data / Business Analyst</span> <span class="p-link"><strong>Deliverable:</strong> Excel analysis workbook</span></div>
+<h3>Project brief</h3>
+<p>Cleaned and summarized a municipal equipment inventory, then built multiple pivot views to make fleet concentration visible by department and equipment class. The workbook preserves the detailed source table while adding repeatable summary calculations and drillable pivot outputs.</p>
+<table>
+  <tr><td><strong>Data scope</strong></td><td>129 inventory rows covering 26 departments, 15 equipment classes and 2,577 recorded equipment units</td></tr>
+  <tr><td><strong>Formula layer</strong></td><td>SUM, AVERAGE, MIN, MAX and COUNT checks beside the structured source table</td></tr>
+  <tr><td><strong>Pivot analysis</strong></td><td>Three pivot tables examining equipment totals by department, equipment-class composition within departments and department contribution within equipment classes</td></tr>
+  <tr><td><strong>Selected signal</strong></td><td>Transportation accounts for 1,484 recorded units, making it the largest department-level concentration in the workbook</td></tr>
+  <tr><td><strong>Tools</strong></td><td>Microsoft Excel, structured tables, formulas, PivotTables, grouping, sorting and inventory reconciliation</td></tr>
+</table>
+
+<div class="page-break"></div>
+<div class="header-meta">ADWOA B. ACHEAMPONG | TECHNICAL PROJECTS</div>
+<h2>9. AGL OPS Command Center</h2>
 <div class="project-header"><span class="status-badge">LIVE</span> <span class="p-role"><strong>Role:</strong> Business Analyst / Digital Integrations Advisor / Systems Lead</span> <span class="p-link"><strong>Link:</strong> <a href="https://agl.software">https://agl.software</a></span></div>
 <h3>Product brief</h3>
 <p>A live, browser-based ERP and staff operations environment for Automobiles Ghana Ltd. It replaced fragmented paper and spreadsheet workflows with a searchable operating system for workshop activity, vehicle inventory, sales, expenses, staff attendance, HR records and management reporting.</p>
@@ -83,11 +251,11 @@
   <tr><td><strong>Framework note</strong></td><td>The exact production frontend/backend framework is not documented in the portfolio materials used for this briefing, so it is not overstated here.</td></tr>
 </table>
 <h3>Why it matters</h3>
-<p>AGL OPS is the strongest evidence of systems work moving beyond prototype thinking into a real operational environment. It demonstrates requirements analysis, workflow redesign, data structuring, user adoption, executive reporting and business-impact measurement in one project.</p>
+<p>AGL OPS demonstrates requirements analysis, workflow redesign, data structuring, user adoption, executive reporting and impact measurement in a live operational environment.</p>
 
 <div class="page-break"></div>
 <div class="header-meta">ADWOA B. ACHEAMPONG | TECHNICAL PROJECTS</div>
-<h2>2. Adinkra Intelligence Systems (AIS)</h2>
+<h2>10. Adinkra Intelligence Systems (AIS)</h2>
 <div class="project-header active"><span class="status-badge active">ACTIVE / PROTOTYPE</span> <span class="p-role"><strong>Role:</strong> Lead Developer / Engineer / Product Architect</span> <span class="p-link"><strong>Link:</strong> <a href="https://blkkstarhub.com/adinkra-front">https://blkkstarhub.com/adinkra-front</a></span></div>
 <h3>Product brief</h3>
 <p>The analytics and intelligence frontend for Blkk Star Hub. Adinkra is designed to sit above tenant ERP environments and convert authorised operational data into shared analytics, reporting and artificial-intelligence-assisted decision support. A tenant such as AGL can therefore be viewed from both its ERP operations side and its analytics side.</p>
@@ -110,7 +278,7 @@
 
 <div class="page-break"></div>
 <div class="header-meta">ADWOA B. ACHEAMPONG | TECHNICAL PROJECTS</div>
-<h2>3. BLKK Autos</h2>
+<h2>11. BLKK Autos</h2>
 <div class="project-header mvp"><span class="status-badge mvp" style="background:#d69e2e;">MVP / VALIDATION</span> <span class="p-role"><strong>Role:</strong> Frontend / Mobile Engineer / Product Architect</span> <span class="p-link"><strong>Link:</strong> <a href="https://blkkstarhub.com/autos-app">https://blkkstarhub.com/autos-app</a></span></div>
 <h3>Product brief</h3>
 <p>A universal automotive-commerce application for web, iOS and Android and the first sector-specific validation wedge for Blkk Star Hub. It structures vehicle listings, dealer operations, buyer discovery and transaction workflows while providing a path for verified commercial activity to feed the wider data and analytics architecture.</p>
@@ -137,7 +305,7 @@
 
 <div class="page-break"></div>
 <div class="header-meta">ADWOA B. ACHEAMPONG | TECHNICAL PROJECTS</div>
-<h2>4. Blkk Star Hub</h2>
+<h2>12. Blkk Star Hub</h2>
 <div class="project-header active"><span class="status-badge active">PLATFORM BUILD</span> <span class="p-role"><strong>Role:</strong> Founder / Strategist / Systems Architect</span> <span class="p-link"><strong>Link:</strong> <a href="https://blkkstarhub.com">https://blkkstarhub.com</a></span></div>
 <h3>Product brief</h3>
 <p>A modular, API-first digital trade and business operating system designed to help African MSMEs move from fragmented, locally trusted commerce into structured, verifiable and increasingly financeable operations. The system combines sector-specific commerce frontends with a shared institutional spine for identity, operations, data, analytics, verification, payments, logistics and artificial intelligence.</p>
@@ -167,7 +335,7 @@
 
 <div class="page-break"></div>
 <div class="header-meta">ADWOA B. ACHEAMPONG | TECHNICAL PROJECTS</div>
-<h2>5. MIRACLE</h2>
+<h2>13. MIRACLE</h2>
 <div class="project-header"><span class="status-badge">LIVE</span> <span class="p-role"><strong>Role:</strong> Product Designer / Builder</span> <span class="p-link"><strong>Link:</strong> <a href="https://miracleapp.site">https://miracleapp.site</a></span></div>
 <h3>Product brief</h3>
 <p>A mobile-first life operating system built around faith, focus, stewardship and follow-through. MIRACLE turns personal disciplines such as prayer, study, goals and routines into a more engaging, game-like experience through progress, rewards and reflective interaction.</p>
@@ -187,7 +355,7 @@
 
 <div class="page-break"></div>
 <div class="header-meta">ADWOA B. ACHEAMPONG | TECHNICAL PROJECTS</div>
-<h2>6. Unified Family Educational ERP</h2>
+<h2>14. Unified Family Educational ERP</h2>
 <div class="project-header active"><span class="status-badge active">ACTIVE DEVELOPMENT</span> <span class="p-role"><strong>Role:</strong> Systems Designer / Builder</span> <span class="p-link"><strong>Link:</strong> <a href="https://github.com/Adwoa-Acheampong/Family-Edu-System">github.com/Adwoa-Acheampong/Family-Edu-System</a></span></div>
 <h3>Product brief</h3>
 <p>A multi-tenant, AI-powered family learning ecosystem that gives different family members age-appropriate learning interfaces while using shared infrastructure underneath. The design combines a React/PWA dashboard, Google Workspace services and an AI orchestration layer for content generation, assignments, knowledge retrieval, grading and progress tracking.</p>
@@ -211,16 +379,20 @@
 
 <div class="page-break"></div>
 <div class="header-meta">ADWOA B. ACHEAMPONG | TECHNICAL PROJECTS</div>
-<h2>7. Building AGL</h2>
+<h2>15. Building AGL</h2>
 <div class="project-header concept"><span class="status-badge concept">CONCEPT</span> <span class="p-role"><strong>Role:</strong> Concept Designer / Systems Architect</span></div>
 <h3>Product brief</h3>
-<p>An augmented-reality mechanic diagnostic concept designed to bring structured vehicle fault data into the technician's field of view. The idea combines goggle-mounted camera input with fault-code information to guide diagnosis and repair in real time, while creating structured service evidence that can feed operational records.</p>
+<p>A smart mechanic-safety concept that integrates Meta-glasses-style camera and display technology into protective workshop goggles. Computer vision, machine learning and diagnostic AI would interpret the vehicle, fault data and repair context, then present real-time diagnostic guidance and recommended solutions within the mechanic's field of view.</p>
+<p>The planned learning loop would capture task context, diagnostic signals, the repair path selected, the result and any alternative method used by the mechanic. When a task or solution is not already represented in the knowledge base, the verified outcome could become structured training evidence so later guidance improves without removing the mechanic's final judgement.</p>
 <h3>Concept stack</h3>
 <table>
-  <tr><td><strong>Interface</strong></td><td>Augmented-reality / wearable display concept</td></tr>
-  <tr><td><strong>Inputs</strong></td><td>Goggle-mounted camera feed plus vehicle fault-code / diagnostic data</td></tr>
-  <tr><td><strong>Intelligence</strong></td><td>AI-assisted interpretation and guided diagnostic workflows (planned)</td></tr>
-  <tr><td><strong>Systems integration</strong></td><td>Designed to connect diagnostic activity with AGL operational / vehicle-service records</td></tr>
+  <tr><td><strong>Wearable interface</strong></td><td>Meta-glasses-style camera and heads-up display technology integrated into workshop safety goggles</td></tr>
+  <tr><td><strong>Operational inputs</strong></td><td>Live camera feed, vehicle fault codes, diagnostic readings, service history, repair context and mechanic observations</td></tr>
+  <tr><td><strong>Intelligence layer</strong></td><td>Computer vision, machine learning and AI-assisted fault interpretation with real-time diagnostic and repair guidance (planned)</td></tr>
+  <tr><td><strong>Learning loop</strong></td><td>Structured capture of mechanic actions, outcomes, previously unseen tasks and alternative successful methods for reviewed model and knowledge-base updates</td></tr>
+  <tr><td><strong>Training sources</strong></td><td>Validated workshop outcomes plus licensed or permissioned instructional videos, official mechanical diagnostic and repair materials, and authorised diagnostic-software data; source rights and provenance would be recorded</td></tr>
+  <tr><td><strong>Safety and governance</strong></td><td>Mechanic-in-the-loop decisions, confidence indicators, traceable sources and review gates before new field evidence becomes reusable guidance</td></tr>
+  <tr><td><strong>Systems integration</strong></td><td>Designed to connect diagnostic activity, learning evidence and recommended solutions with AGL operational and vehicle-service records</td></tr>
 </table>
 
 <h2>Supporting digital assets & research</h2>

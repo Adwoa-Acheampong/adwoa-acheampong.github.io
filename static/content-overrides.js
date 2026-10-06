@@ -149,47 +149,8 @@
     if (charts[1]) text(charts[1].querySelector('h4'), 'AGL ERP Systems');
   }
 
-  function updateDiplomatsProject() {
-    var cards = Array.prototype.slice.call(document.querySelectorAll('.case-study'));
-    var card = cards.filter(function (item) {
-      var title = item.querySelector('.case-title');
-      return title && /Avenue Lincoln|Adebi Villa/i.test(title.textContent || '');
-    })[0];
-    if (!card) return;
 
-    card.classList.add('diplomats-system-card');
-    var title = card.querySelector('.case-title');
-    if (title && !title.querySelector('.diplomats-title-link')) {
-      title.innerHTML = '<a class="diplomats-title-link" href="https://diplomats.netlify.app" target="_blank" rel="noopener noreferrer">Adebi Villa / Avenue Lincoln</a>';
-    }
-    text(card.querySelector('.case-status-badge'), 'Live Site');
-    text(card.querySelector('.case-client'), '· Ridge, Accra');
-    text(card.querySelector('.case-hero-desc'),
-      'A live luxury villa booking and hospitality site at diplomats.netlify.app, positioned for direct reservations, diplomatic-quarter travel, concierge services, and long-stay guest conversion.');
 
-    var expand = card.querySelector('.project-expand-btn');
-    if (expand && !card.querySelector('.diplomats-live-link')) {
-      var link = document.createElement('a');
-      link.className = 'project-link diplomats-live-link';
-      link.href = 'https://diplomats.netlify.app';
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.textContent = 'Open diplomats.netlify.app ↗';
-      expand.parentNode.insertBefore(link, expand);
-    }
-
-    if (!card.querySelector('.diplomats-proof-gallery')) {
-      var gallery = document.createElement('section');
-      gallery.className = 'diplomats-proof-gallery agl-proof-gallery';
-      gallery.innerHTML =
-        '<div class="agl-proof-intro"><span>Live evidence</span><h4>Diplomats / Adebi Villa</h4><p>Screenshot captured from the live Netlify site, preserving the public landing-page look and content.</p></div>' +
-        '<div class="agl-proof-grid diplomats-proof-grid">' +
-          '<figure class="agl-proof-card"><div class="agl-proof-media"><img src="/images/projects/diplomats-live.png" alt="Live Adebi Villa website screenshot" loading="lazy"></div><figcaption><strong>Adebi Villa live landing page</strong><span>Public booking presence for Avenue Lincoln Estate, Ridge, Accra.</span></figcaption></figure>' +
-        '</div>';
-      var narrativeRoot = card.querySelector('.case-narrative') || card.lastElementChild;
-      if (narrativeRoot && narrativeRoot.parentNode) narrativeRoot.parentNode.insertBefore(gallery, narrativeRoot.nextSibling);
-    }
-  }
 
   function updateLiveProjects() {
     var page = document.querySelector('.kente-dark-bg');
@@ -209,20 +170,6 @@
           'Executive dashboards for finance, workshop, sales, inventory, staff, and reporting.',
           'Role-aware Staff Hub with QR-secured access, attendance, assignments, and work-order evidence.',
           'Operational workflows move leads, vehicle jobs, stock, approvals, and handoffs through accountable boards.'
-        ]
-      },
-      {
-        title: 'Adebi Villa / Avenue Lincoln',
-        status: 'LIVE SITE',
-        image: '/images/projects/diplomats-live.png',
-        alt: 'Adebi Villa website screenshot from diplomats.netlify.app',
-        href: 'https://diplomats.netlify.app',
-        functionText: 'Direct-booking and hospitality conversion site for a luxury villa in Ridge, Accra.',
-        stack: ['HTML', 'CSS', 'JavaScript', 'Netlify', 'Web3Forms', 'Booking UX'],
-        bullets: [
-          'Presents villa positioning, amenities, gallery, video walkthrough, pricing, and concierge promise.',
-          'Supports direct enquiry and booking intent outside third-party marketplace dependency.',
-          'Acts as the proof of concept for the broader Real Estate Management Hub pipeline venture.'
         ]
       },
       {
@@ -305,7 +252,7 @@
     var cards = Array.prototype.slice.call(document.querySelectorAll('.experience-card-v2'));
     var card = cards.filter(function (item) {
       var content = item.textContent || '';
-      return /The Merchant Hub|Founder & Operations Architect|AGL Command Center|Staff Hub PWA|Playwright test suite/i.test(content);
+      return /Blkk Star Hub|Founder & Operations Architect|AGL Command Center|Staff Hub PWA|Playwright test suite/i.test(content);
     })[0];
     if (!card) return;
 
@@ -353,7 +300,7 @@
 
     var projects = [
       {
-        slug: 'merchant-hub', status: 'IN DEVELOPMENT', title: 'The Merchant Hub',
+        slug: 'blkk-star-hub', status: 'IN DEVELOPMENT', title: 'Blkk Star Hub',
         tagline: 'Founder marketplace / SME operating support',
         image: '/images/blkk-pipeline/blkk-star-hub-commerce.png',
         imageAlt: 'Merchant commerce and founder ecosystem concept visual',
@@ -363,21 +310,7 @@
         bullets: [
           'Marketplace, operations support, founder training, executive assistance, and community commerce model.',
           'Includes the susu-inspired community capital concept from the original pipeline.',
-          'Kept in Pipeline because the full Merchant Hub venture is not yet a live production platform.'
-        ]
-      },
-      {
-        slug: 'real-estate-hub', status: 'CONCEPT STAGE', title: 'Real Estate Management Hub',
-        tagline: 'Hospitality-backed property operations',
-        image: '/images/projects/diplomats-live.png',
-        imageAlt: 'Adebi Villa live site screenshot validating the real estate management concept',
-        href: 'https://diplomats.netlify.app',
-        action: 'Open live proof of concept',
-        vision: 'A property management platform for owners who need professional hosting, training, guest experience, marketing, and reporting rather than simple property listing.',
-        bullets: [
-          'Proof of concept: Adebi Villa / Avenue Lincoln is live at diplomats.netlify.app.',
-          'Pipeline venture remains the broader real-estate management hub, not the already-live villa site.',
-          'Targets owners in Accra, Aburi, Cape Coast, and diaspora investors with Ghanaian real estate holdings.'
+          'Kept in Pipeline because the full Blkk Star Hub venture is not yet a live production platform.'
         ]
       },
       {
@@ -396,16 +329,17 @@
       },
       {
         slug: 'agl-ar', status: 'CONCEPT STAGE', title: 'Building AGL',
-        tagline: 'AR diagnostics feature',
+        tagline: 'Smart safety glasses for AI-assisted vehicle diagnosis',
         image: '/images/agl-erp/agl-workshop-kanban.png',
-        imageAlt: 'AGL workshop workflow screenshot used as AR diagnostics concept context',
+        imageAlt: 'AGL workshop workflow screenshot used as smart diagnostic safety-glasses concept context',
         href: '/portfolio.html',
         action: 'Open project file',
-        vision: 'An augmented-reality mechanic diagnostic concept designed to bring structured vehicle fault data into a technician-facing workflow.',
+        vision: 'A concept that integrates Meta-glasses-style camera and display technology into protective workshop goggles, using computer vision, machine learning and diagnostic AI to surface real-time findings and repair guidance.',
         bullets: [
-          'This is the AGL item that belongs in Pipeline: the AR diagnostic feature, not the live AGL Ops Command Center.',
-          'Concept scope includes wearable camera input, AI-assisted fault interpretation, and guided repair steps.',
-          'Thumbnail uses the live AGL workshop workflow context; the AR layer itself is still concept-stage.'
+          'Planned inputs include the live camera feed, vehicle fault codes, diagnostic readings, service history and mechanic observations.',
+          'A reviewed learning loop would capture successful mechanic actions, previously unseen tasks and alternative repair methods to improve later guidance.',
+          'Training evidence would combine validated workshop outcomes with licensed or permissioned instructional videos, official repair materials and authorised diagnostic-software data.',
+          'The mechanic remains the final decision-maker; confidence, provenance and review controls are part of the concept.'
         ]
       }
     ];
@@ -430,8 +364,8 @@
     if (roadmap) {
       text(roadmap.querySelector('.roadmap-title'), 'Pipeline Alignment');
       var roadmapCopy = [
-        ['Live work', 'AGL ERP Systems, Adebi Villa / Avenue Lincoln, Blkk Star Hub, BLKK Autos, Adinkra Intelligence Systems, and MIRACLE are shown under Projects.'],
-        ['Pipeline work', 'The Merchant Hub, Real Estate Management Hub, Blkk Legacy, and Building AGL AR remain here because they are not fully public production products.'],
+        ['Live work', 'AGL ERP Systems, Blkk Star Hub, BLKK Autos, Adinkra Intelligence Systems, and MIRACLE are shown under Projects.'],
+        ['Pipeline work', 'Blkk Star Hub (full marketplace), Blkk Legacy, and Building AGL AR remain here because they are not fully public production products.'],
         ['Rule', 'A live proof of concept can support a pipeline venture, but the live site itself belongs in Projects.']
       ];
       Array.prototype.forEach.call(roadmap.querySelectorAll('.roadmap-step'), function (step, i) {
@@ -670,7 +604,7 @@ if (!window.__blkkPipelineToggle) {
     observer.disconnect();
     updateHero();
     updateAglProject();
-    updateDiplomatsProject();
+
     updateLiveProjects();
     updateExperience();
     updatePipeline();
