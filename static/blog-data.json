@@ -88,8 +88,8 @@
       ],
       "relatedPosts": [{"slug":"cardtonic-upskill-macbook-win","title":"The Cardtonic win that supported these dreams","description":"The early-hours laptop search, an Instagram application, an excited hug, and a laptop passed on to another student."}],
       "sources": [
-        {"label":"Qwen3.5-2B: the base model identified in the saved training artifacts","url":"https://huggingface.co/Qwen/Qwen3.5-2B"},
-        {"label":"MLX-LM: a separate Apple-silicon inference and adapter-tuning route to explore","url":"https://github.com/ml-explore/mlx-lm"}
+        {"label":"Qwen3.5-2B model card","url":"https://huggingface.co/Qwen/Qwen3.5-2B"},
+        {"label":"MLX-LM: local inference and fine-tuning on Apple silicon","url":"https://github.com/ml-explore/mlx-lm"}
       ]
     }
   ]
