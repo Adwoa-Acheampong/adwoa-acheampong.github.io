@@ -197,6 +197,14 @@ html { scroll-behavior: smooth; }
 .blog-article > p { line-height: 1.85; margin: 24px 0; }
 .blog-sources,.blog-posts-source { padding: 24px 0; border-top: 1px solid var(--edge); margin-top: 32px; }
 .blog-article h2 { font-size: 26px; }
+.blog-byline-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.blog-assistant-slot { display: none; }
+@media (max-width: 900px) {
+  .blog-assistant-slot { display: block; flex: 0 0 44px; min-height: 44px; }
+  .blog-assistant-slot .ohemaa-launcher { position: relative !important; right: auto !important; bottom: auto !important; width: 44px !important; height: 44px !important; animation: none !important; }
+  .blog-assistant-slot .ohemaa-ava { width: 44px !important; height: 44px !important; animation: none !important; }
+  body:has(.blog-article) .ohemaa-tooltip { display: none; }
+}
 .blog-social-post { margin: 24px 0 36px; min-width: 0; }
 .blog-post-fallback { border-left: 2px solid var(--accent); margin: 0 0 16px; padding: 0 0 0 20px; font-size: 16px; }
 .blog-post-fallback p { white-space: pre-line; }

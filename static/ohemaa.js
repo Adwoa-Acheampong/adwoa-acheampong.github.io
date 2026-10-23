@@ -234,6 +234,16 @@
     document.body.appendChild(launcher);
     document.body.appendChild(tooltip);
     document.body.appendChild(panel);
+    var readingSlot = document.querySelector('.blog-assistant-slot');
+    if (readingSlot && window.matchMedia) {
+      var readingWidth = window.matchMedia('(max-width: 900px)');
+      var dockForReading = function () {
+        (readingWidth.matches ? readingSlot : document.body).appendChild(launcher);
+        launcher.title = 'Ask Ohemaa';
+      };
+      dockForReading();
+      readingWidth.addEventListener('change', dockForReading);
+    }
   }
 
   /* ------------------------------------------------------------- RENDERING */
@@ -527,6 +537,7 @@
     setTimeout(hide, 9000);
   }
   function maybeGreet() {
+    if (document.querySelector('.blog-article')) return;
     /* Keep the first mobile view unobstructed; the launcher remains available. */
     if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) return;
     var seen = false;
