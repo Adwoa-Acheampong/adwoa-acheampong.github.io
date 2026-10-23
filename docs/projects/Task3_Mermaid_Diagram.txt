@@ -1,0 +1,179 @@
+flowchart TD
+
+    START([Start authentication]) --> LOGIN["Enter username and password"]
+    LOGIN --> RATE_LIMIT{"Request rate limit exceeded?"}
+
+    RATE_LIMIT -->|Yes| RATE_BLOCK["Temporarily block request<br/>Return generic retry message"]
+    RATE_BLOCK --> LOG_RATE["Write rate-limit event to security log"]
+    LOG_RATE --> END_RATE([Authentication attempt ended])
+
+    RATE_LIMIT -->|No| LOG_ATTEMPT["Log authentication attempt<br/>Timestamp, username hash, IP, device metadata"]
+    LOG_ATTEMPT --> LOOKUP["Look up account by username"]
+    LOOKUP --> ACCOUNT_EXISTS{"Account exists?"}
+
+    ACCOUNT_EXISTS -->|No| INVALID_CREDENTIALS["Return generic invalid username or password message"]
+    ACCOUNT_EXISTS -->|Yes| ACCOUNT_STATUS{"Account active and not locked?"}
+
+    ACCOUNT_STATUS -->|No| LOCKED_RESPONSE["Return generic account unavailable message"]
+    LOCKED_RESPONSE --> LOG_LOCKED["Log access attempt against locked or inactive account"]
+    LOG_LOCKED --> RESET_OPTION{"Offer password reset?"}
+
+    RESET_OPTION -->|Yes| RESET_START
+    RESET_OPTION -->|No| END_LOCKED([Authentication attempt ended])
+
+    ACCOUNT_STATUS -->|Yes| VERIFY_PASSWORD["Retrieve password hash and verify submitted password<br/>Use Argon2id, bcrypt, or equivalent adaptive hashing"]
+    VERIFY_PASSWORD --> PASSWORD_VALID{"Password valid?"}
+
+    PASSWORD_VALID -->|No| INCREMENT_FAILURES["Increment failed-login counter<br/>Apply progressive delay and rate limiting"]
+    INCREMENT_FAILURES --> LOG_FAILURE["Write failed-login event to audit trail"]
+    LOG_FAILURE --> LOCKOUT_THRESHOLD{"Failed-attempt threshold reached?"}
+
+    LOCKOUT_THRESHOLD -->|Yes| LOCK_ACCOUNT["Lock account for configured duration<br/>Revoke active sessions and refresh tokens"]
+    LOCK_ACCOUNT --> LOG_LOCKOUT["Log account lockout event<br/>Include reason, timestamp, source, and correlation ID"]
+    LOG_LOCKOUT --> LOCKOUT_NOTIFY["Send security notification through approved channel"]
+    LOCKOUT_NOTIFY --> INVALID_CREDENTIALS
+
+    LOCKOUT_THRESHOLD -->|No| INVALID_CREDENTIALS
+    INVALID_CREDENTIALS --> LOGIN_RETRY{"User selects another action?"}
+
+    LOGIN_RETRY -->|Retry login| LOGIN
+    LOGIN_RETRY -->|Reset password| RESET_START
+    LOGIN_RETRY -->|Cancel| END_FAILURE([Authentication failed])
+
+    PASSWORD_VALID -->|Yes| RESET_FAILURES["Reset failed-login counter<br/>Log successful password verification"]
+    RESET_FAILURES --> MFA_REQUIRED{"Is multi-factor authentication required?"}
+
+    MFA_REQUIRED -->|No| CREATE_SESSION
+    MFA_REQUIRED -->|Yes| MFA_ENROLLMENT{"Is an approved MFA method enrolled?"}
+
+    MFA_ENROLLMENT -->|No| MFA_SETUP["Require MFA enrollment<br/>Register approved authenticator or hardware token"]
+    MFA_SETUP --> VERIFY_SETUP["Verify enrollment using one-time setup challenge"]
+    VERIFY_SETUP --> SETUP_VALID{"MFA enrollment verified?"}
+
+    SETUP_VALID -->|No| LOG_SETUP_FAILURE["Log failed MFA enrollment"]
+    LOG_SETUP_FAILURE --> SETUP_RETRY{"Enrollment retry limit reached?"}
+
+    SETUP_RETRY -->|No| MFA_SETUP
+    SETUP_RETRY -->|Yes| MFA_ENROLLMENT_BLOCK["Temporarily block MFA enrollment<br/>Alert security operations"]
+    MFA_ENROLLMENT_BLOCK --> END_MFA_SETUP([Authentication attempt ended])
+
+    SETUP_VALID -->|Yes| MFA_CHALLENGE
+    MFA_ENROLLMENT -->|Yes| MFA_CHALLENGE["Generate MFA challenge<br/>Use TOTP, push approval, WebAuthn, or hardware token"]
+
+    MFA_CHALLENGE --> LOG_MFA_CHALLENGE["Log MFA challenge issuance<br/>Never log OTP values or authentication secrets"]
+    LOG_MFA_CHALLENGE --> MFA_INPUT["User submits OTP, push approval, or security key response"]
+
+    MFA_INPUT --> VERIFY_MFA["Validate MFA response<br/>Enforce expiration, one-time use, replay protection, and clock tolerance"]
+    VERIFY_MFA --> MFA_VALID{"MFA response valid?"}
+
+    MFA_VALID -->|Yes| LOG_MFA_SUCCESS["Log successful MFA verification"]
+    LOG_MFA_SUCCESS --> CREATE_SESSION
+
+    MFA_VALID -->|No| INCREMENT_MFA_FAILURES["Increment MFA failure counter<br/>Apply retry throttling"]
+    INCREMENT_MFA_FAILURES --> LOG_MFA_FAILURE["Log failed MFA verification"]
+    LOG_MFA_FAILURE --> MFA_RETRY_LIMIT{"MFA retry limit reached?"}
+
+    MFA_RETRY_LIMIT -->|No| MFA_CHALLENGE
+    MFA_RETRY_LIMIT -->|Yes| MFA_LOCK["Temporarily block MFA attempts<br/>Require recovery or support verification"]
+    MFA_LOCK --> REVOKE_RISKY_SESSIONS["Revoke suspicious sessions and refresh tokens"]
+    REVOKE_RISKY_SESSIONS --> LOG_MFA_LOCK["Log MFA lockout and risk event"]
+    LOG_MFA_LOCK --> END_MFA_FAILURE([Authentication attempt ended])
+
+    CREATE_SESSION["Create authenticated session<br/>Generate high-entropy session identifier"]
+    CREATE_SESSION --> ROTATE_SESSION["Rotate session ID after authentication<br/>Prevent session fixation"]
+    ROTATE_SESSION --> SET_COOKIE["Set secure session cookie<br/>HttpOnly, Secure, SameSite"]
+    SET_COOKIE --> SESSION_RECORD["Store server-side session record<br/>User ID, issue time, expiry, device context"]
+    SESSION_RECORD --> LOG_SESSION["Log session creation and authentication success"]
+    LOG_SESSION --> ACCESS_APP["Grant access according to authorization policy"]
+
+    ACCESS_APP --> SESSION_REQUEST{"Session request received?"}
+
+    SESSION_REQUEST -->|No| SESSION_EXPIRED["Expire session after inactivity or maximum lifetime"]
+    SESSION_EXPIRED --> REVOKE_SESSION["Revoke session and refresh tokens"]
+    REVOKE_SESSION --> LOG_SESSION_END["Log session expiration or revocation"]
+    LOG_SESSION_END --> END_SESSION([Session ended])
+
+    SESSION_REQUEST -->|Yes| SESSION_VALID{"Session valid and not revoked?"}
+
+    SESSION_VALID -->|No| SESSION_DENIED["Deny request and require re-authentication"]
+    SESSION_DENIED --> LOG_SESSION_DENIED["Log invalid, expired, or revoked session use"]
+    LOG_SESSION_DENIED --> LOGIN
+
+    SESSION_VALID -->|Yes| RISK_CHECK{"Suspicious activity or elevated risk?"}
+
+    RISK_CHECK -->|Yes| STEP_UP["Require step-up authentication"]
+    STEP_UP --> MFA_CHALLENGE
+
+    RISK_CHECK -->|No| AUTHORIZE_REQUEST["Authorize request using least-privilege policy"]
+    AUTHORIZE_REQUEST --> LOG_ACCESS["Log security-relevant access event"]
+    LOG_ACCESS --> SESSION_REQUEST
+
+    RESET_START([Start password reset]) --> RESET_IDENTIFIER["Enter username or email address"]
+    RESET_IDENTIFIER --> RESET_LOOKUP["Look up account without revealing whether it exists"]
+    RESET_LOOKUP --> RESET_REQUEST_LOG["Log password-reset request<br/>Apply rate limiting and abuse detection"]
+    RESET_REQUEST_LOG --> SEND_RESET["Send single-use reset link or code<br/>Use approved out-of-band channel"]
+
+    SEND_RESET --> RESET_TOKEN["User submits password-reset token"]
+    RESET_TOKEN --> VALIDATE_RESET_TOKEN["Validate token signature, expiration, audience, and one-time use"]
+    VALIDATE_RESET_TOKEN --> RESET_TOKEN_VALID{"Reset token valid?"}
+
+    RESET_TOKEN_VALID -->|No| LOG_RESET_FAILURE["Log invalid or expired reset attempt"]
+    LOG_RESET_FAILURE --> RESET_ERROR["Show generic password-reset error"]
+    RESET_ERROR --> RESET_RETRY{"Request a new reset link?"}
+
+    RESET_RETRY -->|Yes| RESET_START
+    RESET_RETRY -->|No| END_RESET_FAILURE([Password reset ended])
+
+    RESET_TOKEN_VALID -->|Yes| IDENTITY_CHECK["Apply additional identity or risk verification<br/>Prefer phishing-resistant verification"]
+    IDENTITY_CHECK --> IDENTITY_VALID{"Identity verification passed?"}
+
+    IDENTITY_VALID -->|No| LOG_IDENTITY_FAILURE["Log failed reset identity verification"]
+    LOG_IDENTITY_FAILURE --> RESET_SECURITY_BLOCK["Throttle or block reset workflow<br/>Notify user if required by policy"]
+    RESET_SECURITY_BLOCK --> END_RESET_BLOCK([Password reset blocked])
+
+    IDENTITY_VALID -->|Yes| NEW_PASSWORD["Enter and confirm new password"]
+    NEW_PASSWORD --> PASSWORD_POLICY{"Password meets policy and breach checks?"}
+
+    PASSWORD_POLICY -->|No| PASSWORD_ERROR["Reject weak, reused, or compromised password"]
+    PASSWORD_ERROR --> NEW_PASSWORD
+
+    PASSWORD_POLICY -->|Yes| HASH_PASSWORD["Hash password using approved adaptive password hashing"]
+    HASH_PASSWORD --> UPDATE_PASSWORD["Update password record<br/>Invalidate reset token and previous password sessions"]
+    UPDATE_PASSWORD --> REVOKE_ALL["Revoke existing sessions, refresh tokens, and remembered devices"]
+    REVOKE_ALL --> LOG_RESET_SUCCESS["Log successful password reset<br/>Never log plaintext passwords or reset secrets"]
+    LOG_RESET_SUCCESS --> RESET_NOTIFY["Notify user of password change"]
+    RESET_NOTIFY --> RESET_COMPLETE["Return user to login"]
+    RESET_COMPLETE --> LOGIN
+
+    subgraph SECURITY_CONTROLS
+        SC1["Use generic errors to prevent username enumeration"]
+        SC2["Encrypt data in transit and at rest"]
+        SC3["Never log passwords, OTPs, reset tokens, or session secrets"]
+        SC4["Protect audit logs from tampering and restrict access"]
+        SC5["Use timestamps, correlation IDs, and synchronized clocks"]
+        SC6["Monitor unusual login, MFA, reset, and session patterns"]
+        SC7["Use CSRF protection for state-changing requests"]
+        SC8["Apply input validation and secure response headers"]
+        SC9["Use least privilege for authentication services and databases"]
+    end
+
+    SC1 -.-> INVALID_CREDENTIALS
+    SC2 -.-> VERIFY_PASSWORD
+    SC3 -.-> LOG_MFA_CHALLENGE
+    SC4 -.-> LOG_ATTEMPT
+    SC5 -.-> LOG_SESSION
+    SC6 -.-> RISK_CHECK
+    SC7 -.-> RESET_START
+    SC8 -.-> AUTHORIZE_REQUEST
+    SC9 -.-> SESSION_RECORD
+
+    classDef startEnd fill:#d9ead3,stroke:#38761d,stroke-width:2px,color:#000;
+    classDef decision fill:#fff2cc,stroke:#bf9000,stroke-width:2px,color:#000;
+    classDef error fill:#f4cccc,stroke:#990000,stroke-width:2px,color:#000;
+    classDef security fill:#d9eaf7,stroke:#1155cc,stroke-width:1px,color:#000;
+
+    class START,END_RATE,END_LOCKED,END_FAILURE,END_MFA_SETUP,END_MFA_FAILURE,END_SESSION,RESET_START,END_RESET_FAILURE,END_RESET_BLOCK startEnd;
+
+    class RATE_LIMIT,ACCOUNT_EXISTS,ACCOUNT_STATUS,RESET_OPTION,PASSWORD_VALID,LOCKOUT_THRESHOLD,LOGIN_RETRY,MFA_REQUIRED,MFA_ENROLLMENT,SETUP_VALID,SETUP_RETRY,MFA_VALID,MFA_RETRY_LIMIT,SESSION_REQUEST,SESSION_VALID,RISK_CHECK,RESET_TOKEN_VALID,RESET_RETRY,IDENTITY_VALID,PASSWORD_POLICY decision;
+
+    class INVALID_CREDENTIALS,LOCKED_RESPONSE,LOCK_ACCOUNT,MFA_ENROLLMENT_BLOCK,MFA_LOCK,SESSION_DENIED,RESET_ERROR,RESET_SECURITY_BLOCK,PASSWORD_ERROR error;

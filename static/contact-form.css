@@ -1,0 +1,108 @@
+.contact-form-section {
+  width: 100%;
+  max-width: 760px;
+  min-width: 0;
+  margin-block: 40px;
+  padding-block: 28px;
+  border-top: 1px solid var(--edge, var(--line, currentColor));
+  color: var(--foreground, var(--text-dark, CanvasText));
+  scroll-margin-top: 120px;
+  overflow-wrap: anywhere;
+}
+
+.contact-form-section *,
+.contact-form-section *::before,
+.contact-form-section *::after { box-sizing: border-box; }
+
+.contact-form-section [hidden] { display: none !important; }
+
+.contact-form-section h2 {
+  margin: 0 0 12px;
+  font-size: 28px;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: inherit;
+}
+
+.contact-form-section p { color: inherit; }
+
+.contact-form-section .contact-form-intro { margin: 0 0 12px; }
+
+.contact-form-section .contact-form-availability,
+.contact-form-section .contact-form-disclosure,
+.contact-form-section small,
+.contact-form-section .contact-form-receipt {
+  color: var(--secondary, var(--text-dark-secondary, CanvasText));
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.contact-form-section form { display: grid; gap: 24px; margin-top: 24px; }
+.contact-form-section .contact-form-grid { display: grid; gap: 20px; min-width: 0; }
+.contact-form-section .contact-form-field { display: grid; gap: 8px; min-width: 0; }
+.contact-form-section label { font-size: 16px; font-weight: 600; line-height: 1.5; }
+
+.contact-form-section input,
+.contact-form-section select,
+.contact-form-section textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--secondary, var(--text-dark-secondary, CanvasText));
+  border-radius: 3px;
+  background: var(--surface, var(--black-raised, Canvas));
+  color: var(--foreground, var(--text-dark, CanvasText));
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.contact-form-section textarea { resize: vertical; min-height: 210px; }
+.contact-form-section select { padding-right: 28px; }
+.contact-form-section .contact-form-templates { display: grid; gap: 16px; border-bottom: 1px solid var(--edge, var(--line, currentColor)); padding-bottom: 24px; }
+.contact-form-section .contact-form-templates > button { justify-self: start; }
+.contact-form-section .contact-form-replace p { margin: 0 0 12px; }
+.contact-form-section .contact-form-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.contact-form-section button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 10px 16px;
+  border: 1px solid var(--accent, var(--emerald, ButtonText));
+  border-radius: 3px;
+  background: var(--surface, var(--black-raised, ButtonFace));
+  color: var(--foreground, var(--text-dark, ButtonText));
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  white-space: normal;
+  cursor: pointer;
+}
+
+.contact-form-section button[type='submit'] {
+  background: var(--accent, var(--emerald, ButtonFace));
+  color: var(--canvas, var(--royal-black, ButtonText));
+}
+
+.contact-form-section button:disabled { opacity: .65; cursor: default; }
+.contact-form-section button:hover:not(:disabled) { text-decoration: underline; text-underline-offset: 3px; }
+.contact-form-section :focus-visible { outline: 2px solid var(--accent, var(--emerald, Highlight)); outline-offset: 4px; }
+.contact-form-section [aria-invalid='true'] { border-width: 2px; }
+.contact-form-section .contact-form-status { margin: 0; min-height: 24px; font-weight: 600; }
+.contact-form-section .contact-form-receipt { margin: -12px 0 0; }
+.contact-form-section .contact-form-fallback { margin: 24px 0 0; }
+.contact-form-section a { display: inline-flex; align-items: center; min-height: 44px; max-width: 100%; color: var(--accent, var(--emerald, LinkText)); overflow-wrap: anywhere; }
+
+@media (min-width: 640px) {
+  .contact-form-section .contact-form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contact-form-section .contact-form-wide { grid-column: 1 / -1; }
+}

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_CustomerOnboarding" targetNamespace="http://example.com/technology-services/customer-onboarding" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.28.0">
+  <bpmn:process id="Process_CustomerOnboarding" name="Technology Services Customer Onboarding" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_CustomerOnboarding">
+      <bpmn:lane id="Lane_Operations" name="Operations">
+        <bpmn:flowNodeRef>Task_CreateCustomerAccount</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_ConfigureAccount</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_ScheduleTraining</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_ProvideGoLiveSupport</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_SendSatisfactionSurvey</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Sales" name="Sales">
+        <bpmn:flowNodeRef>Task_ReviewRequest</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_PrepareProposal</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_SendProposal</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_SendInformationPackage</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_FileForFollowUp</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_LeadQualified</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Customer" name="Customer">
+        <bpmn:flowNodeRef>Task_SubmitServiceRequest</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_ReviewProposal</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_ServiceRequest</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_ProposalAccepted</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_CustomerSatisfied</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent_ServiceRequest" name="Service request initiated">
+      <bpmn:outgoing>Flow_Start_To_Submit</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Task_SubmitServiceRequest" name="Submit service request online">
+      <bpmn:incoming>Flow_Start_To_Submit</bpmn:incoming>
+      <bpmn:outgoing>Flow_Submit_To_Review</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_ReviewRequest" name="Review request and qualify lead">
+      <bpmn:incoming>Flow_Submit_To_Review</bpmn:incoming>
+      <bpmn:outgoing>Flow_Review_To_Qualification</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_LeadQualified" name="Lead qualified?" gatewayDirection="Diverging">
+      <bpmn:incoming>Flow_Review_To_Qualification</bpmn:incoming>
+      <bpmn:outgoing>Flow_Qualified</bpmn:outgoing>
+      <bpmn:outgoing>Flow_NotQualified</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="Task_PrepareProposal" name="Prepare proposal">
+      <bpmn:incoming>Flow_Qualified</bpmn:incoming>
+      <bpmn:outgoing>Flow_Prepare_To_Send</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Task_SendProposal" name="Send proposal to customer">
+      <bpmn:incoming>Flow_Prepare_To_Send</bpmn:incoming>
+      <bpmn:outgoing>Flow_Send_To_ReviewProposal</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Task_ReviewProposal" name="Review proposal">
+      <bpmn:incoming>Flow_Send_To_ReviewProposal</bpmn:incoming>
+      <bpmn:outgoing>Flow_ReviewProposal_To_Decision</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_ProposalAccepted" name="Proposal accepted?" gatewayDirection="Diverging">
+      <bpmn:incoming>Flow_ReviewProposal_To_Decision</bpmn:incoming>
+      <bpmn:outgoing>Flow_Accepted</bpmn:outgoing>
+      <bpmn:outgoing>Flow_Rejected</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="Task_CreateCustomerAccount" name="Create customer account">
+      <bpmn:incoming>Flow_Accepted</bpmn:incoming>
+      <bpmn:outgoing>Flow_CreateAccount_To_Configure</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Task_ConfigureAccount" name="Configure customer account">
+      <bpmn:incoming>Flow_CreateAccount_To_Configure</bpmn:incoming>
+      <bpmn:outgoing>Flow_Configure_To_Training</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Task_ScheduleTraining" name="Schedule customer training">
+      <bpmn:incoming>Flow_Configure_To_Training</bpmn:incoming>
+      <bpmn:outgoing>Flow_Training_To_GoLive</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_ProvideGoLiveSupport" name="Provide go-live support">
+      <bpmn:incoming>Flow_Training_To_GoLive</bpmn:incoming>
+      <bpmn:outgoing>Flow_GoLive_To_Survey</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Task_SendInformationPackage" name="Send standard information package">
+      <bpmn:incoming>Flow_NotQualified</bpmn:incoming>
+      <bpmn:outgoing>Flow_InfoPackage_To_Survey</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Task_FileForFollowUp" name="File for future follow-up">
+      <bpmn:incoming>Flow_Rejected</bpmn:incoming>
+      <bpmn:outgoing>Flow_FollowUp_To_Survey</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Task_SendSatisfactionSurvey" name="Send customer satisfaction survey">
+      <bpmn:incoming>Flow_GoLive_To_Survey</bpmn:incoming>
+      <bpmn:incoming>Flow_InfoPackage_To_Survey</bpmn:incoming>
+      <bpmn:incoming>Flow_FollowUp_To_Survey</bpmn:incoming>
+      <bpmn:outgoing>Flow_Survey_To_End</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_CustomerSatisfied" name="Customer onboarding process complete">
+      <bpmn:incoming>Flow_Survey_To_End</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_Start_To_Submit" sourceRef="StartEvent_ServiceRequest" targetRef="Task_SubmitServiceRequest" />
+    <bpmn:sequenceFlow id="Flow_Submit_To_Review" sourceRef="Task_SubmitServiceRequest" targetRef="Task_ReviewRequest" />
+    <bpmn:sequenceFlow id="Flow_Review_To_Qualification" sourceRef="Task_ReviewRequest" targetRef="Gateway_LeadQualified" />
+    <bpmn:sequenceFlow id="Flow_Qualified" name="Qualified" sourceRef="Gateway_LeadQualified" targetRef="Task_PrepareProposal" />
+    <bpmn:sequenceFlow id="Flow_NotQualified" name="Not qualified" sourceRef="Gateway_LeadQualified" targetRef="Task_SendInformationPackage" />
+    <bpmn:sequenceFlow id="Flow_Prepare_To_Send" sourceRef="Task_PrepareProposal" targetRef="Task_SendProposal" />
+    <bpmn:sequenceFlow id="Flow_Send_To_ReviewProposal" sourceRef="Task_SendProposal" targetRef="Task_ReviewProposal" />
+    <bpmn:sequenceFlow id="Flow_ReviewProposal_To_Decision" sourceRef="Task_ReviewProposal" targetRef="Gateway_ProposalAccepted" />
+    <bpmn:sequenceFlow id="Flow_Accepted" name="Accepted" sourceRef="Gateway_ProposalAccepted" targetRef="Task_CreateCustomerAccount" />
+    <bpmn:sequenceFlow id="Flow_Rejected" name="Rejected" sourceRef="Gateway_ProposalAccepted" targetRef="Task_FileForFollowUp" />
+    <bpmn:sequenceFlow id="Flow_CreateAccount_To_Configure" sourceRef="Task_CreateCustomerAccount" targetRef="Task_ConfigureAccount" />
+    <bpmn:sequenceFlow id="Flow_Configure_To_Training" sourceRef="Task_ConfigureAccount" targetRef="Task_ScheduleTraining" />
+    <bpmn:sequenceFlow id="Flow_Training_To_GoLive" sourceRef="Task_ScheduleTraining" targetRef="Task_ProvideGoLiveSupport" />
+    <bpmn:sequenceFlow id="Flow_GoLive_To_Survey" sourceRef="Task_ProvideGoLiveSupport" targetRef="Task_SendSatisfactionSurvey" />
+    <bpmn:sequenceFlow id="Flow_InfoPackage_To_Survey" sourceRef="Task_SendInformationPackage" targetRef="Task_SendSatisfactionSurvey" />
+    <bpmn:sequenceFlow id="Flow_FollowUp_To_Survey" sourceRef="Task_FileForFollowUp" targetRef="Task_SendSatisfactionSurvey" />
+    <bpmn:sequenceFlow id="Flow_Survey_To_End" sourceRef="Task_SendSatisfactionSurvey" targetRef="EndEvent_CustomerSatisfied" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_CustomerOnboarding">
+    <bpmndi:BPMNPlane id="BPMNPlane_CustomerOnboarding" bpmnElement="Process_CustomerOnboarding">
+      <bpmndi:BPMNShape id="BPMNShape_Lane_Operations" bpmnElement="Lane_Operations" isHorizontal="true">
+        <dc:Bounds x="150" y="440" width="2100" height="180" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Lane_Sales" bpmnElement="Lane_Sales" isHorizontal="true">
+        <dc:Bounds x="150" y="260" width="2100" height="180" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Lane_Customer" bpmnElement="Lane_Customer" isHorizontal="true">
+        <dc:Bounds x="150" y="80" width="2100" height="180" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_StartEvent_ServiceRequest" bpmnElement="StartEvent_ServiceRequest">
+        <dc:Bounds x="200" y="150" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="180" y="186" width="77" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_SubmitServiceRequest" bpmnElement="Task_SubmitServiceRequest">
+        <dc:Bounds x="280" y="128" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_ReviewRequest" bpmnElement="Task_ReviewRequest">
+        <dc:Bounds x="480" y="308" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Gateway_LeadQualified" bpmnElement="Gateway_LeadQualified" isMarkerVisible="true">
+        <dc:Bounds x="690" y="323" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="678" y="373" width="75" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_PrepareProposal" bpmnElement="Task_PrepareProposal">
+        <dc:Bounds x="800" y="285" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_SendProposal" bpmnElement="Task_SendProposal">
+        <dc:Bounds x="990" y="285" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_ReviewProposal" bpmnElement="Task_ReviewProposal">
+        <dc:Bounds x="890" y="128" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Gateway_ProposalAccepted" bpmnElement="Gateway_ProposalAccepted" isMarkerVisible="true">
+        <dc:Bounds x="1090" y="143" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1090" y="193" width="51" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_CreateCustomerAccount" bpmnElement="Task_CreateCustomerAccount">
+        <dc:Bounds x="1210" y="460" width="170" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_ConfigureAccount" bpmnElement="Task_ConfigureAccount">
+        <dc:Bounds x="1420" y="460" width="160" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_ScheduleTraining" bpmnElement="Task_ScheduleTraining">
+        <dc:Bounds x="1620" y="460" width="160" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_ProvideGoLiveSupport" bpmnElement="Task_ProvideGoLiveSupport">
+        <dc:Bounds x="1820" y="460" width="170" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_SendInformationPackage" bpmnElement="Task_SendInformationPackage">
+        <dc:Bounds x="800" y="365" width="180" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_FileForFollowUp" bpmnElement="Task_FileForFollowUp">
+        <dc:Bounds x="1210" y="365" width="170" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_SendSatisfactionSurvey" bpmnElement="Task_SendSatisfactionSurvey">
+        <dc:Bounds x="2020" y="460" width="180" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_EndEvent_CustomerSatisfied" bpmnElement="EndEvent_CustomerSatisfied">
+        <dc:Bounds x="2140" y="152" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2115" y="188" width="87" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_Start_To_Submit" bpmnElement="Flow_Start_To_Submit">
+        <di:waypoint x="236" y="168" />
+        <di:waypoint x="280" y="168" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_Submit_To_Review" bpmnElement="Flow_Submit_To_Review">
+        <di:waypoint x="430" y="168" />
+        <di:waypoint x="455" y="168" />
+        <di:waypoint x="455" y="348" />
+        <di:waypoint x="480" y="348" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_Review_To_Qualification" bpmnElement="Flow_Review_To_Qualification">
+        <di:waypoint x="640" y="348" />
+        <di:waypoint x="690" y="348" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_Qualified" bpmnElement="Flow_Qualified">
+        <di:waypoint x="740" y="348" />
+        <di:waypoint x="770" y="348" />
+        <di:waypoint x="770" y="325" />
+        <di:waypoint x="800" y="325" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="763" y="327" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_NotQualified" bpmnElement="Flow_NotQualified">
+        <di:waypoint x="715" y="373" />
+        <di:waypoint x="715" y="392" />
+        <di:waypoint x="800" y="392" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="699" y="373" width="62" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_Prepare_To_Send" bpmnElement="Flow_Prepare_To_Send">
+        <di:waypoint x="950" y="325" />
+        <di:waypoint x="990" y="325" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_Send_To_ReviewProposal" bpmnElement="Flow_Send_To_ReviewProposal">
+        <di:waypoint x="1065" y="285" />
+        <di:waypoint x="1065" y="235" />
+        <di:waypoint x="965" y="235" />
+        <di:waypoint x="965" y="208" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_ReviewProposal_To_Decision" bpmnElement="Flow_ReviewProposal_To_Decision">
+        <di:waypoint x="1040" y="168" />
+        <di:waypoint x="1090" y="168" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_Accepted" bpmnElement="Flow_Accepted">
+        <di:waypoint x="1140" y="168" />
+        <di:waypoint x="1170" y="168" />
+        <di:waypoint x="1170" y="498" />
+        <di:waypoint x="1210" y="498" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1162" y="323" width="46" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_Rejected" bpmnElement="Flow_Rejected">
+        <di:waypoint x="1115" y="193" />
+        <di:waypoint x="1115" y="392" />
+        <di:waypoint x="1210" y="392" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1108" y="283" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_CreateAccount_To_Configure" bpmnElement="Flow_CreateAccount_To_Configure">
+        <di:waypoint x="1380" y="498" />
+        <di:waypoint x="1420" y="498" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_Configure_To_Training" bpmnElement="Flow_Configure_To_Training">
+        <di:waypoint x="1580" y="498" />
+        <di:waypoint x="1620" y="498" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_Training_To_GoLive" bpmnElement="Flow_Training_To_GoLive">
+        <di:waypoint x="1780" y="498" />
+        <di:waypoint x="1820" y="498" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_GoLive_To_Survey" bpmnElement="Flow_GoLive_To_Survey">
+        <di:waypoint x="1990" y="498" />
+        <di:waypoint x="2020" y="498" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_InfoPackage_To_Survey" bpmnElement="Flow_InfoPackage_To_Survey">
+        <di:waypoint x="980" y="392" />
+        <di:waypoint x="1980" y="392" />
+        <di:waypoint x="1980" y="498" />
+        <di:waypoint x="2020" y="498" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_FollowUp_To_Survey" bpmnElement="Flow_FollowUp_To_Survey">
+        <di:waypoint x="1380" y="392" />
+        <di:waypoint x="1400" y="392" />
+        <di:waypoint x="1400" y="570" />
+        <di:waypoint x="2110" y="570" />
+        <di:waypoint x="2110" y="535" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Flow_Survey_To_End" bpmnElement="Flow_Survey_To_End">
+        <di:waypoint x="2200" y="498" />
+        <di:waypoint x="2230" y="498" />
+        <di:waypoint x="2230" y="170" />
+        <di:waypoint x="2176" y="170" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

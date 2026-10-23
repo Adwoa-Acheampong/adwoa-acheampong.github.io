@@ -1,0 +1,49 @@
+/* Homepage-only presentation; inner routes retain their existing theme. */
+body .hero-container.analyst-landing { display: block !important; width: 100%; box-sizing: border-box; padding: 0 !important; min-height: 0; background: #0c0f10 !important; }
+body .analyst-landing::before, body .analyst-landing::after { display: none; }
+body .analyst-landing > :not(.analyst-home) { display: none !important; }
+.analyst-home { width: 100%; min-width: 0; color: #fbf1d8; font-family: "DM Sans", sans-serif; }
+.analyst-home *, .analyst-home *::before, .analyst-home *::after { box-sizing: border-box; min-width: 0; }
+.analyst-hero { position: relative; isolation: isolate; min-height: 690px; display: flex; align-items: center; overflow: hidden; background: #0c0f10; }
+.analyst-hero-photo { position: absolute; inset: 0 0 0 auto; width: 78%; height: 100%; object-fit: cover; object-position: center 39%; z-index: -2; }
+.analyst-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg,#0c0f10 0%,rgba(12,15,16,.97) 25%,rgba(12,15,16,.8) 39%,rgba(12,15,16,.12) 65%,transparent 100%); }
+.analyst-hero-copy { width: min(1240px,calc(100% - 64px)); margin: 0 auto; padding: 76px 0; }
+.analyst-hero-copy > * { max-width: 520px; }
+body .analyst-eyebrow { color: #e3c791; font-size: 13px; font-weight: 600; margin: 0 0 28px; letter-spacing: 0; }
+body .analyst-hero h1 { font-family: "Cormorant Garamond",serif; font-weight: 500; font-size: 76px; line-height: .98; letter-spacing: 0; color: #fbf1d8; margin: 0 0 24px; }
+body .analyst-role { font-size: 24px; line-height: 1.35; font-weight: 500; color: #fbf1d8; margin: 0 0 20px; }
+body .analyst-intro { color: #e3d9c8; font-size: 16px; line-height: 1.75; margin: 0 0 28px; max-width: 425px; }
+.analyst-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.analyst-actions a { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 20px; border: 1px solid #a68b61; color: #fbf1d8; text-decoration: none; font-size: 14px; font-weight: 600; border-radius: 3px; }
+.analyst-actions a:first-child { background: #fbf1d8; border-color: #fbf1d8; color: #0c0f10; }
+.analyst-actions a:hover { background: #cdb489; color: #0c0f10; }
+.analyst-docs { display: flex; gap: 24px; margin-top: 28px; flex-wrap: wrap; }
+.analyst-docs a { color: #e3c791; text-underline-offset: 5px; font-size: 13px; min-height: 28px; }
+.analyst-focus { padding: 28px 32px 34px; border-top: 1px solid #675c49; background: #102d30; }
+.analyst-focus-inner { width: min(1240px,100%); margin: auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+.analyst-focus h2 { font-family: "DM Sans",sans-serif; font-size: 15px; margin: 0 0 8px; color: #fbf1d8; letter-spacing: 0; }
+.analyst-focus p { font-size: 14px; line-height: 1.6; color: #e0d9ca; margin: 0; }
+.analyst-banner { display: block; width: 100%; height: auto; max-height: 280px; object-fit: contain; background: #0c0f10; }
+@media(max-width: 900px) {
+  .analyst-hero { min-height: 640px; }
+  .analyst-hero-photo { width: 100%; object-position: 62% center; }
+  .analyst-hero::before { background: linear-gradient(90deg,rgba(12,15,16,.95),rgba(12,15,16,.8) 40%,rgba(12,15,16,.12)); }
+  body .analyst-hero h1 { font-size: 62px; max-width: 400px; }
+  .analyst-hero-copy { width: calc(100% - 48px); }
+}
+@media(max-width: 600px) {
+  .analyst-hero { min-height: 720px; align-items: flex-end; }
+  .analyst-hero-photo { height: 470px; top: 0; object-position: center 32%; }
+  .analyst-hero::before { background: linear-gradient(0deg,#0c0f10 0%,#0c0f10 27%,rgba(12,15,16,.94) 40%,rgba(12,15,16,.02) 64%); }
+  .analyst-hero-copy { width: calc(100% - 40px); padding: 300px 0 24px; }
+  body .analyst-eyebrow { font-size: 12px; margin-bottom: 16px; }
+  body .analyst-hero h1 { font-size: 48px; max-width: 100%; margin-bottom: 16px; }
+  body .analyst-role { font-size: 21px; }
+  body .analyst-intro { font-size: 15px; margin-bottom: 22px; }
+  .analyst-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .analyst-actions a { padding: 10px; }
+  .analyst-docs { margin-top: 20px; gap: 18px; }
+  .analyst-focus { padding: 26px 20px; }
+  .analyst-focus-inner { grid-template-columns: 1fr; gap: 22px; }
+  .analyst-banner { min-height: 100px; }
+}

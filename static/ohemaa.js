@@ -12,7 +12,7 @@
   window.__ohemaaLoaded = true;
 
   /* Adwoa's portrait (the live asset). Graceful monogram fallback if absent. */
-  var PORTRAIT = 'https://aacheampong.com/static/media/adwoa-potrait.a57ec23d8b550e556a34.png';
+  var PORTRAIT = '/images/adwoa-portrait-2026.jpg';
   var RESUME_URL = 'https://aacheampong.com/resume.html';
   var PSYCHO_URL = 'https://aacheampong.com/psychometric.html';
 
@@ -21,16 +21,16 @@
     identity: {
       name: 'Miss A Acheampong',
       alias: 'Miracle',
-      title: 'Business/Data Analyst & Executive Support | In Training: ML Engineering',
+      title: 'Analyst & Executive Support | In Training: AI/ML Engineering',
       tagline: 'Engineering global operations systems that scale locally.',
       philosophy: 'Guided by Adinkra wisdom and unyielding grit.',
       superpower: 'Builds scalable systems that turn visions into high-performing businesses.'
     },
     metrics: [
-      '120% revenue growth at Baa & Bean Café (GHS 12k → 30k+ daily)',
-      '83.3% engagement lift and daily sales GHS 1,200 → 2,700 at Automobiles Ghana',
-      '30% office-productivity gain through AppScript + AI automation',
-      'Now Statutory Operations Director leading a team of five at JonMon-Sacs Ghana'
+      'AGL production-ready ERP delivered in under 32 weeks during the October 2024–July 2026 role.',
+      'AGL eight-week campaign increased average daily revenue from GHS 1,200 to GHS 2,700 in 2024.',
+      'Baa & Bean: contributed to a 120% revenue increase following revised sales procedures.',
+      'Blkk parent website is live; wider operational rollout and commercial validation remain in progress.'
     ],
     expertise: [
       'Operations Architecture & SOP Development',
@@ -38,29 +38,29 @@
       'Process Optimization & Automation (Google AppScript + AI)',
       'Growth Strategy & Revenue Optimization',
       'Team Leadership, Compliance & Project Management',
-      'Full-stack building — React, JavaScript, Node'
+      'LLM-assisted prototyping and coding with human review; Python and ML depth developing'
     ],
     projects: [
       { name: 'AGL ERP Systems',
-        brief: 'The live operations platform at agl.software — Kanban command boards, secure QR-code staff login, role-aware ERP dashboards, a Staff Hub PWA, and 30+ automated tests for Automobiles Ghana Limited.' },
-      { name: 'Restaurant Sales Insights — Data Analysis',
-        brief: 'Full-year 2023 sales analysis in Python/Pandas — 365 data points, moving-average trends, and executive-ready visualisations.' }
+        brief: 'The live ERP at agl.software connects sales, workshop operations, HR and administration. Delivery included requirements, staff training and reporting practices.' }
     ],
     pipeline: [
-      'Blkk Legacy — the Ghana-based Pan-African holding system connecting training, production, commerce, and community distribution through a stage-gated 18–24 month validation plan.',
-      'Blkk Star Hub — the digital commerce spine for Blkk Legacy, built to prove merchant adoption, customer demand, repeat purchase, unit economics, and working-capital discipline.',
-      'Blkk Label — the brand house and manufacturing arm, turning trained capability into culturally authored apparel, fragrance, body care, wellness, and jewellery products with disciplined quality control.'
+      'Building AGL — diagnostic safety-glasses concept, not deployed hardware.',
+      'The Merchant Hub — SME support venture in development.',
+      'Real Estate Management Hub — property operations concept.',
+      'Blkk Label — brand and production concept, pending validation.'
     ],
     experience: [
-      'Statutory Operations Director — JonMon-Sacs Ghana Ltd (Jul 2025 – Present)',
-      'Operations Manager — Baa & Bean Café (Feb – Jul 2024)',
-      'Operations Consultant — Automobiles Ghana Ltd (2024 & 2026)',
-      'Administration Manager — Zein Real Estate (Mar 2023 – Jan 2024)',
-      'Marketing Executive — Trident Real Estate Group (2022 – 2023)'
+      'Co-Founder & Business Analyst — Blkk Star Legacy Organization (Jul 2026–Present)',
+      'Business Analyst & Digital Integrations Advisor — Automobiles Ghana Ltd (Oct 2024–Jul 2026)',
+      'Business Operations Manager — Baa & Bean Cafe (Feb 2024–Jul 2024)'
     ],
     certifications: [
-      'Data Analysis — ALX', 'Intermediate SQL — DataCamp',
-      'Data Analysis Essentials — Cisco', 'Business Management — Oxford Home Study Centre'
+      'IBM Business Analyst Professional Certificate — Sep 2026',
+      'Associate AI Engineer for Data Scientists — DataCamp, completed 16 Oct 2026',
+      'Data Engineer in Python — DataCamp, completed 21 Oct 2026',
+      'ALX Data Analytics', 'DataCamp Intermediate SQL',
+      'Cisco Data Analytics Essentials', 'Oxford Home Study Centre Business Management'
     ],
     psychometric: {
       profile: 'A high-agency systems thinker with exceptional executive function.',
@@ -75,6 +75,16 @@
       github: 'https://github.com/adwoa-acheampong'
     }
   };
+
+  // The build publishes projects and experience from the canonical inventory.
+  if (window.PORTFOLIO_KNOWLEDGE) {
+    KB.identity = window.PORTFOLIO_KNOWLEDGE.identity;
+    KB.expertise = window.PORTFOLIO_KNOWLEDGE.expertise;
+    KB.certifications = window.PORTFOLIO_KNOWLEDGE.certifications;
+    KB.projects = window.PORTFOLIO_KNOWLEDGE.projects;
+    KB.pipeline = window.PORTFOLIO_KNOWLEDGE.pipeline;
+    KB.experience = window.PORTFOLIO_KNOWLEDGE.experience;
+  }
 
   var INTERVIEW_Q = [
     "First — what's the nature of the opportunity you're exploring with Adwoa?",
@@ -356,21 +366,21 @@
         botSay("Akwaaba — welcome. ✦ I am Ohemaa, Adwoa’s assistant. How may I serve you today?", { chips: DEFAULT_CHIPS });
         break;
       case 'bio':
-        botSay("Miss A Acheampong — “Miracle” — is a Business/Data Analyst & Executive Support | In Training: ML Engineering in Accra, engineering global operations systems that scale locally. She blends Ghanaian system insight with global, data-driven strategy, guided by Adinkra wisdom and unyielding grit. The proof is in her track record: 120% revenue growth at Baa & Bean Café, an 83.3% engagement lift at Automobiles Ghana, and 30% productivity gains through automation.",
+        botSay(KB.identity.name + ' — ' + KB.identity.title + ' | ' + (KB.identity.training || 'In Training: AI/ML Engineering') + '. Based in Accra, Ghana. ' + (KB.identity.summary || 'She works across business analysis, executive support and practical digital systems.'),
           { chips: [{ label: 'Her Projects', intent: 'projects' }, { label: 'Her Experience', intent: 'experience' }, { label: 'Psychometric Profile', intent: 'psychometric' }] });
         break;
       case 'experience':
-        botSay("Adwoa has built across operations, real estate, hospitality and automotive:\n\n• " + KB.experience.join('\n• '),
+        botSay("Adwoa's professional experience spans nonprofit development, automotive operations and hospitality:\n\n• " + KB.experience.join('\n• '),
           { chips: [{ label: 'See Resume', intent: 'resume' }, { label: 'Her Projects', intent: 'projects' }, { label: 'Her Skills', intent: 'skills' }] });
         break;
       case 'projects':
         var p = KB.projects.map(function (x) { return '✦ ' + x.name + '\n' + x.brief; }).join('\n\n');
-        botSay("Signature work she has shipped:\n\n" + p,
+          botSay("Project evidence and current status:\n\n" + p,
           { chips: [{ label: 'In the Pipeline', intent: 'pipeline' }, { label: 'See Resume', intent: 'resume' }, { label: 'Quick Interview', intent: 'interview' }] });
         break;
       case 'pipeline':
         botSay("What we’re building next:\n\n✦ " + KB.pipeline.join('\n\n✦ '),
-          { chips: [{ label: 'Shipped Projects', intent: 'projects' }, { label: 'Reach Adwoa', intent: 'contact' }] });
+          { chips: [{ label: 'Project Evidence', intent: 'projects' }, { label: 'Reach Adwoa', intent: 'contact' }] });
         break;
       case 'skills':
         botSay("Her toolkit:\n\n• " + KB.expertise.join('\n• ') + "\n\nCertified in: " + KB.certifications.join(' · ') + ".",
