@@ -10,10 +10,9 @@ window.PORTFOLIO_KNOWLEDGE = {
     ],
     "title": "Analyst & Executive Support",
     "training": "In Training: AI/ML Engineering",
-    "summary": "Analyst who turns operational problems into structured requirements, workflows, data and decision tools. Building deeper foundations in Python, machine learning and optimisation.",
+    "summary": "I turn business questions into clear requirements, useful reporting, and digital and AI-enabled systems that align workflows and help businesses scale.",
     "email": "cc@aacheampong.com",
-    "location": "Accra Ghana",
-    "personalDescriptor": "Miracle Worker"
+    "location": "Accra Ghana"
   },
   "expertise": [
     "Business analysis & delivery: Applied in ERP requirements and simulated analysis artifacts.",
@@ -32,6 +31,11 @@ window.PORTFOLIO_KNOWLEDGE = {
     "Data Analytics Essentials — Cisco Networking Academy",
     "Independent Travel Manager — Dreamport",
     "Professional Foundations — ALX"
+  ],
+  "assessments": [
+    "MongoDB: 98th percentile on TestGorilla, valid through 2028-09-11; assessment, not a certificate",
+    "Data Science: 86th percentile on TestGorilla, valid through 2028-09-11; assessment, not a certificate",
+    "Data Storytelling: 90th percentile on TestGorilla, valid through 2028-09-11; assessment, not a certificate"
   ],
   "projects": [
     {

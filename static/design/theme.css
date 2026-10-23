@@ -181,6 +181,30 @@ html { scroll-behavior: smooth; }
 .blog-empty a { min-height: 44px; display: inline-flex; align-items: center; }
 .blog-entry { padding: 28px 0; border-bottom: 1px solid var(--edge); }
 .blog-entry h2 { margin: 12px 0; font-size: 30px; }
+.story-heading-line { display: flex; align-items: baseline; flex-wrap: wrap; column-gap: 24px; row-gap: 8px; }
+.story-heading-line .section-title { margin-bottom: 0; }
+.review-prototype .story-identity { font-size: 12px; line-height: 1.6; color: var(--metadata); max-width: 100%; margin: 0; }
+.story-signoff { display: flex; align-items: baseline; flex-wrap: wrap; gap: 16px; }
+.story-pronunciation { font-size: 14px; color: var(--metadata); }
+.blog-article > p { line-height: 1.85; margin: 24px 0; }
+.blog-sources,.blog-posts-source { padding: 24px 0; border-top: 1px solid var(--edge); margin-top: 32px; }
+.blog-article h2 { font-size: 26px; }
+.blog-social-post { margin: 24px 0 36px; min-width: 0; }
+.blog-post-fallback { border-left: 2px solid var(--accent); margin: 0 0 16px; padding: 0 0 0 20px; font-size: 16px; }
+.blog-post-fallback p { white-space: pre-line; }
+.blog-post-fallback footer,.blog-embed-status { font-size: 13px; color: var(--metadata); }
+.blog-post-frame { max-width: 100%; min-width: 0; }
+.blog-post-frame iframe { max-width: 100% !important; }
+.blog-embed-load { min-height: 44px; padding: 8px 16px; font: inherit; border: 1px solid var(--edge); border-radius: 4px; background: var(--panel); color: var(--foreground); cursor: pointer; }
+.assessment-section { padding: 40px 0; margin-bottom: 24px; border-bottom: 1px solid var(--edge); }
+.assessment-section h2 { font-size: 30px; margin: 0 0 16px; }
+.assessment-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; margin: 24px 0; }
+.assessment-item { min-width: 0; padding-top: 20px; border-top: 2px solid var(--edge); }
+.assessment-item h3 { font-size: 22px; margin: 0 0 12px; }
+.assessment-result { font-size: 32px; color: var(--accent); margin: 0; }
+.assessment-result span { font-size: 14px; }
+.assessment-section .assessment-note { font-size: 13px; color: var(--metadata); }
+@media (max-width: 600px) { .assessment-grid { grid-template-columns: 1fr; gap: 16px; } .story-heading-line { display: block; } .review-prototype .story-identity { margin-top: 12px; } }
 .review-prototype .blog-byline,.blog-entry time { font-size: 13px; color: var(--metadata); }
 .site-footer p { color: #e3d9c8; font-size: 13px; margin: 24px 0 0; }
 .document-page { min-height: 100svh; padding: 0 24px 64px; }

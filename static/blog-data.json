@@ -1,4 +1,27 @@
 {
   "version": 1,
-  "posts": []
+  "posts": [
+    {
+      "slug": "cardtonic-upskill-macbook-win",
+      "status": "published",
+      "title": "A MacBook win, a surprise hug, and support for my dreams",
+      "description": "What winning a MacBook through Cardtonic Upskill 4.0 felt like, in a moment that took even me by surprise.",
+      "datePublished": "2026-10-23",
+      "paragraphs": [
+        "On Saturday, I broke character. I hugged a business acquaintance in broad daylight because Cardtonic had decided to support my dreams. He looked at me in surprise. I was showing a side of myself he had not seen before, and that was how happy I was.",
+        "I had won a MacBook through Upskill 4.0. Writing that down still feels special. The part I wanted to share first was not a specification or a photograph of a laptop. It was that unguarded reaction: excitement strong enough to interrupt the way I usually carry myself.",
+        "Cardtonic's first-checkpoint announcement had told applicants to check their inboxes for news of the next round. By October, I had my own news to share. My post on 11 October captured it better than a polished announcement could: Cardtonic had supported my dreams, and I could not hide how much that meant to me.",
+        "The programme's published offer was 25 MacBooks and 20 tech scholarships for participants in Nigeria and Ghana, with separate MacBook and scholarship tracks. Those are different opportunities, not one pool of interchangeable prizes. I do not have a verified applicant total from which to calculate my personal odds of selection. Being chosen mattered to me without turning it into a probability I cannot substantiate.",
+        "My work brings together business analysis, executive support and digital systems, while I continue training in AI/ML engineering. That learning is still in progress. A win does not make the work finished or turn a developing skill into expertise. It is support for the work ahead, and I am grateful to have received it.",
+        "Thank you, Cardtonic, for this opportunity. I wanted my first post here to remember the feeling honestly: a Saturday, a surprised acquaintance, a spontaneous hug, and a very happy me."
+      ],
+      "sources": [
+        {"label": "Cardtonic Upskill 4.0 programme and prize tracks", "url": "https://cardtonic.com/upskill"}
+      ],
+      "embeds": [
+        {"url": "https://x.com/cardtonic/status/2096567610003394985", "author": "Cardtonic (@cardtonic)", "date": "2026-09-06", "text": "And just like that, we’ve reached the first checkpoint of Upskill 4.0. If you applied and have been refreshing your inbox, wondering what happens next, your answer is now sitting in your email. And if you made it through, congratulations! We’ll see you in the next round.🩵 #upskillbycardtonic"},
+        {"url": "https://x.com/mz_acheampong/status/2109211417194762747", "author": "Miss Acheampong (@mz_acheampong)", "date": "2026-10-11", "text": "Saturday ! I broke character and hugged a business acquaintance in broad daylight because @cardtonic decided to support my dreams. It was so unlike the me he knew was shocked, was staring at me like “so you can chirp and get excited like this”. Thats how happy I was 💖💖☺️☺️☺️"}
+      ]
+    }
+  ]
 }
