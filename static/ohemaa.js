@@ -14,17 +14,13 @@
   /* Adwoa's portrait (the live asset). Graceful monogram fallback if absent. */
   var PORTRAIT = '/images/adwoa-portrait-2026.jpg';
   var RESUME_URL = 'https://aacheampong.com/resume.html';
-  var PSYCHO_URL = 'https://aacheampong.com/psychometric.html';
 
   /* ---------------------------------------------------------------- KNOWLEDGE */
   var KB = {
     identity: {
       name: 'Miss A Acheampong',
-      alias: 'Miracle',
       title: 'Analyst & Executive Support | In Training: AI/ML Engineering',
-      tagline: 'Engineering global operations systems that scale locally.',
-      philosophy: 'Guided by Adinkra wisdom and unyielding grit.',
-      superpower: 'Builds scalable systems that turn visions into high-performing businesses.'
+      summary: 'I bridge operational, executive, and technical teams, turning business needs and data into clear requirements, actionable insights, and scalable AI-enabled solutions.'
     },
     metrics: [
       'AGL production-ready ERP delivered in under 32 weeks during the October 2024–July 2026 role.',
@@ -62,11 +58,6 @@
       'ALX Data Analytics', 'DataCamp Intermediate SQL',
       'Cisco Data Analytics Essentials', 'Oxford Home Study Centre Business Management'
     ],
-    psychometric: {
-      profile: 'A high-agency systems thinker with exceptional executive function.',
-      strengths: ['Strategic clarity under pressure', 'Cross-functional synthesis', 'High accountability orientation'],
-      workStyle: 'Deep-work focused and outcome-driven; she thrives in high-complexity rooms.'
-    },
     contact: {
       email: 'cc@aacheampong.com',
       phone: '(233) 276-291-485',
@@ -89,13 +80,14 @@
   var INTERVIEW_Q = [
     "First — what's the nature of the opportunity you're exploring with Adwoa?",
     'What scale are you operating at — startup, growth-stage, or enterprise?',
-    "What's your timeline for bringing someone of Adwoa's caliber on board?",
+    "What's your timeline for bringing Adwoa on board?",
     "What's the primary challenge you need solved?",
     "And finally — how did you discover Adwoa's work?"
   ];
   var INTERVIEW_LABELS = ['Opportunity', 'Scale', 'Timeline', 'Core challenge', 'Discovered via'];
 
-  var HISTORY_KEY = 'ohemaa_history', SEEN_KEY = 'ohemaa_seen';
+  // Keep older sessions stored without replaying superseded profile claims.
+  var HISTORY_KEY = 'ohemaa_history_v2', SEEN_KEY = 'ohemaa_seen';
   var state = { open: false, expanded: false, interview: 0, answers: [], busy: false };
 
   /* ------------------------------------------------------------------- STYLES */
@@ -339,7 +331,7 @@
     { label: 'See Resume', intent: 'resume' },
     { label: 'Current Projects', intent: 'projects' },
     { label: 'Quick Interview', intent: 'interview' },
-    { label: 'Psychometric Profile', intent: 'psychometric' }
+    { label: 'Working Style', intent: 'workingstyle' }
   ];
   var DEFAULT_CHIPS = [
     { label: 'About Adwoa', intent: 'bio' },
@@ -354,10 +346,7 @@
     var has = function () { for (var i = 0; i < arguments.length; i++) { if (t.indexOf(arguments[i]) > -1) return true; } return false; };
     if (has('interview', 'screen', 'pre-screen', 'prescreen', 'assess', 'vet ', 'quick question')) return 'interview';
     if (has('resume', 'cv ', 'curriculum')) return 'resume';
-    if (has('psychometric', 'personality')) {
-      if (has('file', 'download', 'pdf', 'report', 'document')) return 'psychodoc';
-      return 'psychometric';
-    }
+    if (has('psychometric', 'personality', 'working style', 'work style', 'strengths')) return 'workingstyle';
     if (has('pipeline', 'merchant hub', 'upcoming', 'building next', 'roadmap')) return 'pipeline';
     if (has('project', 'case stud', 'working on', 'portfolio', 'agl', 'agl erp', 'built')) return 'projects';
     if (has('experience', 'background', 'career', 'work history', 'where has', 'roles', 'jobs')) return 'experience';
@@ -376,8 +365,8 @@
         botSay("Akwaaba — welcome. ✦ I am Ohemaa, Adwoa’s assistant. How may I serve you today?", { chips: DEFAULT_CHIPS });
         break;
       case 'bio':
-        botSay(KB.identity.name + ' — ' + KB.identity.title + ' | ' + (KB.identity.training || 'In Training: AI/ML Engineering') + '. Based in Accra, Ghana. ' + (KB.identity.summary || 'She works across business analysis, executive support and practical digital systems.'),
-          { chips: [{ label: 'Her Projects', intent: 'projects' }, { label: 'Her Experience', intent: 'experience' }, { label: 'Psychometric Profile', intent: 'psychometric' }] });
+        botSay(KB.identity.name + ' — ' + KB.identity.title + (KB.identity.training ? ' | ' + KB.identity.training : '') + '. Based in Accra, Ghana.\n\nAdwoa\'s bio:\n' + KB.identity.summary,
+          { chips: [{ label: 'Her Projects', intent: 'projects' }, { label: 'Her Experience', intent: 'experience' }, { label: 'Working Style', intent: 'workingstyle' }] });
         break;
       case 'experience':
         botSay("Adwoa's professional experience spans nonprofit development, automotive operations and hospitality:\n\n• " + KB.experience.join('\n• '),
@@ -385,35 +374,33 @@
         break;
       case 'projects':
         var p = KB.projects.map(function (x) { return '✦ ' + x.name + '\n' + x.brief; }).join('\n\n');
-          botSay("Project evidence and current status:\n\n" + p,
+          botSay("Projects and current progress:\n\n" + p,
           { chips: [{ label: 'In the Pipeline', intent: 'pipeline' }, { label: 'See Resume', intent: 'resume' }, { label: 'Quick Interview', intent: 'interview' }] });
         break;
       case 'pipeline':
-        botSay("What we’re building next:\n\n✦ " + KB.pipeline.join('\n\n✦ '),
-          { chips: [{ label: 'Project Evidence', intent: 'projects' }, { label: 'Reach Adwoa', intent: 'contact' }] });
+        botSay("Adwoa's pipeline:\n\n✦ " + KB.pipeline.join('\n\n✦ '),
+          { chips: [{ label: 'Current Projects', intent: 'projects' }, { label: 'Reach Adwoa', intent: 'contact' }] });
         break;
       case 'skills':
-        botSay("Her toolkit:\n\n• " + KB.expertise.join('\n• ') + "\n\nCertified in: " + KB.certifications.join(' · ') + ".",
+        botSay("Adwoa's toolkit, in her words:\n\n• " + KB.expertise.join('\n• ') + "\n\nCourses and credentials: " + KB.certifications.join(' · ') + ".",
           { chips: [{ label: 'Her Projects', intent: 'projects' }, { label: 'See Resume', intent: 'resume' }] });
         break;
       case 'psychometric':
-        botSay(KB.psychometric.profile + " Her strengths: " + KB.psychometric.strengths.join(', ').toLowerCase() + ". " + KB.psychometric.workStyle,
-          { chips: [{ label: 'Open the full report', intent: 'psychodoc' }, { label: 'About Adwoa', intent: 'bio' }] });
+      case 'psychodoc':
+      case 'workingstyle':
+        botSay("Adwoa's approach to work is reflected in her bio and experience.\n\nAdwoa's bio:\n" + KB.identity.summary + "\n\nHer experience includes:\n• " + KB.experience.join('\n• '),
+          { chips: [{ label: 'Her Experience', intent: 'experience' }, { label: 'See Resume', intent: 'resume' }] });
         break;
       case 'resume':
-        botSay("Here is Adwoa’s résumé — straight from her desk. Medaase for your interest.",
-          { doc: { title: 'Résumé', file: 'Miss A Acheampong — Resume.pdf', url: RESUME_URL }, chips: [{ label: 'Psychometric Report', intent: 'psychodoc' }, { label: 'Quick Interview', intent: 'interview' }] });
-        break;
-      case 'psychodoc':
-        botSay("Her psychometric report — a clear window into how she thinks and leads.",
-          { doc: { title: 'Psychometric Report', file: 'Miss A Acheampong — Psychometric.pdf', url: PSYCHO_URL }, chips: [{ label: 'About Adwoa', intent: 'bio' }] });
+        botSay("Here is Adwoa’s résumé.",
+          { doc: { title: 'Résumé', file: 'Miss A Acheampong — Resume.pdf', url: RESUME_URL }, chips: [{ label: 'Her Experience', intent: 'experience' }, { label: 'Quick Interview', intent: 'interview' }] });
         break;
       case 'contact':
         botSay("Let’s get you to Adwoa directly. ✦ Here are her details — or I can open her contact page for you.",
           { contact: true, chips: [{ label: 'Open Contact page', action: goToContact }, { label: 'Connect on LinkedIn', action: openLink(KB.contact.linkedin) }] });
         break;
       case 'capabilities':
-        botSay("I can brief you on Adwoa’s story, experience, projects and pipeline, pull her résumé or psychometric report, or run a sharp five-question pre-screen for serious opportunities. Shall I go deeper?",
+        botSay("I can help you explore Adwoa's bio, experience, toolkit, projects and pipeline, open her résumé, or prepare an opportunity brief with five questions.",
           { chips: WELCOME_CHIPS });
         break;
       case 'interview':
@@ -423,7 +410,7 @@
         botSay("Medaase — the pleasure is mine. ✦ Shall I go deeper on anything?", { chips: DEFAULT_CHIPS });
         break;
       default:
-        botSay("I want to brief you well. I can speak to Adwoa’s story, experience, projects, pipeline or psychometric profile, share her documents, or run a quick pre-screen — which way shall we go?",
+        botSay("You can ask about Adwoa's bio, experience, toolkit, projects or pipeline. I can also open her résumé or help prepare an opportunity brief.",
           { chips: DEFAULT_CHIPS });
     }
   }
@@ -447,7 +434,7 @@
       var a = state.answers.slice();
       state.interview = 0; state.answers = [];
       var lines = a.map(function (x, i) { return '• ' + INTERVIEW_LABELS[i] + ': ' + x; }).join('\n');
-      botSay("Medaase — here’s the brief I’ve captured for Adwoa:\n\n" + lines + "\n\nI’ll make sure Adwoa reviews this personally. In the meantime, here’s how to reach her directly:",
+      botSay("Here is your opportunity brief:\n\n" + lines + "\n\nYou can share this with Adwoa using the contact details below.",
         { contact: true, chips: [{ label: 'Connect on LinkedIn', action: openLink(KB.contact.linkedin) }, { label: 'Open Contact page', action: goToContact }] });
     }
   }
@@ -465,7 +452,7 @@
   function runWelcome() {
     botSay("Akwaaba — welcome. ✦ I’m Ohemaa, Adwoa’s personal AI assistant.", { delay: 360 });
     setTimeout(function () {
-      botSay("I can brief you on her work, run a quick pre-screen, or pull her documents from her desk.", { delay: 360 });
+      botSay("I can help you explore her work, open her résumé, or prepare an opportunity brief.", { delay: 360 });
     }, 1150);
     setTimeout(function () {
       botSay("What would you like to know?", { delay: 320, chips: WELCOME_CHIPS });
@@ -537,7 +524,7 @@
     setTimeout(hide, 9000);
   }
   function maybeGreet() {
-    if (document.querySelector('.blog-article')) return;
+    if (document.querySelector('.blog-assistant-slot')) return;
     /* Keep the first mobile view unobstructed; the launcher remains available. */
     if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) return;
     var seen = false;

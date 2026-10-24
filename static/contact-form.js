@@ -203,14 +203,14 @@ Thank you,
         }
         const accepted = formSubmit ? result?.success === true || result?.success === 'true' : result?.ok === true;
         if (!response.ok || !accepted) throw new Error('Acceptance not confirmed');
-        announce(formSubmit ? 'Message accepted by FormSubmit for processing.' : 'Message accepted for delivery.', 'accepted');
-        submit.textContent = formSubmit ? 'Accepted for processing' : 'Accepted for delivery';
+        announce(formSubmit ? 'Message accepted by FormSubmit for processing.' : 'Message accepted for processing.', 'accepted');
+        submit.textContent = 'Accepted for processing';
       } catch (error) {
         announce(error.message === 'activation-required'
-          ? 'FormSubmit requires the site owner to activate this form. Delivery is not confirmed. Your message is still here; please use the email link.'
+          ? 'FormSubmit requires the site owner to activate this form. Your message is still here; please use the email link.'
           : controller.signal.aborted
             ? 'The contact service timed out. Acceptance is unknown. Your message is still here. Retry or use the email link; retrying may send a duplicate.'
-            : 'Delivery acceptance could not be confirmed. Your message is still here. Retry or use the email link; retrying may send a duplicate.', 'error');
+            : 'Message acceptance could not be confirmed. Your message is still here. Retry or use the email link; retrying may send a duplicate.', 'error');
         submit.textContent = 'Retry message';
       } finally {
         clearTimeout(timeout);

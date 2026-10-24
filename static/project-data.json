@@ -6,13 +6,13 @@
     "stack": ["JavaScript", "Google Sheets API", "PWA", "Kanban", "QR staff access"],
     "image": "/images/projects/agl-sign-in-evidence-2026-10-22.jpg", "alt": "AGL ERP public sign-in screen captured on 22 October 2026",
     "links": [{"label":"Open AGL ERP", "href":"https://agl.software"}],
-    "note": "Public access currently opens a sign-in screen; authenticated workflows were not re-tested in this review. The GHS 1,200 to 2,700 campaign was a 2024 result, not a current ERP metric. Earlier publication-safe dashboard evidence remains in the project document."
+    "note": "Sign-in is required to access the ERP workflows. My project document includes dashboard examples. The campaign's GHS 1,200 to GHS 2,700 result dates to 2024."
   },
   {
     "id":"blkk-legacy", "title":"Blkk Star Legacy Organization", "status":"LIVE", "category":"Nonprofit and digital product development", "view":"projects",
     "summary":"The live parent website for a Ghanaian nonprofit connecting education, culture, commerce and community.",
     "features":["Co-developed organizational architecture, requirements and implementation plans.","Established shared brand and product frameworks and coordinated research, design and technical work.","Tracks actions, dependencies and risks across commerce, analytics and food-system prototypes."],
-    "stack":["Next.js / React (source)","TypeScript (source)","Requirements analysis","Operating model design"],
+    "stack":["Next.js / React","TypeScript","Requirements analysis","Operating model design"],
     "image":"/images/projects/blkk-legacy-evidence-2026-10-22.jpg", "alt":"Blkk Star Legacy public organization landing page captured on 22 October 2026", "links":[{"label":"Visit Blkk Star Legacy","href":"https://blkklegacy.com/"}],
     "note":"The parent website is live. Wider operational rollout and commercial validation remain in progress."
   },
@@ -23,17 +23,17 @@
     "stack":["React interfaces","API-first architecture (proposed)","PostgreSQL (architecture)","Search and tenant identity (design)"],
     "image":"/images/projects/blkk-star-hub-restricted-evidence-2026-10-22.jpg", "alt":"Blkk Star Hub restricted-access landing page captured on 22 October 2026",
     "links":[{"label":"View current platform access","href":"https://blkkstarhub.com/"}],
-    "note":"The site states that core infrastructure is closed to public access by design to protect it; demonstration requests are offered instead. This explains the restriction notice, not independently verified security. The architecture is a design direction; its planned services are not all implemented or commercially validated."
+    "note":"Core infrastructure is closed to public access to protect it; access is available through demonstration requests. The platform architecture is still being developed, with planned services and commercial validation remaining."
   },
   {
     "id":"blkk-autos", "title":"BLKK Autos", "status":"ACTIVE PROTOTYPE", "category":"Automotive commerce", "view":"projects",
     "summary":"A live web prototype exploring vehicle discovery and automotive merchant workflows.",
-    "features":["Explores structured vehicle listings, inventory presentation and customer enquiries.","Serves as a sector-specific validation route for the wider Blkk trade platform.","Separates a reviewable web prototype from production transactions and commercial rollout."],
+    "features":["Explores structured vehicle listings, inventory presentation and customer enquiries.","Serves as a sector-specific validation route for the wider Blkk trade platform.","Develops the web prototype ahead of production transactions and commercial rollout."],
     "stack":["React Native","Expo","Expo Router","Web build"],
     "image":"/images/projects/blkk-autos-pages-evidence-2026-10-22.jpg", "alt":"BLKK Autos public web prototype landing page captured on 22 October 2026",
     "additionalImages":[{"image":"/images/projects/blkk-autos-restricted-evidence-2026-10-22.jpg","alt":"BLKK Autos custom-domain restriction notice: protected intellectual property, with access by scheduled demonstration"}],
     "links":[{"label":"Open BLKK Autos prototype","href":"https://blkk-autos-hub.pages.dev/"},{"label":"View restricted Autos access","href":"https://autos.blkkstarhub.com/"}],
-    "note":"The Pages frontend is publicly reviewable. The older autos-app route redirects to the restricted Autos subdomain, whose notice says it protects high-value intellectual property and requires a scheduled live demonstration. The two routes are not established as equivalent builds. Listings, badges and payment claims were not validated as operational transactions."
+    "note":"The Pages frontend is open to explore. The older autos-app route redirects to the restricted Autos subdomain, where access is by scheduled live demonstration to protect intellectual property. These are separate access routes. Listings, badges and payment features remain part of the prototype; operational transactions and commercial rollout are still to be validated."
   },
   {
     "id":"farmers-hub", "title":"Farmers Hub", "status":"ACTIVE PROTOTYPE", "category":"Food systems and traceability", "view":"projects",
@@ -41,16 +41,16 @@
     "features":["Explores agricultural discovery, traceability and coordination workflows.","Supported by a project charter, investor brief and planning deck.","Uses requirements and operating-model research to frame a potential pilot."],
     "stack":["Web prototype","Requirements and charter","Traceability model"],
     "image":"/images/projects/blkk-farmers-demo-evidence-2026-10-22.jpg", "alt":"Farmers Hub prototype with its demonstration-data banner", "links":[{"label":"Explore Farmers Hub prototype","href":"https://blkk-farmers-hub.pages.dev/"}],
-    "note":"Pre-pilot demonstration with sample product, supplier and performance data. No operating scale, fulfilled orders or completed transactions are claimed."
+    "note":"Pre-pilot demonstration using sample product, supplier and performance data. Operating scale, order fulfilment and live transactions remain future pilot milestones."
   },
   {
     "id":"adinkra", "title":"Adinkra Intelligence Systems", "status":"ACTIVE PROTOTYPE", "category":"Operational analytics", "view":"projects",
     "summary":"An analytics interface exploring tenant-level operational metrics, dashboards and drilldowns above business systems.",
-    "features":["Presents multi-vertical metrics and visual analysis for decision support.","Explores group, entity and tenant drilldowns and structured data interpretation.","Distinguishes frontend demonstrations from verified production data integrations."],
+    "features":["Presents multi-vertical metrics and visual analysis for decision support.","Explores group, entity and tenant drilldowns and structured data interpretation.","Uses demonstration metrics to explore operational reporting."],
     "stack":["React","Vite","Tailwind CSS","Recharts","SheetJS"],
     "image":"/images/projects/adinkra-shell-evidence-2026-10-22.jpg", "alt":"Adinkra prototype navigation shell captured on 22 October 2026",
     "links":[{"label":"Open Adinkra prototype","href":"https://blkkstarhub.com/adinkra-front"},{"label":"Review Adinkra source","href":"https://github.com/Adwoa-Acheampong/adinkra-intelligence-systems-frontend"}],
-    "note":"Active prototype. The current public route rendered its navigation shell with an empty main area in this review. Dashboard and backend integrations were not verified. Demonstration metrics are not audited client performance."
+    "note":"The public prototype capture shows the navigation shell. The analytics interface uses demonstration metrics; wider backend integration is in development."
   },
   {
     "id":"miracle", "title":"MIRACLE", "status":"LIVE", "category":"Personal systems", "view":"projects",
@@ -59,67 +59,67 @@
     "stack":["Mobile-first web app","PWA","JavaScript"],
     "image":"/images/projects/miracle-sign-in-evidence-2026-10-22.jpg", "alt":"MIRACLE Sanctuary sign-in interface captured on 22 October 2026",
     "links":[{"label":"Open MIRACLE","href":"https://miracleapp.site"},{"label":"Review MIRACLE source","href":"https://github.com/Adwoa-Acheampong/Miracle-App"}],
-    "note":"The live route currently requires sign-in. Authenticated routines, gameplay, offline reliability, cross-device sync and AI service availability were not re-tested in this review."
+    "note":"Sign-in is required to access the personal planning app. Its mobile-first design brings routines, reflection and progress into one experience."
   },
   {
-    "id":"healthfirst", "title":"HealthFirst Business Analyst Capstone", "status":"COMPLETED CASE STUDY/LAB", "category":"IBM learning capstone", "view":"projects",
-    "summary":"A coherent simulated hospital-analysis artifact pack covering requirements, stakeholders, scope, processes, data, dashboards and risk.",
-    "features":["Separate lab documents and workbooks cover the BRD, RTM, stakeholder matrix, scope/WBS, process models and swimlanes.","Includes data cleaning and analysis, an Excel dashboard, risk register/SWOT and risk-matrix mitigation workbooks.","Deliverables are reviewable locally; the project index records three partial labs where local equivalents replaced platform-specific requirements."],
+    "id":"healthfirst", "title":"HealthFirst Business Analyst Capstone", "status":"CAPSTONE | Review in progress", "category":"IBM learning capstone", "view":"projects",
+    "summary":"My simulated hospital-analysis capstone covers requirements, stakeholders, scope, processes, data, dashboards and risk.",
+    "features":["Separate lab documents and workbooks cover the BRD, RTM, stakeholder matrix, scope/WBS, process models and swimlanes.","Includes data cleaning and analysis, an Excel dashboard, risk register/SWOT and risk-matrix mitigation workbooks.","Includes locally available deliverables and a project index detailing three partial labs where local equivalents replaced platform-specific requirements."],
     "stack":["Excel","Requirements traceability","BPMN/Mermaid","Risk analysis","Local dashboards"],
-    "image":"", "alt":"", "links":[{"label":"Read HealthFirst project index","href":"/docs/projects/healthfirst-project-index.pdf"},{"label":"Open portfolio evidence","href":"/portfolio.html#healthfirst"}],
-    "note":"Simulated certificate work, not paid client employment. No clean independent final acceptance is claimed. Local diagram/dashboard equivalents do not prove Lucidchart, Visio, Cognos or Looker usage. The older 39-slide hospital case uses a separate dataset."
+    "image":"", "alt":"", "links":[{"label":"Read HealthFirst project index","href":"/docs/projects/healthfirst-project-index.pdf"},{"label":"Explore HealthFirst capstone","href":"/portfolio.html#healthfirst"}],
+    "note":"This is a simulated certificate capstone. Three labs remain partial, with Lucidchart/Visio and Cognos/Looker requirements still outstanding; final acceptance remains pending. The older 39-slide hospital case uses a separate dataset."
   },
   {
     "id":"olist", "title":"Olist Marketing Funnel & E-Commerce Analysis", "status":"IN PROGRESS", "category":"Independent analytics project", "view":"projects",
     "summary":"Python analysis of lead conversion, commerce-linked sellers and seller-to-customer delivery corridors using public Olist data.",
-    "features":["Preserves one row per marketing lead by aggregating commerce records before joining seller data.","Repository-verified results: 8,000 leads, 842 closed deals, 10.53% conversion, 380 commerce-linked deals and 45.13% commerce-link rate.","Validates 97,811 eligible seller-order records across 412 state corridors; dashboard exports and Looker Studio publication remain pending."],
+    "features":["Preserves one row per marketing lead by aggregating commerce records before joining seller data.","Analysis results: 8,000 leads, 842 closed deals, 10.53% conversion, 380 commerce-linked deals and 45.13% commerce-link rate.","Validates 97,811 eligible seller-order records across 412 state corridors; dashboard exports and Looker Studio publication remain pending."],
     "stack":["Python","pandas","Matplotlib","Jupyter","GitHub Codespaces"],
     "image":"", "alt":"", "links":[{"label":"Review Olist analysis and notebook","href":"https://github.com/Adwoa-Acheampong/olist-marketing-funnel-analysis"}],
-    "note":"Independent, self-directed project inspired by MIT OpenCourseWare materials. No MIT enrollment, credential, submission, endorsement or institutional credit."
+    "note":"My independent, self-directed project draws on MIT OpenCourseWare materials."
   },
   {
     "id":"family-erp", "title":"Unified Family Educational ERP", "status":"IN PROGRESS", "category":"Family learning systems", "view":"projects",
     "summary":"A family learning ecosystem in active development, exploring age-appropriate interfaces and AI-assisted educational workflows.",
-    "features":["Models different family roles and learning interfaces in a shared application.","Explores learner progress, content and workflow coordination.","Repository work is distinct from a publicly deployed, independently validated production service."],
+    "features":["Models different family roles and learning interfaces in a shared application.","Explores learner progress, content and workflow coordination.","Develops the application in the repository ahead of public production deployment."],
     "stack":["React","Vite","Tailwind CSS","TanStack Query","Recharts"],
     "image":"", "alt":"", "links":[{"label":"Review Family Educational ERP repository","href":"https://github.com/Adwoa-Acheampong/Family-Edu-System"}],
-    "note":"Active development. Proposed AI routing and integrations are not represented as completed production capabilities."
+    "note":"Active development, with AI routing and integrations still planned."
   },
   {
     "id":"process-modelling", "title":"Process Modelling & Secure Workflow Design", "status":"COMPLETED CASE STUDY/LAB", "category":"Process analysis learning artifacts", "view":"projects",
     "summary":"Text-based Mermaid and BPMN process artifacts documenting business flows and secure workflow design.",
-    "features":["Documents flow sequence, decision points and responsibilities.","Provides editable text evidence for process discussion and refinement.","Keeps actual source formats distinct from proprietary diagramming-platform claims."],
+    "features":["Documents flow sequence, decision points and responsibilities.","Provides editable text diagrams for process discussion and refinement.","Uses Mermaid and BPMN text sources to make workflow models easy to revise."],
     "stack":["Mermaid","BPMN","Process analysis"], "image":"", "alt":"",
-    "links":[{"label":"Read Mermaid process source","href":"/docs/projects/Task3_Mermaid_Diagram.txt"},{"label":"Read BPMN model source","href":"/docs/projects/Task4_BPMN_Model.txt"},{"label":"Read process evidence in portfolio","href":"/portfolio.html#process-modelling"}],
-    "note":"Learning artifacts. Source files are text-based diagrams; no Lucidchart or Visio execution is implied."
+    "links":[{"label":"Read Mermaid process source","href":"/docs/projects/Task3_Mermaid_Diagram.txt"},{"label":"Read BPMN model source","href":"/docs/projects/Task4_BPMN_Model.txt"},{"label":"Explore process models","href":"/portfolio.html#process-modelling"}],
+    "note":"My process-modelling learning work uses editable text-based Mermaid and BPMN diagrams."
   },
   {
     "id":"automotive-analytics", "title":"Automotive Sales Analytics", "status":"COMPLETED CASE STUDY/LAB", "category":"Data analysis lab", "view":"projects",
-    "summary":"An automotive sales-analysis workbook exercise using the verified CarSalesByModelEnd source artifact.",
+    "summary":"My automotive sales-analysis exercise uses the CarSalesByModelEnd workbook.",
     "features":["Explores model-level sales data and spreadsheet reporting.","Demonstrates data summarization and analytic communication.","Training data and findings are separate from Automobiles Ghana operational results."],
     "stack":["Excel","Sales analysis","Data visualization"], "image":"", "alt":"",
     "links":[{"label":"Download automotive sales workbook","href":"/docs/projects/CarSalesByModelEnd.xlsx"},{"label":"Review sales-analysis context","href":"/portfolio.html#automotive-analytics"}],
-    "note":"Learning lab, not a paid engagement. Platform-specific dashboard publication requires independent evidence."
+    "note":"Workbook-based learning lab. Platform-specific dashboard publication remains a separate step."
   },
   {
     "id":"municipal-fleet", "title":"Municipal Fleet Equipment Inventory Analysis", "status":"COMPLETED CASE STUDY/LAB", "category":"Spreadsheet data-quality lab", "view":"projects",
     "summary":"A completed inventory workbook exercise using Montgomery fleet equipment data.",
-    "features":["Works with structured equipment records and spreadsheet data quality.","Supports inventory summarization and review.","Uses the verified final workbook as evidence, with no invented client outcome."],
+    "features":["Works with structured equipment records and spreadsheet data quality.","Supports inventory summarization and review.","Brings the completed inventory analysis together in a final workbook."],
     "stack":["Excel","Data cleaning","Inventory analysis"], "image":"", "alt":"",
     "links":[{"label":"Download final inventory workbook","href":"/docs/projects/municipal-fleet-final.xlsx"},{"label":"Review inventory analysis context","href":"/portfolio.html#municipal-fleet"}],
-    "note":"Course/lab artifact. The portfolio does not imply employment by Montgomery County."
+    "note":"Course learning lab using Montgomery fleet equipment data."
   },
   {
     "id":"informal-economy-paper", "title":"Formalising Africa's Informal Economy", "status":"IN PROGRESS", "category":"Unpublished research working paper", "view":"projects",
     "summary":"A working paper examining accountable digital trade infrastructure and the Blkk Star Hub operating thesis.",
-    "features":["Studies formalization, trust, traceability and business records in informal commerce.","Connects research questions to prototype and operating-model design.","Remains an unpublished working paper rather than a peer-reviewed publication."],
+    "features":["Studies formalization, trust, traceability and business records in informal commerce.","Connects research questions to prototype and operating-model design.","Develops the research as an unpublished working paper."],
     "stack":["Research synthesis","Business analysis","Operating model design"], "image":"", "alt":"",
-    "links":[{"label":"Read unpublished working paper","href":"/docs/projects/informal-economy-working-paper.pdf"},{"label":"Read research context in portfolio","href":"/portfolio.html#informal-economy-paper"}], "note":"Unpublished working paper; no peer review or institutional endorsement is claimed."
+    "links":[{"label":"Read unpublished working paper","href":"/docs/projects/informal-economy-working-paper.pdf"},{"label":"Read research context in portfolio","href":"/portfolio.html#informal-economy-paper"}], "note":"Unpublished, non-peer-reviewed working paper in development."
   },
   {
     "id":"portfolio-site", "title":"Professional Portfolio", "status":"LIVE", "category":"Professional evidence and web publishing", "view":"projects",
-    "summary":"This portfolio connects analyst experience, project evidence, credentials and downloadable documents in one accessible site.",
-    "features":["Publishes source-grounded project status and practical evidence links.","Connects resume, certification gallery and contact/QR hub.","Uses crawlable static routes, responsive layouts and structured metadata."],
+    "summary":"I built this accessible site to bring together my analyst experience, projects, credentials and downloadable documents.",
+    "features":["Shares project progress, working examples and supporting documents.","Connects resume, certification gallery and contact/QR hub.","Uses crawlable static routes, responsive layouts and structured metadata."],
     "stack":["HTML","CSS","JavaScript","GitHub Pages"], "image":"/images/adwoa-banner-2026.jpg", "alt":"Adwoa Acheampong portfolio banner",
     "links":[{"label":"Review portfolio source repository","href":"https://github.com/Adwoa-Acheampong/adwoa-acheampong.github.io"}], "note":"The repository is the maintained source of this website."
   },
@@ -130,27 +130,27 @@
     "stack":["Computer vision (proposed)","Diagnostic AI (proposed)","Wearable camera/display (concept)"],
     "image":"/images/agl-erp/agl-workshop-kanban.png", "alt":"AGL workshop workflow used as context for the diagnostic glasses concept",
     "links":[{"label":"Read Building AGL concept","href":"/portfolio.html#building-agl"}],
-    "note":"Concept blueprint only. The thumbnail shows existing workshop context, not implemented AR hardware or a deployed diagnostic overlay."
+    "note":"Concept blueprint. The thumbnail shows the existing workshop workflow that informs the design; AR hardware and a diagnostic overlay remain conceptual."
   },
   {
     "id":"merchant-hub", "title":"The Merchant Hub", "status":"IN PROGRESS", "category":"Founder and SME ecosystem", "view":"pipeline",
     "summary":"A venture concept combining commerce support, founder training and shared operating services for African SMEs.",
-    "features":["Proposes digital operations, marketplace support, logistics coordination and founder training.","Explores executive assistance and community commerce services.","Community capital models require validation before operational or financial claims."],
+    "features":["Proposes digital operations, marketplace support, logistics coordination and founder training.","Explores executive assistance and community commerce services.","Researches community capital models, with operational and financial validation still ahead."],
     "stack":["Operating model design","Requirements planning"],"image":"/images/blkk-pipeline/blkk-star-hub-commerce.png", "alt":"Merchant Hub commerce concept rendering, not a live product screenshot",
-    "links":[{"label":"Discuss the venture","href":"/contact/"}], "note":"Venture development. Illustration is a concept rendering; no live marketplace or pooled-capital service is claimed."
+    "links":[{"label":"Discuss the venture","href":"/contact/"}], "note":"Venture development with a concept illustration. Marketplace operations and pooled-capital services are still proposed."
   },
   {
     "id":"real-estate-hub", "title":"Real Estate Management Hub", "status":"CONCEPT", "category":"Property operations", "view":"pipeline",
     "summary":"A broader property-operations concept covering professional hosting, staff training, guest coordination and owner reporting.",
     "features":["Proposes property hosting and booking coordination.","Explores staff training and guest travel support.","Owner reporting would cover occupancy, maintenance and guest feedback."],
     "stack":["Service design","Requirements planning"], "image":"", "alt":"",
-    "links":[{"label":"Discuss property operations","href":"/contact/"}], "note":"Concept only; no deployed management platform or active client scale is claimed."
+    "links":[{"label":"Discuss property operations","href":"/contact/"}], "note":"Property-operations concept, with platform development and client rollout still ahead."
   },
   {
     "id":"blkk-label", "title":"Blkk Label", "status":"CONCEPT", "category":"Brand and production venture", "view":"pipeline",
     "summary":"A proposed brand and production arm exploring culturally grounded products and skills-to-production pathways.",
     "features":["Develops a brand thesis and proposed product/production model.","Requires demand, quality, unit-economics and operating validation before scale."],
     "stack":["Brand systems","Operating model design"], "image":"/images/blkk-pipeline/blkk-label-apparel.png", "alt":"Blkk Label apparel concept rendering",
-    "links":[{"label":"Discuss Blkk Label","href":"/contact/"}], "note":"Concept imagery, not evidence of completed manufacturing infrastructure."
+    "links":[{"label":"Discuss Blkk Label","href":"/contact/"}], "note":"Concept imagery illustrates the proposed brand; manufacturing infrastructure remains to be developed."
   }
 ]
