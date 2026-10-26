@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="900" viewBox="0 0 1800 900">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="52" y="65" font-family="Segoe UI" font-size="36" font-weight="700" fill="#17324D">HealthFirst Care work breakdown structure</text>
+<text x="54" y="102" font-family="Segoe UI" font-size="20" fill="#667085">One pilot root → seven deliverable branches → detailed work packages in the linked register</text>
+<rect x="58" y="386" width="410" height="122" rx="16" fill="#DDECEB" stroke="#136F78" stroke-width="3"/>
+<text x="263" y="443.1" text-anchor="middle" font-family="Segoe UI" font-size="26" font-weight="700" fill="#17324D">0 Controlled operational</text><text x="263" y="472.9" text-anchor="middle" font-family="Segoe UI" font-size="26" font-weight="700" fill="#17324D">pilot</text>
+<path d="M468 447 L520 447 L520 207 M520 447 L520 837" fill="none" stroke="#52657B" stroke-width="3"/>
+<path d="M520 199 L576 199" fill="none" stroke="#52657B" stroke-width="3"/>
+<polygon points="576,199 560,191 560,207" fill="#52657B"/>
+<rect x="580" y="155" width="1090" height="88" rx="12" fill="#EAF2F6" stroke="#136F78" stroke-width="2.5"/>
+<text x="1125" y="205.0" text-anchor="middle" font-family="Segoe UI" font-size="25" font-weight="700" fill="#17324D">1.0 Initiation and baseline — 2 work packages</text>
+<path d="M520 303 L576 303" fill="none" stroke="#52657B" stroke-width="3"/>
+<polygon points="576,303 560,295 560,311" fill="#52657B"/>
+<rect x="580" y="259" width="1090" height="88" rx="12" fill="#EAF2F6" stroke="#136F78" stroke-width="2.5"/>
+<text x="1125" y="309.0" text-anchor="middle" font-family="Segoe UI" font-size="25" font-weight="700" fill="#17324D">2.0 Requirements and stakeholders — 4 work packages</text>
+<path d="M520 407 L576 407" fill="none" stroke="#52657B" stroke-width="3"/>
+<polygon points="576,407 560,399 560,415" fill="#52657B"/>
+<rect x="580" y="363" width="1090" height="88" rx="12" fill="#EAF2F6" stroke="#136F78" stroke-width="2.5"/>
+<text x="1125" y="413.0" text-anchor="middle" font-family="Segoe UI" font-size="25" font-weight="700" fill="#17324D">3.0 Process analysis and design — 4 work packages</text>
+<path d="M520 511 L576 511" fill="none" stroke="#52657B" stroke-width="3"/>
+<polygon points="576,511 560,503 560,519" fill="#52657B"/>
+<rect x="580" y="467" width="1090" height="88" rx="12" fill="#EAF2F6" stroke="#136F78" stroke-width="2.5"/>
+<text x="1125" y="517.0" text-anchor="middle" font-family="Segoe UI" font-size="25" font-weight="700" fill="#17324D">4.0 Data preparation and analysis — 6 work packages</text>
+<path d="M520 615 L576 615" fill="none" stroke="#52657B" stroke-width="3"/>
+<polygon points="576,615 560,607 560,623" fill="#52657B"/>
+<rect x="580" y="571" width="1090" height="88" rx="12" fill="#EAF2F6" stroke="#136F78" stroke-width="2.5"/>
+<text x="1125" y="621.0" text-anchor="middle" font-family="Segoe UI" font-size="25" font-weight="700" fill="#17324D">5.0 Risk and controls — 3 work packages</text>
+<path d="M520 719 L576 719" fill="none" stroke="#52657B" stroke-width="3"/>
+<polygon points="576,719 560,711 560,727" fill="#52657B"/>
+<rect x="580" y="675" width="1090" height="88" rx="12" fill="#EAF2F6" stroke="#136F78" stroke-width="2.5"/>
+<text x="1125" y="725.0" text-anchor="middle" font-family="Segoe UI" font-size="25" font-weight="700" fill="#17324D">6.0 Pilot preparation and validation — 4 work packages</text>
+<path d="M520 823 L576 823" fill="none" stroke="#52657B" stroke-width="3"/>
+<polygon points="576,823 560,815 560,831" fill="#52657B"/>
+<rect x="580" y="779" width="1090" height="88" rx="12" fill="#EAF2F6" stroke="#136F78" stroke-width="2.5"/>
+<text x="1125" y="829.0" text-anchor="middle" font-family="Segoe UI" font-size="25" font-weight="700" fill="#17324D">7.0 Operate and review — 2 work packages</text>
+</svg>

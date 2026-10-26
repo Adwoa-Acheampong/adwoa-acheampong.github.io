@@ -1,0 +1,766 @@
+{
+  "schemaVersion": 1,
+  "projects": [
+    {
+      "id": "healthfirst",
+      "title": "HealthFirst Care business analysis capstone",
+      "page": "/projects/healthfirst/",
+      "artifacts": [
+        {
+          "id": "Capstone_Project_M01L01_HealthFirst_BRD.docx",
+          "label": "M01L01 HealthFirst BRD",
+          "group": "Editable reports",
+          "href": "/docs/projects/Capstone_Project_M01L01_HealthFirst_BRD.docx",
+          "format": "DOCX",
+          "bytes": 44639,
+          "sha256": "105867144091fd756766b2d09a9564cf34bf9ed5321929e054e01b587646c862"
+        },
+        {
+          "id": "Capstone_Project_M01L01_HealthFirst_BRD.pdf",
+          "label": "M01L01 HealthFirst BRD",
+          "group": "Reports",
+          "href": "/docs/projects/Capstone_Project_M01L01_HealthFirst_BRD.pdf",
+          "format": "PDF",
+          "bytes": 123816,
+          "sha256": "92d38ee638647691c08be5fdf15fca79aaa16e3d23581b4b334f1dc8f2507c0f"
+        },
+        {
+          "id": "Capstone_Project_M01L01_Requirements_Traceability_Matrix.xlsx",
+          "label": "M01L01 Requirements Traceability Matrix",
+          "group": "Workbooks",
+          "href": "/docs/projects/Capstone_Project_M01L01_Requirements_Traceability_Matrix.xlsx",
+          "format": "XLSX",
+          "bytes": 10205,
+          "sha256": "80844e16ad113a37b3e0e8096b36c2eaf72b62a9a341a5d9f18bff649455e124"
+        },
+        {
+          "id": "Capstone_Project_M01L01_RTM_Findings.docx",
+          "label": "M01L01 RTM Findings",
+          "group": "Editable reports",
+          "href": "/docs/projects/Capstone_Project_M01L01_RTM_Findings.docx",
+          "format": "DOCX",
+          "bytes": 41501,
+          "sha256": "34379ff54c547a0bfc32132d181d1da2c9c818eaf857ae4cb952db26fd7accaa"
+        },
+        {
+          "id": "Capstone_Project_M01L01_RTM_Findings.pdf",
+          "label": "M01L01 RTM Findings",
+          "group": "Reports",
+          "href": "/docs/projects/Capstone_Project_M01L01_RTM_Findings.pdf",
+          "format": "PDF",
+          "bytes": 96302,
+          "sha256": "52a28e61deebfcce89de09e14e5682b4e331ea3a52f76537b6b9866b4d934158"
+        },
+        {
+          "id": "Capstone_Project_M02L01_Stakeholder_Analysis.docx",
+          "label": "M02L01 Stakeholder Analysis",
+          "group": "Editable reports",
+          "href": "/docs/projects/Capstone_Project_M02L01_Stakeholder_Analysis.docx",
+          "format": "DOCX",
+          "bytes": 71656,
+          "sha256": "db9d95dbea59b0d96bed190526f1b5b7edc627eba9f67d6916f1a4913fa289ee"
+        },
+        {
+          "id": "Capstone_Project_M02L01_Stakeholder_Analysis.pdf",
+          "label": "M02L01 Stakeholder Analysis",
+          "group": "Reports",
+          "href": "/docs/projects/Capstone_Project_M02L01_Stakeholder_Analysis.pdf",
+          "format": "PDF",
+          "bytes": 308789,
+          "sha256": "5ae65f09ee99c6c0ce49cb1f5e2d9de222ed40d0f418ad749be8c9cced3fd972"
+        },
+        {
+          "id": "Capstone_Project_M02L01_Stakeholder_Matrix.xlsx",
+          "label": "M02L01 Stakeholder Matrix",
+          "group": "Workbooks",
+          "href": "/docs/projects/Capstone_Project_M02L01_Stakeholder_Matrix.xlsx",
+          "format": "XLSX",
+          "bytes": 6296,
+          "sha256": "4c3210091f447ca0bbb9a8cd10e8427a1024ba50ebb5c3f025aa04b0b8b97bda"
+        },
+        {
+          "id": "Capstone_Project_M02L02_Scope_Management.docx",
+          "label": "M02L02 Scope Management",
+          "group": "Editable reports",
+          "href": "/docs/projects/Capstone_Project_M02L02_Scope_Management.docx",
+          "format": "DOCX",
+          "bytes": 200232,
+          "sha256": "93c7a3ed0ececb8cbc1395e729e76bc9d09eed2779d71c9a7e927a8607bf4f90"
+        },
+        {
+          "id": "Capstone_Project_M02L02_Scope_Management.pdf",
+          "label": "M02L02 Scope Management",
+          "group": "Reports",
+          "href": "/docs/projects/Capstone_Project_M02L02_Scope_Management.pdf",
+          "format": "PDF",
+          "bytes": 264780,
+          "sha256": "6e75025ab40e835878b35ab335a5ec578516b9d37b07759fa4d44b52b324b8b8"
+        },
+        {
+          "id": "Capstone_Project_M02L02_Work_Breakdown_Structure.xlsx",
+          "label": "M02L02 Work Breakdown Structure",
+          "group": "Workbooks",
+          "href": "/docs/projects/Capstone_Project_M02L02_Work_Breakdown_Structure.xlsx",
+          "format": "XLSX",
+          "bytes": 7221,
+          "sha256": "00d074b49b2e48461b77de9aa8004453283d3ae4887321bd31ffc7c311121a90"
+        },
+        {
+          "id": "Capstone_Project_M03L01_Process_Model.docx",
+          "label": "M03L01 Process Model",
+          "group": "Editable reports",
+          "href": "/docs/projects/Capstone_Project_M03L01_Process_Model.docx",
+          "format": "DOCX",
+          "bytes": 866481,
+          "sha256": "c8339cca832edcff5a09ac0db7748d9f6c244d57bbf4d9138ace09cde8b88b44"
+        },
+        {
+          "id": "Capstone_Project_M03L01_Process_Model.pdf",
+          "label": "M03L01 Process Model",
+          "group": "Reports",
+          "href": "/docs/projects/Capstone_Project_M03L01_Process_Model.pdf",
+          "format": "PDF",
+          "bytes": 699377,
+          "sha256": "e1984c37974851b8dd716d9842cd1671919eb5444e34c9daf678b58256c28a63"
+        },
+        {
+          "id": "Capstone_Project_M03L02_Swimlane_Diagrams.docx",
+          "label": "M03L02 Swimlane Diagrams",
+          "group": "Editable reports",
+          "href": "/docs/projects/Capstone_Project_M03L02_Swimlane_Diagrams.docx",
+          "format": "DOCX",
+          "bytes": 642342,
+          "sha256": "5ac74e0a1fa7577940986f0158cdc9d3a6ee25f1c5216c94ef015ae77c0af71b"
+        },
+        {
+          "id": "Capstone_Project_M03L02_Swimlane_Diagrams.pdf",
+          "label": "M03L02 Swimlane Diagrams",
+          "group": "Reports",
+          "href": "/docs/projects/Capstone_Project_M03L02_Swimlane_Diagrams.pdf",
+          "format": "PDF",
+          "bytes": 559141,
+          "sha256": "efc3773bf38df478dc6856669e7f7adf9cc340cac2d580a0fca203a297ddaa5c"
+        },
+        {
+          "id": "Capstone_Project_M04L01_Data_Analysis.docx",
+          "label": "M04L01 Data Analysis",
+          "group": "Editable reports",
+          "href": "/docs/projects/Capstone_Project_M04L01_Data_Analysis.docx",
+          "format": "DOCX",
+          "bytes": 254515,
+          "sha256": "c34056e7fdab2a2001e6bd444c8c4ce86c0be87d6d6883b4c51d534d5d73e272"
+        },
+        {
+          "id": "Capstone_Project_M04L01_Data_Analysis.pdf",
+          "label": "M04L01 Data Analysis",
+          "group": "Reports",
+          "href": "/docs/projects/Capstone_Project_M04L01_Data_Analysis.pdf",
+          "format": "PDF",
+          "bytes": 228115,
+          "sha256": "b125e61abb06bfc19c9b6cbc7132699800461b4208ba3a5bcd1651d851f057a9"
+        },
+        {
+          "id": "Capstone_Project_M04L01_Data_Cleaning_Manipulation_Analysis.xlsx",
+          "label": "M04L01 Data Cleaning Manipulation Analysis",
+          "group": "Workbooks",
+          "href": "/docs/projects/Capstone_Project_M04L01_Data_Cleaning_Manipulation_Analysis.xlsx",
+          "format": "XLSX",
+          "bytes": 134347,
+          "sha256": "41caa6b1a4c68a2d5407388a96c6124baf32f9af1dec321ecf9574425f1985d5"
+        },
+        {
+          "id": "Capstone_Project_M04L02_Dashboard_Evidence.docx",
+          "label": "M04L02 Dashboard Evidence",
+          "group": "Editable reports",
+          "href": "/docs/projects/Capstone_Project_M04L02_Dashboard_Evidence.docx",
+          "format": "DOCX",
+          "bytes": 92085,
+          "sha256": "311a9de44e019f5f3cebc9bfbdadd472da352d98a43de4ded452689c3242e1ed"
+        },
+        {
+          "id": "Capstone_Project_M04L02_Dashboard_Evidence.pdf",
+          "label": "M04L02 Dashboard Evidence",
+          "group": "Reports",
+          "href": "/docs/projects/Capstone_Project_M04L02_Dashboard_Evidence.pdf",
+          "format": "PDF",
+          "bytes": 171019,
+          "sha256": "b2838831152c4ba457b3128e1c3e4e9627d070fb48f6a4b3d97a8eccd80cc726"
+        },
+        {
+          "id": "Capstone_Project_M04L02_HealthFirst_Dashboard.xlsx",
+          "label": "M04L02 HealthFirst Dashboard",
+          "group": "Workbooks",
+          "href": "/docs/projects/Capstone_Project_M04L02_HealthFirst_Dashboard.xlsx",
+          "format": "XLSX",
+          "bytes": 81220,
+          "sha256": "fd1dad07897097137b5fd9f87d2163999422525216e95fe71ae2884d6516ad4c"
+        },
+        {
+          "id": "Capstone_Project_M05L01_Risk_Register_SWOT.docx",
+          "label": "M05L01 Risk Register SWOT",
+          "group": "Editable reports",
+          "href": "/docs/projects/Capstone_Project_M05L01_Risk_Register_SWOT.docx",
+          "format": "DOCX",
+          "bytes": 170968,
+          "sha256": "7e1f84d6fe436410f29238a14706256361804567926d0405701622d1923f1093"
+        },
+        {
+          "id": "Capstone_Project_M05L01_Risk_Register_SWOT.pdf",
+          "label": "M05L01 Risk Register SWOT",
+          "group": "Reports",
+          "href": "/docs/projects/Capstone_Project_M05L01_Risk_Register_SWOT.pdf",
+          "format": "PDF",
+          "bytes": 163585,
+          "sha256": "c9df4b47a16014221dc715d4b7b30c683e377dcb04202a57383d1b242ca75c16"
+        },
+        {
+          "id": "Capstone_Project_M05L01_Risk_Register_SWOT.xlsx",
+          "label": "M05L01 Risk Register SWOT",
+          "group": "Workbooks",
+          "href": "/docs/projects/Capstone_Project_M05L01_Risk_Register_SWOT.xlsx",
+          "format": "XLSX",
+          "bytes": 12117,
+          "sha256": "4bdab7d64011ea45e673b0ccdab95d4a5d4aa1dc4672eff818dcd8559af012f7"
+        },
+        {
+          "id": "Capstone_Project_M05L02_Risk_Matrix_Mitigation.docx",
+          "label": "M05L02 Risk Matrix Mitigation",
+          "group": "Editable reports",
+          "href": "/docs/projects/Capstone_Project_M05L02_Risk_Matrix_Mitigation.docx",
+          "format": "DOCX",
+          "bytes": 170784,
+          "sha256": "89e6a3952ea709c0d0ae051a67f1901ec50beddb8c41f0a1fad6b323c8184b0d"
+        },
+        {
+          "id": "Capstone_Project_M05L02_Risk_Matrix_Mitigation.pdf",
+          "label": "M05L02 Risk Matrix Mitigation",
+          "group": "Reports",
+          "href": "/docs/projects/Capstone_Project_M05L02_Risk_Matrix_Mitigation.pdf",
+          "format": "PDF",
+          "bytes": 209828,
+          "sha256": "c71796e280aca94abd5730cc7ef1a510156a0b299047288555f0ad6e2511c044"
+        },
+        {
+          "id": "Capstone_Project_M05L02_Risk_Matrix_Mitigation.xlsx",
+          "label": "M05L02 Risk Matrix Mitigation",
+          "group": "Workbooks",
+          "href": "/docs/projects/Capstone_Project_M05L02_Risk_Matrix_Mitigation.xlsx",
+          "format": "XLSX",
+          "bytes": 12200,
+          "sha256": "d04b3a5dc78d55d08c59634f622fe95c9f4de4f65cec5ee0a785fbe215072b01"
+        },
+        {
+          "id": "Adwoa_Acheampong_IBM_BA_Project_Index.pdf",
+          "label": "Adwoa Acheampong IBM BA Project Index",
+          "group": "Start here",
+          "href": "/docs/projects/Adwoa_Acheampong_IBM_BA_Project_Index.pdf",
+          "format": "PDF",
+          "bytes": 102320,
+          "sha256": "34750143234fb03d1627eaf764803d8f0996e48ffd117ebcc21c73c36c103545"
+        },
+        {
+          "id": "Adwoa_Acheampong_IBM_BA_Project_Index.docx",
+          "label": "Adwoa Acheampong IBM BA Project Index",
+          "group": "Start here",
+          "href": "/docs/projects/Adwoa_Acheampong_IBM_BA_Project_Index.docx",
+          "format": "DOCX",
+          "bytes": 41825,
+          "sha256": "0237825180977c5049c4096b2be87bcd182f69695eff935491dff908959ceeb3"
+        },
+        {
+          "id": "HealthFirst_Excel_Dashboard.pdf",
+          "label": "HealthFirst Excel Dashboard",
+          "group": "Start here",
+          "href": "/docs/projects/HealthFirst_Excel_Dashboard.pdf",
+          "format": "PDF",
+          "bytes": 91228,
+          "sha256": "91c2b2ddcaa557d87fc893c1cf3e451c148e13b80ae0e09a931af554899f84f1"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/appointments_by_hour.png",
+          "label": "Appointments by hour",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/appointments_by_hour.png",
+          "format": "PNG",
+          "bytes": 18502,
+          "sha256": "883099d453ba05f8d622e5f627685880b4c524ec46219f46c5b73549056beec4"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/as_is_appointment.png",
+          "label": "As is appointment",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/as_is_appointment.png",
+          "format": "PNG",
+          "bytes": 157364,
+          "sha256": "316a733eba5036f8d039c4c3a6d8ac7d51ca9bacd8a0603bd087c87d24a67dd7"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/as_is_appointment.svg",
+          "label": "As is appointment",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/as_is_appointment.svg",
+          "format": "SVG",
+          "bytes": 5697,
+          "sha256": "36c30dea4bc9f4745d830a3dd25c7c93cc9439deb80c6fb75b85971fc573cf6e"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/as_is_checkin.png",
+          "label": "As is checkin",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/as_is_checkin.png",
+          "format": "PNG",
+          "bytes": 147849,
+          "sha256": "79625f8db7e0e35d939bf70d5320fda4fc46a5f4d0620890e47825678795c1f0"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/as_is_checkin.svg",
+          "label": "As is checkin",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/as_is_checkin.svg",
+          "format": "SVG",
+          "bytes": 5416,
+          "sha256": "33e887319b8b045b12526b69dc77b9e415f620bb35cf164a06cc735be0fceb85"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/as_is_interdepartmental.png",
+          "label": "As is interdepartmental",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/as_is_interdepartmental.png",
+          "format": "PNG",
+          "bytes": 150213,
+          "sha256": "6c88ef24651dfb04e5e57db1e9957412ea0e9f9ee34818e0f2716c09ee8d4d8e"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/as_is_interdepartmental.svg",
+          "label": "As is interdepartmental",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/as_is_interdepartmental.svg",
+          "format": "SVG",
+          "bytes": 5424,
+          "sha256": "361538325906a37f880d7bf86532580f12cecbbcb930c05c31a163d3dbfdb569"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/feedback_by_department.png",
+          "label": "Feedback by department",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/feedback_by_department.png",
+          "format": "PNG",
+          "bytes": 23727,
+          "sha256": "5fe054c7536657cd128a61749df204fa7b1ac52186ebdd1b52cd029fb3fd6483"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/resource_usage_by_department.png",
+          "label": "Resource usage by department",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/resource_usage_by_department.png",
+          "format": "PNG",
+          "bytes": 24364,
+          "sha256": "415a084d136981f3f68da307d238d893fe21deebf87660c4333066cce91b8994"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/risk_likelihood_impact_matrix.png",
+          "label": "Risk likelihood impact matrix",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/risk_likelihood_impact_matrix.png",
+          "format": "PNG",
+          "bytes": 145205,
+          "sha256": "b170daaba11a98fb06f6281c53320ac55318f774a6358bb2d18b23dc726d2af7"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/risk_likelihood_impact_matrix.svg",
+          "label": "Risk likelihood impact matrix",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/risk_likelihood_impact_matrix.svg",
+          "format": "SVG",
+          "bytes": 3520,
+          "sha256": "dad5670fc95ef057fc7842e5af379d16f4ca82d383405f420a0de9dc9d4d4611"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/stakeholder_influence_interest_matrix.png",
+          "label": "Stakeholder influence interest matrix",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/stakeholder_influence_interest_matrix.png",
+          "format": "PNG",
+          "bytes": 32953,
+          "sha256": "b985ce1e36dd32ca5152ea332a00e4794453f93496e5188a572e15f5e62a921d"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/stakeholder_influence_interest_matrix.svg",
+          "label": "Stakeholder influence interest matrix",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/stakeholder_influence_interest_matrix.svg",
+          "format": "SVG",
+          "bytes": 2348,
+          "sha256": "d01c7bc4d1b33211afc026a57d930a0ec50a6142c37ea671f47d1d6d2a573527"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/swimlane_appointment.png",
+          "label": "Swimlane appointment",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/swimlane_appointment.png",
+          "format": "PNG",
+          "bytes": 207182,
+          "sha256": "8181eb0fe2be1ea2ab0a60150ce140e3f0fc0cc33ddc2bd025b11d5712525e84"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/swimlane_appointment.svg",
+          "label": "Swimlane appointment",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/swimlane_appointment.svg",
+          "format": "SVG",
+          "bytes": 7575,
+          "sha256": "6e37eb611bb62d501ffe8ea34b5cc179fd7847ed6bd8eef103218cc34c5c1726"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/swimlane_checkin_resource.png",
+          "label": "Swimlane checkin resource",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/swimlane_checkin_resource.png",
+          "format": "PNG",
+          "bytes": 173393,
+          "sha256": "23934ed0ee2d3b5101614d09d44d45c6074b1c62eb68e9675bca795026545b54"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/swimlane_checkin_resource.svg",
+          "label": "Swimlane checkin resource",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/swimlane_checkin_resource.svg",
+          "format": "SVG",
+          "bytes": 6925,
+          "sha256": "ca702c8f3c2899f6bc85cca9aa6e284f18d614ec5f3bd63aa0a711bb564f383c"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/swimlane_discharge.png",
+          "label": "Swimlane discharge",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/swimlane_discharge.png",
+          "format": "PNG",
+          "bytes": 284904,
+          "sha256": "ceb982ecc8f56183df37b773aed918fe3de56eb1f94dbe9db4879c0e8e389d28"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/swimlane_discharge.svg",
+          "label": "Swimlane discharge",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/swimlane_discharge.svg",
+          "format": "SVG",
+          "bytes": 9677,
+          "sha256": "3a600232a8ea5eba59fb71d712263e022b84d13cd1eab0cea020da78a7e1f5d1"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/to_be_appointment.png",
+          "label": "To be appointment",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/to_be_appointment.png",
+          "format": "PNG",
+          "bytes": 163440,
+          "sha256": "456f3637a6d44af75968f9541ea3d92da3f8df80945332099ddcb47378fa627f"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/to_be_appointment.svg",
+          "label": "To be appointment",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/to_be_appointment.svg",
+          "format": "SVG",
+          "bytes": 5833,
+          "sha256": "bf407e6f7b4fd65875479f1e01f3eaa8710227dbd6bdddd6ad9995b9ac5df875"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/to_be_checkin.png",
+          "label": "To be checkin",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/to_be_checkin.png",
+          "format": "PNG",
+          "bytes": 152829,
+          "sha256": "c46004ca451857d6b22a985dd3f3549911f0e1e134e1a90725dfd3822ebabf64"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/to_be_checkin.svg",
+          "label": "To be checkin",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/to_be_checkin.svg",
+          "format": "SVG",
+          "bytes": 5810,
+          "sha256": "bdf3eab8bd52c939d8fdd29ead9ce69142d562dd1cf52798387fdb0c83d16dc7"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/to_be_interdepartmental.png",
+          "label": "To be interdepartmental",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/to_be_interdepartmental.png",
+          "format": "PNG",
+          "bytes": 156983,
+          "sha256": "60485fc6dc8a1e5401ae37389cebc9872c1711224ffafe6146a433427c22b073"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/to_be_interdepartmental.svg",
+          "label": "To be interdepartmental",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/to_be_interdepartmental.svg",
+          "format": "SVG",
+          "bytes": 5569,
+          "sha256": "25e25cbd592b32cd2bbcf19844006dc3bad0275842fa61882149a822a47334ed"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/wbs_branch_1.png",
+          "label": "Wbs branch 1",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/wbs_branch_1.png",
+          "format": "PNG",
+          "bytes": 85573,
+          "sha256": "12ba4cb48fe530c2254cef8520ffc933d3b6bcc91958cd1361e3ddbbbbec8289"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/wbs_branch_1.svg",
+          "label": "Wbs branch 1",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/wbs_branch_1.svg",
+          "format": "SVG",
+          "bytes": 2478,
+          "sha256": "2ed05c6a847b08276f4944e01b00fd1b31954c1ddc33976f2226c136d30b3785"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/wbs_branch_2.png",
+          "label": "Wbs branch 2",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/wbs_branch_2.png",
+          "format": "PNG",
+          "bytes": 128680,
+          "sha256": "a9af79fe7b058bb8d31c49d5b0d299cf7821424f5398f0bc27ff09a157bfcdf8"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/wbs_branch_2.svg",
+          "label": "Wbs branch 2",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/wbs_branch_2.svg",
+          "format": "SVG",
+          "bytes": 3950,
+          "sha256": "9d0330a018344470c3c748d90611d46ce1d5253de42908043aa83b0f59e2e4a3"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/wbs_branch_3.png",
+          "label": "Wbs branch 3",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/wbs_branch_3.png",
+          "format": "PNG",
+          "bytes": 130543,
+          "sha256": "eb0675e87db01fdd00be3dd75a3a7b8b671355e25bbc1a0c95628259d07c7fe8"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/wbs_branch_3.svg",
+          "label": "Wbs branch 3",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/wbs_branch_3.svg",
+          "format": "SVG",
+          "bytes": 3958,
+          "sha256": "0420f485ff520023a7fe2713afb584a2317269d85a31bb49801a5239e4d2893b"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/wbs_branch_4.png",
+          "label": "Wbs branch 4",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/wbs_branch_4.png",
+          "format": "PNG",
+          "bytes": 185058,
+          "sha256": "30b1fc118b31c71b62e8400b81290f2f71c8c667239d2d8766d01046dc4b08c5"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/wbs_branch_4.svg",
+          "label": "Wbs branch 4",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/wbs_branch_4.svg",
+          "format": "SVG",
+          "bytes": 5869,
+          "sha256": "dd9454f71627291c511ddbb7afc1719c4bfd6ba165d1c95586a138542a1c0bba"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/wbs_branch_5.png",
+          "label": "Wbs branch 5",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/wbs_branch_5.png",
+          "format": "PNG",
+          "bytes": 101948,
+          "sha256": "5ee04c432347db6e54b20990a462487bab23a21937011d1a5eb445d508c230dc"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/wbs_branch_5.svg",
+          "label": "Wbs branch 5",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/wbs_branch_5.svg",
+          "format": "SVG",
+          "bytes": 3061,
+          "sha256": "fe865d925390fcdc16184586cbcc6e6d32880d85666b32172f20105724695060"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/wbs_branch_6.png",
+          "label": "Wbs branch 6",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/wbs_branch_6.png",
+          "format": "PNG",
+          "bytes": 129250,
+          "sha256": "a052084ee3f036802023fb412b214b75a20463a7b3cdefbb50434c06660a96dd"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/wbs_branch_6.svg",
+          "label": "Wbs branch 6",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/wbs_branch_6.svg",
+          "format": "SVG",
+          "bytes": 3968,
+          "sha256": "995961f55a99e160300a72dd15c1515474fb77efff402f941f5d52e822e28e3c"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/wbs_branch_7.png",
+          "label": "Wbs branch 7",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/wbs_branch_7.png",
+          "format": "PNG",
+          "bytes": 85822,
+          "sha256": "96dad3648087d17a1b693cee26627b986cc249cbc996b60228cc750ed3d2574f"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/wbs_branch_7.svg",
+          "label": "Wbs branch 7",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/wbs_branch_7.svg",
+          "format": "SVG",
+          "bytes": 2329,
+          "sha256": "afc33d92010d3931217c94cc4d5806345bdb90cf8dff40c3efdbf2d3ecf6594f"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/wbs_hierarchy.png",
+          "label": "Wbs hierarchy",
+          "group": "Diagram and chart previews",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/wbs_hierarchy.png",
+          "format": "PNG",
+          "bytes": 179811,
+          "sha256": "0c26b45db0a31b5da005a99ad4c2c291be1069fd5c1ea31f232c3bb023a6b94a"
+        },
+        {
+          "id": "HealthFirst_Editable_Diagrams/wbs_hierarchy.svg",
+          "label": "Wbs hierarchy",
+          "group": "Editable diagrams",
+          "href": "/docs/projects/HealthFirst_Editable_Diagrams/wbs_hierarchy.svg",
+          "format": "SVG",
+          "bytes": 3901,
+          "sha256": "b8eb2d1b68b714480967dc4057fbfc3f2e5a87ee528671d5fdb839095dd5bf29"
+        },
+        {
+          "id": "Adwoa_Acheampong_Hospital_Business_Analysis.pdf",
+          "label": "Earlier hospital case study with a separate dataset",
+          "group": "Earlier case study",
+          "href": "/docs/projects/Adwoa_Acheampong_Hospital_Business_Analysis.pdf",
+          "format": "PDF",
+          "bytes": 825576,
+          "sha256": "1801c0a86a5b143be3c0ca01c8660645416ccc8594a1078bb55196dec1f6ddae"
+        }
+      ]
+    },
+    {
+      "id": "tasty-bytes-recipe-traffic",
+      "title": "Tasty Bytes recipe site traffic",
+      "page": "/projects/tasty-bytes-recipe-traffic/",
+      "artifacts": [
+        {
+          "id": "Tasty_Bytes_Recipe_Traffic_Report.pdf",
+          "label": "Actual DataLab report",
+          "group": "Report and presentation",
+          "href": "/docs/projects/tasty-bytes/Tasty_Bytes_Recipe_Traffic_Report.pdf",
+          "format": "PDF",
+          "bytes": 4897194,
+          "sha256": "bd43819566b5634a4ae6b70134d17636d442c835fd9a984f9dd49af76ece80d2"
+        },
+        {
+          "id": "Tasty_Bytes_Recipe_Traffic_Presentation.pdf",
+          "label": "Presentation PDF",
+          "group": "Report and presentation",
+          "href": "/docs/projects/tasty-bytes/Tasty_Bytes_Recipe_Traffic_Presentation.pdf",
+          "format": "PDF",
+          "bytes": 991160,
+          "sha256": "7e9e852cc46538edb0e1ed96ba89aae507a4b3695014482322d8cf54645fdd0c"
+        },
+        {
+          "id": "Tasty_Bytes_Recipe_Traffic_Presentation.pptx",
+          "label": "Animated PowerPoint",
+          "group": "Report and presentation",
+          "href": "/docs/projects/tasty-bytes/Tasty_Bytes_Recipe_Traffic_Presentation.pptx",
+          "format": "PPTX",
+          "bytes": 303916,
+          "sha256": "90f30e7102bf9a192675bb0d22e9246e6a707aef0bae3d85d0896117f8bb5138"
+        },
+        {
+          "id": "Tasty_Bytes_Recipe_Traffic_Analysis.py",
+          "label": "Python analysis",
+          "group": "Reproducibility",
+          "href": "/docs/projects/tasty-bytes/Tasty_Bytes_Recipe_Traffic_Analysis.py",
+          "format": "PY",
+          "bytes": 25695,
+          "sha256": "54bd99c97460bd4c90cc8accc2f316c0bc311758a28ddc28bae25f1ae265f9a4"
+        },
+        {
+          "id": "Tasty_Bytes_Recipe_Traffic_Analysis.ipynb",
+          "label": "Analysis notebook",
+          "group": "Reproducibility",
+          "href": "/docs/projects/tasty-bytes/Tasty_Bytes_Recipe_Traffic_Analysis.ipynb",
+          "format": "IPYNB",
+          "bytes": 394749,
+          "sha256": "e7b92310ab910cfad54c84e425fc6b211ee82fcd83a313b3ad20efa3ac0b029f"
+        },
+        {
+          "id": "analysis_results.json",
+          "label": "Model results",
+          "group": "Reproducibility",
+          "href": "/docs/projects/tasty-bytes/analysis_results.json",
+          "format": "JSON",
+          "bytes": 5424,
+          "sha256": "d3f6dcfb88e7fc6b56c7dd5430631a9d809fe6a6aa395a048e496a4e014419b6"
+        },
+        {
+          "id": "label_balance.png",
+          "label": "Label balance",
+          "group": "Analysis charts",
+          "href": "/docs/projects/tasty-bytes/label_balance.png",
+          "format": "PNG",
+          "bytes": 39620,
+          "sha256": "e1bb9b1798147dd7d1561fc9c14f925001b093d25042f2c6f541b27af36b9b7d"
+        },
+        {
+          "id": "calorie_distribution.png",
+          "label": "Calorie distribution",
+          "group": "Analysis charts",
+          "href": "/docs/projects/tasty-bytes/calorie_distribution.png",
+          "format": "PNG",
+          "bytes": 38409,
+          "sha256": "806dea31a2178ec3e6637adc85222ebcce1e377b2250ab3a863017223dc33cc9"
+        },
+        {
+          "id": "category_high_rate.png",
+          "label": "Category high rate",
+          "group": "Analysis charts",
+          "href": "/docs/projects/tasty-bytes/category_high_rate.png",
+          "format": "PNG",
+          "bytes": 65397,
+          "sha256": "b23c591744830756bab08a77708931ea16a309fdd13345f75c1b8b9f2dc9e696"
+        },
+        {
+          "id": "precision_coverage.png",
+          "label": "Precision coverage",
+          "group": "Analysis charts",
+          "href": "/docs/projects/tasty-bytes/precision_coverage.png",
+          "format": "PNG",
+          "bytes": 99536,
+          "sha256": "30e5aa638f86cc0454b45c3580413f98b19d9df2dc77df134643a7610e82799e"
+        },
+        {
+          "id": "test_confusion_matrix.png",
+          "label": "Test confusion matrix",
+          "group": "Analysis charts",
+          "href": "/docs/projects/tasty-bytes/test_confusion_matrix.png",
+          "format": "PNG",
+          "bytes": 29013,
+          "sha256": "1db61e5a7ad7d415ee51dc5ac4f4655bd48949cb61cea46717885ccfe3f36691"
+        }
+      ]
+    }
+  ]
+}

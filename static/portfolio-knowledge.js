@@ -68,7 +68,11 @@ window.PORTFOLIO_KNOWLEDGE = {
     },
     {
       "name": "HealthFirst Business Analyst Capstone",
-      "brief": "CAPSTONE | Review in progress: My simulated hospital-analysis capstone covers requirements, stakeholders, scope, processes, data, dashboards and risk. This is a simulated certificate capstone. Three labs remain partial, with Lucidchart/Visio and Cognos/Looker requirements still outstanding; final acceptance remains pending. The older 39-slide hospital case uses a separate dataset."
+      "brief": "CAPSTONE | 6 local-complete, 3 partial: Nine connected labs for a simulated hospital, from requirements and stakeholder planning through data analysis, an interactive Excel dashboard and risk mitigation. Six labs are complete locally with review open. Local SVG diagrams do not fulfil the Lucidchart/Visio requirement; BPMN conformance is unvalidated, and the Cognos/Looker exercise is unfulfilled. Simulated data; no hospital sign-off, executed UAT, deployment or measured benefit."
+    },
+    {
+      "name": "Tasty Bytes Recipe Site Traffic",
+      "brief": "ANALYSIS COMPLETE | Pilot proposed: A historical recipe-traffic classification analysis testing whether a product manager can select homepage recipes with at least 80% precision. Historical model evaluation, not a deployed recommendation system or causal traffic/subscription lift. Blank-label meaning needs confirmation; shadow mode and a randomized pilot are proposed. The confidence interval extends below the 80% target."
     },
     {
       "name": "Olist Marketing Funnel & E-Commerce Analysis",

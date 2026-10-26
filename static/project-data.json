@@ -62,12 +62,20 @@
     "note":"Sign-in is required to access the personal planning app. Its mobile-first design brings routines, reflection and progress into one experience."
   },
   {
-    "id":"healthfirst", "title":"HealthFirst Business Analyst Capstone", "status":"CAPSTONE | Review in progress", "category":"IBM learning capstone", "view":"projects",
-    "summary":"My simulated hospital-analysis capstone covers requirements, stakeholders, scope, processes, data, dashboards and risk.",
-    "features":["Separate lab documents and workbooks cover the BRD, RTM, stakeholder matrix, scope/WBS, process models and swimlanes.","Includes data cleaning and analysis, an Excel dashboard, risk register/SWOT and risk-matrix mitigation workbooks.","Includes locally available deliverables and a project index detailing three partial labs where local equivalents replaced platform-specific requirements."],
-    "stack":["Excel","Requirements traceability","BPMN/Mermaid","Risk analysis","Local dashboards"],
-    "image":"", "alt":"", "links":[{"label":"Read HealthFirst project index","href":"/docs/projects/healthfirst-project-index.pdf"},{"label":"Explore HealthFirst capstone","href":"/portfolio.html#healthfirst"}],
-    "note":"This is a simulated certificate capstone. Three labs remain partial, with Lucidchart/Visio and Cognos/Looker requirements still outstanding; final acceptance remains pending. The older 39-slide hospital case uses a separate dataset."
+    "id":"healthfirst", "title":"HealthFirst Business Analyst Capstone", "status":"CAPSTONE | 6 local-complete, 3 partial", "category":"IBM learning capstone", "view":"projects",
+    "summary":"Nine connected labs for a simulated hospital, from requirements and stakeholder planning through data analysis, an interactive Excel dashboard and risk mitigation.",
+    "features":["Seven separate Excel workbooks and PDF/DOCX report pairs cover requirements, stakeholders, scope, analysis, dashboards and risk.","The analysis workbook has four native PivotTables, six slicers and four charts; the dashboard has four pivots, six slicers and two charts.","A desktop Excel check changed the appointment KPI from 200 to 38 with the Cardiology slicer and restored it on reset. The dynamic risk matrix recalculated after an R01 change.","A two-page index maps all nine labs, their evidence, relative file links and the three remaining platform/notation requirements."],
+    "stack":["Microsoft Excel","PivotTables and slicers","Requirements traceability","Stakeholder and scope analysis","Editable SVG process models","Risk analysis","Python pandas and NumPy"],
+    "image":"/images/projects/healthfirst-index-20261026.png", "alt":"Actual first page of the HealthFirst nine-lab project index, showing lab status and evidence", "links":[{"label":"Explore HealthFirst case study and all files","href":"/projects/healthfirst/"},{"label":"Read HealthFirst project index","href":"/docs/projects/Adwoa_Acheampong_IBM_BA_Project_Index.pdf"}],
+    "note":"Six labs are complete locally with review open. Local SVG diagrams do not fulfil the Lucidchart/Visio requirement; BPMN conformance is unvalidated, and the Cognos/Looker exercise is unfulfilled. Simulated data; no hospital sign-off, executed UAT, deployment or measured benefit."
+  },
+  {
+    "id":"tasty-bytes-recipe-traffic", "title":"Tasty Bytes Recipe Site Traffic", "status":"ANALYSIS COMPLETE | Pilot proposed", "category":"DataCamp data science project", "view":"projects",
+    "summary":"A historical recipe-traffic classification analysis testing whether a product manager can select homepage recipes with at least 80% precision.",
+    "features":["Analysed 947 recipes, including missing nutrients, servings text and eleven observed categories; documented the provisional interpretation of 373 blank traffic labels.","Separated training, validation and test data, and compared a select-all baseline, logistic regression and a random forest with validation-selected thresholds.","On held-out data, the forest selected 90 of 190 recipes; 78 were High: 86.7% precision, 47.4% coverage and 67.8% recall. The 95% Wilson precision interval was 78.1–92.2%.","Published the actual nine-page report, ten-slide presentation PDF, animated PPTX, current Google Slides and reproducible analysis files."],
+    "stack":["Python","pandas","NumPy","scikit-learn","Matplotlib","DataCamp DataLab","Google Slides","PowerPoint"],
+    "image":"/images/projects/tasty-bytes-presentation-20261026.png", "alt":"Actual opening slide of the Tasty Bytes recipe traffic presentation", "links":[{"label":"Explore Tasty Bytes case study and all files","href":"/projects/tasty-bytes-recipe-traffic/"},{"label":"Read actual DataLab report PDF","href":"/docs/projects/tasty-bytes/Tasty_Bytes_Recipe_Traffic_Report.pdf"},{"label":"Download animated PowerPoint","href":"/docs/projects/tasty-bytes/Tasty_Bytes_Recipe_Traffic_Presentation.pptx"}],
+    "note":"Historical model evaluation, not a deployed recommendation system or causal traffic/subscription lift. Blank-label meaning needs confirmation; shadow mode and a randomized pilot are proposed. The confidence interval extends below the 80% target."
   },
   {
     "id":"olist", "title":"Olist Marketing Funnel & E-Commerce Analysis", "status":"IN PROGRESS", "category":"Independent analytics project", "view":"projects",

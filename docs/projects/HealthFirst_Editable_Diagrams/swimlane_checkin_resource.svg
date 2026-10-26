@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1715" height="940" viewBox="0 0 1715 940">
+<defs><marker id="arrow" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto"><path d="M0 0 L12 5 L0 10 Z" fill="#52657B"/></marker></defs>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="55" y="61" font-family="Segoe UI" font-size="35" font-weight="700" fill="#17324D">Check-in and resource allocation</text>
+<text x="56" y="94" font-family="Segoe UI" font-size="19" fill="#667085">Planning model • proposed routes require operational review</text>
+<rect x="30" y="135.0" width="1645" height="152.2" fill="#FFFFFF" stroke="#D5DEE6"/>
+<rect x="30" y="135.0" width="205" height="152.2" fill="#17324D"/>
+<text x="132" y="219.1" text-anchor="middle" font-family="Segoe UI" font-size="22" font-weight="700" fill="#FFFFFF">Patient</text>
+<rect x="30" y="287.2" width="1645" height="152.2" fill="#F6F9FB" stroke="#D5DEE6"/>
+<rect x="30" y="287.2" width="205" height="152.2" fill="#17324D"/>
+<text x="132" y="371.3" text-anchor="middle" font-family="Segoe UI" font-size="22" font-weight="700" fill="#FFFFFF">Front desk</text>
+<rect x="30" y="439.4" width="1645" height="152.2" fill="#FFFFFF" stroke="#D5DEE6"/>
+<rect x="30" y="439.4" width="205" height="152.2" fill="#17324D"/>
+<text x="132" y="510.9" text-anchor="middle" font-family="Segoe UI" font-size="22" font-weight="700" fill="#FFFFFF">HIS / resource</text><text x="132" y="536.1" text-anchor="middle" font-family="Segoe UI" font-size="22" font-weight="700" fill="#FFFFFF">board</text>
+<rect x="30" y="591.6" width="1645" height="152.2" fill="#F6F9FB" stroke="#D5DEE6"/>
+<rect x="30" y="591.6" width="205" height="152.2" fill="#17324D"/>
+<text x="132" y="675.7" text-anchor="middle" font-family="Segoe UI" font-size="22" font-weight="700" fill="#FFFFFF">Nurse</text>
+<rect x="30" y="743.8" width="1645" height="152.2" fill="#FFFFFF" stroke="#D5DEE6"/>
+<rect x="30" y="743.8" width="205" height="152.2" fill="#17324D"/>
+<text x="132" y="827.9" text-anchor="middle" font-family="Segoe UI" font-size="22" font-weight="700" fill="#FFFFFF">Doctor</text>
+<path d="M404.0,211.1 L462.0,363.3" fill="none" stroke="#52657B" stroke-width="3.6"/>
+<polygon points="462.0,363.3 449.4,349.9 462.5,344.9" fill="#52657B"/>
+<rect x="394.5" y="257.2" width="77" height="25" rx="5" fill="#FFFFFF" opacity=".95"/>
+<text x="433.0" y="276.2" text-anchor="middle" font-family="Segoe UI" font-size="18" font-weight="700" fill="#B42318">Arrives</text>
+<path d="M678.0,363.3 L758.0,515.5" fill="none" stroke="#52657B" stroke-width="3.6"/>
+<polygon points="758.0,515.5 743.9,503.7 756.3,497.2" fill="#52657B"/>
+<rect x="690.0" y="409.4" width="56" height="25" rx="5" fill="#FFFFFF" opacity=".95"/>
+<text x="718.0" y="428.4" text-anchor="middle" font-family="Segoe UI" font-size="18" font-weight="700" fill="#B42318">Check</text>
+<path d="M912.0,515.5 L996.0,667.7" fill="none" stroke="#52657B" stroke-width="3.6"/>
+<polygon points="996.0,667.7 981.7,656.2 993.9,649.4" fill="#52657B"/>
+<rect x="926.0" y="561.6" width="56" height="25" rx="5" fill="#FFFFFF" opacity=".95"/>
+<text x="954.0" y="580.6" text-anchor="middle" font-family="Segoe UI" font-size="18" font-weight="700" fill="#B42318">Yes</text>
+<path d="M912.0,515.5 L992.0,363.3" fill="none" stroke="#52657B" stroke-width="3.6"/>
+<polygon points="992.0,363.3 990.3,381.6 977.9,375.1" fill="#52657B"/>
+<rect x="924.0" y="409.4" width="56" height="25" rx="5" fill="#FFFFFF" opacity=".95"/>
+<text x="952.0" y="428.4" text-anchor="middle" font-family="Segoe UI" font-size="18" font-weight="700" fill="#B42318">No</text>
+<path d="M1208.0,363.3 L1320.0,320.0 L1320.0,135.0 L570.0,135.0 L570.0,317.8" fill="none" stroke="#52657B" stroke-width="3.6"/>
+<polygon points="570.0,317.8 563.0,300.8 577.0,300.8" fill="#52657B"/>
+<rect x="906.5" y="105.0" width="77" height="25" rx="5" fill="#FFFFFF" opacity=".95"/>
+<text x="945.0" y="124.0" text-anchor="middle" font-family="Segoe UI" font-size="18" font-weight="700" fill="#B42318">Recheck</text>
+<path d="M1224.0,667.7 L1212.0,819.9" fill="none" stroke="#52657B" stroke-width="3.6"/>
+<polygon points="1212.0,819.9 1206.4,802.4 1220.3,803.5" fill="#52657B"/>
+<rect x="1190.0" y="713.8" width="56" height="25" rx="5" fill="#FFFFFF" opacity=".95"/>
+<text x="1218.0" y="732.8" text-anchor="middle" font-family="Segoe UI" font-size="18" font-weight="700" fill="#B42318">Ready</text>
+<path d="M1428.0,819.9 L1461.0,819.9" fill="none" stroke="#52657B" stroke-width="3.6"/>
+<polygon points="1461.0,819.9 1444.0,826.9 1444.0,812.9" fill="#52657B"/>
+<rect x="256.0" y="171.1" width="148" height="80" rx="34" fill="#DDF5E9" stroke="#136F78" stroke-width="3.5"/>
+<text x="330" y="218.1" text-anchor="middle" font-family="Segoe UI" font-size="21" font-weight="700" fill="#17324D">Arrive</text>
+<rect x="462.0" y="317.79999999999995" width="216" height="91" rx="13" fill="#EAF2F6" stroke="#136F78" stroke-width="3.5"/>
+<text x="570" y="370.3" text-anchor="middle" font-family="Segoe UI" font-size="21" font-weight="700" fill="#17324D">Verify identity</text>
+<polygon points="835,457.5 912.0,515.5 835,573.5 758.0,515.5" fill="#FFF3D6" stroke="#AE6D05" stroke-width="3.5"/>
+<text x="835" y="511.0" text-anchor="middle" font-family="Segoe UI" font-size="20" font-weight="700" fill="#17324D">Record</text><text x="835" y="534.0" text-anchor="middle" font-family="Segoe UI" font-size="20" font-weight="700" fill="#17324D">valid?</text>
+<rect x="996.0" y="619.6999999999999" width="228" height="96" rx="13" fill="#EDE7F6" stroke="#136F78" stroke-width="3.5"/>
+<rect x="1003.0" y="626.6999999999999" width="214" height="82" rx="10" fill="none" stroke="#136F78" stroke-width="1.7"/>
+<text x="1110" y="662.6" text-anchor="middle" font-family="Segoe UI" font-size="21" font-weight="700" fill="#17324D">Triage and</text><text x="1110" y="686.8" text-anchor="middle" font-family="Segoe UI" font-size="21" font-weight="700" fill="#17324D">allocate</text>
+<rect x="992.0" y="317.79999999999995" width="216" height="91" rx="13" fill="#EAF2F6" stroke="#136F78" stroke-width="3.5"/>
+<text x="1100" y="370.3" text-anchor="middle" font-family="Segoe UI" font-size="21" font-weight="700" fill="#17324D">Correct exception</text>
+<rect x="1212.0" y="774.4" width="216" height="91" rx="13" fill="#EAF2F6" stroke="#136F78" stroke-width="3.5"/>
+<text x="1320" y="826.9" text-anchor="middle" font-family="Segoe UI" font-size="21" font-weight="700" fill="#17324D">Consult; record</text>
+<rect x="1461.0" y="779.9" width="148" height="80" rx="34" fill="#FCE7E5" stroke="#136F78" stroke-width="3.5"/>
+<text x="1535" y="814.8" text-anchor="middle" font-family="Segoe UI" font-size="21" font-weight="700" fill="#17324D">Outcome</text><text x="1535" y="839.0" text-anchor="middle" font-family="Segoe UI" font-size="21" font-weight="700" fill="#17324D">saved</text>
+</svg>
