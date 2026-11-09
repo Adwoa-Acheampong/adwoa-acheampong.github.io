@@ -47,6 +47,10 @@ window.PORTFOLIO_KNOWLEDGE = {
       "brief": "LIVE: The live parent website for a Ghanaian nonprofit connecting education, culture, commerce and community. The parent website is live. Wider operational rollout and commercial validation remain in progress."
     },
     {
+      "name": "A Acheampong Legacy",
+      "brief": "STATIC SHOWROOM: An online showroom for my family’s African wear label, with 65 designs across ten collections. The showroom supports browsing, browser sketching and enquiry preparation. Live AI generation and online checkout require a separate server configuration."
+    },
+    {
       "name": "Blkk Star Hub",
       "brief": "IN PROGRESS: A platform in development for structured digital commerce and business operations across African MSMEs. Core infrastructure is closed to public access to protect it; access is available through demonstration requests. The platform architecture is still being developed, with planned services and commercial validation remaining."
     },

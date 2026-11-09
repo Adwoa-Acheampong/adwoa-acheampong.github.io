@@ -17,6 +17,15 @@
     "note":"The parent website is live. Wider operational rollout and commercial validation remain in progress."
   },
   {
+    "id":"a-acheampong-legacy", "title":"A Acheampong Legacy", "status":"STATIC SHOWROOM", "category":"Fashion showroom and digital product", "view":"projects",
+    "summary":"An online showroom for my family’s African wear label, with 65 designs across ten collections.",
+    "features":["Browse 29 garments and 36 labelled design concepts, with collection views, search and garment size filters.","Explore The Duchess bridal collection and The Traditional Minimalist menswear collection.","Use the browser design studio to sketch an idea and prepare a custom atelier enquiry."],
+    "stack":["HTML","CSS","JavaScript ES modules","SVG sketching","GitHub Pages"],
+    "image":"/images/projects/a-acheampong-legacy-collections-2026-11-09.png", "alt":"A Acheampong Legacy’s Shop by collection page showing the ten fashion collections",
+    "links":[{"label":"Open A Acheampong Legacy showroom","href":"https://legacy.aacheampong.com/"}],
+    "note":"The showroom supports browsing, browser sketching and enquiry preparation. Live AI generation and online checkout require a separate server configuration."
+  },
+  {
     "id":"blkk-star-hub", "title":"Blkk Star Hub", "status":"IN PROGRESS", "category":"Digital trade infrastructure", "view":"projects",
     "summary":"A platform in development for structured digital commerce and business operations across African MSMEs.",
     "features":["Investigates verified merchant identity, product discovery, traceability and reusable business workflows.","Sector prototypes explore automotive commerce, food systems and tenant analytics.","Research and staged validation guide the platform architecture and rollout."],

@@ -56,6 +56,7 @@ html { scroll-behavior: smooth; }
 .whatsapp-contact a { min-height: 44px; display: inline-flex; align-items: center; }
 .navbar-logo { display: inline-flex; align-items: center; min-height: 44px; font-family: 'Cormorant Garamond',serif; font-size: 19px; text-decoration: none; color: var(--foreground) !important; white-space: nowrap; }
 .nav-menu { display: flex; align-items: center; list-style: none; gap: 2px; margin: 0; padding: 0; min-width: 0; }
+.nav-menu > .nav-legacy { display: none; }
 .nav-tab { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; padding: 8px; color: var(--secondary) !important; font-size: 12px; text-decoration: none; position: relative; }
 .nav-tab::after { content: ''; position: absolute; inset: auto 8px 4px; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 180ms ease; }
 .nav-tab.active,.nav-tab:hover { color: var(--accent) !important; }
@@ -292,6 +293,7 @@ html { scroll-behavior: smooth; }
   .navbar-container .header-actions { grid-column: 2; }
   .menu-toggle:not([hidden]) { display: inline-flex; }
   .nav-menu { grid-row: 3; flex-direction: column; align-items: stretch; padding: 0 0 12px; max-height: calc(100dvh - 112px); overflow-y: auto; }
+  .nav-menu > .nav-legacy { display: block; }
   .nav-contact { grid-column: 1/-1; grid-row: 2; justify-self: stretch; gap: 16px; min-height: 44px; }
   .header-email-options { left: auto; right: 0; transform: none; width: min(320px,100%); }
   .site-js .nav-menu { display: none; }
